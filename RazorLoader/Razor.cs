@@ -114,7 +114,10 @@ namespace RazorLoader
             string razorPath = Path.Combine(razorFolder, "razor.exe");
             string cryptPath = Path.Combine(razorFolder, "crypt.dll");
             if (!File.Exists(razorPath) || !File.Exists(cryptPath))
+            {
+                MessageBox.Show("Cannot find Razor.exe/Crypt.dll");
                 return;
+            }
             myRazorAssembly = Assembly.LoadFile(razorPath);
             IntPtr hModule = Win32.LoadLibrary(cryptPath);
             Win32.GainMemoryAccess(hModule, 0x16000);
@@ -123,7 +126,9 @@ namespace RazorLoader
                 MessageBox.Show("Error patching crypt.dll, unknown Razor version.");
                 return;
             }
+ 
             Thread.CurrentThread.Name = "Razor Main Thread";
+
             Type engineType = myRazorAssembly.GetType("Assistant.Engine");
             Type clientCommunicationType = myRazorAssembly.GetType("Assistant.ClientCommunication");
             Type configType = myRazorAssembly.GetType("Assistant.Config");
@@ -160,6 +165,8 @@ namespace RazorLoader
             MethodInfo miResolve = engineType.GetMethod("Resolve", BindingFlags.Static | BindingFlags.NonPublic);
             MethodInfo miSetConnectionInfo = clientCommunicationType.GetMethod("SetConnectionInfo", BindingFlags.Static | BindingFlags.NonPublic);
             MethodInfo miInitializeLibrary = clientCommunicationType.GetMethod("InitializeLibrary");
+            if (miInitializeLibrary == null)
+                miInitializeLibrary = clientCommunicationType.GetMethod("InitializeLibrary", BindingFlags.Static | BindingFlags.NonPublic);
             MethodInfo miLoadCliloc = languageType.GetMethod("LoadCliLoc", BindingFlags.Static | BindingFlags.Public);
             MethodInfo miLoadCharList = configType.GetMethod("LoadCharList", BindingFlags.Static | BindingFlags.Public);
             //MethodInfo miAttach = clientCommunicationType.GetMethod("Attach");

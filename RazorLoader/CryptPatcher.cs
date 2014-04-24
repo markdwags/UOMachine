@@ -126,6 +126,18 @@ namespace RazorLoader
             {
                 address[offset + 0x6] = 0xEB;
             }
+            else
+            {
+                byte[] sig2 = new byte[] { 0x57, 0x33, 0xFF, 0x80, 0x3D };
+                offset = 0;
+
+                if (FindSignatureOffset(sig2, address, 0x100000, out offset))
+                {
+                    address[offset + 0x0A] = 0xEB;
+                }
+            }
+
+           
             return true;
         }
     }
