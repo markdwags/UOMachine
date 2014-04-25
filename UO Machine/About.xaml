@@ -10,7 +10,7 @@
     			<GradientStop Color="#FF00008C" Offset="1"/>
     		</LinearGradientBrush>
     	</Grid.Background>
-        <TextBlock Height="30" Margin="37.5,17,29.5,0" x:Name="textBlock1" VerticalAlignment="Top" Text="UO Machine 0.3.2.1" FontSize="22" FontFamily="Tahoma" FontWeight="Bold" >
+        <TextBlock Height="30" Margin="37.5,17,29.5,0" x:Name="textBlock1" VerticalAlignment="Top" Text="UO Machine 0.4.0.0" FontSize="22" FontFamily="Tahoma" FontWeight="Bold" >
         	<TextBlock.Foreground>
         		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
         			<GradientStop Color="#FFFFFFFF" Offset="0"/>
@@ -34,7 +34,7 @@
         		</LinearGradientBrush>
         	</TextBlock.Foreground>
         </TextBlock>
-        <TextBlock FontSize="15" Height="19" Margin="21,0,16,12" x:Name="textBlock5" Text="http://uomachine.pbworks.com/" VerticalAlignment="Bottom" PreviewMouseUp="textBlock5_PreviewMouseUp" MouseEnter="textBlock5_MouseEnter" MouseLeave="textBlock5_MouseLeave" FontFamily="Tahoma" FontWeight="Bold" >
+        <TextBlock FontSize="15" Height="19" Margin="21,0,16,12" x:Name="textBlock5" Text="https://github.com/Reetus/UOMachine" VerticalAlignment="Bottom" PreviewMouseUp="textBlock5_PreviewMouseUp" MouseEnter="textBlock5_MouseEnter" MouseLeave="textBlock5_MouseLeave" FontFamily="Tahoma" FontWeight="Bold" >
         	<TextBlock.Foreground>
         		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
         			<GradientStop Color="#FFFFFFFF" Offset="0"/>

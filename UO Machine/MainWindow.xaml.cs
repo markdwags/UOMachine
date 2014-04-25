@@ -45,7 +45,7 @@ namespace UOMachine
         private static DropShadowEffect myDropShadow;
         private static double myStartButtonWidth, myStopButtonWidth, myAddButtonWidth, myRazorButtonWidth, mySteamButtonWidth;
         private static Thickness myStartButtonMargin, myStopButtonMargin, myAddButtonMargin, myRazorButtonMargin, mySteamButtonMargin;
-        private const string titleString = "UO Machine Alpha 3";
+        private const string titleString = "UO Machine Alpha 4";
         private const string titleSpace = "                  ";
         private string fileTitleString = "";
         private string fileName = "";

@@ -49,7 +49,7 @@ namespace UOMachine
 
         private void textBlock5_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://uomachine.pbwiki.com/");
+            System.Diagnostics.Process.Start("https://github.com/Reetus/UOMachine");
         }
 
         private void textBlock5_MouseEnter(object sender, MouseEventArgs e)
