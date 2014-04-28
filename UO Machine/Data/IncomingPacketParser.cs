@@ -657,11 +657,21 @@ namespace UOMachine.Data
                         //i78 += 2;
                         item78.Layer = (Layer)packet[i78 + 6];
                         //i78 += 1;
-                        if ((item78.myID & 0x8000) != 0)
+                        ClientInfo ci;
+                        ClientInfoCollection.GetClient(client, out ci);
+                        if (ci.UseNewMobileIncoming)
                         {
-                            item78.myID ^= 0x8000;
                             item78.myHue = packet[i78 + 7] << 8 | packet[i78 + 8];
                             i78 += 2;
+                        }
+                        else
+                        {
+                            if ((item78.myID & 0x8000) != 0)
+                            {
+                                item78.myID ^= 0x8000;
+                                item78.myHue = packet[i78 + 7] << 8 | packet[i78 + 8];
+                                i78 += 2;
+                            }
                         }
                         i78 += 7;
                         container78.Add(item78);
