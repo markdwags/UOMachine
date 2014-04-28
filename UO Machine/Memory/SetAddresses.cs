@@ -419,19 +419,6 @@ namespace UOMachine
                 int baseAddress = clientInfo.BaseAddress.ToInt32();
                 clientInfo.Version = ExeInfo.GetFileVersion(fileName);
                 clientInfo.DateStamp = ExeInfo.GetStamp(fileBytes);
-                if (clientInfo.Version == "0.0.0.0")
-                {
-                    clientInfo.Version = ExeInfo.DateToVersion(clientInfo.DateStamp);
-                    if (clientInfo.Version == "")
-                    {
-                        string version;
-                        if (!FindVersion(baseAddress, fileBytes, out version))
-                        {
-                            //return false;
-                        }
-                        clientInfo.Version = version;
-                    }
-                }
 
                 if (!GetHookAddress(baseAddress, fileBytes, clientInfo)) return false;
                 if (!GetRecvAddress(baseAddress, fileBytes, clientInfo)) return false;

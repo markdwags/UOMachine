@@ -40,13 +40,10 @@ namespace UOMachine.Utility
             return BitConverter.ToInt32(fileBytes, offset);
         }
 
-        public static string GetFileVersion(string fileName)
+        public static Version GetFileVersion(string fileName)
         {
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(fileName);
-            return fvi.FileMajorPart.ToString() + "." +
-                fvi.FileMinorPart.ToString() + "." +
-                fvi.FileBuildPart.ToString() + "." +
-                fvi.FilePrivatePart.ToString();
+            return new Version(fvi.FileMajorPart, fvi.FileMinorPart, fvi.FileBuildPart, fvi.FilePrivatePart);
         }
 
         public static string DateToVersion(int dateStamp)

@@ -359,6 +359,14 @@ namespace UOMachine
         /// Vendor 'sell pack' layer.
         /// </summary>
         ShopSell = 0x1C,
+        /// <summary>
+        /// Bank box layer.
+        /// </summary>
+        Bank = 0x1D,
+        /// <summary>
+        /// Last valid layer. Equivalent to <c>Layer.Bank</c>.
+        /// </summary>
+        LastValid = 0x1D
     }
 
 

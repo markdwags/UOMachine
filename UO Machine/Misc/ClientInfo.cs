@@ -22,6 +22,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Threading;
+using System.Runtime.InteropServices;
 using UOMachine.IPC;
 using UOMachine.Macros;
 using UOMachine.Tree;
@@ -29,6 +30,7 @@ using UOMachine.Utility;
 
 namespace UOMachine
 {
+    
     public sealed class ClientInfo
     {
         private object myWaitForTargetLock;
@@ -41,11 +43,32 @@ namespace UOMachine
         public int DateStamp { get; internal set; }
         public int IPCServerIndex { get; private set; }
         public int ProcessID { get; private set; }
-        public string Version { get; internal set; }
+        public Version Version {get; internal set;}
+
         public IntPtr HookAddress { get; internal set; }
         public int OriginalDest { get; internal set; }
         public int ReturnAddress { get; internal set; }
         public IntPtr TopGumpPointer { get; internal set; }
+
+        public bool UseNewMobileIncoming
+        {
+            get
+            {
+                if (Version.Major > 7)
+                {
+                    return true;
+                }
+                else if (Version.Major == 7)
+                {
+                    if (Version.Minor > 0 || Version.Build >= 33)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        }
 
         public IntPtr TopGumpHandle
         {

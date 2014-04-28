@@ -40,15 +40,15 @@ namespace UOMachine
         }
 
         // matches layer to serial
-        internal int[] myLayerArray = new int[30];
+        internal int[] myLayerArray = new int[170];
 
         internal void SetLayer(int layer, int serial)
         {
             Interlocked.Exchange(ref myLayerArray[layer], serial);
         }
 
-        internal int GetLayer(int layer)
-        {
+        internal int GetLayer(int layer)        
+	{
             return Thread.VolatileRead(ref myLayerArray[layer]);
         }
 
