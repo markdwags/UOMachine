@@ -41,8 +41,8 @@ namespace UOMachine.Macros
             int size = (serials.Length*4) + 3;
             byte[] packet = new byte[size];
             packet[0] = 0xD6;
-            packet[1] = (byte)(size >> 8);
-            packet[2] = (byte)size;
+            packet[1] = (byte)(size);
+            packet[2] = (byte)(size >> 8);
             int i = 3;
             foreach (int serial in serials)
             {

@@ -130,7 +130,9 @@
     </Page>
     <Compile Include="Macros\MacroEx\OverheadMessage.cs" />
     <Compile Include="Macros\MacroEx\QuestArrow.cs" />
+    <Compile Include="Macros\MacroEx\RemoveObject.cs" />
     <Compile Include="Macros\MacroEx\RequestItemProperties.cs" />
+    <Compile Include="Macros\MacroEx\WorldItem.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

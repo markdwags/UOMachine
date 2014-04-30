@@ -33,7 +33,7 @@ namespace UOMachine.Macros
         /// <param name="text">Text to display.</param>
         public static void OverheadMessage(int client, int serial, int graphic, int messageType, int hue, string text)
         {
-            int size = 48 + (text.Length * 2);
+            int size = 48 + ((text.Length+1) * 2);
             int font = 3;
             if (hue == 0) hue = 0x3B2;
 
