@@ -72,5 +72,14 @@ namespace UOMachine
             internal set { myLayer = value; }
         }
 
+        public bool Movable
+        {
+            get
+            {
+                if ((Thread.VolatileRead(ref myFlags) & 0x20) != 0)
+                    return true;
+                return false;
+            }
+        }
     }
 }
