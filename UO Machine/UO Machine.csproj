@@ -63,15 +63,15 @@
     </Reference>
     <Reference Include="ICSharpCode.AvalonEdit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libraries\ICSharpCode.AvalonEdit.dll</HintPath>
+      <HintPath>..\Lib\ICSharpCode.AvalonEdit.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.CodeCompletion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9513f4b9ac5c6ac0, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libraries\ICSharpCode.CodeCompletion.dll</HintPath>
+      <HintPath>..\Lib\ICSharpCode.CodeCompletion.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.NRefactory, Version=5.0.0.0, Culture=neutral, PublicKeyToken=d4bfe873e7598c49, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libraries\ICSharpCode.NRefactory.dll</HintPath>
+      <HintPath>..\Lib\ICSharpCode.NRefactory.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -98,7 +98,7 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
-    <Page Include="UI\ResourceDictionary1.xaml">
+    <Page Include="ResourceDictionary1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -106,31 +106,31 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UI\App.xaml">
+    <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\About.xaml">
+    <Page Include="About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\AssemblyPicker.xaml">
+    <Page Include="AssemblyPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\MainWindow.xaml">
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Options.xaml">
+    <Page Include="Options.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
@@ -141,21 +141,21 @@
     <Compile Include="Macros\MacroEx\RemoveObject.cs" />
     <Compile Include="Macros\MacroEx\RequestItemProperties.cs" />
     <Compile Include="Macros\MacroEx\WorldItem.cs" />
-    <Compile Include="UI\MainWindow.xaml.cs">
+    <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UI\About.xaml.cs">
+    <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\App.xaml.cs">
+    <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AssemblyHelper\AssemblyParser.cs" />
-    <Compile Include="UI\AssemblyPicker.xaml.cs">
+    <Compile Include="AssemblyPicker.xaml.cs">
       <DependentUpon>AssemblyPicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="AssemblyHelper\AssemblyHelper.cs" />
@@ -288,7 +288,7 @@
     <Compile Include="Objects\SkillInfo.cs" />
     <Compile Include="Objects\Structs.cs" />
     <Compile Include="Objects\WorldItem.cs" />
-    <Compile Include="UI\Options.xaml.cs">
+    <Compile Include="Options.xaml.cs">
       <DependentUpon>Options.xaml</DependentUpon>
     </Compile>
     <Compile Include="Misc\OptionsData.cs" />
@@ -354,6 +354,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DefaultScript.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\175x175-UOS.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

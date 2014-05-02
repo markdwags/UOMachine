@@ -140,34 +140,7 @@ namespace UOMachine.Data
                                 ps.TithingPoints = packet[87] << 24 | packet[88] << 16 | packet[89] << 8 | packet[90];
                                 break;
                             case 6:
-                                ps.MaxWeight = packet[66] << 8 | packet[67];
-                                ps.Race = packet[68];
-                                ps.StatCap = packet[69] << 8 | packet[70];
-                                ps.Followers = packet[71];
-                                ps.MaxFollowers = packet[72];
-                                ps.FireResist = packet[73] << 8 | packet[74];
-                                ps.ColdResist = packet[75] << 8 | packet[76];
-                                ps.PoisonResist = packet[77] << 8 | packet[78];
-                                ps.EnergyResist = packet[79] << 8 | packet[80];
-                                ps.Luck = packet[81] << 8 | packet[82];
-                                ps.MinDamage = packet[83] << 8 | packet[84];
-                                ps.MaxDamage = packet[85] << 8 | packet[86];
-                                ps.TithingPoints = packet[87] << 24 | packet[88] << 16 | packet[89] << 8 | packet[90];
-                                ps.MaxPhysicalResist = packet[91] << 8 | packet[92];
-                                ps.MaxFireResist = packet[93] << 8 | packet[94];
-                                ps.MaxColdResist = packet[95] << 8 | packet[96];
-                                ps.MaxPoisonResist = packet[97] << 8 | packet[98];
-                                ps.MaxEnergyResist = packet[99] << 8 | packet[100];
-                                ps.DefenseChanceIncrease = packet[101] << 8 | packet[102];
-                                ps.HitChanceIncrease = packet[105] << 8 | packet[106];
-                                ps.SwingSpeedIncrease = packet[107] << 8 | packet[108];
-                                ps.DamageIncrease = packet[109] << 8 | packet[110];
-                                ps.LowerReagentCost = packet[111] << 8 | packet[112];
-                                ps.SpellDamageIncrease = packet[113] << 8 | packet[114];
-                                ps.FasterCastRecovery = packet[115] << 8 | packet[116];
-                                ps.FasterCasting = packet[117] << 8 | packet[118];
-                                ps.LowerManaCost = packet[119] << 8 | packet[120];
-                                break;
+                                goto case 5;
                         }
                         IncomingPackets.OnLongStatus(client, serial11, ps);
                     }

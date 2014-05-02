@@ -50,19 +50,5 @@ namespace UOMachine
         public int MinDamage;
         public int MaxDamage;
         public int TithingPoints;
-        public int MaxPhysicalResist;
-        public int MaxFireResist;
-        public int MaxColdResist;
-        public int MaxPoisonResist;
-        public int MaxEnergyResist;
-        public int DefenseChanceIncrease;
-        public int HitChanceIncrease;
-        public int SwingSpeedIncrease;
-        public int DamageIncrease;
-        public int LowerReagentCost;
-        public int SpellDamageIncrease;
-        public int FasterCastRecovery;
-        public int FasterCasting;
-        public int LowerManaCost;
     }
 }

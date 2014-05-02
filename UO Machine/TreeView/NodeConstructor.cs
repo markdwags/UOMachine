@@ -61,16 +61,7 @@ namespace UOMachine.Tree
         StatCap,
         StatLock,
         Gold,
-        TithingPoints,
-        DefenseChanceIncrease,
-        HitChanceIncrease,
-        SwingSpeedIncrease,
-        DamageIncrease,
-        LowerReagentCost,
-        SpellDamageIncrease,
-        FasterCastRecovery,
-        FasterCasting,
-        LowerManaCost
+        TithingPoints
     }
 
     internal static class NodeConstructor
@@ -85,7 +76,7 @@ namespace UOMachine.Tree
         public static TreeViewItem Create(PlayerMobile player)
         {
             TreeViewItem t = new TreeViewItem();
-            t.Header = "Player (" + player.Serial + ")";
+            t.Header = "Player (" + player.Serial + ") (" + player.Name + ")";
             t.Tag = player.Serial;
             t.Items.Add(CreateItem("Name = " + player.Name));
             t.Items.Add(CreateItem("Label = " + player.Label));
@@ -125,15 +116,6 @@ namespace UOMachine.Tree
             t.Items.Add(CreateItem("StatLock = " + (StatLockStatus)player.StatLock));
             t.Items.Add(CreateItem("Gold = " + player.Gold));
             t.Items.Add(CreateItem("TithingPoints = " + player.TithingPoints));
-            t.Items.Add(CreateItem("DefenseChanceIncrease = " + player.DefenseChanceIncrease));
-            t.Items.Add(CreateItem("HitChanceIncrease = " + player.HitChanceIncrease));
-            t.Items.Add(CreateItem("SwingSpeedIncrease = " + player.SwingSpeedIncrease));
-            t.Items.Add(CreateItem("DamageIncrease = " + player.DamageIncrease));
-            t.Items.Add(CreateItem("LowerReagentCost = " + player.LowerReagentCost));
-            t.Items.Add(CreateItem("SpellDamageIncrease = " + player.SpellDamageIncrease));
-            t.Items.Add(CreateItem("FasterCastRecovery = " + player.FasterCastRecovery));
-            t.Items.Add(CreateItem("FasterCasting = " + player.FasterCasting));
-            t.Items.Add(CreateItem("LowerManaCost = " + player.LowerManaCost));
             return t;
         }
     }
