@@ -24,7 +24,7 @@ using UOMachine.Utility;
 using UOMachine.Data;
 using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Highlighting;
-using ICSharpCode.AvalonEdit.CodeCompletion;
+using ICSharpCode.CodeCompletion;
 
 namespace UOMachine
 {
@@ -51,6 +51,7 @@ namespace UOMachine
         private string fileName = "";
         private delegate void dUpdateButtonStatus(Button button, bool IsEnabled);
         private delegate void dUpdateLabel(Label label, string content);
+        private CSharpCompletion codeCompletion;
 
         private object myOptionWaitObject = new object();
         private bool myIsWaitingForOptions = false;
@@ -151,6 +152,11 @@ namespace UOMachine
 
         private void PrepareTextEditor()
         {
+            codeCompletion = new ICSharpCode.CodeCompletion.CSharpCompletion();
+            codeCompletion.AddAssembly("UOMachine.exe");
+            scriptTextBox.Completion = codeCompletion;
+            scriptTextBox.FontFamily = new FontFamily("Consolas");
+            scriptTextBox.FontSize = 12;
             FileNew_Click(null, null);
             scriptTextBox.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("C#");
             scriptTextBox.Options = myCurrentOptions.TextEditorOptions;
@@ -381,6 +387,7 @@ namespace UOMachine
             MenuItem child = (MenuItem)parent.Items[2];
             child.IsEnabled = false;
             UpdateWindowText();
+            scriptTextBox.Document.FileName = fileName;
         }
 
         private void FileOpen_Click(object sender, RoutedEventArgs e)
@@ -398,7 +405,11 @@ namespace UOMachine
             OpenFileDialog OFD = (OpenFileDialog)sender;
             if (OFD.FileName != "")
             {
-                try { scriptTextBox.Text = File.ReadAllText(OFD.FileName); }
+                try { 
+                    //scriptTextBox.Text = File.ReadAllText(OFD.FileName);
+                    scriptTextBox.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("C#");
+                    scriptTextBox.OpenFile(OFD.FileName);
+                }
                 catch (IOException)
                 {
                     MessageBox.Show("Error opening file, make sure it's not in use.");
@@ -534,6 +545,5 @@ namespace UOMachine
             addButton.Opacity = 1;
             razorButton.Opacity = 1;
         }
-
     }
 }

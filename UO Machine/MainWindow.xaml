@@ -1,7 +1,7 @@
 ﻿<Window x:Class="UOMachine.MainWindow" x:ClassModifier="internal"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:AvalonEdit="clr-namespace:ICSharpCode.AvalonEdit;assembly=ICSharpCode.AvalonEdit"
+        xmlns:AvalonEdit="clr-namespace:ICSharpCode.AvalonEdit;assembly=ICSharpCode.AvalonEdit" xmlns:ce="clr-namespace:ICSharpCode.CodeCompletion;assembly=ICSharpCode.CodeCompletion"
     Title="UO Machine Alpha 4" Height="480" Width="680" x:Name="Main" xmlns:UOMachine="clr-namespace:UOMachine" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
 	<Window.Resources>
 		<Style x:Key="ButtonStyle1" BasedOn="{x:Null}" TargetType="{x:Type Button}">
@@ -145,7 +145,7 @@
         </StatusBar>
 		<TreeView Margin="0,36,0,24" x:Name="clientTreeView" Grid.Column="2" FocusVisualStyle= "{x:Null}">
         </TreeView>
-        <AvalonEdit:TextEditor Margin="0,36,0,24" x:Name="scriptTextBox" Text="" FontFamily="Tahoma" FontSize="11.5"></AvalonEdit:TextEditor>
+        <ce:CodeTextEditor Margin="0,36,0,24" x:Name="scriptTextBox" Text="" FontFamily="Tahoma" FontSize="11.5"></ce:CodeTextEditor>
         <Label Height="Auto" Name="labelStatus" VerticalAlignment="Bottom" FontSize="12" Margin="12,0,8,0">Status: Ready</Label>
     </Grid>
     
