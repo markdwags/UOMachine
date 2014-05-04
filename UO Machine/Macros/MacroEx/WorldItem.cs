@@ -1,4 +1,4 @@
-﻿/* Copyright (C) 2009 Matthew Geyer
+﻿/* Copyright (C) 2014 John Scott
  * 
  * This file is part of UO Machine.
  * 
