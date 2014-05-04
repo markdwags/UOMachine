@@ -57,6 +57,30 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Page Include="UI\About.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\AssemblyPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Options.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\ResourceDictionary1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Reference Include="EasyHook, Version=2.7.4761.0, Culture=neutral, PublicKeyToken=4b580fca19d0b0c5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\EasyHook.dll</HintPath>
@@ -98,66 +122,16 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
-    <Page Include="ResourceDictionary1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="About.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="AssemblyPicker.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Options.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="Macros\MacroEx\OverheadMessage.cs" />
     <Compile Include="Macros\MacroEx\QuestArrow.cs" />
     <Compile Include="Macros\MacroEx\RemoveObject.cs" />
     <Compile Include="Macros\MacroEx\RequestItemProperties.cs" />
     <Compile Include="Macros\MacroEx\WorldItem.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About.xaml.cs">
-      <DependentUpon>About.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="AssemblyHelper\AssemblyParser.cs" />
-    <Compile Include="AssemblyPicker.xaml.cs">
-      <DependentUpon>AssemblyPicker.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AssemblyHelper\AssemblyHelper.cs" />
     <Compile Include="App.cs" />
     <Compile Include="ClientHook\CreateCALL.cs" />
@@ -288,9 +262,6 @@
     <Compile Include="Objects\SkillInfo.cs" />
     <Compile Include="Objects\Structs.cs" />
     <Compile Include="Objects\WorldItem.cs" />
-    <Compile Include="Options.xaml.cs">
-      <DependentUpon>Options.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Misc\OptionsData.cs" />
     <Compile Include="Data\IncomingPacketParser.cs" />
     <Compile Include="Data\OutgoingPacketParser.cs" />
@@ -313,6 +284,21 @@
     <Compile Include="TreeView\NodeConstructor.cs" />
     <Compile Include="TreeView\TreeViewStatus.cs" />
     <Compile Include="TreeView\TreeViewUpdater.cs" />
+    <Compile Include="UI\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AssemblyPicker.xaml.cs">
+      <DependentUpon>AssemblyPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Options.xaml.cs">
+      <DependentUpon>Options.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UOM.cs" />
     <Compile Include="Data\Cliloc.cs" />
     <Compile Include="Utility\CircularBuffer.cs" />
@@ -354,9 +340,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DefaultScript.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\175x175-UOS.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
