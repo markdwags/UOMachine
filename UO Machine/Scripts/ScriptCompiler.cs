@@ -198,7 +198,7 @@ namespace UOMachine
             cp.ReferencedAssemblies.Add(exePath);
             AddReferences(sourcecode, cp);
             cp.GenerateExecutable = false;
-            cp.CompilerOptions = "/optimize+";
+            cp.CompilerOptions = "/debug+";//"/optimize+";
             cp.GenerateInMemory = true;
             cp.IncludeDebugInformation = false;
             CompilerResults CR = cdp.CompileAssemblyFromSource(cp, sourcecode);
