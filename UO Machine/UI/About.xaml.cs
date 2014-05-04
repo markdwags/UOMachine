@@ -36,6 +36,7 @@ namespace UOMachine
             myDropShadow.BlurRadius = 8;
             myDropShadow.Color = Colors.Red;
             this.Closing += new System.ComponentModel.CancelEventHandler(About_Closing);
+            textBox1.Text = Properties.Resources.Credits;
         }
 
         private void About_Closing(object sender, System.ComponentModel.CancelEventArgs e)

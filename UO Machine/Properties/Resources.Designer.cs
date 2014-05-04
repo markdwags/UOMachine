@@ -61,6 +61,23 @@ namespace UOMachine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Acknowledgements:
+        ///
+        ///Thanks to Artaxerxes, lead developer of UOAI (http://www.uoai.be). His assistance has proved invaluable and I appreciate it dearly.
+        ///
+        ///A big thanks to Cheffe. Though he isn&apos;t involved with the project in any way, UO Machine wouldn&apos;t exist without his hard work. I&apos;ve learned much of what I know regarding UO internals by reverse engineering EasyUO and the UO client.
+        ///
+        ///Thanks to Christoph Husse for EasyHook, a brilliant API hook library.
+        ///
+        ///Thanks to the SharpDevelop team for the nice Ava [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Credits {
+            get {
+                return ResourceManager.GetString("Credits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to using System;
         ///using System.Threading;
         ///using System.Windows.Forms;
