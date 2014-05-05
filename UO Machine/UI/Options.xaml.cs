@@ -78,6 +78,13 @@ namespace UOMachine
             checkBoxEncryption.IsChecked = options.PatchClientEncryptionUOM;
             checkBoxStamina.IsChecked = options.PatchStaminaCheck;
             checkBoxLight.IsChecked = options.PatchAlwaysLight;
+            checkBoxGameSize.IsChecked = options.PatchGameSize;
+            if (options.PatchGameSizeWidth < 800)
+                options.PatchGameSizeWidth = 800;
+            if (options.PatchGameSizeHeight < 600)
+                options.PatchGameSizeHeight = 600;
+            gameWidth.Text = options.PatchGameSizeWidth.ToString();
+            gameHeight.Text = options.PatchGameSizeHeight.ToString();
 
             if (options.TextEditorOptions.ConvertTabsToSpaces)
                 checkBoxConvert.IsChecked = true;
@@ -130,6 +137,13 @@ namespace UOMachine
             od.PatchClientEncryptionUOM = (bool)checkBoxEncryption.IsChecked;
             od.PatchStaminaCheck = (bool)checkBoxStamina.IsChecked;
             od.PatchAlwaysLight = (bool)checkBoxLight.IsChecked;
+            od.PatchGameSize = (bool)checkBoxGameSize.IsChecked;
+            od.PatchGameSizeWidth = int.Parse(gameWidth.Text);
+            od.PatchGameSizeHeight = int.Parse(gameHeight.Text);
+            if (od.PatchGameSizeWidth < 800)
+                od.PatchGameSizeWidth = 800;
+            if (od.PatchGameSizeHeight < 600)
+                od.PatchGameSizeHeight = 600;
             od.UOFolder = textBoxUO.Text;
             od.UOClientPath = textBoxClient.Text;
             od.RazorFolder = textBoxRazor.Text;

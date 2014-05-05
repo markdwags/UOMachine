@@ -32,7 +32,11 @@
             		<CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="Patch encryption" Margin="6,16,0,0" Height="16" Width="Auto" FontSize="13" Name="checkBoxEncryption" />
             		<CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="Patch Felucca stamina check (&lt; 7.0.0.0)" Margin="6,36,0,0" Height="16" Width="Auto" FontSize="13" x:Name="checkBoxStamina" />
             		<CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="Always light patch" Margin="6,56,0,0" Height="16" Width="Auto" FontSize="13" x:Name="checkBoxLight" />
-            	</Grid>
+                    <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="Force game size" Margin="6,77,0,0" Height="16" Width="Auto" FontSize="13" x:Name="checkBoxGameSize" />
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="133,77,0,0" Height="23" Width="50" x:Name="gameWidth" Text="1024"></TextBox>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="209,77,0,0" Height="23" Width="50" x:Name="gameHeight" Text="768"></TextBox>
+                    <Label Content="x" HorizontalAlignment="Left" Margin="188,77,0,0" VerticalAlignment="Top"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Razor" x:Name="tabItemRazor">
                 <Grid Height="Auto" Width="Auto">

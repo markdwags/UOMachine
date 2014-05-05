@@ -368,5 +368,69 @@ namespace UOMachine
             if (!LightPatch(buffer, hProcess, baseAddress)) return false;
             return true;
         }
+
+        /// <summary>
+        /// Set game play window size
+        /// </summary>
+        /// <param name="hProcess"></param>
+        public static bool SetGameSize(IntPtr hProcess, int width, int height)
+        {
+            /*
+.text:00561680 sub_561680      proc near               ; CODE XREF: sub_4B1680+9Bp
+.text:00561680                                         ; sub_5305C0+B1p ...
+.text:00561680
+.text:00561680 arg_0           = dword ptr  4
+.text:00561680 arg_4           = dword ptr  8
+.text:00561680
+.text:00561680                 mov     eax, [esp+arg_0]
+.text:00561684                 mov     edx, 280h
+.text:00561689                 cmp     eax, edx
+.text:0056168B                 mov     ecx, 1E0h
+.text:00561690                 jz      short loc_5616B8
+.text:00561692                 cmp     eax, 320h
+.text:00561697                 jnz     short loc_5616B8
+.text:00561699                 mov     eax, 258h
+.text:0056169E                 cmp     [esp+arg_4], eax
+.text:005616A2                 jnz     short loc_5616B8
+.text:005616A4                 mov     gameWidth, 320h
+.text:005616AE                 mov     gameHeight, eax
+.text:005616B3                 jmp     sub_4DB350
+.text:005616B8 ; ---------------------------------------------------------------------------
+.text:005616B8
+.text:005616B8 loc_5616B8:                             ; CODE XREF: sub_561680+10j
+.text:005616B8                                         ; sub_561680+17j ...
+.text:005616B8                 mov     gameHeight, ecx
+.text:005616BE                 mov     gameWidth, edx
+.text:005616C4                 jmp     sub_4DB350
+.text:005616C4 sub_561680      endp             
+            */
+
+            long baseAddress = 0x0400000;
+            byte[] buffer = new byte[4194304];
+            if (!Memory.Read(hProcess, (IntPtr)baseAddress, buffer, false)) return false;
+
+            byte[] sigBytes = new byte[] { 0xBA, 0x80, 0x02, 0x00, 0x00, 0x3B, 0xC2, 0xB9, 0xE0, 0x01, 0x00, 0x00 };
+
+            int offset;
+
+            if (FindSignatureOffset(sigBytes, buffer, out offset))
+            {
+                long address = baseAddress + offset;
+                byte[] patch1 = new byte[] { 0xB8, 0x00, 0x00, 0x00, 0x00, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
+                patch1[1] = (byte)(height);
+                patch1[2] = (byte)(height >> 8);
+                patch1[3] = (byte)(height >> 16);
+                patch1[4] = (byte)(height >> 24);
+                Memory.Write(hProcess, (IntPtr)(baseAddress + (offset + 21)), patch1, true);
+                byte[] patch2 = new byte[] { 0x00, 0x00, 0x00, 0x00};
+                patch2[0] = (byte)(width);
+                patch2[1] = (byte)(width >> 8);
+                patch2[2] = (byte)(width >> 16);
+                patch2[3] = (byte)(width >> 24);
+                Memory.Write(hProcess, (IntPtr)(baseAddress + (offset + 38)), patch2, true);
+                return true;
+            }
+            return false;
+        }
     }
 }

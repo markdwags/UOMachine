@@ -71,6 +71,14 @@ namespace UOMachine
                             MessageBox.Show("Error with always light patch!", "Error");
                         }
                     }
+                    if (options.PatchGameSize)
+                    {
+                        if (!ClientPatcher.SetGameSize(p.Handle, options.PatchGameSizeWidth, options.PatchGameSizeHeight))
+                        {
+                            //Silently fail for now as this will fail on UOSteam.
+                            //MessageBox.Show("Error setting game window size!");
+                        }
+                    }
                     int instance;
                     if (!ClientInfoCollection.AddClient(ci, out instance))
                         throw new ApplicationException("Unknown error at ClientInfoCollection.Add.");

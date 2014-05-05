@@ -37,6 +37,9 @@ namespace UOMachine
         public bool PatchStaminaCheck { get; set; }
         public bool PatchClientEncryption { get; set; }
         public bool PatchAlwaysLight { get; set; }
+        public bool PatchGameSize { get; set; }
+        public int PatchGameSizeWidth { get; set; }
+        public int PatchGameSizeHeight { get; set; }
         public bool EncryptedServer { get; set; }
         public string Server { get; set; }
         public ushort Port { get; set; }
@@ -62,6 +65,7 @@ namespace UOMachine
             od.TextEditorOptions = new TextEditorOptions();
             od.PatchStaminaCheck = true;
             od.PatchClientEncryptionUOM = false;
+            od.PatchGameSize = false;
             Serialize("options.xml", od);
             return od;
         }
