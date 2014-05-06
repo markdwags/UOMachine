@@ -181,7 +181,7 @@ namespace UOMachine
         {
             byte[] sig1 = new byte[] { 0x53, 0x56, 0x57, 0x8B, 0xF9, 0x8B, 0x0D };
             byte[] sig2 = new byte[] { 0x8B, 0x38, 0x8B, 0xE9, 0xBE };
-            byte[] sig3 = new byte[] { 0x8B, 0x38, 0x8B, 0xD9, 0xBE }; // Reximus 03/2011
+            byte[] sig3 = new byte[] { 0x8B, 0x38, 0x8B, 0xD9, 0xBE };
 
             int offset;
 
@@ -189,6 +189,9 @@ namespace UOMachine
             {
                 clientInfo.RecvHookAddress = (IntPtr)(baseAddress + offset);
                 clientInfo.RecvHookType = 0;
+#if DEBUG
+                Log.LogMessage(clientInfo.Instance, "Recv hook address = 0x" + clientInfo.RecvHookAddress.ToString("X"));
+#endif
                 return true;
             }
 
@@ -196,6 +199,9 @@ namespace UOMachine
             {
                 clientInfo.RecvHookAddress = (IntPtr)(baseAddress + offset - 18);
                 clientInfo.RecvHookType = 1;
+#if DEBUG
+                Log.LogMessage(clientInfo.Instance, "Recv hook address = 0x" + clientInfo.RecvHookAddress.ToString("X"));
+#endif
                 return true;
             }
 
@@ -203,6 +209,9 @@ namespace UOMachine
             {
                 clientInfo.RecvHookAddress = (IntPtr)(baseAddress + offset - 18);
                 clientInfo.RecvHookType = 1;
+#if DEBUG
+                Log.LogMessage(clientInfo.Instance, "Recv hook address = 0x" + clientInfo.RecvHookAddress.ToString("X"));
+#endif
                 return true;
             }
 
@@ -217,6 +226,9 @@ namespace UOMachine
             if (FindSignatureOffset(sig1, buffer, out offset))
             {
                 clientInfo.PlayerInfoPointer = (IntPtr)BitConverter.ToUInt32(buffer, offset - 6);
+#if DEBUG
+                Log.LogMessage(clientInfo.Instance, "Player info pointer = 0x" + clientInfo.PlayerInfoPointer.ToString("X"));
+#endif
                 return true;
             }
 
@@ -252,6 +264,17 @@ namespace UOMachine
                 clientInfo.ServerSendCaveAddress = (IntPtr)serverSendCaveAddress;
                 clientInfo.PathFindCaveAddress = (IntPtr)pathFindCaveAddress;
                 clientInfo.GumpFunctionCaveAddress = (IntPtr)gumpFunctionCaveAddress;
+
+#if DEBUG
+                Log.LogMessage(clientInfo.Instance, "Cave address = 0x" + clientInfo.RecvHookAddress.ToString("X") + "\r\n" +
+                                                    "Recv cave address = 0x"+ clientInfo.RecvCaveAddress.ToString("X") + "\r\n" +
+                                                    "Send cave address = 0x"+ clientInfo.SendCaveAddress.ToString("X") + "\r\n" +
+                                                    "Client send cave address = 0x"+ clientInfo.ClientSendCaveAddress.ToString("X") + "\r\n" +
+                                                    "Server send cave address = 0x"+ clientInfo.ServerSendCaveAddress.ToString("X") + "\r\n" +
+                                                    "Pathfind cave address = 0x"+ clientInfo.PathFindCaveAddress.ToString("X") + "\r\n" +
+                                                    "Gump function cave address = 0x"+ clientInfo.GumpFunctionCaveAddress.ToString("X") + "\r\n");
+#endif
+
                 return true;
             }
 
@@ -314,9 +337,6 @@ namespace UOMachine
 
             if (FindSignatureOffset(sig1, buffer, out offset))
             {
-                //Credit: Reximus 02/2010
-                //clientInfo.HookAddress = (IntPtr)(baseAddress + offset - 5);
-                //clientInfo.OriginalDest = baseAddress + (offset - 4) + 4 + BitConverter.ToInt32(buffer, offset - 4);
                 clientInfo.HookAddress = (IntPtr)(baseAddress + offset + 8);
                 clientInfo.OriginalDest = baseAddress + (offset + 9) + 4 + BitConverter.ToInt32(buffer, offset + 9);
                 return true;

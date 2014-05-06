@@ -121,5 +121,8 @@ namespace ClientHook
 
         [DllImport("user32.dll"), SuppressUnmanagedCodeSecurity]
         public static extern bool GetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
+
+        [DllImport("kernel32.dll")]
+        public static extern IntPtr LoadLibrary(string lpFileName);
     }
 }

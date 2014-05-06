@@ -170,12 +170,16 @@ namespace UOMachine.Events
                         case FunctionType.Receive:
                             ci.RecvFunctionPointer = (IntPtr)address;
                             ClientHook.InstallRecvHook(ci);
-                            //Log.LogMessage(clientID, "Recv function pointer = 0x" + address.ToString("X"));
+#if DEBUG
+                            Log.LogMessage(clientID, "Recv function pointer = 0x" + address.ToString("X"));
+#endif
                             break;
                         case FunctionType.Send:
                             ci.SendFunctionPointer = (IntPtr)address;
                             ClientHook.InstallSendHook(ci);
-                            //Log.LogMessage(clientID, "Send function pointer = 0x" + address.ToString("X"));
+#if DEBUG
+                            Log.LogMessage(clientID, "Send function pointer = 0x" + address.ToString("X"));
+#endif
                             break;
                     }
                 }

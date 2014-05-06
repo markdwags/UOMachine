@@ -42,14 +42,29 @@ namespace ClientHook
             Process p = Process.GetProcessById(EasyHook.RemoteHooking.GetCurrentProcessId());
             uint x;
             uint threadID = GetWindowThreadProcessId(p.MainWindowHandle, out x);
+
+            /* Use user32.dll as SetWindowHookEx hMod as per http://stackoverflow.com/questions/17897646/gma-useractivitymonitor-setwindowshookex-error-126 */
+            IntPtr user32 = LoadLibrary("user32.dll");
             myMsgHookHandle = SetWindowsHookEx(WH_GETMESSAGE,
                 Marshal.GetFunctionPointerForDelegate(myMsgHook),
-                Marshal.GetHINSTANCE(Assembly.GetExecutingAssembly().GetModules()[0]),
+                /*Marshal.GetHINSTANCE(Assembly.GetExecutingAssembly().GetModules()[0])*/user32,
                     threadID);
+#if DEBUG
+            if (myMsgHookHandle == IntPtr.Zero)
+            {
+                clientInstance.SendCommand(Command.Message, "Error installing WH_GETMESSAGE hook, GetLastError = " + Marshal.GetLastWin32Error().ToString());
+            }
+#endif
             myWindowMsgHookHandle = SetWindowsHookEx(WH_CALLWNDPROC,
                 Marshal.GetFunctionPointerForDelegate(myWindowMsgHook),
-                Marshal.GetHINSTANCE(Assembly.GetExecutingAssembly().GetModules()[0]),
+                /*Marshal.GetHINSTANCE(Assembly.GetExecutingAssembly().GetModules()[0])*/user32,
                     threadID);
+#if DEBUG
+            if (myWindowMsgHookHandle == IntPtr.Zero)
+            {
+                clientInstance.SendCommand(Command.Message, "Error installing WH_CALLWNDPROC hook, GetLastError = " + Marshal.GetLastWin32Error().ToString());
+            }
+#endif
             WINDOWPLACEMENT wp = new WINDOWPLACEMENT();
             if (GetWindowPlacement(myWindowHandle, ref wp))
             {
