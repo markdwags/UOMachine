@@ -209,6 +209,10 @@ namespace UOMachine.Events
                 {
                     PlayerMobile p = ci.Player;
                     if (p == null || p.Serial != serial) return;
+
+                    if (p.Name != playerStatus.Name)
+                        p.Name = playerStatus.Name;
+
                     switch (playerStatus.Features)
                     {
                         case 3:
@@ -287,7 +291,43 @@ namespace UOMachine.Events
                             p.TithingPoints = playerStatus.TithingPoints;
                             break;
                         case 6:
-                            goto case 5;
+                            p.Health = playerStatus.Health;
+                            p.MaxHealth = playerStatus.MaxHealth;
+                            p.Sex = playerStatus.Sex;
+                            p.Str = playerStatus.Str;
+                            p.Dex = playerStatus.Dex;
+                            p.Int = playerStatus.Int;
+                            p.Stamina = playerStatus.Stamina;
+                            p.MaxStamina = playerStatus.MaxStamina;
+                            p.Mana = playerStatus.Mana;
+                            p.MaxMana = playerStatus.MaxMana;
+                            p.Gold = playerStatus.Gold;
+                            p.PhysicalResist = playerStatus.PhysicalResist;
+                            p.Weight = playerStatus.Weight;
+
+                            p.MaxWeight = playerStatus.MaxWeight;
+                            p.Race = playerStatus.Race;
+                            p.StatCap = playerStatus.StatCap;
+                            p.Followers = playerStatus.Followers;
+                            p.MaxFollowers = playerStatus.MaxFollowers;
+                            p.FireResist = playerStatus.FireResist;
+                            p.ColdResist = playerStatus.ColdResist;
+                            p.PoisonResist = playerStatus.PoisonResist;
+                            p.EnergyResist = playerStatus.EnergyResist;
+                            p.Luck = playerStatus.Luck;
+                            p.MinDamage = playerStatus.MinDamage;
+                            p.MaxDamage = playerStatus.MaxDamage;
+                            p.TithingPoints = playerStatus.TithingPoints;
+                            p.DefenseChanceIncrease = playerStatus.DefenseChanceIncrease;
+                            p.HitChanceIncrease = playerStatus.HitChanceIncrease;
+                            p.SwingSpeedIncrease = playerStatus.SwingSpeedIncrease;
+                            p.DamageIncrease = playerStatus.DamageIncrease;
+                            p.LowerReagentCost = playerStatus.LowerReagentCost;
+                            p.SpellDamageIncrease = playerStatus.SpellDamageIncrease;
+                            p.FasterCastRecovery = playerStatus.FasterCastRecovery;
+                            p.FasterCasting = playerStatus.FasterCasting;
+                            p.LowerManaCost = playerStatus.LowerManaCost;
+                            break;
                     }
                 }
             }
