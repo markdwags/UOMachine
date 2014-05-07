@@ -1,0 +1,1741 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UOMachine</name>
+    </assembly>
+    <members>
+        <member name="M:UOMachine.Macros.MacroEx.OverheadMessage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Displays text over specified item serial.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="serial">Item serial.</param>
+            <param name="graphic">Item graphic.</param>
+            <param name="messageType">Message type (default 0).</param>
+            <param name="hue">Hue (default 0x3B2)</param>
+            <param name="text">Text to display.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.QuestArrow(System.Int32,System.Boolean,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Send quest arrow packet to client.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="active">Turn on or off.</param>
+            <param name="x">X location</param>
+            <param name="y">Y location</param>
+            <param name="serial">Target serial or -1</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.RemoveObject(System.Int32,System.Int32)">
+            <summary>
+            Send RemoveObject packet to client.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="serial">Serial of item/mobile/multi.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.RequestItemProperties(System.Int32,System.Int32)">
+            <summary>
+            Send item properties request for single serial.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="serial">Item serial.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.RequestItemProperties(System.Int32,System.Int32[])">
+            <summary>
+            Send item properties request for multiple serials.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="serials">int array of target serials.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.WorldItem(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Send WorldItem packet to client.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="serial">Item serial.</param>
+            <param name="itemid">Item ID.</param>
+            <param name="x">X Location.</param>
+            <param name="y">Y Location.</param>
+            <param name="z">Z Location.</param>
+            <param name="hue">Item hue.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.Attack(System.Int32,System.Int32)">
+            <summary>
+            Sent attack packet to server.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="serial">Attack target.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.Cast(System.Int32,UOMachine.Macros.Bushido)">
+            <summary>
+            Cast Bushido spell with a spellbook.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="bushido">Spell to cast.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.Cast(System.Int32,UOMachine.Macros.Chivalry)">
+            <summary>
+            Cast Chivalry spell with a spellbook.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="chivalry">Spell to cast.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.Cast(System.Int32,UOMachine.Macros.Magery)">
+            <summary>
+            Cast Magery spell with a spellbook.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="magery">Spell to cast.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.Cast(System.Int32,UOMachine.Macros.Necromancy)">
+            <summary>
+            Cast Necromancy spell with a spellbook.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="necromancy">Spell to cast.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.Cast(System.Int32,UOMachine.Macros.Ninjitsu)">
+            <summary>
+            Cast Ninjitsu spell with a spellbook.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="ninjitsu">Spell to cast.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.Cast(System.Int32,UOMachine.Macros.Spellweaving)">
+            <summary>
+            Cast Spellweaving spell with a spellbook.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="spellweaving">Spell to cast.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.CloseClientGump(System.Int32,System.Int32)">
+            <summary>
+            Sends close gump packet to client.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="gumpID">ID of gump to close.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.ContextMenu(System.Int32,System.Int32)">
+            <summary>
+            Request context menu for specified mobile.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="serial">Target mobile.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.ContextMenuClick(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Click context menu of a mobile.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="serial">Serial of target mobile.</param>
+            <param name="contextEntry">Index of context menu entry to click.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.DropItem(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Drop item into specified container, stacking it with like items.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="serial">Serial of item to drop.</param>
+            <param name="containerSerial">Serial of destination container.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.DropItem(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Drop item into specified container at the specified coordinates.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="serial">Serial of item to drop.</param>
+            <param name="containerSerial">Serial of destination container.</param>
+            <param name="x">X coordinate to drop the item at.</param>
+            <param name="y">Y coordinate to drop the item at.</param>
+            <param name="z">Z coordinate to drop the item at.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.DropItem(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Drop item onto the ground at the specified coordinates.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="serial">Serial of item to drop.</param>
+            <param name="x">X coordinate to drop the item at.</param>
+            <param name="y">Y coordinate to drop the item at.</param>
+            <param name="z">Z coordinate to drop the item at.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.FindGump(System.Int32,System.Int32,UOMachine.Gump@)">
+            <summary>
+            Get packet based generic gump with specified serial from target client.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="serial">Serial of gump to get.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.GetGump(System.Int32,System.Int32,UOMachine.Gump@)">
+            <summary>
+            Get packet based generic gump with specified ID from target client.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="gumpID">ID of gump to get.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.GetGumps(System.Int32,UOMachine.Gump[]@)">
+            <summary>
+            Get all packet based generic gumps from target client.
+            </summary>
+            <param name="client">Target client.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.TestPacket(System.Int32,System.Byte[],System.Boolean)">
+            <summary>
+            Test UOM's incoming/outgoing packet parser.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="packet">Packet to parse.</param>
+            <param name="outgoing">True if outgoing packet.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.ToggleFlying(System.Int32,System.Boolean)">
+            <summary>
+            Send toggle flying packet to server, gargoyles only.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="isFlying">True if you are flying.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.SendPacketToClient(System.Int32,System.Byte[])">
+            <summary>
+            Send packet directly to client's packet receive function.
+            </summary>
+            <param name="client">Target client.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.SendPacketToServer(System.Int32,System.Byte[])">
+            <summary>
+            Send raw packet from specified client.
+            </summary>
+            <param name="client">Target client.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.SystemMessage(System.Int32,System.String)">
+            <summary>
+            Send system message packet to the specified client.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.WaitForTarget(System.Int32,System.Int32)">
+            <summary>
+            Pause until target packet is received.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="timeout">Timeout in milliseconds, -1 is infinite.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.GetAttackTarget(System.Int32)">
+            <summary>
+            Get current attack target for the specified client.
+            </summary>
+            <param name="client">Target client.</param>
+            <returns>0 if no target, -1 on error.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.GetMapInfo(UOMachine.Facet,System.Int32,System.Int32,UOMachine.Data.MapInfo@)">
+            <summary>
+            Get land tile and static tiles from specified map.
+            </summary>
+            <param name="facet">Target map.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.Login(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Log in to UO server using specified account name and password.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="account">Account name to use.</param>
+            <param name="password">Password for specified account.</param>
+            <param name="serverIndex">Zero based index of shard to select.</param>
+            <param name="charIndex">Zero based index of character to select.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.Login(System.Int32,System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Log in to UO server using specified account name and password.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="account">Account name to use.</param>
+            <param name="password">Password for specified account.</param>
+            <param name="serverIndex">Zero based index of shard to select.</param>
+            <param name="charIndex">Zero based index of character to select.</param>
+            <param name="timeout">Timeout in milliseconds to wait for successful login.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.ClientHook.CreateCALL(System.IntPtr,System.IntPtr,UOMachine.CallType)">
+            <summary>
+            Create far JMP or CALL instruction from source address to target.
+            </summary>
+            <param name="sourceAddress">Address which CALL originates from rather than EIP of next instruction.</param>
+            <param name="targetAddress">Target address to call.</param>
+            <param name="callType">Type of instruction to assemble.</param>
+            <returns>Byte array of assembled instruction.</returns>
+        </member>
+        <member name="M:UOMachine.ClientHook.CreateCALL(System.Int32,System.Int32,UOMachine.CallType)">
+            <summary>
+            Create far JMP or CALL instruction from source address to target.
+            </summary>
+            <param name="sourceAddress">Address which CALL originates from rather than EIP of next instruction.</param>
+            <param name="targetAddress">Target address to call.</param>
+            <param name="callType">Type of instruction to assemble.</param>
+            <returns>Byte array of assembled instruction.</returns>
+        </member>
+        <member name="P:UOMachine.Property.Text">
+            <summary>
+            Entire property decoded to a string.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Property.Arguments">
+            <summary>
+            Array of arguments supplied with this property.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Property.Cliloc">
+            <summary>
+            Property number.
+            </summary>
+        </member>
+        <member name="T:UOMachine.Events.General">
+            <summary>
+            Collection of thread safe events which provide notifications for general events.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Events.General.ClearEvents">
+            <summary>
+            Reset all public events.
+            </summary>
+        </member>
+        <member name="T:UOMachine.Events.IncomingPackets">
+            <summary>
+            Collection of thread safe events which provide notifications for specific incoming packets.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Events.IncomingPackets.ClearEvents">
+            <summary>
+            Reset all public events.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.CharacterListEvent">
+            <summary>
+            Fired when server asks client to close a gump.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.ServerListEvent">
+            <summary>
+            Fired when server asks client to close a gump.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.CloseGumpEvent">
+            <summary>
+            Fired when server asks client to close a gump.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.CustomGumpEvent">
+            <summary>
+            Fired on receipt of compressed gump packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.AttackSwingEvent">
+            <summary>
+            Fired on receipt of attack granted packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.AttackEndedEvent">
+            <summary>
+            Fired on receipt of attack granted packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.AttackGrantedEvent">
+            <summary>
+            Fired on receipt of attack granted packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.LoggedOutEvent">
+            <summary>
+            Fired on receipt of logout confirmation packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.BondedStatusEvent">
+            <summary>
+            Fired on receipt of bonded status packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.AttackTargetEvent">
+            <summary>
+            Fired on receipt of current attack target packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.SoundEvent">
+            <summary>
+            Fired on receipt of sound packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.ItemEquippedEvent">
+            <summary>
+            Fired when player character equips an item.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.ContextMenuEvent">
+            <summary>
+            Fired on receipt of mobile's context menu.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.PartyTextEvent">
+            <summary>
+            Fired on receipt of party chat.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.TextEvent">
+            <summary>
+            Fired on receipt of ASCII text.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.UnicodeTextEvent">
+            <summary>
+            Fired on receipt of unicode text, should include language.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.MobileNameEvent">
+            <summary>
+            Fired on receipt of mobile name packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.PlayerDeathEvent">
+            <summary>
+            Fired on death of player character.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.MobileDeathEvent">
+            <summary>
+            Fired on death of mobile.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.StandardGumpEvent">
+            <summary>
+            Fired on receipt of standard gump packet. (chests, etc.)
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.StatLockStatusEvent">
+            <summary>
+            Fired on receipt of stat lock status packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.TargetEvent">
+            <summary>
+            Fired on receipt of target packet which sets target cursor.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.SkillListEvent">
+            <summary>
+            Fired on receipt of skill list packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.SkillUpdateEvent">
+            <summary>
+            Fired on receipt of skill update packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.LongStatusEvent">
+            <summary>
+            Fired on receipt of extended status packet (player character).
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.ShortStatusEvent">
+            <summary>
+            Fired on receipt of basic status packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.MoveAcceptedEvent">
+            <summary>
+            Fired on receipt of movement accepted packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.MoveRejectedEvent">
+            <summary>
+            Fired on receipt of movement rejected packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.PropertiesEvent">
+            <summary>
+            Fired on receipt of properties packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.ItemAddedToContainerEvent">
+            <summary>
+            Fired when item is added to a container.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.MapChangedEvent">
+            <summary>
+            Fired when player character is transported to a different map.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.MobileUpdatedEvent">
+            <summary>
+            Fired on receipt of mobile updated packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.ItemDeletedEvent">
+            <summary>
+            Fired on receipt of item deleted packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.WorldItemAddedEvent">
+            <summary>
+            Fired on receipt of world item packet. (items on ground)
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.ContainerContentsEvent">
+            <summary>
+            Fired on receipt of container contents packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.MobileMovingEvent">
+            <summary>
+            Fired on receipt of mobile moving packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.EquippedMobAddedEvent">
+            <summary>
+            Fired on receipt of equipped mob packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.LocalizedTextEvent">
+            <summary>
+            Fired on receipt of localized text packet. Text is decoded according to cliloc.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.HealthUpdatedEvent">
+            <summary>
+            Fired on receipt of health updated packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.ManaUpdatedEvent">
+            <summary>
+            Fired on receipt of mana updated packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.StaminaUpdatedEvent">
+            <summary>
+            Fired on receipt of stamina updated packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.DamageEvent">
+            <summary>
+            Fired on receipt of damage packet.
+            </summary>
+        </member>
+        <member name="E:UOMachine.Events.IncomingPackets.PlayerInitializedEvent">
+            <summary>
+            Fired on receipt of player initialized packet.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Events.InternalEventHandler.IPCHandler.GetIPCClient(System.Int32)">
+            <summary>
+            Get the IPC client associated with the specified UO client.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Events.InternalEventHandler.IPCHandler.GetClient(System.Int32)">
+            <summary>
+            Get the UO client associated with the specified IPC client.
+            </summary>
+        </member>
+        <member name="T:UOMachine.Events.LowLevel">
+            <summary>
+            Collection of thread safe events which provide notifications for low level events.
+            </summary>
+        </member>
+        <member name="T:UOMachine.Events.OutgoingPackets">
+            <summary>
+            Collection of thread safe events which provide notifications for specific outgoing packets.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Events.OutgoingPackets.ClearEvents">
+            <summary>
+            Reset all public events.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.AddKeyboardMacro(System.Int32,System.Windows.Forms.Keys[],UOMachine.KeyPressCallback)">
+            <summary>
+            Add keyboard macro to specified client.
+            </summary>
+            <param name="keys">Keys associated with the macro.</param>
+            <param name="callback">A delegate to be called whenever the specified key combination is pressed.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.ClearKeyboardMacros(System.Int32)">
+            <summary>
+            Remove all keyboard macros from the specified client.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.FindItem(System.Int32,System.Int32,UOMachine.Item@)">
+            <summary>
+            Get first item with matching ID from specified client.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="id">ID of item to find.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.FindItems(System.Int32,System.Int32,UOMachine.Item[]@)">
+            <summary>
+            Get all items with matching ID from specified client.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="id">ID of items to find.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.FindItems(System.Int32,System.Int32[],UOMachine.Item[]@)">
+            <summary>
+            Get all items with matching ID from specified client.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="ids">IDs of items to find.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.FindMobile(System.Int32,System.Int32,UOMachine.Mobile@)">
+            <summary>
+            Get first mobile with matching ID from specified client.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="id">ID of mobile to find.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.FindMobiles(System.Int32,System.Int32,UOMachine.Mobile[]@)">
+            <summary>
+            Get all mobiles with matching ID from specified client.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="id">ID of mobiles to find.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.FindMobiles(System.Int32,System.Int32[],UOMachine.Mobile[]@)">
+            <summary>
+            Get all mobiles with matching ID from specified client.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="ids">IDs of mobiles to find.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.CancelTargetCursor(System.Int32)">
+            <summary>
+            Sets cursor to normal and sends target cancel packet to server.
+            Has the same effect as pressing Esc.
+            </summary>
+            <param name="client">Target client.</param>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.GetItem(System.Int32,System.Int32,UOMachine.Item@)">
+            <summary>
+            Get item from specified client.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="serial">Serial of item to retrieve.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.GetJournal(System.Int32,UOMachine.Utility.CircularBuffer{UOMachine.JournalEntry}@)">
+            <summary>
+            Get journal for specified client.
+            </summary>
+            <param name="client">Target client.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.GetMobile(System.Int32,System.Int32,UOMachine.Mobile@)">
+            <summary>
+            Get mobile from specified client.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="serial">Serial of mobile to retrieve.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.GetPlayer(System.Int32,UOMachine.PlayerMobile@)">
+            <summary>
+            Get PlayerMobile from specified client.
+            </summary>
+            <param name="client">Target client.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.GetSkillInfo(System.Int32,UOMachine.Skill)">
+            <summary>
+            Get skill information for a specific skill from the specified UO client.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.GetSkills(System.Int32)">
+            <summary>
+            Get current skill information for the specified UO client.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.IsTargetCursor(System.Int32)">
+            <summary>
+            Determine if client cursor is normal or target cursor.
+            </summary>
+            <param name="client">Target client.</param>
+            <returns>True if target cursor.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.LaunchClient(System.Int32@)">
+            <summary>
+            Launch a new client instance.
+            </summary>
+            <param name="clientIndex">Client index of launched client.</param>
+            <returns>Client index of launched client.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.LaunchClient(UOMachine.OptionsData,System.Int32@)">
+            <summary>
+            Launch a new client instance.
+            </summary>
+            <param name="options">UOMachine.OptionsData to use for launching client.</param>
+            <param name="clientIndex">Client index of launched client.</param>
+            <returns>Client index of launched client.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.LaunchRazor(System.Int32@)">
+            <summary>
+            Launch a new Razor instance.
+            </summary>
+            <param name="clientIndex">Client index of launched client.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.LaunchRazor(UOMachine.OptionsData,System.Int32@)">
+            <summary>
+            Launch a new Razor instance.
+            </summary>
+            <param name="options">UOMachine.OptionsData to use for launching Razor.</param>
+            <param name="clientIndex">Client index of launched client.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.ReadClientMemory(System.Int32,System.IntPtr,System.Byte[])">
+            <summary>
+            Read memory from specified client.  Amount to read is determined by buffer size.
+            </summary>
+            <param name="address">Address of memory to read.</param>
+            <param name="buffer">Destination for memory read from process.</param>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.RemoveKeyboardMacro(System.Int32,System.Windows.Forms.Keys[])">
+            <summary>
+            Remove keyboard macro from specified client.
+            </summary>
+            <param name="keys">Keys associated with the macro.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.SendKeys(System.Int32,System.Windows.Forms.Keys[])">
+            <summary>
+            Send array of System.Window.Forms.Keys to client as keypresses.  Restores and activates window.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="keys">System.Window.Forms.Keys to send.</param>
+            <returns>True if all keys were successfully sent.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.SendMouseClick(System.Int32,System.Windows.Forms.MouseButtons,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Send mouse click to relative position in the client window.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="button">System.Windows.Forms.MouseButtons to click.</param>
+            <param name="x">X position of point to click relative to client window's X position.</param>
+            <param name="y">Y position of point to click relative to client window's Y position.</param>
+            <param name="doubleClick">True for double click, false for single click.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.SendText(System.Int32,System.String)">
+            <summary>
+            Send text to client as keypresses.  Restores and activates window.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="text">String to send.</param>
+            <returns>True if all text was successfully sent.</returns>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.SetTargetCursor(System.Int32,System.Boolean)">
+            <summary>
+            Change client cursor to normal or target cursor.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="target">True sets cursor to target cursor, false sets it to normal.</param>
+        </member>
+        <member name="M:UOMachine.Macros.Macro.WriteClientMemory(System.Int32,System.IntPtr,System.Byte[])">
+            <summary>
+            Write buffer to memory of specified client.  Amount to write is determined by buffer size.
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="address">Address of memory to write.</param>
+            <param name="buffer">Source buffer to write from.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.ClientInfo.DetachFromWindow">
+            <summary>
+            Detach from client's message loop.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UOMachine.ClientInfo.PrepareWindowForInput">
+            <summary>
+            Attach to client's message loop, restore window if minimized, and bring window forward.
+            </summary>
+        </member>
+        <member name="M:UOMachine.ClientInfoCollection.ActiveClients">
+            <summary>
+            Get number of running UO clients currently managed by UO Machine.
+            </summary>
+        </member>
+        <member name="M:UOMachine.ClientInfoCollection.ActiveClientIndices">
+            <summary>
+            Return array of indices corresponding to active clients.
+            </summary>
+        </member>
+        <member name="M:UOMachine.ClientInfoCollection.GetPIDOwner(System.Int32,System.Int32@)">
+            <summary>
+            Get client index which matches specified process ID.
+            </summary>
+        </member>
+        <member name="M:UOMachine.ClientInfoCollection.GetIPCOwner(System.Int32,System.Int32@)">
+            <summary>
+            Get client index which matches specified IPC index.
+            </summary>
+        </member>
+        <member name="M:UOMachine.ClientInfoCollection.GetMobile(System.Int32,System.Int32,UOMachine.Mobile@)">
+            <summary>
+            Get mobile from specified client.
+            </summary>
+            <param name="serial">Serial of mobile to get.</param>
+            <returns>False if not found.</returns>
+        </member>
+        <member name="M:UOMachine.ClientInfoCollection.GetPlayer(System.Int32,UOMachine.PlayerMobile@)">
+            <summary>
+            Get PlayerMobile from specified client.
+            </summary>
+            <param name="index">Target client.</param>
+        </member>
+        <member name="M:UOMachine.ClientInfoCollection.FindMobile(System.Int32,System.Int32,UOMachine.Mobile@)">
+            <summary>
+            Find mobile with matching ID in specified client.
+            </summary>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.ClientInfoCollection.FindMobiles(System.Int32,System.Int32,UOMachine.Mobile[]@)">
+            <summary>
+            Find all mobiles with matching ID in specified client.
+            </summary>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.ClientInfoCollection.FindMobiles(System.Int32,System.Int32[],UOMachine.Mobile[]@)">
+            <summary>
+            Find all mobiles with matching IDs in specified client.
+            </summary>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.ClientInfoCollection.GetItem(System.Int32,System.Int32,UOMachine.Item@)">
+            <summary>
+            Get item from specified client.
+            </summary>
+            <param name="serial">Serial of item to get.</param>
+            <returns>False if not found.</returns>
+        </member>
+        <member name="M:UOMachine.ClientInfoCollection.FindItem(System.Int32,System.Int32,UOMachine.Item@)">
+            <summary>
+            Find item with matching ID in specified client.
+            </summary>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.ClientInfoCollection.FindItems(System.Int32,System.Int32,UOMachine.Item[]@)">
+            <summary>
+            Find all items with matching ID in specified client.
+            </summary>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.ClientInfoCollection.FindItems(System.Int32,System.Int32[],UOMachine.Item[]@)">
+            <summary>
+            Find all items with matching IDs in specified client.
+            </summary>
+            <returns>True on success.</returns>
+        </member>
+        <member name="P:UOMachine.ClientInfoCollection.Count">
+            <summary>
+            Number of active UO clients.
+            </summary>
+        </member>
+        <member name="M:UOMachine.ClientPatcher.MultiPatch(System.IntPtr)">
+            <summary>
+            Patch suspended process to allow multiple simultaneous clients.
+            </summary>
+        </member>
+        <member name="M:UOMachine.ClientPatcher.PatchEncryption(System.IntPtr)">
+            <summary>
+            Patch encryption to allow connection to servers which don't support it.
+            </summary>
+        </member>
+        <member name="M:UOMachine.ClientPatcher.PatchStaminaCheck(System.IntPtr)">
+            <summary>
+            Patch stamina check in Felucca when trying to walk over mobiles.
+            </summary>
+        </member>
+        <member name="M:UOMachine.ClientPatcher.PatchLight(System.IntPtr)">
+            <summary>
+            Always light patch.
+            </summary>
+        </member>
+        <member name="M:UOMachine.DocumentHelper.Format(System.String,System.String)">
+            <summary>
+            Simple method to tabify source code according to curly brace placement.
+            </summary>
+            <param name="text">String to format.</param>
+            <param name="tab">String which represents tab to use.</param>
+        </member>
+        <member name="F:UOMachine.Notoriety.Invalid">
+            <summary>
+            Invalid notoriety.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Notoriety.Innocent">
+            <summary>
+            Blue.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Notoriety.Ally">
+            <summary>
+            Green.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Notoriety.Attackable">
+            <summary>
+            Grey, but not criminal.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Notoriety.Criminal">
+            <summary>
+            Grey.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Notoriety.Enemy">
+            <summary>
+            Orange.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Notoriety.Murderer">
+            <summary>
+            Red.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Notoriety.Unknown">
+            <summary>
+            Iris wiki says translucent...
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Invalid">
+            <summary>
+            Invalid layer.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.OneHanded">
+            <summary>
+            One handed weapon.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.TwoHanded">
+            <summary>
+            Two handed weapon or shield.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Shoes">
+            <summary>
+            Shoes.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Pants">
+            <summary>
+            Pants.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Shirt">
+            <summary>
+            Shirts.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Helm">
+            <summary>
+            Helmets, hats, and masks.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Gloves">
+            <summary>
+            Gloves.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Ring">
+            <summary>
+            Rings.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Talisman">
+            <summary>
+            Talismans.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Neck">
+            <summary>
+            Gorgets and necklaces.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Hair">
+            <summary>
+            Hair.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Waist">
+            <summary>
+            Half aprons.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.InnerTorso">
+            <summary>
+            Torso, inner layer.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Bracelet">
+            <summary>
+            Bracelets.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Unused_xF">
+            <summary>
+            Unused.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.FacialHair">
+            <summary>
+            Beards and mustaches.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.MiddleTorso">
+            <summary>
+            Torso, outer layer.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Earrings">
+            <summary>
+            Earings.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Arms">
+            <summary>
+            Arms and sleeves.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Cloak">
+            <summary>
+            Cloaks.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Backpack">
+            <summary>
+            Backpacks.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.OuterTorso">
+            <summary>
+            Torso, outer layer.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.OuterLegs">
+            <summary>
+            Leggings, outer layer.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.InnerLegs">
+            <summary>
+            Leggings, inner layer.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Mount">
+            <summary>
+            Mount item layer.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.ShopBuy">
+            <summary>
+            Vendor 'buy pack' layer.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.ShopResale">
+            <summary>
+            Vendor 'resale pack' layer.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.ShopSell">
+            <summary>
+            Vendor 'sell pack' layer.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.Bank">
+            <summary>
+            Bank box layer.
+            </summary>
+        </member>
+        <member name="F:UOMachine.Layer.LastValid">
+            <summary>
+            Last valid layer. Equivalent to <c>Layer.Bank</c>.
+            </summary>
+        </member>
+        <member name="M:UOMachine.IPC.ClientInstance.#ctor(System.String,System.Boolean)">
+            <summary>
+            Create an IPC client and attempt to connect to server.
+            </summary>
+            <param name="serverName">
+            Name of server to connect to.
+            </param>
+            <param name="writeThrough">
+            If true writes will bypass system cache and go straight to the pipe.
+            </param>
+        </member>
+        <member name="M:UOMachine.IPC.ClientInstance.ProcessClientStream">
+            <summary>
+            Process incoming data from the IPC connection.
+            </summary>
+        </member>
+        <member name="M:UOMachine.IPC.ClientInstance.ProcessMessage(System.Byte[])">
+            <summary>
+            Process IPC message and fire corresponding event.
+            </summary>
+        </member>
+        <member name="M:UOMachine.IPC.ClientInstance.SendCommand(UOMachine.IPC.Command)">
+            <summary>
+            Send single-byte IPC message to connected IPC server.
+            </summary>
+            <param name="command">
+            IPC.Command to send.
+            </param>
+        </member>
+        <member name="M:UOMachine.IPC.ClientInstance.SendCommand(UOMachine.IPC.Command,System.Byte)">
+            <summary>
+            Send 2 byte IPC message to connected IPC server.
+            </summary>
+            <param name="command">
+            IPC.Command to send.</param>
+        </member>
+        <member name="M:UOMachine.IPC.ClientInstance.SendCommand(UOMachine.IPC.Command,System.Byte[])">
+            <summary>
+            Send variable length IPC message to connected IPC server.
+            </summary>
+            <param name="command">
+            IPC.Command to send.
+            </param>
+        </member>
+        <member name="M:UOMachine.IPC.ClientInstance.SendCommand(UOMachine.IPC.Command,System.String)">
+            <summary>
+            Send variable length IPC message to connected IPC server.
+            </summary>
+            <param name="command">
+            IPC.Command to send.
+            </param>
+        </member>
+        <member name="M:UOMachine.IPC.ClientInstance.SendCommand(UOMachine.IPC.Command,System.Int32)">
+            <summary>
+            Send 5 byte IPC message to connected IPC server.
+            </summary>
+            <param name="command">
+            IPC.Command to send.
+            </param>
+        </member>
+        <member name="M:UOMachine.IPC.ClientInstance.SendCommand(UOMachine.IPC.Command,System.Int32,System.Byte)">
+            <summary>
+            Send 6 byte IPC message to connected IPC server.
+            </summary>
+            <param name="command">
+            IPC.Command to send.
+            </param>
+        </member>
+        <member name="M:UOMachine.IPC.ClientInstance.SendCommand(UOMachine.IPC.Command,System.Int32,System.Int32)">
+            <summary>
+            Send 9 byte IPC message to connected IPC server.
+            </summary>
+            <param name="command">
+            IPC.Command to send.
+            </param>
+        </member>
+        <member name="M:UOMachine.IPC.ClientInstance.SendCommand(UOMachine.IPC.Command,System.Int32,System.Int32,System.Byte)">
+            <summary>
+            Send 10 byte IPC message to connected IPC server.
+            </summary>
+            <param name="command">
+            IPC.Command to send.
+            </param>
+            <param name="data">
+            Command argument.
+            </param>
+        </member>
+        <member name="M:UOMachine.IPC.Data.GetMessageLength(System.IO.MemoryStream,System.Int64)">
+            <summary>
+            Returns message length of first IPC message in the stream.
+            </summary>
+            <param name="memoryStream">
+            MemoryStream containing IPC message to examine.
+            </param>
+            <param name="readPos">
+            Current read position of the MemoryStream.
+            </param>
+            <returns>
+            Length of IPC message or 0 if incomplete message.
+            </returns>
+        </member>
+        <member name="M:UOMachine.IPC.Data.GetMessage(System.IO.MemoryStream,System.Int64@)">
+            <summary>
+            Returns first IPC message contained in the stream.
+            </summary>
+            <param name="memoryStream">
+            MemoryStream containing IPC message.
+            </param>
+            <param name="readPos">
+            Current read position of the MemoryStream.
+            </param>
+            <returns>
+            IPC message or null if incomplete message.
+            </returns>
+        </member>
+        <member name="M:UOMachine.IPC.Network.Initialize">
+            <summary>
+            Prepare IPC network for use.
+            </summary>
+        </member>
+        <member name="M:UOMachine.IPC.Network.Dispose">
+            <summary>
+            Disconnect IPC servers and cleanup.
+            </summary>
+        </member>
+        <member name="M:UOMachine.IPC.Network.CreateServer(System.String,System.Boolean)">
+            <summary>
+            Create an IPC server and start listening for connection.
+            </summary>
+            <param name="serverName">
+            Name to assign to IPC server.
+            </param>
+            <param name="writeThrough">
+            If true writes will bypass system cache and go straight to the pipe.
+            </param>
+            <returns>Index of server created.</returns>
+        </member>
+        <member name="M:UOMachine.IPC.Network.RemoveServer(System.Int32)">
+            <summary>
+            Remove specified element from ServerList.
+            </summary>
+            <param name="index">
+            Zero-based index of ServerInstance to remove.
+            </param>
+        </member>
+        <member name="M:UOMachine.IPC.Network.SendCommand(System.Int32,UOMachine.IPC.Command)">
+            <summary>
+            Send single-byte IPC message to IPC client.
+            </summary>
+            <param name="command">IPC.Command to send.</param>
+        </member>
+        <member name="M:UOMachine.IPC.Network.SendCommand(System.Int32,UOMachine.IPC.Command,System.Byte)">
+            <summary>
+            Send 2 byte IPC message to IPC client.
+            </summary>
+            <param name="command">IPC.Command to send.</param>
+            <param name="data">Command argument.</param>
+        </member>
+        <member name="M:UOMachine.IPC.Network.SendCommand(System.Int32,UOMachine.IPC.Command,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Send 13 byte IPC message to IPC client.
+            </summary>
+        </member>
+        <member name="M:UOMachine.IPC.Network.SendCommand(System.Int32,UOMachine.IPC.Command,System.Byte[])">
+            <summary>
+            Send variable length IPC message to IPC client.
+            </summary>
+            <param name="command">IPC.Command to send.</param>
+            <param name="data">Command argument.</param>
+        </member>
+        <member name="M:UOMachine.IPC.Network.SendCommand(System.Int32,UOMachine.IPC.Command,System.Int32,System.Byte,System.Byte[])">
+            <summary>
+            Send variable length IPC message to IPC client.
+            </summary>
+            <param name="command">IPC.Command to send.</param>
+            <param name="arg1">Command argument.</param>
+            <param name="arg2">Command argument.</param>
+            <param name="data">Command argument.</param>
+        </member>
+        <member name="M:UOMachine.IPC.Network.SendCommand(System.Int32,UOMachine.IPC.Command,System.String)">
+            <summary>
+            Send variable length IPC message to IPC client.
+            </summary>
+            <param name="command">IPC.Command to send.</param>
+            <param name="message"> Command argument.</param>
+        </member>
+        <member name="P:UOMachine.IPC.Network.Count">
+            <summary>
+            Number of active IPC servers.
+            </summary>
+        </member>
+        <member name="M:UOMachine.IPC.ServerInstance.Dispose">
+            <summary>
+            Stop helper thread and cleanup.
+            </summary>
+        </member>
+        <member name="M:UOMachine.IPC.ServerInstance.ProcessServerStream">
+            <summary>
+            Process incoming data from the IPC connection.
+            </summary>
+        </member>
+        <member name="M:UOMachine.IPC.ServerInstance.ProcessMessage(System.Byte[],System.Int32)">
+            <summary>
+            Process IPC message and fire corresponding event.
+            </summary>
+            <param name="message">
+            IPC message to process.
+            </param>
+            <param name="instance">
+            Instance of the IPC server that received the message.
+            </param>
+        </member>
+        <member name="M:UOMachine.IPC.ServerInstance.SendCommand(UOMachine.IPC.Command,System.String)">
+            <summary>
+            Send variable length IPC message to IPC client.
+            </summary>
+            <param name="command">
+            IPC.Command to send.
+            </param>
+            <param name="message">
+            Command argument.
+            </param>
+        </member>
+        <member name="M:UOMachine.IPC.ServerInstance.SendCommand(UOMachine.IPC.Command,System.Byte[])">
+            <summary>
+            Send variable length IPC message to IPC client.
+            </summary>
+            <param name="command">
+            IPC.Command to send.
+            </param>
+            <param name="data">
+            Command argument.
+            </param>
+        </member>
+        <member name="M:UOMachine.IPC.ServerInstance.SendCommand(UOMachine.IPC.Command,System.Int32,System.Byte,System.Byte[])">
+            <summary>
+            Send variable length IPC message to IPC client.
+            </summary>
+            <param name="command">
+            IPC.Command to send.
+            </param>
+            <param name="arg1"> Command argument.</param>
+            <param name="arg2"> Command argument.</param>
+            <param name="data"> Command argument.</param>
+        </member>
+        <member name="M:UOMachine.IPC.ServerInstance.SendCommand(UOMachine.IPC.Command,System.Int32,System.Int32,System.Byte,System.Byte[])">
+            <summary>
+            Send variable length IPC message to IPC client.
+            </summary>
+            <param name="command">
+            IPC.Command to send.
+            </param>
+            <param name="arg1"> Command argument.</param>
+            <param name="arg2"> Command argument.</param>
+            <param name="data"> Command argument.</param>
+        </member>
+        <member name="M:UOMachine.IPC.ServerInstance.SendCommand(UOMachine.IPC.Command,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Send 13 byte IPC message to IPC client.
+            </summary>
+        </member>
+        <member name="M:UOMachine.IPC.ServerInstance.SendCommand(UOMachine.IPC.Command,System.Byte)">
+            <summary>
+            Send 2 byte IPC message to IPC client.
+            </summary>
+            <param name="command">
+            IPC.Command to send.
+            </param>
+            <param name="data">
+            Command argument.
+            </param>
+        </member>
+        <member name="M:UOMachine.IPC.ServerInstance.SendCommand(UOMachine.IPC.Command)">
+            <summary>
+            Send single-byte IPC message to IPC client.
+            </summary>
+            <param name="command">
+            IPC.Command to send.
+            </param>
+        </member>
+        <member name="M:UOMachine.HotKeyList.CheckKeyStates">
+            <summary>
+            Makes sure keys we think are down are actually down.  Must be called from myDownKeyList lock.
+            </summary>
+        </member>
+        <member name="M:UOMachine.HotKeyList.CheckKeys">
+            <summary>
+            Checks pressed keys against stored hotkeys and fires as needed.  Must be called from myDownKeyList lock.
+            </summary>
+        </member>
+        <member name="M:UOMachine.GumpElement.GetNearestElement(UOMachine.GumpElement@)">
+            <summary>
+            Get nearest GumpElement.
+            </summary>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.GumpElement.GetNearestElement(UOMachine.ElementType[],UOMachine.GumpElement@)">
+            <summary>
+            Get nearest GumpElement, but only if it's ElementType is contained in the include list.
+            </summary>
+            <param name="includeTypes">Array of ElementTypes which specifies valid GumpElements to search.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Gump.GetElementsByType(UOMachine.ElementType)">
+            <summary>
+            Get array of GumpElements which match the specified ElementType from all pages.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Gump.GetElementByID(System.Int32,UOMachine.GumpElement@)">
+            <summary>
+            Get the GumpElement with the specified ID.  Searches all pages/elements.
+            </summary>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Gump.GetNearestElement(UOMachine.GumpElement,UOMachine.GumpElement@)">
+            <summary>
+            Get the GumpElement nearest to the specified GumpElement.
+            </summary>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Gump.GetNearestElement(UOMachine.GumpElement,UOMachine.ElementType[],UOMachine.GumpElement@)">
+            <summary>
+            Get nearest GumpElement to source, but only if it's ElementType is contained in the include list.
+            </summary>
+            <param name="includeTypes">Array of ElementTypes which specifies valid GumpElements to search.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.GumpPage.GetElementsByType(UOMachine.ElementType)">
+            <summary>
+            Get array of GumpElements which match the specified ElementType.
+            </summary>
+        </member>
+        <member name="M:UOMachine.GumpPage.GetNearestElement(UOMachine.GumpElement,UOMachine.ElementType[],UOMachine.GumpElement@)">
+            <summary>
+            Get nearest GumpElement to source, but only if it's ElementType is contained in the include list.
+            </summary>
+            <param name="includeTypes">Array of ElementTypes which specifies valid GumpElements to search.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.GumpPage.GetNearestElement(UOMachine.GumpElement,UOMachine.GumpElement@)">
+            <summary>
+            Get nearest GumpElement from source.
+            </summary>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.ItemCollection.GetItem(System.Int32,UOMachine.Item@)">
+            <summary>
+            Get item with specified serial.
+            </summary>
+            <param name="serial"></param>
+            <returns>Null if no match is found.</returns>
+        </member>
+        <member name="M:UOMachine.ItemCollection.GetItems">
+            <summary>
+            Get all items contained within this container.
+            </summary>
+        </member>
+        <member name="M:UOMachine.ItemCollection.FindItem(System.Int32,UOMachine.Item@)">
+            <summary>
+            Search container for first item with matching id (graphic).
+            </summary>
+            <param name="id"></param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.ItemCollection.FindItems(System.Int32,UOMachine.Item[]@)">
+            <summary>
+            Get array of all items that match specified id.
+            </summary>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.ItemCollection.FindItems(System.Int32[],UOMachine.Item[]@)">
+            <summary>
+            Get array of all items that match specified ids.
+            </summary>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.MobileCollection.FindMobile(System.Int32,UOMachine.Mobile@)">
+            <summary>
+            Find first mobile that matches specified ID.
+            </summary>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.MobileCollection.Remove(System.Int32)">
+            <summary>
+            Remove Mobile with specified serial.
+            </summary>
+            <returns>True if Mobile is found and removed.</returns>
+        </member>
+        <member name="T:UOMachine.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Properties.Resources.Credits">
+             <summary>
+               Looks up a localized string similar to Acknowledgements:
+            
+            Thanks to Artaxerxes, lead developer of UOAI (http://www.uoai.be). His assistance has proved invaluable and I appreciate it dearly.
+            
+            A big thanks to Cheffe. Though he isn&apos;t involved with the project in any way, UO Machine wouldn&apos;t exist without his hard work. I&apos;ve learned much of what I know regarding UO internals by reverse engineering EasyUO and the UO client.
+            
+            Thanks to Christoph Husse for EasyHook, a brilliant API hook library.
+            
+            Thanks to the SharpDevelop team for the nice Ava [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+        <member name="P:UOMachine.Properties.Resources.DefaultScript">
+             <summary>
+               Looks up a localized string similar to using System;
+            using System.Threading;
+            using System.Windows.Forms;
+            using UOMachine;
+            using UOMachine.Macros;
+            using UOMachine.Utility;
+            using UOMachine.Data;
+            using UOMachine.Events;
+            
+            namespace UOMScript
+            {
+                public class Script : IScriptInterface
+                {
+                    private bool myScriptRunning = true;
+            
+                    public void Start()
+                    {
+                        while (myScriptRunning)
+                        {
+                            //TODO: Implement functionality
+                            Thread.Sleep(1);
+                        }
+                    }
+             [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+        <member name="M:UOMachine.ScriptCompiler.StopScript">
+            <summary>
+            Stop currently running script.
+            </summary>
+        </member>
+        <member name="E:UOMachine.ScriptCompiler.ScriptFinishedEvent">
+            <summary>
+            Event fires when script is finished running.
+            </summary>
+        </member>
+        <member name="T:UOMachine.About">
+            <summary>
+            Interaction logic for About.xaml
+            </summary>
+        </member>
+        <member name="M:UOMachine.About.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:UOMachine.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:UOMachine.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:UOMachine.AssemblyPicker">
+            <summary>
+            Interaction logic for AssemblyPicker.xaml
+            </summary>
+        </member>
+        <member name="M:UOMachine.AssemblyPicker.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:UOMachine.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+        </member>
+        <member name="M:UOMachine.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:UOMachine.OptionsWindow">
+            <summary>
+            Interaction logic for Options.xaml
+            </summary>
+        </member>
+        <member name="M:UOMachine.OptionsWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:UOMachine.UOM.ActiveClientIndices">
+            <summary>
+            Get array of indices corresponding to active clients.
+            </summary>
+        </member>
+        <member name="M:UOMachine.UOM.ActiveClients">
+            <summary>
+            Get number of running UO clients currently managed by UO Machine.
+            </summary>
+        </member>
+        <member name="M:UOMachine.UOM.GetSkillName(System.Int32)">
+            <summary>
+            Translate skill ID to skill name according to UO installation defined in options.
+            Returns empty string on error.
+            </summary>
+        </member>
+        <member name="M:UOMachine.UOM.GetSkillNames">
+            <summary>
+            Get string array of all skill names for UO installation defined in options.
+            Array returned will be indexed by skill ID.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Data.Cliloc.Initialize(System.String)">
+            <summary>
+            Build hash table of localized text strings.
+            </summary>
+            <param name="dataFolder">Ultima Online installation folder.</param>
+        </member>
+        <member name="M:UOMachine.Data.Cliloc.DumpClilocs(System.String)">
+            <summary>
+            Dump all clilocs to specified text file.
+            </summary>
+            <param name="filename">Filename to write results to.</param>
+        </member>
+        <member name="M:UOMachine.Data.Cliloc.GetProperty(System.Int32)">
+            <summary>
+            Get localized string with tokens.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Data.Cliloc.GetLocalString(System.Int32,System.String[])">
+            <summary>
+            Get localized string with tokens replaced by arguments.
+            </summary>
+            <param name="property">Text entry to retrieve.</param>
+            <param name="arguments">Property arguments already split at tab marks.</param>
+        </member>
+        <member name="T:UOMachine.Utility.CircularBuffer`1">
+            <summary>
+            Thread-safe generic circular buffer (not a queue).  Read position is remembered.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Utility.CircularBuffer`1.Clear">
+            <summary>
+            Reset buffer.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Utility.CircularBuffer`1.Seek(System.Int32)">
+            <summary>
+            Change read position to specified number of indices from the beginning.
+            </summary>
+            <param name="count"></param>
+        </member>
+        <member name="M:UOMachine.Utility.CircularBuffer`1.Write(`0)">
+            <summary>
+            Write item to buffer.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Utility.CircularBuffer`1.Read(`0@)">
+            <summary>
+            Read item from buffer and increment read position.  Item remains in buffer until overwritten.
+            </summary>
+            <returns>True on success, false if nothing new to read.</returns>
+        </member>
+        <member name="M:UOMachine.Utility.CircularBuffer`1.GetBuffer">
+            <summary>
+            Get array of elements contained in buffer.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Utility.CircularBuffer`1.Capacity">
+            <summary>
+            Get or set buffer capacity. Buffer can only grow.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Utility.CircularBuffer`1.Count">
+            <summary>
+            Get number of elements actually contained in buffer.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Utility.Networking.Resolve(System.String)">
+            <summary>
+            Resolve hostname to IP address.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Utility.ThreadHelper.VolatileRead``1(``0@)">
+            <summary>
+            Generic implementation of System.Threading.Thread.VolatileRead.
+            Reads current value from memory bypassing any cached copy.
+            </summary>
+            <param name="location">The field to be read.</param>
+            <returns></returns>
+        </member>
+        <member name="M:UOMachine.Data.MapInfo.FindTile(System.Int32,UOMachine.Data.StaticTile@)">
+            <summary>
+            Find StaticTile with matching ID.
+            </summary>
+            <returns>True on success</returns>
+        </member>
+        <member name="M:UOMachine.Data.MapInfo.FindTile(System.Int32[],UOMachine.Data.StaticTile@)">
+            <summary>
+            Find StaticTile which matches any of the given IDs.
+            </summary>
+            <param name="ID">List of IDs to search for.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="M:UOMachine.Data.MapInfo.IsPassable">
+            <summary>
+            Returns true if any tiles in this MapInfo are passable.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Data.MapInfo.IsPassable(System.Int32)">
+            <summary>
+            Returns true if all tiles at the specified Z height are passable.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Data.Skills.GetSkills(System.String)">
+            <summary>
+            Get string array of skills from specified UO installation.
+            </summary>
+            <param name="dataFolder">
+            UO installation folder.
+            </param>
+        </member>
+        <member name="M:UOMachine.Data.TileData.Initialize(System.String)">
+            <summary>
+            Load tiledata.mul from specified UO installation into memory.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Data.TileData.GetLandTile(System.Int32)">
+            <summary>
+            Get specified land tile.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Data.TileData.GetStaticTile(System.Int32)">
+            <summary>
+            Get specified static tile.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Utility.UOMath.MapDirection(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Calculate the direction from one map location to another.
+            </summary>
+            <returns>Direction.Invalid on failure.</returns>
+        </member>
+        <member name="M:UOMachine.Utility.UOMath.Distance(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Calculate the distance in tiles between two points.
+            </summary>
+        </member>
+        <member name="M:UOMachine.Utility.UOMath.Distance(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Calculate the distance in tiles between two points.
+            </summary>
+        </member>
+    </members>
+</doc>
