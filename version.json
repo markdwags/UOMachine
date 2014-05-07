@@ -1,1 +1,97 @@
-{"version":"0.4.0.1","files":[{"file":"CHANGELOG.txt","md5sum":"da90a29dc838264aad8e388804e1b49e"},{"file":"ClientHook.dll","md5sum":"04602d455a97e7ee5328a1fc9a90cc54"},{"file":"EasyHook.dll","md5sum":"1799757bed243d08cf5b676f2e53a4fb"},{"file":"EasyHook32.dll","md5sum":"19234d076d27aea68521757a9e1c7452"},{"file":"EasyHook32Svc.exe","md5sum":"8583181369e4483c891a5a02d47f764e"},{"file":"EasyHook64.dll","md5sum":"e9200af1d884b2994d3212275a97e351"},{"file":"EasyHook64Svc.exe","md5sum":"6f915d5249d4b8905274c3572cf628eb"},{"file":"ICSharpCode.AvalonEdit.dll","md5sum":"33ce757ebb1b68eef553fffb78248e52"},{"file":"ICSharpCode.CodeCompletion.dll","md5sum":"0c5b9450fd894646966a3dd701e5b1ef"},{"file":"ICSharpCode.NRefactory.CSharp.dll","md5sum":"7c95d11c78bd9261e9dafd19c98b597e"},{"file":"ICSharpCode.NRefactory.CSharp.xml","md5sum":"2d691a5df5c0293eef6640b62832c041"},{"file":"ICSharpCode.NRefactory.Cecil.dll","md5sum":"05d02c414586074b7d8f89fa5ed90fdf"},{"file":"ICSharpCode.NRefactory.dll","md5sum":"ea2c410f36d939b299c7889fa226b3dc"},{"file":"Mono.Cecil.dll","md5sum":"390795b6edddc6760fd4c3e441bcebd5"},{"file":"RazorLoader.exe","md5sum":"15db7b749b02ceb874f90ef1f0072cee"},{"file":"RazorLoader.exe.config","md5sum":"1e79d633c81f0e7ecab279aa89f6fd27"},{"file":"UOMachine.exe","md5sum":"cc243e3741581d5ae55fe7a791761d68"},{"file":"UOMachine.exe.config","md5sum":"aa86d60de7d0ad1f061ffb133e60acfd"},{"file":"UOMachine.xml","md5sum":"387cddf822ccea4e8662be72fdb75413"},{"file":"zlib32.dll","md5sum":"5fbcb033ba02875169c33488166f086e"}]}
+{
+    "version": "0.4.0.1",
+    "files": [
+        {
+            "file": "CHANGELOG.txt",
+            "md5sum": "da90a29dc838264aad8e388804e1b49e"
+        },
+        {
+            "file": "ClientHook.dll",
+            "md5sum": "04602d455a97e7ee5328a1fc9a90cc54"
+        },
+        {
+            "file": "EasyHook.dll",
+            "md5sum": "1799757bed243d08cf5b676f2e53a4fb"
+        },
+        {
+            "file": "EasyHook32.dll",
+            "md5sum": "19234d076d27aea68521757a9e1c7452"
+        },
+        {
+            "file": "EasyHook32Svc.exe",
+            "md5sum": "8583181369e4483c891a5a02d47f764e"
+        },
+        {
+            "file": "EasyHook64.dll",
+            "md5sum": "e9200af1d884b2994d3212275a97e351"
+        },
+        {
+            "file": "EasyHook64Svc.exe",
+            "md5sum": "6f915d5249d4b8905274c3572cf628eb"
+        },
+        {
+            "file": "ICSharpCode.AvalonEdit.dll",
+            "md5sum": "33ce757ebb1b68eef553fffb78248e52"
+        },
+        {
+            "file": "ICSharpCode.CodeCompletion.dll",
+            "md5sum": "0c5b9450fd894646966a3dd701e5b1ef"
+        },
+        {
+            "file": "ICSharpCode.NRefactory.CSharp.dll",
+            "md5sum": "7c95d11c78bd9261e9dafd19c98b597e"
+        },
+        {
+            "file": "ICSharpCode.NRefactory.CSharp.xml",
+            "md5sum": "2d691a5df5c0293eef6640b62832c041"
+        },
+        {
+            "file": "ICSharpCode.NRefactory.Cecil.dll",
+            "md5sum": "05d02c414586074b7d8f89fa5ed90fdf"
+        },
+        {
+            "file": "ICSharpCode.NRefactory.dll",
+            "md5sum": "ea2c410f36d939b299c7889fa226b3dc"
+        },
+        {
+            "file": "Mono.Cecil.dll",
+            "md5sum": "390795b6edddc6760fd4c3e441bcebd5"
+        },
+        {
+            "file": "RazorLoader.exe",
+            "md5sum": "15db7b749b02ceb874f90ef1f0072cee"
+        },
+        {
+            "file": "RazorLoader.exe.config",
+            "md5sum": "1e79d633c81f0e7ecab279aa89f6fd27"
+        },
+        {
+            "file": "UOMachine.exe",
+            "md5sum": "cc243e3741581d5ae55fe7a791761d68"
+        },
+        {
+            "file": "UOMachine.exe.config",
+            "md5sum": "aa86d60de7d0ad1f061ffb133e60acfd"
+        },
+        {
+            "file": "UOMachine.xml",
+            "md5sum": "387cddf822ccea4e8662be72fdb75413"
+        },
+        {
+            "file": "VS templates\/Templates ReadMe.txt",
+            "md5sum": "c3016bedf7705abcc895392fa9a6dbfb"
+        },
+        {
+            "file": "VS templates\/UO Machine GUI Script.zip",
+            "md5sum": "8e2ba6af8c10ed4a15242b0908e78a32"
+        },
+        {
+            "file": "VS templates\/UO Machine Standard Script.zip",
+            "md5sum": "1afe746f205a162d7d6c013d2b04faca"
+        },
+        {
+            "file": "zlib32.dll",
+            "md5sum": "5fbcb033ba02875169c33488166f086e"
+        }
+    ]
+}
