@@ -11,7 +11,7 @@
 	                {
 	                	adddir($file);        
 	                } else {
-	                        array_push($md5files, array('file' => $dir.'/'.$file, 'md5sum' => md5_file($base.$dir.'/'. $file)));
+	                        array_push($md5files, array('file' => $dir.'\\'.$file, 'md5sum' => md5_file($base.$dir.'/'. $file)));
 	                }
 
 	        }	
