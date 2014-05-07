@@ -864,6 +864,12 @@
             Always light patch.
             </summary>
         </member>
+        <member name="M:UOMachine.ClientPatcher.SetGameSize(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            Set game play window size
+            </summary>
+            <param name="hProcess"></param>
+        </member>
         <member name="M:UOMachine.DocumentHelper.Format(System.String,System.String)">
             <summary>
             Simple method to tabify source code according to curly brace placement.
