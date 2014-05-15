@@ -41,6 +41,7 @@ namespace UOMachine
         tilepichue,
         xmfhtmlgump,
         xmfhtmlgumpcolor,
-        xmfhtmltok
+        xmfhtmltok,
+        itemproperty
     }
 }

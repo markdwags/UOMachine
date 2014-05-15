@@ -180,6 +180,13 @@ namespace UOMachine
             internal set { myArgs = value; }
         }
 
+        private int mySerial;
+        public int Serial
+        {
+            get { return mySerial; }
+            internal set { mySerial = value; }
+        }
+
         /// <summary>
         /// Get nearest GumpElement.
         /// </summary>

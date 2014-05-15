@@ -659,6 +659,16 @@ namespace UOMachine.Data
                         }
                         catch { OnError("xmfhtmltok", layout); }
                         break;
+                    case "itemproperty":
+                        int itemserial;
+                        if (Int32.TryParse(formatted[1], out itemserial))
+                        {
+                            GumpElement ge = new GumpElement();
+                            ge.Type = ElementType.itemproperty;
+                            ge.Serial = itemserial;
+                            gumpElementList.Add(ge);
+                        }
+                        break;
                     default:
                         Log.LogMessage(string.Format("Unknown element \"{0}\" in custom gump layout:\r\n\r\n{1}", formatted[0], layout));
                         break;
