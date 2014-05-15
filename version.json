@@ -7,7 +7,7 @@
         },
         {
             "file": "ClientHook.dll",
-            "md5sum": "04602d455a97e7ee5328a1fc9a90cc54"
+            "md5sum": "c6044f4098b318b0a24400233c907bba"
         },
         {
             "file": "EasyHook.dll",
@@ -59,7 +59,7 @@
         },
         {
             "file": "RazorLoader.exe",
-            "md5sum": "15db7b749b02ceb874f90ef1f0072cee"
+            "md5sum": "5fa0012f63088826396a4326fb7cc1bb"
         },
         {
             "file": "RazorLoader.exe.config",
@@ -67,7 +67,7 @@
         },
         {
             "file": "UOMachine.exe",
-            "md5sum": "cc243e3741581d5ae55fe7a791761d68"
+            "md5sum": "b0b7ea51b6775f6182d2a9bbfcbf09da"
         },
         {
             "file": "UOMachine.exe.config",
