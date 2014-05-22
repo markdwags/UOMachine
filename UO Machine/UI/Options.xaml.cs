@@ -68,6 +68,7 @@ namespace UOMachine
             textBoxUO.Text = options.UOFolder;
             textBoxRazor.Text = options.RazorFolder;
             textBoxUOS.Text = options.UOSFolder;
+            textBoxUOSExe.Text = options.UOSExePath;
             textBoxSize.Text = options.TextEditorOptions.IndentationSize.ToString();
             textBoxServer.Text = options.Server;
             textBoxPort.Text = options.Port.ToString();
@@ -148,6 +149,7 @@ namespace UOMachine
             od.UOClientPath = textBoxClient.Text;
             od.RazorFolder = textBoxRazor.Text;
             od.UOSFolder = textBoxUOS.Text;
+            od.UOSExePath = textBoxUOSExe.Text;
             od.TextEditorOptions.ConvertTabsToSpaces = (bool)checkBoxConvert.IsChecked;
             od.TextEditorOptions.CutCopyWholeLine = (bool)checkBoxCopy.IsChecked;
             od.TextEditorOptions.ShowBoxForControlCharacters = (bool)checkBoxControl.IsChecked;
@@ -241,6 +243,31 @@ namespace UOMachine
         private void buttonUOS_Click(object sender, RoutedEventArgs e)
         {
             ShowFolderBrowser(textBoxUOS.Text, BrowserType.UOS);
+        }
+
+        private void buttonUOSExe_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.CheckFileExists = true;
+            ofd.CheckPathExists = true;
+            ofd.Multiselect = false;
+            ofd.Filter = "Executables (*.exe)|*.exe|All files (*.*)|*.*";
+            ofd.ValidateNames = true;
+            string path = "";
+            if (!string.IsNullOrEmpty(textBoxUOS.Text))
+            {
+                try
+                {
+                    path = System.IO.Path.GetDirectoryName(textBoxUOS.Text);
+                }
+                catch { }
+            }
+            ofd.InitialDirectory = path;
+            DialogResult d = ofd.ShowDialog();
+            if (d == System.Windows.Forms.DialogResult.OK && !string.IsNullOrEmpty(ofd.FileName))
+            {
+                textBoxUOSExe.Text = ofd.FileName;
+            }
         }
     }
 }

@@ -547,5 +547,18 @@ namespace UOMachine
             addButton.Opacity = 1;
             razorButton.Opacity = 1;
         }
+
+        private void checkUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.WorkingDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            startInfo.FileName = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "Updater.exe");
+            Win32.SafeProcessHandle hProcess;
+            Win32.SafeThreadHandle hThread;
+            uint pid, tid;
+            UOM.SetStatusLabel("Status : Launching Updater");
+            Win32.CreateProcess(startInfo, false, out hProcess, out hThread, out pid, out tid);
+        }
     }
 }

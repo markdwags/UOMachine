@@ -33,6 +33,7 @@ namespace UOMachine
         public string UOClientPath { get; set; }
         public string RazorFolder { get; set; }
         public string UOSFolder { get; set; }
+        public string UOSExePath { get; set; }
         public bool PatchClientEncryptionUOM { get; set; }
         public bool PatchStaminaCheck { get; set; }
         public bool PatchClientEncryption { get; set; }

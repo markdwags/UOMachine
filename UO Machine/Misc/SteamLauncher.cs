@@ -37,7 +37,7 @@ namespace UOMachine.Misc
             /* Could all seem a bit excessive just to get the pid of the client it creates? */
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.WorkingDirectory = MainWindow.CurrentOptions.UOSFolder;
-            startInfo.FileName = Path.Combine(MainWindow.CurrentOptions.UOSFolder, "UOSteam.exe");
+            startInfo.FileName = Path.Combine(MainWindow.CurrentOptions.UOSFolder, MainWindow.CurrentOptions.UOSExePath);
             index = -1;
             Win32.SafeProcessHandle hProcess;
             Win32.SafeThreadHandle hThread;
@@ -71,7 +71,7 @@ namespace UOMachine.Misc
                 };
 
                 int offset = 0;
-                if (FindSignatureOffset(findBytes, buffer, out offset))
+                if (Memory.FindSignatureOffset(findBytes, buffer, out offset))
                 {
                     if ((codeAddress = Memory.Allocate(hProcess.DangerousGetHandle(), IntPtr.Zero, 1024, true)) == IntPtr.Zero)
                     {
@@ -131,7 +131,6 @@ namespace UOMachine.Misc
                         return false;
                     }
 
-
                     // This is dodgy, to be changed to something else.
                     byte[] uopidbytes = new byte[4];
                     do
@@ -139,7 +138,6 @@ namespace UOMachine.Misc
                         Memory.Read(hProcess.DangerousGetHandle(), (IntPtr)codeAddress, uopidbytes, true);
                         uopid = uopidbytes[3] << 24 | uopidbytes[2] << 16 | uopidbytes[1] << 8 | uopidbytes[0];
                     } while (uopid == 0);
-
                 }
 
                 hProcess.Close();
@@ -166,31 +164,5 @@ namespace UOMachine.Misc
             int baseAddress = tmp[3] << 24 | tmp[2] << 16 | tmp[1] << 8 | tmp[0];
             return (IntPtr)baseAddress;
         }
-
-        private static bool FindSignatureOffset(byte[] signature, byte[] buffer, out int offset)
-        {
-            bool found = false;
-            offset = 0;
-            for (int x = 0; x < buffer.Length - signature.Length; x++)
-            {
-                for (int y = 0; y < signature.Length; y++)
-                {
-                    if (buffer[x + y] == signature[y])
-                        found = true;
-                    else
-                    {
-                        found = false;
-                        break;
-                    }
-                }
-                if (found)
-                {
-                    offset = x;
-                    break;
-                }
-            }
-            return found;
-        }
-
     }
 }

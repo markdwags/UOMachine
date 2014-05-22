@@ -23,7 +23,7 @@ namespace UOMachine
 {
     internal static partial class Memory
     {
-        private static bool FindSignatureOffset(byte[] signature, byte[] buffer, out int offset)
+        public static bool FindSignatureOffset(byte[] signature, byte[] buffer, out int offset)
         {
             bool found = false;
             offset = 0;

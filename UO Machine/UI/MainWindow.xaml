@@ -133,6 +133,7 @@
                 <MenuItem Header="Options" FontSize="12" Click="EditOptions_Click"/>
             </MenuItem>
             <MenuItem Header="Help" FontSize="12">
+                <MenuItem x:Name="checkUpdate" Header="Check for updates" FontSize="12" Click="checkUpdate_Click"/>
                 <MenuItem Header="About" FontSize="12" Click="HelpAbout_Click" />
             </MenuItem>
         </Menu>

@@ -49,6 +49,9 @@
                     <TextBox Margin="0,0,65,159" x:Name="textBoxUOS" FontSize="12" Height="23" VerticalAlignment="Bottom" TabIndex="4" />
                     <Label Margin="0,0.04,65,187" x:Name="labelUOS" FontSize="13" Height="25" Content="UOSteam installation folder:"/>
                     <Button FontSize="13" HorizontalAlignment="Right" Margin="0,0,0,159" x:Name="buttonUOS" Width="53" Click="buttonUOS_Click" Height="23" VerticalAlignment="Bottom" Content="Browse" TabIndex="9" />
+                    <TextBox Margin="0,0,65,106" x:Name="textBoxUOSExe" FontSize="12" Height="23" VerticalAlignment="Bottom" TabIndex="4" />
+                    <Label Margin="0,53,65,134" x:Name="labelUOSExe" FontSize="13" Height="25" Content="UOSteam executable path:"/>
+                    <Button FontSize="13" HorizontalAlignment="Right" Margin="0,0,0,106" x:Name="buttonUOSExe" Width="53" Click="buttonUOSExe_Click" Height="23" VerticalAlignment="Bottom" Content="Browse" TabIndex="9" />
                 </Grid>
             </TabItem>
             <TabItem Header="Document" x:Name="tabItemDocument">
