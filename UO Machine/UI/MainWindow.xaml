@@ -2,6 +2,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:AvalonEdit="clr-namespace:ICSharpCode.CodeCompletion;assembly=ICSharpCode.CodeCompletion"
+        xmlns:p="clr-namespace:UOMachine.Resources"
     Title="UO Machine Alpha 4" Height="674" Width="880" x:Name="Main" xmlns:UOMachine="clr-namespace:UOMachine" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
 	<Window.Resources>
 		<Style x:Key="ButtonStyle1" BasedOn="{x:Null}" TargetType="{x:Type Button}">
@@ -120,28 +121,28 @@
 					<GradientStop Color="#FFFFFFFF" Offset="0"/>
 				</LinearGradientBrush>
 			</Menu.Background>
-			<MenuItem FontSize="12" Header="File">
-                <MenuItem Header="New" FontSize="12" Click="FileNew_Click" />
-                <MenuItem Header="Open" FontSize="12" Click="FileOpen_Click"  />
-                <MenuItem Header="Save" FontSize="12" Click="FileSave_Click" IsEnabled="False" />
-                <MenuItem Header="Save As" FontSize="12" Click="FileSaveAs_Click" />
-                <MenuItem Header="Exit" FontSize="12" Click="FileExit_Click"/>
+			<MenuItem FontSize="12" Header="{x:Static p:Strings.File}">
+                <MenuItem Header="{x:Static p:Strings.New}" FontSize="12" Click="FileNew_Click" />
+                <MenuItem Header="{x:Static p:Strings.Open}" FontSize="12" Click="FileOpen_Click"  />
+                <MenuItem Header="{x:Static p:Strings.Save}" FontSize="12" Click="FileSave_Click" IsEnabled="False" />
+                <MenuItem Header="{x:Static p:Strings.SaveAs}" FontSize="12" Click="FileSaveAs_Click" />
+                <MenuItem Header="{x:Static p:Strings.Exit}" FontSize="12" Click="FileExit_Click"/>
             </MenuItem>
-            <MenuItem Header="Edit" FontSize="12">
-                <MenuItem Header="Format document" Click="FormatDocument_Click"/>
-                <MenuItem Header="Add assembly reference" Click="AddReference_Click" />
-                <MenuItem Header="Options" FontSize="12" Click="EditOptions_Click"/>
+            <MenuItem Header="{x:Static p:Strings.Edit}" FontSize="12">
+                <MenuItem Header="{x:Static p:Strings.Formatdocument}" Click="FormatDocument_Click"/>
+                <MenuItem Header="{x:Static p:Strings.Addassemblyreference}" Click="AddReference_Click" />
+                <MenuItem Header="{x:Static p:Strings.Options}" FontSize="12" Click="EditOptions_Click"/>
             </MenuItem>
-            <MenuItem Header="Help" FontSize="12">
-                <MenuItem x:Name="checkUpdate" Header="Check for updates" FontSize="12" Click="checkUpdate_Click"/>
-                <MenuItem Header="About" FontSize="12" Click="HelpAbout_Click" />
+            <MenuItem Header="{x:Static p:Strings.Help}" FontSize="12">
+                <MenuItem x:Name="checkUpdate" Header="{x:Static p:Strings.CheckForUpdates}" FontSize="12" Click="checkUpdate_Click"/>
+                <MenuItem Header="{x:Static p:Strings.About}" FontSize="12" Click="HelpAbout_Click" />
             </MenuItem>
         </Menu>
-        <Button Margin="0,3,160,0" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Top" Height="32" ToolTip="Start script" x:Name="startButton" Click="startButton_Click" Width="32" HorizontalAlignment="Right" Focusable="False" BorderBrush="Transparent" BorderThickness="3" Opacity="1" MouseEnter="startButton_MouseEnter" MouseLeave="startButton_MouseLeave" PreviewMouseDown="startButton_PreviewMouseDown" PreviewMouseUp="startButton_PreviewMouseUp" />
-        <Button HorizontalAlignment="Right" Margin="0,3,118,0" Style="{DynamicResource ButtonStyle3}" VerticalAlignment="Top" Width="32" Height="32" Name="stopButton" Click="stopButton_Click" ToolTip="Stop script" Focusable="False" Opacity="1" MouseEnter="stopButton_MouseEnter" MouseLeave="stopButton_MouseLeave" PreviewMouseDown="stopButton_PreviewMouseDown" PreviewMouseUp="stopButton_PreviewMouseUp" />
-        <Button HorizontalAlignment="Right" Margin="0,3,84,0" Style="{DynamicResource ButtonStyle2}" VerticalAlignment="Top" Width="32" Height="32" Name="addButton" Click="addButton_Click" ToolTip="Start new UO client" Focusable="False" Opacity="1" MouseEnter="addButton_MouseEnter" MouseLeave="addButton_MouseLeave" PreviewMouseDown="addButton_PreviewMouseDown" PreviewMouseUp="addButton_PreviewMouseUp" />
-        <Button HorizontalAlignment="Right" Margin="0,3,42,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="32" Height="32" Name="steamButton" Click="steamButton_Click" ToolTip="Start new UOSteam instance" Focusable="False" Opacity="1" MouseEnter="steamButton_MouseEnter" MouseLeave="steamButton_MouseLeave" PreviewMouseDown="steamButton_PreviewMouseDown" PreviewMouseUp="steamButton_PreviewMouseUp" />
-        <Button Margin="0,3,0,0" Style="{DynamicResource ButtonStyle4}" VerticalAlignment="Top" Height="32" Name="razorButton" Click="razorButton_Click" ToolTip="Start new Razor instance" Focusable="False" HorizontalAlignment="Right" Width="32" Opacity="1" MouseEnter="razorButton_MouseEnter" MouseLeave="razorButton_MouseLeave" PreviewMouseDown="razorButton_PreviewMouseDown" PreviewMouseUp="razorButton_PreviewMouseUp" >
+        <Button Margin="0,3,160,0" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Top" Height="32" ToolTip="{x:Static p:Strings.Startscript}" x:Name="startButton" Click="startButton_Click" Width="32" HorizontalAlignment="Right" Focusable="False" BorderBrush="Transparent" BorderThickness="3" Opacity="1" MouseEnter="startButton_MouseEnter" MouseLeave="startButton_MouseLeave" PreviewMouseDown="startButton_PreviewMouseDown" PreviewMouseUp="startButton_PreviewMouseUp" />
+        <Button HorizontalAlignment="Right" Margin="0,3,118,0" Style="{DynamicResource ButtonStyle3}" VerticalAlignment="Top" Width="32" Height="32" Name="stopButton" Click="stopButton_Click" ToolTip="{x:Static p:Strings.Stopscript}" Focusable="False" Opacity="1" MouseEnter="stopButton_MouseEnter" MouseLeave="stopButton_MouseLeave" PreviewMouseDown="stopButton_PreviewMouseDown" PreviewMouseUp="stopButton_PreviewMouseUp" />
+        <Button HorizontalAlignment="Right" Margin="0,3,84,0" Style="{DynamicResource ButtonStyle2}" VerticalAlignment="Top" Width="32" Height="32" Name="addButton" Click="addButton_Click" ToolTip="{x:Static p:Strings.Startnewclient}" Focusable="False" Opacity="1" MouseEnter="addButton_MouseEnter" MouseLeave="addButton_MouseLeave" PreviewMouseDown="addButton_PreviewMouseDown" PreviewMouseUp="addButton_PreviewMouseUp" />
+        <Button HorizontalAlignment="Right" Margin="0,3,42,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="32" Height="32" Name="steamButton" Click="steamButton_Click" ToolTip="{x:Static p:Strings.StartnewUOSteaminstance}" Focusable="False" Opacity="1" MouseEnter="steamButton_MouseEnter" MouseLeave="steamButton_MouseLeave" PreviewMouseDown="steamButton_PreviewMouseDown" PreviewMouseUp="steamButton_PreviewMouseUp" />
+        <Button Margin="0,3,0,0" Style="{DynamicResource ButtonStyle4}" VerticalAlignment="Top" Height="32" Name="razorButton" Click="razorButton_Click" ToolTip="{x:Static p:Strings.StartnewRazorinstance}" Focusable="False" HorizontalAlignment="Right" Width="32" Opacity="1" MouseEnter="razorButton_MouseEnter" MouseLeave="razorButton_MouseLeave" PreviewMouseDown="razorButton_PreviewMouseDown" PreviewMouseUp="razorButton_PreviewMouseUp" >
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -162,7 +163,7 @@
 		<TreeView Margin="0,36,0,24" x:Name="clientTreeView" Grid.Column="2" FocusVisualStyle= "{x:Null}">
         </TreeView>
         <AvalonEdit:CodeTextEditor Margin="0,36,0,24" x:Name="scriptTextBox" Text="" FontFamily="Tahoma" FontSize="11.5"></AvalonEdit:CodeTextEditor>
-        <Label Height="Auto" Name="labelStatus" VerticalAlignment="Bottom" FontSize="12" Margin="12,0,8,0">Status: Ready</Label>
+        <Label Height="Auto" Name="labelStatus" VerticalAlignment="Bottom" FontSize="12" Margin="12,0,8,0" Content="{x:Static p:Strings.StatusReady}"/>
     </Grid>
     
 </Window>

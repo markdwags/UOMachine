@@ -22,6 +22,7 @@ using Microsoft.Win32;
 using UOMachine.Tree;
 using UOMachine.Utility;
 using UOMachine.Data;
+using UOMachine.Resources;
 using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Search;
 using ICSharpCode.AvalonEdit.Highlighting;
@@ -50,8 +51,8 @@ namespace UOMachine
         private const string titleSpace = "                  ";
         private string fileTitleString = "";
         private string fileName = "";
-        private delegate void dUpdateButtonStatus(Button button, bool IsEnabled);
-        private delegate void dUpdateLabel(Label label, string content);
+        private delegate void dUpdateButtonStatus( Button button, bool IsEnabled );
+        private delegate void dUpdateLabel( Label label, string content );
         private CSharpCompletion codeCompletion;
 
         private object myOptionWaitObject = new object();
@@ -59,7 +60,7 @@ namespace UOMachine
         private bool waitingForOptions
         {
             set { myIsWaitingForOptions = value; }
-            get { return ThreadHelper.VolatileRead(ref myIsWaitingForOptions); }
+            get { return ThreadHelper.VolatileRead( ref myIsWaitingForOptions ); }
         }
 
         public MainWindow()
@@ -88,18 +89,18 @@ namespace UOMachine
             razorButton.IsEnabled = false;
             addButton.IsEnabled = false;
             stopButton.Opacity = myDisabledOpacity;
-            Closing += new CancelEventHandler(MainWindow_Closing);
-            TreeViewUpdater.Initialize(clientTreeView);
-            OptionsWindow.OptionsChangedEvent += new OptionsWindow.dOptionsChanged(OptionsWindow_OptionsChangedEvent);
-            OptionsWindow.OptionsCancelledEvent += new OptionsWindow.dOptionsCancelled(OptionsWindow_OptionsCancelledEvent);
-            ScriptCompiler.ScriptFinishedEvent += new ScriptCompiler.dScriptFinished(ScriptCompiler_ScriptFinished);
+            Closing += new CancelEventHandler( MainWindow_Closing );
+            TreeViewUpdater.Initialize( clientTreeView );
+            OptionsWindow.OptionsChangedEvent += new OptionsWindow.dOptionsChanged( OptionsWindow_OptionsChangedEvent );
+            OptionsWindow.OptionsCancelledEvent += new OptionsWindow.dOptionsCancelled( OptionsWindow_OptionsCancelledEvent );
+            ScriptCompiler.ScriptFinishedEvent += new ScriptCompiler.dScriptFinished( ScriptCompiler_ScriptFinished );
             aboutWindow = new About();
             optionsWindow = new OptionsWindow();
-            myCurrentOptions = OptionsData.Deserialize("options.xml");
-            CheckOptions(myCurrentOptions);
-            if (!UOM.Initialize(this))
+            myCurrentOptions = OptionsData.Deserialize( "options.xml" );
+            CheckOptions( myCurrentOptions );
+            if (!UOM.Initialize( this ))
             {
-                MessageBox.Show("Error initializing UO Machine, please try again.", "Error");
+                MessageBox.Show( Strings.Errorinitializing, Strings.Error );
                 UOM.Dispose();
                 UOM.ShutDown();
                 return;
@@ -113,31 +114,31 @@ namespace UOMachine
         {
             if (waitingForOptions)
             {
-                MessageBox.Show("You must enter valid options to start UO Machine.", "Error");
+                MessageBox.Show( Strings.Youmustentervalidoptions, Strings.Error );
                 waitingForOptions = false;
             }
         }
 
-        private void CheckOptions(OptionsData optionsData)
+        private void CheckOptions( OptionsData optionsData )
         {
             if (!optionsData.IsValid())
             {
                 waitingForOptions = true;
-                MessageBox.Show("Invalid value(s) present in options.xml, please fix.", "Error");
-                optionsWindow.LoadOptions(OptionsData.CreateDefault());
+                MessageBox.Show( Strings.Invalidvaluepresentinoptions, Strings.Error );
+                optionsWindow.LoadOptions( OptionsData.CreateDefault() );
                 optionsWindow.Show();
                 while (waitingForOptions)
                 {
-                    try { Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate { })); }
+                    try { Application.Current.Dispatcher.Invoke( DispatcherPriority.Background, new ThreadStart( delegate { } ) ); }
                     catch { }
-                    Thread.Sleep(50);
+                    Thread.Sleep( 50 );
                 }
             }
         }
 
-        private void MainWindow_Closing(object sender, CancelEventArgs e)
+        private void MainWindow_Closing( object sender, CancelEventArgs e )
         {
-            UpdateLabel(labelStatus, "Status : Closing");
+            UOM.SetStatusLabel( Strings.Closing );
             UOM.Dispose();
             aboutWindow.CancelEnabled = false;
             optionsWindow.CancelEnabled = false;
@@ -154,17 +155,17 @@ namespace UOMachine
         private void PrepareTextEditor()
         {
             codeCompletion = new ICSharpCode.CodeCompletion.CSharpCompletion();
-            codeCompletion.AddAssembly("UOMachine.exe");
+            codeCompletion.AddAssembly( "UOMachine.exe" );
             scriptTextBox.Completion = codeCompletion;
-            scriptTextBox.FontFamily = new FontFamily("Consolas");
+            scriptTextBox.FontFamily = new FontFamily( "Consolas" );
             scriptTextBox.FontSize = 12;
-            scriptTextBox.TextArea.DefaultInputHandler.NestedInputHandlers.Add(new SearchInputHandler(scriptTextBox.TextArea));
-            FileNew_Click(null, null);
-            scriptTextBox.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("C#");
+            scriptTextBox.TextArea.DefaultInputHandler.NestedInputHandlers.Add( new SearchInputHandler( scriptTextBox.TextArea ) );
+            FileNew_Click( null, null );
+            scriptTextBox.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition( "C#" );
             scriptTextBox.Options = myCurrentOptions.TextEditorOptions;
         }
 
-        private void OptionsWindow_OptionsChangedEvent(OptionsData optionsData)
+        private void OptionsWindow_OptionsChangedEvent( OptionsData optionsData )
         {
             if (waitingForOptions)
             {
@@ -174,52 +175,52 @@ namespace UOMachine
                 }
                 else
                 {
-                    MessageBox.Show("Invalid value(s) present in options.xml, please fix.", "Error");
+                    MessageBox.Show( Strings.Invalidvaluepresentinoptions, Strings.Error );
                     optionsWindow.Show();
                 }
             }
             if (optionsData.CacheLevel != myCurrentOptions.CacheLevel)
-                Map.Initialize(optionsData.UOFolder, optionsData.CacheLevel);
+                Map.Initialize( optionsData.UOFolder, optionsData.CacheLevel );
             myCurrentOptions = optionsData;
             scriptTextBox.Options = optionsData.TextEditorOptions;
         }
 
         private void ScriptCompiler_ScriptFinished()
         {
-            UpdateButtonStatus(startButton, true);
-            UpdateButtonStatus(stopButton, false);
-            UpdateLabel(labelStatus, "Status : Script stopped");
+            UpdateButtonStatus( startButton, true );
+            UpdateButtonStatus( stopButton, false );
+            UOM.SetStatusLabel( Strings.Scriptstopped );
         }
 
-        private static void myUpdateLabel(Label label, string content) { label.Content = content; }
+        private static void myUpdateLabel( Label label, string content ) { label.Content = content; }
 
-        public static void UpdateLabel(Label label, string content)
+        public static void UpdateLabel( Label label, string content )
         {
-            if (label.CheckAccess()) myUpdateLabel(label, content);
-            else label.Dispatcher.BeginInvoke(new dUpdateLabel(myUpdateLabel), new object[] { label, content });
+            if (label.CheckAccess()) myUpdateLabel( label, content );
+            else label.Dispatcher.BeginInvoke( new dUpdateLabel( myUpdateLabel ), new object[] { label, content } );
         }
 
-        private void myUpdateButtonStatus(Button button, bool IsEnabled)
+        private void myUpdateButtonStatus( Button button, bool IsEnabled )
         {
             button.IsEnabled = IsEnabled;
             if (IsEnabled) { button.Opacity = 1; }
             else { button.Opacity = myDisabledOpacity; }
         }
 
-        private void UpdateButtonStatus(Button button, bool IsEnabled)
+        private void UpdateButtonStatus( Button button, bool IsEnabled )
         {
-            if (button.CheckAccess()) myUpdateButtonStatus(button, IsEnabled);
-            else button.Dispatcher.BeginInvoke(new dUpdateButtonStatus(myUpdateButtonStatus), new object[] { button, IsEnabled });
+            if (button.CheckAccess()) myUpdateButtonStatus( button, IsEnabled );
+            else button.Dispatcher.BeginInvoke( new dUpdateButtonStatus( myUpdateButtonStatus ), new object[] { button, IsEnabled } );
         }
 
-        private static void ButtonUp(Button button, double width, Thickness margin)
+        private static void ButtonUp( Button button, double width, Thickness margin )
         {
             button.Width = width;
             button.Height = width;
             button.Margin = margin;
         }
 
-        private static void ButtonDown(Button button)
+        private static void ButtonDown( Button button )
         {
             //originally implemented in XAML but I prefer this
             double w = button.Width;
@@ -234,42 +235,42 @@ namespace UOMachine
             //Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate { }));
         }
 
-        private void startButton_Click(object sender, RoutedEventArgs e)
+        private void startButton_Click( object sender, RoutedEventArgs e )
         {
-            if (ScriptCompiler.Compile(Assembly.GetExecutingAssembly().Location, scriptTextBox.Text))
+            if (ScriptCompiler.Compile( Assembly.GetExecutingAssembly().Location, scriptTextBox.Text ))
             {
-                labelStatus.Content = "Status : Script running";
+                UOM.SetStatusLabel( Strings.Scriptrunning );
                 startButton.IsEnabled = false;
                 startButton.Opacity = myDisabledOpacity;
                 stopButton.IsEnabled = true;
                 stopButton.Opacity = 1;
             }
-            else labelStatus.Content = "Status : Compiler error";
+            else UOM.SetStatusLabel( Strings.Compilererror );
         }
-        
-        private void addButton_Click(object sender, RoutedEventArgs e)
+
+        private void addButton_Click( object sender, RoutedEventArgs e )
         {
             int index;
-            if (ClientLauncher.Launch(MainWindow.CurrentOptions, out index))
+            if (ClientLauncher.Launch( MainWindow.CurrentOptions, out index ))
             {
-                labelStatus.Content = "Status : UO client started";
+                UOM.SetStatusLabel( Strings.Clientstarted );
             }
             else
             {
-                labelStatus.Content = "Status : Error starting client";
-                MessageBox.Show("Error launching client, it may be an unknown version.");
+                UOM.SetStatusLabel( Strings.Errorstartingclient );
+                MessageBox.Show( Strings.Errorstartingclient, Strings.Error );
             }
-       
+
         }
 
-        private void process_Exited(object sender, EventArgs e)
+        private void process_Exited( object sender, EventArgs e )
         {
-            UpdateLabel(labelStatus, "Status : UO client exited");
+            UOM.SetStatusLabel( Strings.Clientexited );
         }
 
-        private void stopButton_Click(object sender, RoutedEventArgs e)
+        private void stopButton_Click( object sender, RoutedEventArgs e )
         {
-            labelStatus.Content = "Status : Stopping script";
+            UOM.SetStatusLabel( Strings.Stoppingscript );
             ScriptCompiler.StopScript();
             Events.General.ClearEvents();
             Events.IncomingPackets.ClearEvents();
@@ -279,111 +280,111 @@ namespace UOMachine
             startButton.Opacity = 1;
             stopButton.IsEnabled = false;
             stopButton.Opacity = myDisabledOpacity;
-            labelStatus.Content = "Status : Ready";
+            UOM.SetStatusLabel( Strings.Ready );
         }
 
-        private void razorButton_Click(object sender, RoutedEventArgs e)
+        private void razorButton_Click( object sender, RoutedEventArgs e )
         {
             int index;
             razorButton.IsEnabled = false;
             addButton.IsEnabled = false;
             addButton.Opacity = myDisabledOpacity;
             razorButton.Opacity = myDisabledOpacity;
-            RazorLauncher.Launch(myCurrentOptions, out index);
+            RazorLauncher.Launch( myCurrentOptions, out index );
             razorButton.IsEnabled = true;
             addButton.IsEnabled = true;
             addButton.Opacity = 1;
             razorButton.Opacity = 1;
         }
 
-        private void startButton_MouseEnter(object sender, MouseEventArgs e)
+        private void startButton_MouseEnter( object sender, MouseEventArgs e )
         {
             startButton.Effect = myDropShadow;
         }
 
-        private void startButton_MouseLeave(object sender, MouseEventArgs e)
+        private void startButton_MouseLeave( object sender, MouseEventArgs e )
         {
             startButton.Effect = null;
         }
 
-        private void stopButton_MouseEnter(object sender, MouseEventArgs e)
+        private void stopButton_MouseEnter( object sender, MouseEventArgs e )
         {
             stopButton.Effect = myDropShadow;
         }
 
-        private void stopButton_MouseLeave(object sender, MouseEventArgs e)
+        private void stopButton_MouseLeave( object sender, MouseEventArgs e )
         {
             stopButton.Effect = null;
         }
 
-        private void addButton_MouseEnter(object sender, MouseEventArgs e)
+        private void addButton_MouseEnter( object sender, MouseEventArgs e )
         {
             addButton.Effect = myDropShadow;
         }
 
-        private void addButton_MouseLeave(object sender, MouseEventArgs e)
+        private void addButton_MouseLeave( object sender, MouseEventArgs e )
         {
             addButton.Effect = null;
         }
 
-        private void razorButton_MouseEnter(object sender, MouseEventArgs e)
+        private void razorButton_MouseEnter( object sender, MouseEventArgs e )
         {
             razorButton.Effect = myDropShadow;
         }
 
-        private void razorButton_MouseLeave(object sender, MouseEventArgs e)
+        private void razorButton_MouseLeave( object sender, MouseEventArgs e )
         {
             razorButton.Effect = null;
         }
 
-        private void startButton_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void startButton_PreviewMouseDown( object sender, MouseButtonEventArgs e )
         {
-            ButtonDown(startButton);
+            ButtonDown( startButton );
         }
 
-        private void startButton_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void startButton_PreviewMouseUp( object sender, MouseButtonEventArgs e )
         {
-            ButtonUp(startButton, myStartButtonWidth, myStartButtonMargin);
-            if (e.ChangedButton != MouseButton.Left) startButton_Click(sender, e);
+            ButtonUp( startButton, myStartButtonWidth, myStartButtonMargin );
+            if (e.ChangedButton != MouseButton.Left) startButton_Click( sender, e );
         }
 
-        private void stopButton_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void stopButton_PreviewMouseDown( object sender, MouseButtonEventArgs e )
         {
-            ButtonDown(stopButton);
+            ButtonDown( stopButton );
         }
 
-        private void stopButton_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void stopButton_PreviewMouseUp( object sender, MouseButtonEventArgs e )
         {
-            ButtonUp(stopButton, myStopButtonWidth, myStopButtonMargin);
-            if (e.ChangedButton != MouseButton.Left) stopButton_Click(sender, e);
+            ButtonUp( stopButton, myStopButtonWidth, myStopButtonMargin );
+            if (e.ChangedButton != MouseButton.Left) stopButton_Click( sender, e );
         }
 
-        private void addButton_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void addButton_PreviewMouseDown( object sender, MouseButtonEventArgs e )
         {
-            ButtonDown(addButton);
+            ButtonDown( addButton );
         }
 
-        private void addButton_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void addButton_PreviewMouseUp( object sender, MouseButtonEventArgs e )
         {
-            ButtonUp(addButton, myAddButtonWidth, myAddButtonMargin);
-            if (e.ChangedButton != MouseButton.Left) addButton_Click(sender, e);
+            ButtonUp( addButton, myAddButtonWidth, myAddButtonMargin );
+            if (e.ChangedButton != MouseButton.Left) addButton_Click( sender, e );
         }
 
-        private void razorButton_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void razorButton_PreviewMouseDown( object sender, MouseButtonEventArgs e )
         {
-            ButtonDown(razorButton);
+            ButtonDown( razorButton );
         }
 
-        private void razorButton_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void razorButton_PreviewMouseUp( object sender, MouseButtonEventArgs e )
         {
-            ButtonUp(razorButton, myRazorButtonWidth, myRazorButtonMargin);
-            if (e.ChangedButton != MouseButton.Left) razorButton_Click(sender, e);
+            ButtonUp( razorButton, myRazorButtonWidth, myRazorButtonMargin );
+            if (e.ChangedButton != MouseButton.Left) razorButton_Click( sender, e );
         }
 
-        private void FileNew_Click(object sender, RoutedEventArgs e)
+        private void FileNew_Click( object sender, RoutedEventArgs e )
         {
             scriptTextBox.Text = Properties.Resources.DefaultScript;
-            fileName = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Untitled.cs";
+            fileName = Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ) + "\\Untitled.cs";
             fileTitleString = "Untitled.cs";
             MenuItem parent = (MenuItem)menu1.Items[0];
             MenuItem child = (MenuItem)parent.Items[2];
@@ -392,29 +393,30 @@ namespace UOMachine
             scriptTextBox.Document.FileName = fileName;
         }
 
-        private void FileOpen_Click(object sender, RoutedEventArgs e)
+        private void FileOpen_Click( object sender, RoutedEventArgs e )
         {
             OpenFileDialog OFD = new OpenFileDialog();
             OFD.CheckFileExists = true;
             OFD.CheckPathExists = true;
             OFD.Filter = "(*.txt, *.cs)|*.txt;*.cs|(*.*)|*.*";
-            OFD.FileOk += new CancelEventHandler(OFD_FileOk);
+            OFD.FileOk += new CancelEventHandler( OFD_FileOk );
             OFD.ShowDialog();
         }
 
-        private void OFD_FileOk(object sender, CancelEventArgs e)
+        private void OFD_FileOk( object sender, CancelEventArgs e )
         {
             OpenFileDialog OFD = (OpenFileDialog)sender;
             if (OFD.FileName != "")
             {
-                try { 
+                try
+                {
                     //scriptTextBox.Text = File.ReadAllText(OFD.FileName);
-                    scriptTextBox.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("C#");
-                    scriptTextBox.OpenFile(OFD.FileName);
+                    scriptTextBox.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition( "C#" );
+                    scriptTextBox.OpenFile( OFD.FileName );
                 }
                 catch (IOException)
                 {
-                    MessageBox.Show("Error opening file, make sure it's not in use.");
+                    MessageBox.Show( Strings.Erroropeningfile );
                     return;
                 }
                 MenuItem parent = (MenuItem)menu1.Items[0];
@@ -426,39 +428,39 @@ namespace UOMachine
             }
         }
 
-        private void FileSave_Click(object sender, RoutedEventArgs e)
+        private void FileSave_Click( object sender, RoutedEventArgs e )
         {
             if (fileName != "")
             {
-                try { File.WriteAllText(fileName, scriptTextBox.Text, Encoding.UTF8); }
+                try { File.WriteAllText( fileName, scriptTextBox.Text, Encoding.UTF8 ); }
                 catch (IOException)
                 {
-                    MessageBox.Show("Error saving file, please choose another location.");
+                    MessageBox.Show( Strings.Errorsavingfile );
                 }
             }
-            else FileSaveAs_Click(null, null);
+            else FileSaveAs_Click( null, null );
         }
 
-        private void FileSaveAs_Click(object sender, RoutedEventArgs e)
+        private void FileSaveAs_Click( object sender, RoutedEventArgs e )
         {
             SaveFileDialog SFD = new SaveFileDialog();
             SFD.CheckPathExists = true;
             if (fileName != "") SFD.FileName = fileName;
             SFD.DefaultExt = ".cs";
             SFD.Filter = "(*.cs)|*.cs|(*.*)|*.*";
-            SFD.FileOk += new CancelEventHandler(SFD_FileOk);
+            SFD.FileOk += new CancelEventHandler( SFD_FileOk );
             SFD.ShowDialog();
         }
 
-        private void SFD_FileOk(object sender, CancelEventArgs e)
+        private void SFD_FileOk( object sender, CancelEventArgs e )
         {
             SaveFileDialog SFD = (SaveFileDialog)sender;
             if (SFD.FileName != "")
             {
-                try { File.WriteAllText(SFD.FileName, scriptTextBox.Text, Encoding.UTF8); }
+                try { File.WriteAllText( SFD.FileName, scriptTextBox.Text, Encoding.UTF8 ); }
                 catch (IOException)
                 {
-                    MessageBox.Show("Error saving file, please choose another location.");
+                    MessageBox.Show( Strings.Errorsavingfile );
                     return;
                 }
                 MenuItem parent = (MenuItem)menu1.Items[0];
@@ -470,7 +472,7 @@ namespace UOMachine
             }
         }
 
-        private void FileExit_Click(object sender, RoutedEventArgs e)
+        private void FileExit_Click( object sender, RoutedEventArgs e )
         {
             Application.Current.Shutdown();
         }
@@ -480,85 +482,85 @@ namespace UOMachine
             Title = titleString + titleSpace + "( " + fileTitleString + " )";
         }
 
-        private void HelpAbout_Click(object sender, RoutedEventArgs e)
+        private void HelpAbout_Click( object sender, RoutedEventArgs e )
         {
             aboutWindow.Show();
         }
 
-        private void EditOptions_Click(object sender, RoutedEventArgs e)
+        private void EditOptions_Click( object sender, RoutedEventArgs e )
         {
-            optionsWindow.LoadOptions(myCurrentOptions);
+            optionsWindow.LoadOptions( myCurrentOptions );
             optionsWindow.Show();
         }
 
-        private void FormatDocument_Click(object sender, RoutedEventArgs e)
+        private void FormatDocument_Click( object sender, RoutedEventArgs e )
         {
-            scriptTextBox.Text = DocumentHelper.Format(scriptTextBox.Text, scriptTextBox.Options.IndentationString);
+            scriptTextBox.Text = DocumentHelper.Format( scriptTextBox.Text, scriptTextBox.Options.IndentationString );
             TextEditorOptions teo = scriptTextBox.Options;
         }
 
-        private void AddReference_Click(object sender, RoutedEventArgs e)
+        private void AddReference_Click( object sender, RoutedEventArgs e )
         {
             if (assemblyPicker == null)
             {
                 assemblyPicker = new AssemblyPicker();
-                assemblyPicker.AssemblySelectedEvent += new AssemblyPicker.dAssemblySelected(assemblyPicker_AssemblySelectedEvent);
+                assemblyPicker.AssemblySelectedEvent += new AssemblyPicker.dAssemblySelected( assemblyPicker_AssemblySelectedEvent );
             }
             assemblyPicker.Show();
         }
 
-        private void assemblyPicker_AssemblySelectedEvent(string fileName)
+        private void assemblyPicker_AssemblySelectedEvent( string fileName )
         {
             scriptTextBox.Text = "/* <AREF = \"" + fileName + "\"> */\r\n" + scriptTextBox.Text;
         }
 
-        private void steamButton_MouseEnter(object sender, MouseEventArgs e)
+        private void steamButton_MouseEnter( object sender, MouseEventArgs e )
         {
             steamButton.Effect = myDropShadow;
         }
 
-        private void steamButton_MouseLeave(object sender, MouseEventArgs e)
+        private void steamButton_MouseLeave( object sender, MouseEventArgs e )
         {
             steamButton.Effect = null;
         }
 
-        private void steamButton_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void steamButton_PreviewMouseDown( object sender, MouseButtonEventArgs e )
         {
-            ButtonDown(steamButton);
+            ButtonDown( steamButton );
         }
 
-        private void steamButton_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void steamButton_PreviewMouseUp( object sender, MouseButtonEventArgs e )
         {
-            ButtonUp(steamButton, mySteamButtonWidth, mySteamButtonMargin);
-            if (e.ChangedButton != MouseButton.Left) steamButton_Click(sender, e);
+            ButtonUp( steamButton, mySteamButtonWidth, mySteamButtonMargin );
+            if (e.ChangedButton != MouseButton.Left) steamButton_Click( sender, e );
 
         }
 
-        private void steamButton_Click(object sender, RoutedEventArgs e)
+        private void steamButton_Click( object sender, RoutedEventArgs e )
         {
             int index;
             razorButton.IsEnabled = false;
             addButton.IsEnabled = false;
             addButton.Opacity = myDisabledOpacity;
             razorButton.Opacity = myDisabledOpacity;
-            UOMachine.Misc.SteamLauncher.Launch(myCurrentOptions, out index);
+            UOMachine.Misc.SteamLauncher.Launch( myCurrentOptions, out index );
             razorButton.IsEnabled = true;
             addButton.IsEnabled = true;
             addButton.Opacity = 1;
             razorButton.Opacity = 1;
         }
 
-        private void checkUpdate_Click(object sender, RoutedEventArgs e)
+        private void checkUpdate_Click( object sender, RoutedEventArgs e )
         {
 
             ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.WorkingDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            startInfo.FileName = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "Updater.exe");
+            startInfo.WorkingDirectory = System.IO.Path.GetDirectoryName( System.Reflection.Assembly.GetExecutingAssembly().Location );
+            startInfo.FileName = System.IO.Path.Combine( System.IO.Path.GetDirectoryName( System.Reflection.Assembly.GetExecutingAssembly().Location ), "Updater.exe" );
             Win32.SafeProcessHandle hProcess;
             Win32.SafeThreadHandle hThread;
             uint pid, tid;
-            UOM.SetStatusLabel("Status : Launching Updater");
-            Win32.CreateProcess(startInfo, false, out hProcess, out hThread, out pid, out tid);
+            UOM.SetStatusLabel( "Status : Launching Updater" );
+            Win32.CreateProcess( startInfo, false, out hProcess, out hThread, out pid, out tid );
         }
     }
 }

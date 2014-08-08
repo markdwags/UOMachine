@@ -26,6 +26,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Threading;
 using UOMachine.Utility;
+using UOMachine.Resources;
 
 namespace UOMachine
 {
@@ -208,7 +209,7 @@ namespace UOMachine
                 //mainForm.SelectText(CR.Errors[0].Line);
                 foreach (CompilerError CE in CR.Errors)
                     ErrorText.Append("Error " + CE.ErrorNumber + " on line " + CE.Line.ToString() + ": " + CE.ErrorText + "\r\n");
-                MessageBox.Show(ErrorText.ToString(), "Compiler error!");
+                MessageBox.Show(ErrorText.ToString(), Strings.Compilererror);
                 return false;
             }
             Execute(CR.CompiledAssembly);

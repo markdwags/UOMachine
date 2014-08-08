@@ -26,6 +26,7 @@ using UOMachine.Utility;
 using UOMachine.Tree;
 using UOMachine.Data;
 using UOMachine.Events;
+using UOMachine.Resources;
 using EasyHook;
 using System.Diagnostics;
 using System.IO;
@@ -39,8 +40,8 @@ namespace UOMachine
         public delegate void dClientListChanged();
         private static object myClientListChangedLock = new object();
         private static event dClientListChanged myClientListChangedEvent;
-        public static string StartupPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-        
+        public static string StartupPath = Path.GetDirectoryName( System.Reflection.Assembly.GetExecutingAssembly().Location );
+
         private static MainWindow myMainWindow;
 
         public static event dClientListChanged ClientListChangedEvent
@@ -58,30 +59,30 @@ namespace UOMachine
 
         internal static void ShutDown()
         {
-            dShutDown shutDown = new dShutDown(myShutDown);
-            System.Windows.Application.Current.Dispatcher.Invoke(shutDown, null);
+            dShutDown shutDown = new dShutDown( myShutDown );
+            System.Windows.Application.Current.Dispatcher.Invoke( shutDown, null );
         }
 
-        internal static bool Initialize(MainWindow mainWindow)
+        internal static bool Initialize( MainWindow mainWindow )
         {
             if (!MainWindow.CurrentOptions.IsValid()) return false;
-            try { Config.Register("UOM hooks", Path.Combine(StartupPath, "UOMachine.exe"), Path.Combine(StartupPath, "ClientHook.dll")); }
-            catch (Exception ex) 
+            try { Config.Register( "UOM hooks", Path.Combine( StartupPath, "UOMachine.exe" ), Path.Combine( StartupPath, "ClientHook.dll" ) ); }
+            catch (Exception ex)
             {
-                Utility.Log.LogMessage(ex);
+                Utility.Log.LogMessage( ex );
                 /* Ensure EasyHook files are in output directory if you get this error */
-                System.Windows.MessageBox.Show("Error with GAC installation, please see log for details.");
-                return false; 
+                System.Windows.MessageBox.Show( Strings.ErrorwithGACinstallation );
+                return false;
             }
             myMainWindow = mainWindow;
             InternalEventHandler.IncomingPacketHandler.Initialize();
             InternalEventHandler.OutgoingPacketHandler.Initialize();
             Network.Initialize();
             InternalEventHandler.IPCHandler.Initialize();
-            mySkillNames = Skills.GetSkills(MainWindow.CurrentOptions.UOFolder);
-            TileData.Initialize(MainWindow.CurrentOptions.UOFolder);
-            Map.Initialize(MainWindow.CurrentOptions.UOFolder, MainWindow.CurrentOptions.CacheLevel);
-            Cliloc.Initialize(MainWindow.CurrentOptions.UOFolder);
+            mySkillNames = Skills.GetSkills( MainWindow.CurrentOptions.UOFolder );
+            TileData.Initialize( MainWindow.CurrentOptions.UOFolder );
+            Map.Initialize( MainWindow.CurrentOptions.UOFolder, MainWindow.CurrentOptions.CacheLevel );
+            Cliloc.Initialize( MainWindow.CurrentOptions.UOFolder );
             NamespaceToAssembly.Initialize();
             return true;
         }
@@ -95,24 +96,24 @@ namespace UOMachine
             IPC.Network.Dispose();
         }
 
-        internal static void SetStatusLabel(string text)
+        internal static void SetStatusLabel( string text )
         {
             if (myMainWindow != null)
             {
-                MainWindow.UpdateLabel(myMainWindow.labelStatus, text);
+                MainWindow.UpdateLabel( myMainWindow.labelStatus, UOMachine.Resources.Strings.Status + " : " + text );
             }
         }
 
-        internal static void OnClientExit(object sender, EventArgs e)
+        internal static void OnClientExit( object sender, EventArgs e )
         {
             try
             {
                 Process exiting = (Process)sender;
-                ClientInfoCollection.RemoveByPid(exiting.Id);
+                ClientInfoCollection.RemoveByPid( exiting.Id );
                 dClientListChanged handler = null;
                 lock (myClientListChangedLock) { handler = myClientListChangedEvent; }
-                if (handler != null) ThreadPool.QueueUserWorkItem(delegate { handler(); });
-                SetStatusLabel("Status: Client exited");
+                if (handler != null) ThreadPool.QueueUserWorkItem( delegate { handler(); } );
+                SetStatusLabel( Strings.Clientexited );
             }
             catch { }
         }
@@ -137,7 +138,7 @@ namespace UOMachine
         /// Translate skill ID to skill name according to UO installation defined in options.
         /// Returns empty string on error.
         /// </summary>
-        public static string GetSkillName(int skillID)
+        public static string GetSkillName( int skillID )
         {
             if (skillID >= 0 && skillID <= mySkillNames.Length - 1)
                 return mySkillNames[skillID];

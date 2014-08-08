@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using UOMachine.Resources;
 
 namespace UOMachine
 {
@@ -11,18 +12,19 @@ namespace UOMachine
         [STAThread]
         public static void Main()
         {
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo( "zh" );
             try
             {
-                Utility.Log.Initialize("UOMLog" + DateTime.Now.ToString(" [MM-dd-yyyy HH.mm.ss] ") + ".txt");
+                Utility.Log.Initialize( "UOMLog" + DateTime.Now.ToString( " [MM-dd-yyyy HH.mm.ss] " ) + ".txt" );
                 App app = new App();
                 app.InitializeComponent();
                 app.Run();
             }
             catch (Exception ex)
             {
-                Utility.Log.LogMessage(ex);
+                Utility.Log.LogMessage( ex );
                 UOM.Dispose();
-                MessageBox.Show("Exception caught, please check log.");
+                MessageBox.Show( Strings.Exceptioncaught );
             }
         }
     }

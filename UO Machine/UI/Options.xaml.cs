@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using UOMachine.Resources;
 
 namespace UOMachine
 {
@@ -125,7 +126,7 @@ namespace UOMachine
                 od.Port = port;
             else
             {
-                System.Windows.MessageBox.Show("Invalid value for port, please fix.", "Error");
+                System.Windows.MessageBox.Show( Strings.Invalidvalueforport, Strings.Error );
                 textBoxPort.Text = "";
                 return false;
             }
@@ -163,7 +164,7 @@ namespace UOMachine
 
             if (!od.IsValid())
             {
-                System.Windows.MessageBox.Show("Invalid options, please fix.", "Error");
+                System.Windows.MessageBox.Show( Strings.Invalidvaluepresentinoptions, Strings.Error );
                 return false;
             }
             OnOptionsChanged(od);

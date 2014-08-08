@@ -24,6 +24,7 @@ using System.Windows;
 using System.IO;
 using System.Net;
 using UOMachine.IPC;
+using UOMachine.Resources;
 using EasyHook;
 
 namespace UOMachine.Misc
@@ -32,38 +33,38 @@ namespace UOMachine.Misc
     {
         private static object myLock = new object();
 
-        public static bool Launch(OptionsData options, out int index)
+        public static bool Launch( OptionsData options, out int index )
         {
             /* Could all seem a bit excessive just to get the pid of the client it creates? */
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.WorkingDirectory = MainWindow.CurrentOptions.UOSFolder;
-            startInfo.FileName = Path.Combine(MainWindow.CurrentOptions.UOSFolder, MainWindow.CurrentOptions.UOSExePath);
+            startInfo.FileName = Path.Combine( MainWindow.CurrentOptions.UOSFolder, MainWindow.CurrentOptions.UOSExePath );
             index = -1;
             Win32.SafeProcessHandle hProcess;
             Win32.SafeThreadHandle hThread;
             uint pid, tid;
             int uopid = 0;
-            UOM.SetStatusLabel("Status : Launching UOSteam");
-            if (Win32.CreateProcess(startInfo, true, out hProcess, out hThread, out pid, out tid))
+            UOM.SetStatusLabel( Strings.Launchingclient );
+            if (Win32.CreateProcess( startInfo, true, out hProcess, out hThread, out pid, out tid ))
             {
                 /* Basically rewrites a small piece of code before the client resumes to write the pid of the new client it creates, probably not portable between versions if the registers change, what can i say, I'm a noob
                  * Never had code of old code before RazorLauncher to see how xenoglyph did it before.
                  * Code will need to be cleaned up. */
 
-                Process p = Process.GetProcessById((int)pid);
+                Process p = Process.GetProcessById( (int)pid );
                 IntPtr codeAddress;
 
-                IntPtr baseAddress = GetBaseAddress(hProcess, hThread);
+                IntPtr baseAddress = GetBaseAddress( hProcess, hThread );
                 if (baseAddress == null)
                 {
-                    UOM.SetStatusLabel("Status : UOS Hook failed");
+                    UOM.SetStatusLabel( Strings.UOSteamlaunchfailed );
                     return false;
                 }
 
                 byte[] buffer = new byte[0x17000];
-                Memory.Read(hProcess.DangerousGetHandle(), (IntPtr)(((int)baseAddress) + 0x1000), buffer, true);
+                Memory.Read( hProcess.DangerousGetHandle(), (IntPtr)(((int)baseAddress) + 0x1000), buffer, true );
 
-                UOM.SetStatusLabel("Status : Patching UOSteam");
+                UOM.SetStatusLabel( Strings.Patchingclient );
 
                 /* Originally pushes hThread and hProcess on the stack before a call, we'll overwrite here. */
                 byte[] findBytes = new byte[] { 0x8B, 0x44, 0x24, 0x44, // MOV EAX, [ESP+44]
@@ -71,11 +72,11 @@ namespace UOMachine.Misc
                 };
 
                 int offset = 0;
-                if (Memory.FindSignatureOffset(findBytes, buffer, out offset))
+                if (Memory.FindSignatureOffset( findBytes, buffer, out offset ))
                 {
-                    if ((codeAddress = Memory.Allocate(hProcess.DangerousGetHandle(), IntPtr.Zero, 1024, true)) == IntPtr.Zero)
+                    if ((codeAddress = Memory.Allocate( hProcess.DangerousGetHandle(), IntPtr.Zero, 1024, true )) == IntPtr.Zero)
                     {
-                        UOM.SetStatusLabel("Status : Memory Allocation failed");
+                        UOM.SetStatusLabel( Strings.Memoryallocationfailed );
                         hProcess.Dispose();
                         hThread.Dispose();
                         return false;
@@ -107,7 +108,7 @@ namespace UOMachine.Misc
 
                     int patchAddress = codeAddress.ToInt32() + 8;
 
-                    Memory.Write(hProcess.DangerousGetHandle(), (IntPtr)patchAddress, patchCode1, true);
+                    Memory.Write( hProcess.DangerousGetHandle(), (IntPtr)patchAddress, patchCode1, true );
 
                     byte[] patchCode2 = new byte[] { 0xB8, 0x00, 0x00, 0x00, 0x00, // MOV EAX, <patchAddress>
                                                    0xFF, 0xD0,                   // CALL EAX
@@ -119,13 +120,13 @@ namespace UOMachine.Misc
                     patchCode2[3] = (byte)(patchAddress >> 16);
                     patchCode2[4] = (byte)(patchAddress >> 24);
 
-                    IntPtr writeAddress = new IntPtr((baseAddress.ToInt32() + 0x1000) + offset);
+                    IntPtr writeAddress = new IntPtr( (baseAddress.ToInt32() + 0x1000) + offset );
 
-                    Memory.Write(hProcess.DangerousGetHandle(), writeAddress, patchCode2, true);
+                    Memory.Write( hProcess.DangerousGetHandle(), writeAddress, patchCode2, true );
 
-                    if (Win32.ResumeThread(hThread.DangerousGetHandle()) == -1)
+                    if (Win32.ResumeThread( hThread.DangerousGetHandle() ) == -1)
                     {
-                        UOM.SetStatusLabel("Status : ResumeThread failed");
+                        UOM.SetStatusLabel( Strings.ResumeThreadfailed );
                         hProcess.Dispose();
                         hThread.Dispose();
                         return false;
@@ -135,31 +136,31 @@ namespace UOMachine.Misc
                     byte[] uopidbytes = new byte[4];
                     do
                     {
-                        Memory.Read(hProcess.DangerousGetHandle(), (IntPtr)codeAddress, uopidbytes, true);
+                        Memory.Read( hProcess.DangerousGetHandle(), (IntPtr)codeAddress, uopidbytes, true );
                         uopid = uopidbytes[3] << 24 | uopidbytes[2] << 16 | uopidbytes[1] << 8 | uopidbytes[0];
                     } while (uopid == 0);
                 }
 
                 hProcess.Close();
                 hThread.Close();
-                return ClientLauncher.Attach((uint)uopid, options, true, out index);
+                return ClientLauncher.Attach( (uint)uopid, options, true, out index );
             }
-            UOM.SetStatusLabel("Status : Process creation failed");
+            UOM.SetStatusLabel( Strings.Processcreationfailed );
             return false;
 
 
         }
 
-        private static IntPtr GetBaseAddress(Win32.SafeProcessHandle hProcess, Win32.SafeThreadHandle hThread)
+        private static IntPtr GetBaseAddress( Win32.SafeProcessHandle hProcess, Win32.SafeThreadHandle hThread )
         {
             /* Entry point varies, so need to use GetThreadContext to find entrypoint */
             Win32.CONTEXT cntx = new Win32.CONTEXT();
             cntx.ContextFlags = (int)Win32.CONTEXT_FLAGS.CONTEXT_FULL;
-            Win32.GetThreadContext(hThread.DangerousGetHandle(), ref cntx);
+            Win32.GetThreadContext( hThread.DangerousGetHandle(), ref cntx );
 
             /* Ebx+8 = pointer to entrypoint to be read with ReadProcessMemory. */
             byte[] tmp = new byte[4];
-            Memory.Read(hProcess.DangerousGetHandle(), (IntPtr)(cntx.Ebx + 8), tmp, true);
+            Memory.Read( hProcess.DangerousGetHandle(), (IntPtr)(cntx.Ebx + 8), tmp, true );
 
             int baseAddress = tmp[3] << 24 | tmp[2] << 16 | tmp[1] << 8 | tmp[0];
             return (IntPtr)baseAddress;

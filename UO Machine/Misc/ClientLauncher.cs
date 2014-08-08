@@ -25,6 +25,7 @@ using System.Windows;
 using System.IO;
 using System.Net;
 using UOMachine.IPC;
+using UOMachine.Resources;
 using EasyHook;
 
 namespace UOMachine
@@ -33,7 +34,7 @@ namespace UOMachine
     {
         private static object myLock = new object();
 
-        public static bool Attach(uint pid, OptionsData options, bool isRazor, out int index)
+        public static bool Attach( uint pid, OptionsData options, bool isRazor, out int index )
         {
             lock (myLock)
             {
@@ -41,68 +42,68 @@ namespace UOMachine
                 index = -1;
                 try
                 {
-                    Thread.Sleep(2000);
-                    p = Process.GetProcessById((int)pid);
+                    Thread.Sleep( 2000 );
+                    p = Process.GetProcessById( (int)pid );
                     p.EnableRaisingEvents = true;
-                    p.Exited += new EventHandler(UOM.OnClientExit);
-                    ClientInfo ci = new ClientInfo(p);
-                    Memory.MemoryInit(ci);
+                    p.Exited += new EventHandler( UOM.OnClientExit );
+                    ClientInfo ci = new ClientInfo( p );
+                    Memory.MemoryInit( ci );
                     if (ci.IsValid) ci.InstallMacroHook();
                     else return false;
 
                     if (!isRazor && options.PatchClientEncryptionUOM)
                     {
-                        if (!ClientPatcher.PatchEncryption(p.Handle))
+                        if (!ClientPatcher.PatchEncryption( p.Handle ))
                         {
-                            MessageBox.Show("Error patching client encryption!", "Error");
+                            MessageBox.Show( Strings.Errorpatchingclientencryption, Strings.Error );
                         }
                     }
                     if (ci.DateStamp < 0x4AA52CC4 && options.PatchStaminaCheck)
                     {
-                        if (!ClientPatcher.PatchStaminaCheck(p.Handle))
+                        if (!ClientPatcher.PatchStaminaCheck( p.Handle ))
                         {
-                            MessageBox.Show("Error patching stamina check!", "Error");
+                            MessageBox.Show( Strings.Errorpatchingstaminacheck, Strings.Error );
                         }
                     }
                     if (options.PatchAlwaysLight)
                     {
-                        if (!ClientPatcher.PatchLight(p.Handle))
+                        if (!ClientPatcher.PatchLight( p.Handle ))
                         {
-                            MessageBox.Show("Error with always light patch!", "Error");
+                            MessageBox.Show( Strings.Errorwithalwayslightpatch, Strings.Error );
                         }
                     }
                     if (options.PatchGameSize)
                     {
-                        if (!ClientPatcher.SetGameSize(p.Handle, options.PatchGameSizeWidth, options.PatchGameSizeHeight))
+                        if (!ClientPatcher.SetGameSize( p.Handle, options.PatchGameSizeWidth, options.PatchGameSizeHeight ))
                         {
                             //Silently fail for now as this will fail on UOSteam.
-                            //MessageBox.Show("Error setting game window size!");
+                            //MessageBox.Show(Strings.Errorsettinggamewindowsize);
                         }
                     }
                     int instance;
-                    if (!ClientInfoCollection.AddClient(ci, out instance))
-                        throw new ApplicationException("Unknown error at ClientInfoCollection.Add.");
+                    if (!ClientInfoCollection.AddClient( ci, out instance ))
+                        throw new ApplicationException( String.Concat( Strings.Unknownerror, ": ClientInfoCollection.Add." ) );
                     ci.Instance = instance;
                     index = instance;
-                    Macros.Macro.ChangeServer(instance, options.Server, options.Port);
-                    Thread.Sleep(500);
-                    RemoteHooking.Inject(p.Id, Path.Combine(UOM.StartupPath, "clienthook.dll"), Path.Combine(UOM.StartupPath, "clienthook.dll"), UOM.ServerName);
+                    Macros.Macro.ChangeServer( instance, options.Server, options.Port );
+                    Thread.Sleep( 500 );
+                    RemoteHooking.Inject( p.Id, Path.Combine( UOM.StartupPath, "clienthook.dll" ), Path.Combine( UOM.StartupPath, "clienthook.dll" ), UOM.ServerName );
                 }
                 catch (Exception e)
                 {
-                    Utility.Log.LogMessage(e);
-                    MessageBox.Show("Error injecting ClientHook.dll into target process.  Please try again.", "Error");
+                    Utility.Log.LogMessage( e );
+                    MessageBox.Show( Strings.Errorinjectingdll, Strings.Error );
                     try { if (p != null) p.Kill(); }
                     catch (Win32Exception) { }
                     catch (InvalidOperationException) { }
                     return false;
                 }
-                UOM.SetStatusLabel("Status: Attached to client");
+                UOM.SetStatusLabel( Strings.Attachedtoclient );
                 return true;
             }
         }
 
-        public static bool Launch(OptionsData options, out int index)
+        public static bool Launch( OptionsData options, out int index )
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.WorkingDirectory = MainWindow.CurrentOptions.UOFolder;
@@ -111,21 +112,21 @@ namespace UOMachine
             Win32.SafeProcessHandle hProcess;
             Win32.SafeThreadHandle hThread;
             uint pid, tid;
-            UOM.SetStatusLabel("Status : Launching client");
-            if (Win32.CreateProcess(startInfo, true, out hProcess, out hThread, out pid, out tid))
+            UOM.SetStatusLabel( Strings.Launchingclient );
+            if (Win32.CreateProcess( startInfo, true, out hProcess, out hThread, out pid, out tid ))
             {
-                UOM.SetStatusLabel("Status : Patching client");
-                if (!ClientPatcher.MultiPatch(hProcess.DangerousGetHandle()))
+                UOM.SetStatusLabel( Strings.Patchingclient );
+                if (!ClientPatcher.MultiPatch( hProcess.DangerousGetHandle() ))
                 {
-                    UOM.SetStatusLabel("Status : MultiUO patch failed");
+                    UOM.SetStatusLabel( Strings.MultiUOpatchfailed );
                     hProcess.Dispose();
                     hThread.Dispose();
                     return false;
                 }
 
-                if (Win32.ResumeThread(hThread.DangerousGetHandle()) == -1)
+                if (Win32.ResumeThread( hThread.DangerousGetHandle() ) == -1)
                 {
-                    UOM.SetStatusLabel("Status : ResumeThread failed");
+                    UOM.SetStatusLabel( Strings.ResumeThreadfailed );
                     hProcess.Dispose();
                     hThread.Dispose();
                     return false;
@@ -133,9 +134,9 @@ namespace UOMachine
 
                 hProcess.Close();
                 hThread.Close();
-                return Attach(pid, options, false, out index);
+                return Attach( pid, options, false, out index );
             }
-            UOM.SetStatusLabel("Status : Process creation failed");
+            UOM.SetStatusLabel( Strings.Processcreationfailed );
             return false;
         }
     }

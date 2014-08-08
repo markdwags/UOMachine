@@ -26,12 +26,13 @@ using System.Windows;
 using System.IO;
 using System.Net;
 using UOMachine.IPC;
+using UOMachine.Resources;
 
 namespace UOMachine
 {
     internal static class RazorLauncher
     {
-        public static bool Launch(OptionsData options, out int index)
+        public static bool Launch( OptionsData options, out int index )
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.WorkingDirectory = MainWindow.CurrentOptions.UOFolder;
@@ -39,23 +40,23 @@ namespace UOMachine
             Win32.SafeProcessHandle hProcess;
             Win32.SafeThreadHandle hThread;
             uint pid, tid;
-            UOM.SetStatusLabel("Status : Launching client");
+            UOM.SetStatusLabel( Strings.Launchingclient );
             index = -1;
-            if (Win32.CreateProcess(startInfo, true, out hProcess, out hThread, out pid, out tid))
+            if (Win32.CreateProcess( startInfo, true, out hProcess, out hThread, out pid, out tid ))
             {
-                UOM.SetStatusLabel("Status : Patching client");
+                UOM.SetStatusLabel( Strings.Patchingclient );
 
-                if (!ClientPatcher.MultiPatch(hProcess.DangerousGetHandle()))
+                if (!ClientPatcher.MultiPatch( hProcess.DangerousGetHandle() ))
                 {
-                    UOM.SetStatusLabel("Status : MultiUO patch failed");
+                    UOM.SetStatusLabel( Strings.MultiUOpatchfailed );
                     hProcess.Dispose();
                     hThread.Dispose();
                     return false;
                 }
 
-                if (Win32.ResumeThread(hThread.DangerousGetHandle()) == -1)
+                if (Win32.ResumeThread( hThread.DangerousGetHandle() ) == -1)
                 {
-                    UOM.SetStatusLabel("Status : ResumeThread failed");
+                    UOM.SetStatusLabel( Strings.ResumeThreadfailed );
                     hProcess.Dispose();
                     hThread.Dispose();
                     return false;
@@ -68,7 +69,7 @@ namespace UOMachine
                 startInfo.UseShellExecute = false;
                 startInfo.CreateNoWindow = true;
                 startInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                startInfo.FileName = Path.Combine(UOM.StartupPath, "RazorLoader.exe");
+                startInfo.FileName = Path.Combine( UOM.StartupPath, "RazorLoader.exe" );
                 string args = "--server " + options.Server + "," + options.Port.ToString();
                 args += " --path " + options.RazorFolder;
                 if (!options.PatchClientEncryption)
@@ -81,15 +82,15 @@ namespace UOMachine
                 p.StartInfo = startInfo;
                 p.Start();
 
-                if (ClientLauncher.Attach(pid, options, true, out index))
+                if (ClientLauncher.Attach( pid, options, true, out index ))
                 {
-                    UOM.SetStatusLabel("Status : Razor successfully launched");
+                    UOM.SetStatusLabel( Strings.Razorsuccessfullylaunched );
                     return true;
                 }
                 else
                 {
-                    UOM.SetStatusLabel("Status : Failed to attach to Razor client");
-                    MessageBox.Show("Error attaching to Razor client.", "Error");
+                    UOM.SetStatusLabel( Strings.ErrorattachingtoRazorclient );
+                    MessageBox.Show( Strings.ErrorattachingtoRazorclient, Strings.Error );
                 }
             }
             return false;
