@@ -1,13 +1,13 @@
 {
-    "version": "0.4.0.1",
+    "version": "0.4.0.2",
     "files": [
         {
             "file": "CHANGELOG.txt",
-            "md5sum": "da90a29dc838264aad8e388804e1b49e"
+            "md5sum": "84b472f4489a30bc6f6838eca54f8ecc"
         },
         {
             "file": "ClientHook.dll",
-            "md5sum": "9acedb9c9593833a0961450a37e43f86"
+            "md5sum": "bcc7f45ca6a5ddf48130be5a4a5a9811"
         },
         {
             "file": "EasyHook.dll",
@@ -59,7 +59,7 @@
         },
         {
             "file": "RazorLoader.exe",
-            "md5sum": "feb577dbedd1e84aaa95e5f09e5c7a13"
+            "md5sum": "4ed3c1383700ab6e3a8191f9ca4372b4"
         },
         {
             "file": "RazorLoader.exe.config",
@@ -67,7 +67,7 @@
         },
         {
             "file": "UOMachine.exe",
-            "md5sum": "a4aa47305268095edc65926601329f80"
+            "md5sum": "425bd60a10e728ba9c194291ca0d0dd6"
         },
         {
             "file": "UOMachine.exe.config",
@@ -75,7 +75,11 @@
         },
         {
             "file": "UOMachine.xml",
-            "md5sum": "387cddf822ccea4e8662be72fdb75413"
+            "md5sum": "00acc44ab4108e5bf23000895e3f9c85"
+        },
+        {
+            "file": "Updater_New.exe",
+            "md5sum": "9e0ce52938ea7fd62ed8f9fb80700221"
         },
         {
             "file": "VS templates\\Templates ReadMe.txt",
@@ -88,6 +92,26 @@
         {
             "file": "VS templates\\UO Machine Standard Script.zip",
             "md5sum": "1afe746f205a162d7d6c013d2b04faca"
+        },
+        {
+            "file": "es\\Updater.resources.dll",
+            "md5sum": "17324f2d0edb16965fb5ca6f329a2778"
+        },
+        {
+            "file": "fr\\Updater.resources.dll",
+            "md5sum": "c63a715e2d3c96987e632fb22ff27c77"
+        },
+        {
+            "file": "ru\\Updater.resources.dll",
+            "md5sum": "a42419bffa78319080b438d0c3d7b70f"
+        },
+        {
+            "file": "zh\\UOMachine.resources.dll",
+            "md5sum": "505a5e30a03310a22881fd4cd6139aaf"
+        },
+        {
+            "file": "zh\\Updater.resources.dll",
+            "md5sum": "888984322fe3b22d7368c0d0133f17ca"
         },
         {
             "file": "zlib32.dll",
