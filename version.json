@@ -7,7 +7,7 @@
         },
         {
             "file": "ClientHook.dll",
-            "md5sum": "bcc7f45ca6a5ddf48130be5a4a5a9811"
+            "md5sum": "1b8dbb80506bd0a52c960c02026261d4"
         },
         {
             "file": "EasyHook.dll",
@@ -59,7 +59,7 @@
         },
         {
             "file": "RazorLoader.exe",
-            "md5sum": "4ed3c1383700ab6e3a8191f9ca4372b4"
+            "md5sum": "8dd4847540272b4a92a768fd887aa55b"
         },
         {
             "file": "RazorLoader.exe.config",
@@ -67,7 +67,7 @@
         },
         {
             "file": "UOMachine.exe",
-            "md5sum": "425bd60a10e728ba9c194291ca0d0dd6"
+            "md5sum": "379d92fc9557f60b17836f180cb772cf"
         },
         {
             "file": "UOMachine.exe.config",
@@ -79,7 +79,7 @@
         },
         {
             "file": "Updater_New.exe",
-            "md5sum": "9e0ce52938ea7fd62ed8f9fb80700221"
+            "md5sum": "1f90e0291ae395a03184473e59f4edc4"
         },
         {
             "file": "VS templates\\Templates ReadMe.txt",
