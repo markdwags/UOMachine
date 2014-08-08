@@ -1517,6 +1517,472 @@
              [rest of string was truncated]&quot;;.
              </summary>
         </member>
+        <member name="T:UOMachine.Resources.Strings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.About">
+            <summary>
+              Looks up a localized string similar to About....
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Addassemblyreference">
+            <summary>
+              Looks up a localized string similar to Add assembly reference.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Alwayslightpatch">
+            <summary>
+              Looks up a localized string similar to Always light patch.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Attachedtoclient">
+            <summary>
+              Looks up a localized string similar to Attached to client.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Browse">
+            <summary>
+              Looks up a localized string similar to Browse.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Cancel">
+            <summary>
+              Looks up a localized string similar to Cancel.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.CannotfindRazor">
+            <summary>
+              Looks up a localized string similar to Cannot find Razor.exe/Crypt.dll.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.CheckForUpdates">
+            <summary>
+              Looks up a localized string similar to Check for updates....
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Client">
+            <summary>
+              Looks up a localized string similar to Client.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Clientexited">
+            <summary>
+              Looks up a localized string similar to Client exited..
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Clientstarted">
+            <summary>
+              Looks up a localized string similar to Client started.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Closing">
+            <summary>
+              Looks up a localized string similar to Closing.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Compilererror">
+            <summary>
+              Looks up a localized string similar to Compiler error.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Converttabstospaces">
+            <summary>
+              Looks up a localized string similar to Convert tabs to spaces.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.CutCopywholeline">
+            <summary>
+              Looks up a localized string similar to Cut / Copy whole line.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Document">
+            <summary>
+              Looks up a localized string similar to Document.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Edit">
+            <summary>
+              Looks up a localized string similar to Edit.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Error">
+            <summary>
+              Looks up a localized string similar to Error.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.ErrorattachingtoRazorclient">
+            <summary>
+              Looks up a localized string similar to Error attaching to Razor client..
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Errorinitializing">
+            <summary>
+              Looks up a localized string similar to Error initializing UO Machine, please try again..
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Errorinjectingdll">
+            <summary>
+              Looks up a localized string similar to Error injecting dll into target process.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Erroropeningfile">
+            <summary>
+              Looks up a localized string similar to Error opening file, make sure it&apos;s not in use..
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Errorpatchingclientencryption">
+            <summary>
+              Looks up a localized string similar to Error patching client encryption!.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Errorpatchingstaminacheck">
+            <summary>
+              Looks up a localized string similar to Error patching stamina check!.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Errorresolvinghostname">
+            <summary>
+              Looks up a localized string similar to Error resolving hostname.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Errorsavingfile">
+            <summary>
+              Looks up a localized string similar to Error saving file, please choose another location..
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Errorsettinggamewindowsize">
+            <summary>
+              Looks up a localized string similar to Error setting game window size!.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Errorstartingclient">
+            <summary>
+              Looks up a localized string similar to Error starting client.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Errorwithalwayslightpatch">
+            <summary>
+              Looks up a localized string similar to Error with always light patch!.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.ErrorwithGACinstallation">
+            <summary>
+              Looks up a localized string similar to Error with GAC installation, please see log for details..
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Exceptioncaught">
+            <summary>
+              Looks up a localized string similar to Exception caught, please check log..
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Exit">
+            <summary>
+              Looks up a localized string similar to Exit.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.File">
+            <summary>
+              Looks up a localized string similar to File.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Forcegamesize">
+            <summary>
+              Looks up a localized string similar to Force game size.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Formatdocument">
+            <summary>
+              Looks up a localized string similar to Format document.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Fullcaching">
+            <summary>
+              Looks up a localized string similar to Full caching (about 70 MB).
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Help">
+            <summary>
+              Looks up a localized string similar to Help.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Indentationsize">
+            <summary>
+              Looks up a localized string similar to Indentation size:.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Invalidvalueforport">
+            <summary>
+              Looks up a localized string similar to Invalid value for port, please fix..
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Invalidvaluepresentinoptions">
+            <summary>
+              Looks up a localized string similar to Invalid value(s) present in options.xml, please fix..
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Launchingclient">
+            <summary>
+              Looks up a localized string similar to Launching client.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Main">
+            <summary>
+              Looks up a localized string similar to Main.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Memoryallocationfailed">
+            <summary>
+              Looks up a localized string similar to Memory allocation failed..
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.MultiUOpatchfailed">
+            <summary>
+              Looks up a localized string similar to MultiUO patch failed!.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.New">
+            <summary>
+              Looks up a localized string similar to New.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.None0extra">
+            <summary>
+              Looks up a localized string similar to None (0 extra).
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.OK">
+            <summary>
+              Looks up a localized string similar to OK.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Open">
+            <summary>
+              Looks up a localized string similar to Open.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Options">
+            <summary>
+              Looks up a localized string similar to Options.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Patchclientencryption">
+            <summary>
+              Looks up a localized string similar to Patch client encryption.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Patchencryption">
+            <summary>
+              Looks up a localized string similar to Patch encryption.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Patchingclient">
+            <summary>
+              Looks up a localized string similar to Patching client.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Patchstamcheck">
+            <summary>
+              Looks up a localized string similar to Patch Felucca stamina check (&lt; 7.0.0.0).
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Performance">
+            <summary>
+              Looks up a localized string similar to Performance.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Port">
+            <summary>
+              Looks up a localized string similar to Port:.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Processcreationfailed">
+            <summary>
+              Looks up a localized string similar to Process creation failed..
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Razor">
+            <summary>
+              Looks up a localized string similar to Razor.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Razorinstallationfolder">
+            <summary>
+              Looks up a localized string similar to Razor installation folder:.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Razorsuccessfullylaunched">
+            <summary>
+              Looks up a localized string similar to Razor successfully lauched.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Ready">
+            <summary>
+              Looks up a localized string similar to Ready.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.ResumeThreadfailed">
+            <summary>
+              Looks up a localized string similar to ResumeThread failed..
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Save">
+            <summary>
+              Looks up a localized string similar to Save.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.SaveAs">
+            <summary>
+              Looks up a localized string similar to Save As.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Scriptrunning">
+            <summary>
+              Looks up a localized string similar to Script running.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Scriptstopped">
+            <summary>
+              Looks up a localized string similar to Script stopped.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Scriptstopping">
+            <summary>
+              Looks up a localized string similar to Script stopping.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Selectassembliestoreference">
+            <summary>
+              Looks up a localized string similar to Select assembles to reference.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Server">
+            <summary>
+              Looks up a localized string similar to Server:.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.ServerusesOSIencryption">
+            <summary>
+              Looks up a localized string similar to Server uses OSI encryption.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Showboxforcontrolcharacters">
+            <summary>
+              Looks up a localized string similar to Show box for control characters.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Showspaces">
+            <summary>
+              Looks up a localized string similar to Show spaces.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Showtabs">
+            <summary>
+              Looks up a localized string similar to Show tabs.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Startnewclient">
+            <summary>
+              Looks up a localized string similar to Start new client.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.StartnewRazorinstance">
+            <summary>
+              Looks up a localized string similar to Start new Razor instance.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.StartnewUOSteaminstance">
+            <summary>
+              Looks up a localized string similar to Start new UOSteam instance.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Startscript">
+            <summary>
+              Looks up a localized string similar to Start script.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Staticindicesonly">
+            <summary>
+              Looks up a localized string similar to Static indices only (about 20 MB).
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Staticscaching">
+            <summary>
+              Looks up a localized string similar to Statics caching (memory required).
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Status">
+            <summary>
+              Looks up a localized string similar to Status.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.StatusReady">
+            <summary>
+              Looks up a localized string similar to Status : Ready.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Stoppingscript">
+            <summary>
+              Looks up a localized string similar to Stopping script.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Stopscript">
+            <summary>
+              Looks up a localized string similar to Stop script.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Unknownerror">
+            <summary>
+              Looks up a localized string similar to Unknown error.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.UOclientpath">
+            <summary>
+              Looks up a localized string similar to UO client path:.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.UOinstallationfolder">
+            <summary>
+              Looks up a localized string similar to UO installation folder:.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.UOSteam">
+            <summary>
+              Looks up a localized string similar to UOSteam.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.UOSteamexecutablepath">
+            <summary>
+              Looks up a localized string similar to UOSteam executable path:.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.UOSteaminstallationfolder">
+            <summary>
+              Looks up a localized string similar to UOSteam installation folder:.
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.UOSteamlaunchfailed">
+            <summary>
+              Looks up a localized string similar to UOSteam launch failed..
+            </summary>
+        </member>
+        <member name="P:UOMachine.Resources.Strings.Youmustentervalidoptions">
+            <summary>
+              Looks up a localized string similar to You must enter valid options to start UO Machine..
+            </summary>
+        </member>
         <member name="M:UOMachine.ScriptCompiler.StopScript">
             <summary>
             Stop currently running script.
