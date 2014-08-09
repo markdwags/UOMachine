@@ -8,7 +8,7 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("UO Machine")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Scripting utility for Ultima Online")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("UO Machine")]
 [assembly: AssemblyProduct("UO Machine")]
@@ -52,4 +52,4 @@ using System.Windows;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("0.4.0.*")]
-[assembly: AssemblyFileVersion("0.4.0.1")]
+[assembly: AssemblyFileVersion("0.4.0.2")]

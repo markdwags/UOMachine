@@ -65,6 +65,32 @@ namespace UOMachine
 
         internal static bool Initialize( MainWindow mainWindow )
         {
+            if (File.Exists( Path.Combine( StartupPath, "Updater_New.exe" ) ))
+            {
+                try
+                {
+                    File.Copy( Path.Combine( StartupPath, "Updater_New.exe" ), Path.Combine( StartupPath, "Updater.exe" ), true );
+                }
+                catch (Exception e)
+                {
+                }
+            }
+
+            string[] renameFiles = Directory.GetFiles( StartupPath, "*.new", SearchOption.AllDirectories );
+            foreach (string renameFile in renameFiles)
+            {
+                string path = Path.GetDirectoryName( renameFile );
+                string origFile = Path.Combine( path, Path.GetFileNameWithoutExtension( renameFile ) );
+                try
+                {
+                    File.Delete( origFile );
+                    File.Move( renameFile, origFile );
+                }
+                catch (Exception e)
+                {
+                }
+            }
+
             if (!MainWindow.CurrentOptions.IsValid()) return false;
             try { Config.Register( "UOM hooks", Path.Combine( StartupPath, "UOMachine.exe" ), Path.Combine( StartupPath, "ClientHook.dll" ) ); }
             catch (Exception ex)

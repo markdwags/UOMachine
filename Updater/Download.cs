@@ -7,6 +7,7 @@ using System.IO;
 using System.Net;
 using System.Threading;
 using Updater;
+using Updater.Resources;
 
 namespace Updater
 {
@@ -44,7 +45,16 @@ namespace Updater
             {
                 m_Url = url;
                 m_CompletionCallback = completionCallback;
-                m_Stream = new FileStream(file, FileMode.OpenOrCreate, FileAccess.Write);
+                try
+                {
+                    m_Stream = new FileStream( file, FileMode.OpenOrCreate, FileAccess.Write );
+                }
+                catch (IOException e)
+                {
+                    file = String.Concat( file, ".new" );
+                    m_Stream = new FileStream( file, FileMode.OpenOrCreate, FileAccess.Write );
+                }
+
                 m_ProgressCallback = progressCallback;
                 m_File = f;
                 m_Thread = new Thread(new ThreadStart(DownloadFile));
@@ -58,6 +68,7 @@ namespace Updater
 
         private void DownloadFile()
         {
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo( "zh" );
             HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(m_Url);
             HttpWebResponse webResponse;
             Stream webStream;
@@ -91,7 +102,7 @@ namespace Updater
             }
             else
             {
-                throw new Exception("File could not be downloaded.");
+                throw new Exception(Strings.Filecouldnotbedownloaded);
             }
         }
     }
