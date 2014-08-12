@@ -7,7 +7,7 @@
         },
         {
             "file": "ClientHook.dll",
-            "md5sum": "3649e1911bf79bb63ff5188732f609cb"
+            "md5sum": "61b9396e5bfa21ec8c81c7cbf7badc42"
         },
         {
             "file": "EasyHook.dll",
@@ -59,7 +59,7 @@
         },
         {
             "file": "RazorLoader.exe",
-            "md5sum": "e2eb7cdb1385f9099217dd6fff3b3891"
+            "md5sum": "df895ed348c2ae3f5dccc2c9b5b70475"
         },
         {
             "file": "RazorLoader.exe.config",
@@ -67,7 +67,7 @@
         },
         {
             "file": "UOMachine.exe",
-            "md5sum": "00470ea187381ab0a631d105b4af1121"
+            "md5sum": "813cbef1250ae5f6a8f27bc999211fb3"
         },
         {
             "file": "UOMachine.exe.config",
@@ -79,7 +79,7 @@
         },
         {
             "file": "Updater_New.exe",
-            "md5sum": "5002009c05a656cb3b3b8ee22a019440"
+            "md5sum": "f4d1103807fc75be98854ff3a56761eb"
         },
         {
             "file": "VS templates\\Templates ReadMe.txt",
@@ -95,23 +95,23 @@
         },
         {
             "file": "es\\Updater.resources.dll",
-            "md5sum": "edeabb81c028ba0c4990f569dbc38f8c"
+            "md5sum": "ce414749557dda1468359b2eba3683b8"
         },
         {
             "file": "fr\\Updater.resources.dll",
-            "md5sum": "043b5d09fbff7eb8e181559ae99d3621"
+            "md5sum": "93838de1e0a37623d241296bb55ac916"
         },
         {
             "file": "ru\\Updater.resources.dll",
-            "md5sum": "061532b00862afbcbb209d69186becbe"
+            "md5sum": "74775ce148c0cc805390a6270148a8af"
         },
         {
             "file": "zh\\UOMachine.resources.dll",
-            "md5sum": "ecbdd47ee87cc271cb0dac877e6ba9be"
+            "md5sum": "8b25dd9a9247c90b75e68066675897b4"
         },
         {
             "file": "zh\\Updater.resources.dll",
-            "md5sum": "f4eef079b055406cdbb4b024d20e42a0"
+            "md5sum": "6854e915c20be59cae9559dedb8360c6"
         },
         {
             "file": "zlib32.dll",
