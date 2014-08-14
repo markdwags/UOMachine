@@ -38,6 +38,6 @@
 
 	}
 
-	$version = array('version' => '0.4.0.2', 'files' => $md5files);
+	$version = array('version' => '0.4.0.4', 'files' => $md5files);
 
 echo json_encode($version, JSON_PRETTY_PRINT);
