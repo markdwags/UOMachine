@@ -118,39 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Checkingforupdates" xml:space="preserve">
-    <value>Attente ...</value>
+    <value>Verificar atualizações ...</value>
   </data>
   <data name="Complete" xml:space="preserve">
-    <value>Complète.</value>
+    <value>Completa.</value>
   </data>
   <data name="Downloading" xml:space="preserve">
-    <value>Téléchargement</value>
+    <value>Baixando</value>
   </data>
   <data name="Downloadingversioninfo" xml:space="preserve">
-    <value>Téléchargement de la version d'info ...</value>
+    <value>Baixando informações sobre a versão ...</value>
   </data>
   <data name="Filecouldnotbedownloaded" xml:space="preserve">
-    <value>Le fichier ne peut être téléchargé.</value>
+    <value>O arquivo não pode ser baixado.</value>
   </data>
   <data name="Nonewupdates" xml:space="preserve">
-    <value>Pas de nouvelles mises à jour disponibles.</value>
+    <value>Não há novas atualizações disponíveis.</value>
   </data>
   <data name="Unablefindfolder" xml:space="preserve">
-    <value>Impossible de trouver le dossier UOMachine, s'il vous plaît sélectionnez le dossier contenant UOMachine.</value>
+    <value>Não foi possível encontrar pasta UOMachine, selecione a pasta que contém UOMachine.</value>
   </data>
   <data name="UOMachineRunning" xml:space="preserve">
-    <value>UOMachine fonctionnement</value>
+    <value>UOMachine running</value>
   </data>
   <data name="UOMachineRunningPleaseClose" xml:space="preserve">
-    <value>Une mise à jour est disponible, s'il vous plaît fermer UOMachine mettre à jour.</value>
+    <value>Uma atualização está disponível, por favor, feche UOMachine para atualizar.</value>
   </data>
   <data name="Waiting" xml:space="preserve">
-    <value>Attente ...</value>
-  </data>
-  <data name="UOMachineUpdater" xml:space="preserve">
-    <value>UOMachine de mise à jour</value>
+    <value>Waiting...</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Fermer</value>
+    <value>Fechar</value>
+  </data>
+  <data name="UOMachineUpdater" xml:space="preserve">
+    <value>UOMachine Updater</value>
   </data>
 </root>

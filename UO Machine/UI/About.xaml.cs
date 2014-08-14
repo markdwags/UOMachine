@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Reflection;
 
 namespace UOMachine
 {
@@ -30,6 +31,7 @@ namespace UOMachine
         public About()
         {
             InitializeComponent();
+            textBlock1.Text = VersionInfo;
             myDropShadow = new DropShadowEffect();
             myDropShadow.Opacity = 1;
             myDropShadow.ShadowDepth = 0;
@@ -62,6 +64,14 @@ namespace UOMachine
         private void textBlock5_MouseLeave(object sender, MouseEventArgs e)
         {
             textBlock5.Effect = null;
+        }
+
+        public string VersionInfo
+        {
+            get {
+                Version ver = Assembly.GetExecutingAssembly().GetName().Version;
+                return String.Format("UOMachine {0}.{1}.{2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision);
+            }
         }
     }
 }

@@ -3,76 +3,138 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:p="clr-namespace:UOMachine.Resources"
     Title="{x:Static p:Strings.Options}" Height="313" Width="600" ResizeMode="NoResize" Topmost="True" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" Closing="Window_Closing" WindowStyle="SingleBorderWindow">
-	<Window.Background>
-		<RadialGradientBrush SpreadMethod="Reflect" MappingMode="RelativeToBoundingBox">
-			<GradientStop Color="#FF000000" Offset="0.231"/>
-			<GradientStop Color="#FF0300A0" Offset="1"/>
-		</RadialGradientBrush>
-	</Window.Background>
+    <Window.Background>
+        <RadialGradientBrush SpreadMethod="Reflect" MappingMode="RelativeToBoundingBox">
+            <GradientStop Color="#FF000000" Offset="0.231"/>
+            <GradientStop Color="#FF0300A0" Offset="1"/>
+        </RadialGradientBrush>
+    </Window.Background>
     <Grid Background="Transparent">
         <TabControl x:Name="tabControl1" Margin="0,0,0,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Height="244" FontSize="12" FontWeight="Normal">
             <TabItem Header="{x:Static p:Strings.Main}" x:Name="tabItemMain" FontWeight="Normal" FontStyle="Normal" TabIndex="1">
                 <Grid Width="Auto">
-                    <TextBox Height="23" Margin="0,27,65,0" x:Name="textBoxUO" VerticalAlignment="Top" FontSize="12" TabIndex="2" />
-                    <TextBox Margin="0,0,65,56" x:Name="textBoxRazor" FontSize="12" Height="23" VerticalAlignment="Bottom" TabIndex="4" />
-                    <Label Height="25" Margin="0,4,65,0" x:Name="label1" VerticalAlignment="Top" FontSize="13" Content="{x:Static p:Strings.UOinstallationfolder}"/>
-                    <Label Margin="0,103.723,65,78.377" x:Name="label2" FontSize="13" Height="25" Content="{x:Static p:Strings.Razorinstallationfolder}" d:LayoutOverrides="VerticalAlignment"/>
-                    <Button Height="23" HorizontalAlignment="Right" Margin="0,0,4,159.517" x:Name="buttonUO" VerticalAlignment="Bottom" Width="53" FontSize="13" Click="buttonUO_Click" Content="{x:Static p:Strings.Browse}" TabIndex="7" />
-                    <Button FontSize="13" HorizontalAlignment="Right" Margin="0,0,4,56" x:Name="buttonRazor" Width="53" Click="buttonRazor_Click" Height="23" VerticalAlignment="Bottom" Content="{x:Static p:Strings.Browse}" TabIndex="9" />
-                    <TextBox Margin="0,78,65,0" x:Name="textBoxClient" Height="23" VerticalAlignment="Top" FontSize="12" TabIndex="3" />
-                    <Button HorizontalAlignment="Right" Margin="0,78,4,0" x:Name="buttonClient" Width="53" Click="buttonClient_Click" VerticalAlignment="Top" Height="23" Content="{x:Static p:Strings.Browse}" FontSize="13" TabIndex="8" />
-                    <Label Margin="0,55,65,0" x:Name="label3" Height="25" FontSize="13" VerticalAlignment="Top" Content="{x:Static p:Strings.UOclientpath}"/>
-                    <TextBox Height="23" Margin="0,0,182,7" x:Name="textBoxServer" VerticalAlignment="Bottom" FontSize="12" TabIndex="5" />
-                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,0,65,7" x:Name="textBoxPort" VerticalAlignment="Bottom" Width="110" FontSize="12" TabIndex="6" />
-                    <Label FontSize="13" Height="25" Margin="0,0,0,30" x:Name="label5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="388" Content="{x:Static p:Strings.Server}"/>
-                    <Label FontSize="13" Height="25" HorizontalAlignment="Right" Margin="0,0,64,30" x:Name="label6" VerticalAlignment="Bottom" Width="111" Content="{x:Static p:Strings.Port}"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="label1" VerticalAlignment="Top" FontSize="13" Content="{x:Static p:Strings.UOinstallationfolder}" Grid.Row="0"/>
+                    <TextBox x:Name="textBoxUO" VerticalAlignment="Top" FontSize="12" TabIndex="2"  Grid.Row="1" Grid.Column="0" Margin="0,0,5,0"/>
+                    <Button HorizontalAlignment="Right" x:Name="buttonUO" VerticalAlignment="Bottom" FontSize="13" Click="buttonUO_Click" Content="{x:Static p:Strings.Browse}" TabIndex="7" Grid.Row="1" Grid.Column="1"/>
+                    <Label x:Name="label3" FontSize="13" VerticalAlignment="Top" Content="{x:Static p:Strings.UOclientpath}" Grid.Row="2" Grid.Column="0"/>
+                    <TextBox x:Name="textBoxClient" VerticalAlignment="Top" FontSize="12" TabIndex="3" Grid.Row="3" Grid.Column="0" Margin="0,0,5,0"/>
+                    <Button HorizontalAlignment="Right" x:Name="buttonClient" Click="buttonClient_Click" VerticalAlignment="Top" Content="{x:Static p:Strings.Browse}" FontSize="13" TabIndex="8" Grid.Row="3" Grid.Column="1"/>
+                    <Label FontSize="13" x:Name="label5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="388" Content="{x:Static p:Strings.Server}" Grid.Row="4" Grid.Column="0"/>                    
+                    <TextBox x:Name="textBoxServer" VerticalAlignment="Bottom" FontSize="12" TabIndex="5" Grid.Row="5" Grid.Column="0" Margin="0,0,120,0"/>
+                    <TextBox HorizontalAlignment="Right" x:Name="textBoxPort" VerticalAlignment="Bottom" Width="110" FontSize="12" TabIndex="6" Grid.Row="5" Grid.Column="0" Margin="0,0,5,0"/>
+                    <Label FontSize="13" HorizontalAlignment="Right" x:Name="label6" VerticalAlignment="Bottom" Width="111" Content="{x:Static p:Strings.Port}" Grid.Row="4" Grid.Column="0" Margin="0,0,5,0"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabItemClient" Header="{x:Static p:Strings.Client}">
-            	<Grid>
-                    <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="{x:Static p:Strings.Patchencryption}" Margin="6,16,0,0" Height="16" Width="Auto" FontSize="13" Name="checkBoxEncryption" />
-                    <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="{x:Static p:Strings.Patchstamcheck}" Margin="6,36,0,0" Height="16" Width="Auto" FontSize="13" x:Name="checkBoxStamina" />
-                    <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="{x:Static p:Strings.Alwayslightpatch}" Margin="6,56,0,0" Height="16" Width="Auto" FontSize="13" x:Name="checkBoxLight" />
-                    <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="{x:Static p:Strings.Forcegamesize}" Margin="6,77,0,0" Height="16" Width="Auto" FontSize="13" x:Name="checkBoxGameSize" />
-                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="133,77,0,0" Height="23" Width="50" x:Name="gameWidth" Text="1024"></TextBox>
-                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="209,77,0,0" Height="23" Width="50" x:Name="gameHeight" Text="768"></TextBox>
-                    <Label Content="x" HorizontalAlignment="Left" Margin="188,77,0,0" VerticalAlignment="Top"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="{x:Static p:Strings.Patchencryption}" Width="Auto" FontSize="13" Name="checkBoxEncryption" Grid.Row="0"/>
+                    <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="{x:Static p:Strings.Patchstamcheck}" Width="Auto" FontSize="13" x:Name="checkBoxStamina"  Grid.Row="1"/>
+                    <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="{x:Static p:Strings.Alwayslightpatch}" Width="Auto" FontSize="13" x:Name="checkBoxLight"  Grid.Row="2"/>
+                    <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="{x:Static p:Strings.Forcegamesize}" Width="Auto" FontSize="13" x:Name="checkBoxGameSize"  Grid.Row="3"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" x:Name="gameWidth" Text="1024" Grid.Row="3"  Grid.Column="1"/>
+                    <Label Content="x" Grid.Row="3" Grid.Column="2"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" x:Name="gameHeight" Text="768" Grid.Row="3"  Grid.Column="3"/>
+                    
                 </Grid>
             </TabItem>
             <TabItem Header="{x:Static p:Strings.Razor}" x:Name="tabItemRazor">
-                <Grid Height="Auto" Width="Auto">
-                    <CheckBox Height="16" HorizontalAlignment="Left" Margin="6,16,0,0" x:Name="checkBoxPatchClient" VerticalAlignment="Top" Width="186" IsChecked="False" FontSize="13" Content="{x:Static p:Strings.Patchclientencryption}"/>
-                    <CheckBox Height="16" HorizontalAlignment="Left" Margin="6,38,0,0" x:Name="checkBoxEncryptedServer" VerticalAlignment="Top" Width="180" FontSize="13" Content="{x:Static p:Strings.ServerusesOSIencryption}"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="label2" FontSize="13" Content="{x:Static p:Strings.Razorinstallationfolder}" d:LayoutOverrides="VerticalAlignment" Grid.Row="0"/>
+                    <TextBox x:Name="textBoxRazor" FontSize="12" VerticalAlignment="Bottom" TabIndex="4" Grid.Row="1" Margin="0,0,5,0" TextChanged="textBoxRazor_TextChanged"/>
+                    <Button FontSize="13" x:Name="buttonRazor" Click="buttonRazor_Click" Content="{x:Static p:Strings.Browse}" TabIndex="9" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                    <CheckBox HorizontalAlignment="Left" x:Name="checkBoxPatchClient" VerticalAlignment="Top" IsChecked="False" FontSize="13" Content="{x:Static p:Strings.Patchclientencryption}" Grid.Row="2"/>
+                    <CheckBox HorizontalAlignment="Left" x:Name="checkBoxEncryptedServer" VerticalAlignment="Top" FontSize="13" Content="{x:Static p:Strings.ServerusesOSIencryption}" Grid.Row="3"/>
                 </Grid>
             </TabItem>
             <TabItem Header="{x:Static p:Strings.UOSteam}" x:Name="tabItemUOSteam">
                 <Grid Height="Auto" Width="Auto">
-                    <TextBox Margin="0,0,65,159" x:Name="textBoxUOS" FontSize="12" Height="23" VerticalAlignment="Bottom" TabIndex="4" />
-                    <Label Margin="0,0.04,65,187" x:Name="labelUOS" FontSize="13" Height="25" Content="{x:Static p:Strings.UOSteaminstallationfolder}"/>
-                    <Button FontSize="13" HorizontalAlignment="Right" Margin="0,0,0,159" x:Name="buttonUOS" Width="53" Click="buttonUOS_Click" Height="23" VerticalAlignment="Bottom" Content="Browse" TabIndex="9" />
-                    <TextBox Margin="0,0,65,106" x:Name="textBoxUOSExe" FontSize="12" Height="23" VerticalAlignment="Bottom" TabIndex="4" />
-                    <Label Margin="0,53,65,134" x:Name="labelUOSExe" FontSize="13" Height="25" Content="{x:Static p:Strings.UOSteamexecutablepath}"/>
-                    <Button FontSize="13" HorizontalAlignment="Right" Margin="0,0,0,106" x:Name="buttonUOSExe" Width="53" Click="buttonUOSExe_Click" Height="23" VerticalAlignment="Bottom" Content="Browse" TabIndex="9" />
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="labelUOS" FontSize="13" Content="{x:Static p:Strings.UOSteaminstallationfolder}"/>
+                    <TextBox x:Name="textBoxUOS" FontSize="12" VerticalAlignment="Bottom" TabIndex="4" Grid.Row="1" Margin="0,0,5,0"/>
+                    <Button FontSize="13" HorizontalAlignment="Right" x:Name="buttonUOS" Width="53" Click="buttonUOS_Click" Height="23" VerticalAlignment="Bottom" Content="{x:Static p:Strings.Browse}" TabIndex="9"  Grid.Row="1" Grid.Column="1"/>
+                    <Label x:Name="labelUOSExe" FontSize="13" Content="{x:Static p:Strings.UOSteamexecutablepath}" Grid.Row="2"/>
+                    <TextBox x:Name="textBoxUOSExe" FontSize="12" VerticalAlignment="Bottom" TabIndex="4" Grid.Row="3" Margin="0,0,5,0"/>
+                    <Button FontSize="13" HorizontalAlignment="Right" x:Name="buttonUOSExe" Width="53" Click="buttonUOSExe_Click" Height="23" VerticalAlignment="Bottom" Content="{x:Static p:Strings.Browse}" TabIndex="9"  Grid.Row="3" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem Header="{x:Static p:Strings.Document}" x:Name="tabItemDocument">
                 <Grid Height="Auto" x:Name="grid1" Width="Auto">
-                    <CheckBox Height="16" HorizontalAlignment="Left" Margin="22,26,0,0" x:Name="checkBoxConvert" VerticalAlignment="Top" Width="Auto" Content="{x:Static p:Strings.Converttabstospaces}" FontSize="13"/>
-                    <CheckBox Height="16" HorizontalAlignment="Left" Margin="22,48,0,0" x:Name="checkBoxCopy" VerticalAlignment="Top" Width="Auto" Content="{x:Static p:Strings.CutCopywholeline}" FontSize="13"/>
-                    <CheckBox Height="16" HorizontalAlignment="Left" Margin="22,69,0,0" x:Name="checkBoxControl" VerticalAlignment="Top" Width="Auto" Content="{x:Static p:Strings.Showboxforcontrolcharacters}" FontSize="13"/>
-                    <CheckBox HorizontalAlignment="Left" Margin="22,89,0,102.1" x:Name="checkBoxSpace" Width="Auto" Content="{x:Static p:Strings.Showspaces}" FontSize="13" Height="16" d:LayoutOverrides="Height"/>
-                    <CheckBox Height="16" HorizontalAlignment="Left" Margin="22,0,0,81" x:Name="checkBoxTab" VerticalAlignment="Bottom" Width="Auto" Content="{x:Static p:Strings.Showtabs}" FontSize="13"/>
-                    <Label Height="25" HorizontalAlignment="Left" Margin="22,0,0,48" x:Name="label4" VerticalAlignment="Bottom" Width="108" Content="{x:Static p:Strings.Indentationsize}" FontSize="13"/>
-                    <TextBox Height="21.96" HorizontalAlignment="Left" Margin="126.54,0,0,48" x:Name="textBoxSize" VerticalAlignment="Bottom" Width="40" />
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Height="16" HorizontalAlignment="Left" x:Name="checkBoxConvert" VerticalAlignment="Top" Width="Auto" Content="{x:Static p:Strings.Converttabstospaces}" FontSize="13" Grid.Row="0"/>
+                    <CheckBox Height="16" HorizontalAlignment="Left" x:Name="checkBoxCopy" VerticalAlignment="Top" Width="Auto" Content="{x:Static p:Strings.CutCopywholeline}" FontSize="13"  Grid.Row="1"/>
+                    <CheckBox Height="16" HorizontalAlignment="Left" x:Name="checkBoxControl" VerticalAlignment="Top" Width="Auto" Content="{x:Static p:Strings.Showboxforcontrolcharacters}" FontSize="13"  Grid.Row="2"/>
+                    <CheckBox HorizontalAlignment="Left" x:Name="checkBoxSpace" Width="Auto" Content="{x:Static p:Strings.Showspaces}" FontSize="13" Height="16" d:LayoutOverrides="Height" Grid.Row="3"/>
+                    <CheckBox Height="16" HorizontalAlignment="Left" x:Name="checkBoxTab" VerticalAlignment="Bottom" Width="Auto" Content="{x:Static p:Strings.Showtabs}" FontSize="13"  Grid.Row="4"/>
+                    <Label Height="25" HorizontalAlignment="Left" x:Name="label4" VerticalAlignment="Bottom" Width="108" Content="{x:Static p:Strings.Indentationsize}" FontSize="13"  Grid.Row="5"/>
+                    <TextBox Height="21.96" HorizontalAlignment="Left" x:Name="textBoxSize" VerticalAlignment="Bottom" Width="40" Grid.Row="5" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem Header="{x:Static p:Strings.Performance}" x:Name="tabItemPerformance" HorizontalAlignment="Left">
                 <Grid Height="Auto" Width="Auto">
-                    <GroupBox Header="{x:Static p:Strings.Staticscaching}" HorizontalAlignment="Left" Margin="1,0,0,0" x:Name="groupBox1" Width="231" Height="116" VerticalAlignment="Top" FontSize="13">
+                    <GroupBox Header="{x:Static p:Strings.Staticscaching}" HorizontalAlignment="Left" Margin="1,0,0,0" x:Name="groupBox1" VerticalAlignment="Top" FontSize="13">
                         <Grid>
-                            <RadioButton Height="Auto" Margin="5,8,58,0" x:Name="radioButtonNone" VerticalAlignment="Top" IsChecked="False" Content="{x:Static p:Strings.None0extra}"/>
-                            <RadioButton Margin="5,37,6,29" x:Name="radioButtonIndices" Content="{x:Static p:Strings.Staticindicesonly}"/>
-                            <RadioButton Margin="5,0,36,12" x:Name="radioButtonFull" Height="Auto" VerticalAlignment="Bottom" Content="{x:Static p:Strings.Fullcaching}"/>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <RadioButton Height="Auto" x:Name="radioButtonNone" VerticalAlignment="Top" IsChecked="False" Content="{x:Static p:Strings.None0extra}"/>
+                            <RadioButton x:Name="radioButtonIndices" Content="{x:Static p:Strings.Staticindicesonly}" Grid.Row="1"/>
+                            <RadioButton x:Name="radioButtonFull" Height="Auto" VerticalAlignment="Bottom" Content="{x:Static p:Strings.Fullcaching}" Grid.Row="2"/>
                         </Grid>
                     </GroupBox>
                 </Grid>

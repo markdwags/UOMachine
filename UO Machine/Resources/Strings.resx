@@ -220,7 +220,7 @@
     <value>Process creation failed.</value>
   </data>
   <data name="Razorsuccessfullylaunched" xml:space="preserve">
-    <value>Razor successfully lauched</value>
+    <value>Razor successfully launched</value>
   </data>
   <data name="Ready" xml:space="preserve">
     <value>Ready</value>

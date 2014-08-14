@@ -559,7 +559,7 @@ namespace UOMachine
             Win32.SafeProcessHandle hProcess;
             Win32.SafeThreadHandle hThread;
             uint pid, tid;
-            UOM.SetStatusLabel( "Status : Launching Updater" );
+            UOM.SetStatusLabel( "Launching Updater" );
             Win32.CreateProcess( startInfo, false, out hProcess, out hThread, out pid, out tid );
         }
     }

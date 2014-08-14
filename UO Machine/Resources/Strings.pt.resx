@@ -118,270 +118,273 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>关于...</value>
+    <value>Sobre ...</value>
   </data>
   <data name="Addassemblyreference" xml:space="preserve">
-    <value>添加程序集的引用</value>
+    <value>Adicionar referência de montagem</value>
   </data>
   <data name="Attachedtoclient" xml:space="preserve">
-    <value>连接到客户端</value>
+    <value>Anexado ao cliente</value>
   </data>
   <data name="CheckForUpdates" xml:space="preserve">
-    <value>检查更新...</value>
+    <value>Verificar atualizações ...</value>
   </data>
   <data name="Clientexited" xml:space="preserve">
-    <value>客户端退出。</value>
+    <value>Saiu Cliente.</value>
   </data>
   <data name="Clientstarted" xml:space="preserve">
-    <value>客户端启动</value>
+    <value>Começou cliente</value>
   </data>
   <data name="Closing" xml:space="preserve">
-    <value>闭幕</value>
+    <value>Encerramento</value>
   </data>
   <data name="Compilererror" xml:space="preserve">
-    <value>编译器错误</value>
+    <value>Erro do compilador</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>编辑</value>
+    <value>Editar</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>错误</value>
+    <value>Erro</value>
   </data>
   <data name="ErrorattachingtoRazorclient" xml:space="preserve">
-    <value>错误连接至Razor客户端。</value>
+    <value>Erro anexar ao cliente Razor.</value>
   </data>
   <data name="Errorinitializing" xml:space="preserve">
-    <value>初始化时出错UOMachine，请重试。</value>
+    <value>Erro ao inicializar UOMachine, por favor, tente novamente.</value>
   </data>
   <data name="Errorinjectingdll" xml:space="preserve">
-    <value>错误的DLL注入到目标进程</value>
+    <value>Erro injetar dll em processo de destino</value>
   </data>
   <data name="Errorpatchingclientencryption" xml:space="preserve">
-    <value>错误修补客户端加密！</value>
+    <value>Erro remendar criptografia do cliente!</value>
   </data>
   <data name="Errorpatchingstaminacheck" xml:space="preserve">
-    <value>错误修补耐力检查！</value>
+    <value>Erro remendar cheque resistência!</value>
   </data>
   <data name="Errorresolvinghostname" xml:space="preserve">
-    <value>错误解析主机名</value>
+    <value>Erro hostname resolver</value>
   </data>
   <data name="Errorsettinggamewindowsize" xml:space="preserve">
-    <value>错误设置游戏窗口的大小！</value>
+    <value>Erro ao definir o tamanho da janela do jogo!</value>
   </data>
   <data name="Errorstartingclient" xml:space="preserve">
-    <value>错误启动客户端</value>
+    <value>Erro cliente começando</value>
   </data>
   <data name="Errorwithalwayslightpatch" xml:space="preserve">
-    <value>与一直都是很轻的补丁错误！</value>
+    <value>Erro com o patch sempre luz!</value>
   </data>
   <data name="ErrorwithGACinstallation" xml:space="preserve">
-    <value>使用GAC安装错误，请查看日志了解详细信息。</value>
+    <value>Erro na instalação GAC, consulte o log para obter detalhes.</value>
   </data>
   <data name="Exceptioncaught" xml:space="preserve">
-    <value>捕获到异常，请检查日志。</value>
+    <value>Exceção detectada, por favor, verifique o log.</value>
   </data>
   <data name="Exit" xml:space="preserve">
-    <value>出口</value>
+    <value>Saída</value>
   </data>
   <data name="File" xml:space="preserve">
-    <value>文件</value>
+    <value>Arquivo</value>
   </data>
   <data name="Formatdocument" xml:space="preserve">
-    <value>格式文档</value>
+    <value>Formato</value>
   </data>
   <data name="Help" xml:space="preserve">
-    <value>帮助</value>
+    <value>Ajuda</value>
   </data>
   <data name="Invalidvaluepresentinoptions" xml:space="preserve">
-    <value>目前在options.xml无效值，请修复。</value>
+    <value>Valor (s) inválido presente em options.xml, por favor corrija.</value>
   </data>
   <data name="Launchingclient" xml:space="preserve">
-    <value>启动客户端</value>
+    <value>Lançamento de cliente</value>
   </data>
   <data name="Memoryallocationfailed" xml:space="preserve">
-    <value>内存分配失败。</value>
+    <value>Alocação de memória falhou.</value>
   </data>
   <data name="MultiUOpatchfailed" xml:space="preserve">
-    <value>MultiUO补丁失败！</value>
+    <value>Remendo MultiUO falhou!</value>
   </data>
   <data name="New" xml:space="preserve">
-    <value>新</value>
+    <value>Nova</value>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>打开</value>
+    <value>Abrir</value>
   </data>
   <data name="Options" xml:space="preserve">
-    <value>选项</value>
+    <value>Opções</value>
   </data>
   <data name="Patchingclient" xml:space="preserve">
-    <value>修补客户端</value>
+    <value>Remendar cliente</value>
   </data>
   <data name="Processcreationfailed" xml:space="preserve">
-    <value>进程创建失败。</value>
+    <value>A criação do processo falhou.</value>
   </data>
   <data name="Razorsuccessfullylaunched" xml:space="preserve">
-    <value>剃刀成功发射</value>
+    <value>Razor lançada com sucesso</value>
   </data>
   <data name="Ready" xml:space="preserve">
-    <value>准备</value>
+    <value>Pronto</value>
   </data>
   <data name="ResumeThreadfailed" xml:space="preserve">
-    <value>ResumeThread失败。</value>
+    <value>ResumeThread falhou.</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>保存</value>
+    <value>Salvar</value>
   </data>
   <data name="SaveAs" xml:space="preserve">
-    <value>另存为</value>
+    <value>Salvar como</value>
   </data>
   <data name="Scriptrunning" xml:space="preserve">
-    <value>脚本运行</value>
+    <value>Script em execução</value>
   </data>
   <data name="Scriptstopped" xml:space="preserve">
-    <value>脚本停止</value>
+    <value>Script parado</value>
   </data>
   <data name="Scriptstopping" xml:space="preserve">
-    <value>脚本停止</value>
+    <value>parada Script</value>
   </data>
   <data name="Selectassembliestoreference" xml:space="preserve">
-    <value>选择组装引用</value>
+    <value>Selecione monta para referenciar</value>
   </data>
   <data name="Status" xml:space="preserve">
-    <value>状态</value>
+    <value>Estado</value>
   </data>
   <data name="StatusReady" xml:space="preserve">
-    <value>状态 : 准备</value>
+    <value>Estado : Pronto</value>
   </data>
   <data name="Stoppingscript" xml:space="preserve">
-    <value>停止脚本</value>
+    <value>Roteiro parar</value>
   </data>
   <data name="Unknownerror" xml:space="preserve">
-    <value>未知错误</value>
+    <value>Erro desconhecido</value>
   </data>
   <data name="UOSteamlaunchfailed" xml:space="preserve">
-    <value>UOSteam发射失败。</value>
+    <value>Lançamento UOSteam falhou.</value>
   </data>
   <data name="Youmustentervalidoptions" xml:space="preserve">
-    <value>您必须输入有效的选项来启动UOMachine。</value>
+    <value>Você deve digitar as opções válidas para iniciar UOMachine.</value>
+  </data>
+  <data name="CannotfindRazor" xml:space="preserve">
+    <value>Não consegue encontrar Razor.exe / Crypt.dll</value>
   </data>
   <data name="Erroropeningfile" xml:space="preserve">
-    <value>打开文件时出错，请确保它不被使用。</value>
+    <value>Erro ao abrir arquivo, verifique se ele não estiver em uso.</value>
   </data>
   <data name="Errorsavingfile" xml:space="preserve">
-    <value>保存文件时出错，请选择其他位置。</value>
+    <value>Salvar o arquivo de erro, por favor, escolha outro local.</value>
   </data>
   <data name="Invalidvalueforport" xml:space="preserve">
-    <value>端口值无效，请修正。</value>
+    <value>Valor inválido para o porto, por favor corrija.</value>
   </data>
   <data name="Main" xml:space="preserve">
-    <value>主</value>
+    <value>Principal</value>
   </data>
   <data name="Alwayslightpatch" xml:space="preserve">
-    <value>一直都是很轻的补丁</value>
+    <value>Remendo sempre luz</value>
   </data>
   <data name="Browse" xml:space="preserve">
-    <value>浏览</value>
+    <value>Procurar</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>取消</value>
+    <value>Cancelar</value>
   </data>
   <data name="Client" xml:space="preserve">
-    <value>客户端</value>
+    <value>Cliente</value>
   </data>
   <data name="Converttabstospaces" xml:space="preserve">
-    <value>转换选项卡位</value>
+    <value>Guias para converter espaços</value>
   </data>
   <data name="CutCopywholeline" xml:space="preserve">
-    <value>剪切/复制整条生产线</value>
+    <value>Recortar / Copiar linha inteira</value>
   </data>
   <data name="Document" xml:space="preserve">
-    <value>文档</value>
+    <value>Documento</value>
   </data>
   <data name="Forcegamesize" xml:space="preserve">
-    <value>力大小游戏</value>
+    <value>Tamanho do jogo Força</value>
   </data>
   <data name="Fullcaching" xml:space="preserve">
-    <value>全缓存（约70 MB）</value>
+    <value>Cache maior (cerca de 70 MB)</value>
   </data>
   <data name="Indentationsize" xml:space="preserve">
-    <value>压痕尺寸：</value>
+    <value>Recuo tamanho:</value>
   </data>
   <data name="None0extra" xml:space="preserve">
-    <value>无（0额外）</value>
+    <value>Nenhum (0 adicional)</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>行</value>
+    <value>Está bem</value>
   </data>
   <data name="Patchclientencryption" xml:space="preserve">
-    <value>补丁的客户端加密</value>
+    <value>Criptografia do cliente patch</value>
   </data>
   <data name="Patchencryption" xml:space="preserve">
-    <value>补丁加密</value>
+    <value>Criptografia patch</value>
   </data>
   <data name="Patchstamcheck" xml:space="preserve">
-    <value>补丁Felucca耐力检查（&lt;7.0.0.0）</value>
+    <value>Verificação de resistência patch Felucca (​​&lt;7.0.0.0)</value>
   </data>
   <data name="Performance" xml:space="preserve">
-    <value>性能</value>
+    <value>Desempenho</value>
   </data>
   <data name="Port" xml:space="preserve">
-    <value>端口：</value>
+    <value>Porto:</value>
   </data>
   <data name="Razor" xml:space="preserve">
     <value>Razor</value>
   </data>
   <data name="Razorinstallationfolder" xml:space="preserve">
-    <value>Razor安装文件夹：</value>
+    <value>Pasta de instalação Razor:</value>
   </data>
   <data name="Server" xml:space="preserve">
-    <value>服务器：</value>
+    <value>Servidor:</value>
   </data>
   <data name="ServerusesOSIencryption" xml:space="preserve">
-    <value>服务器使用OSI的加密</value>
+    <value>Servidor usa criptografia OSI</value>
   </data>
   <data name="Showboxforcontrolcharacters" xml:space="preserve">
-    <value>控制字符显示框</value>
+    <value>Mostrar caixa de caracteres de controle</value>
   </data>
   <data name="Showspaces" xml:space="preserve">
-    <value>展空间</value>
+    <value>Mostrar espaços</value>
   </data>
   <data name="Showtabs" xml:space="preserve">
-    <value>显示卡</value>
+    <value>Mostrar separadores</value>
   </data>
   <data name="Startnewclient" xml:space="preserve">
-    <value>开始新的客户端</value>
+    <value>Iniciar novo cliente</value>
   </data>
   <data name="StartnewRazorinstance" xml:space="preserve">
-    <value>开始新的Razor实例</value>
+    <value>Iniciar nova instância Razor</value>
   </data>
   <data name="StartnewUOSteaminstance" xml:space="preserve">
-    <value>开始新的UOSteam实例</value>
+    <value>Iniciar nova instância UOSteam</value>
   </data>
   <data name="Startscript" xml:space="preserve">
-    <value>启动脚本</value>
+    <value>Comece roteiro</value>
   </data>
   <data name="Staticindicesonly" xml:space="preserve">
-    <value>只有静态指标（约20 MB）</value>
+    <value>Apenas os índices estáticos (cerca de 20 MB)</value>
   </data>
   <data name="Staticscaching" xml:space="preserve">
-    <value>静态缓存（需内存）</value>
+    <value>Estática cache (memória necessária)</value>
   </data>
   <data name="Stopscript" xml:space="preserve">
-    <value>停止脚本</value>
+    <value>Script de interrupção</value>
   </data>
   <data name="UOclientpath" xml:space="preserve">
-    <value>UO客户端的路径：</value>
+    <value>UO caminho cliente:</value>
   </data>
   <data name="UOinstallationfolder" xml:space="preserve">
-    <value>UO安装文件夹：</value>
-  </data>
-  <data name="UOSteamexecutablepath" xml:space="preserve">
-    <value>UOSteam可执行文件的路径：</value>
-  </data>
-  <data name="UOSteaminstallationfolder" xml:space="preserve">
-    <value>UOSteam安装文件夹：</value>
+    <value>Pasta de instalação UO:</value>
   </data>
   <data name="UOSteam" xml:space="preserve">
     <value>UOSteam</value>
+  </data>
+  <data name="UOSteamexecutablepath" xml:space="preserve">
+    <value>UOSteam caminho executável:</value>
+  </data>
+  <data name="UOSteaminstallationfolder" xml:space="preserve">
+    <value>Pasta de instalação UOSteam:</value>
   </data>
 </root>

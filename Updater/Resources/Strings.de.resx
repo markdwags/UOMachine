@@ -118,39 +118,39 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data name="Checkingforupdates" xml:space="preserve">
-    <value>Проверка обновлений...</value>
+    <value>Auf Updates überprüft...</value>
   </data>
 	<data name="Complete" xml:space="preserve">
-    <value>Полный.</value>
+    <value>Abschließen.</value>
   </data>
 	<data name="Downloading" xml:space="preserve">
-    <value>Загрузка</value>
+    <value>Herunterladen</value>
   </data>
 	<data name="Downloadingversioninfo" xml:space="preserve">
-    <value>Загрузка версии информация...</value>
+    <value>Versionsinfo wird heruntergeladen...</value>
   </data>
 	<data name="Filecouldnotbedownloaded" xml:space="preserve">
-    <value>Не удалось загрузить файл.</value>
+    <value>Datei konnte nicht heruntergeladen werden.</value>
   </data>
 	<data name="Nonewupdates" xml:space="preserve">
-    <value>Нет новых обновлений.</value>
+    <value>Keine neuen Updates zur Verfügung.</value>
   </data>
 	<data name="Unablefindfolder" xml:space="preserve">
-    <value>Не удается найти папку UOMachine, выберите папку, содержащую UOMachine.</value>
+    <value>Nicht in der Lage zu finden UOMachine Ordner, wählen Sie den Ordner "UOMachine" enthalten.</value>
   </data>
 	<data name="UOMachineRunning" xml:space="preserve">
-    <value>UOMachine работает</value>
+    <value>UOMachine ausführen</value>
   </data>
 	<data name="UOMachineRunningPleaseClose" xml:space="preserve">
-    <value>Доступно обновление, закройте UOMachine для обновления.</value>
+    <value>Ein Update ist verfügbar, schließen Sie die UOMachine aktualisieren.</value>
   </data>
 	<data name="Waiting" xml:space="preserve">
-    <value>Ожидание...</value>
+    <value>Warte...</value>
   </data>
 	<data name="Close" xml:space="preserve">
-    <value>Закрыть</value>
+    <value>Schließen</value>
   </data>
 	<data name="UOMachineUpdater" xml:space="preserve">
-    <value>UOMachine обновления</value>
+    <value>UOMachine updater</value>
   </data>
 </root>

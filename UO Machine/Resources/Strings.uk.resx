@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="About" xml:space="preserve">
+    <value>Про...</value>
+  </data>
+	<data name="Addassemblyreference" xml:space="preserve">
+    <value>Додати посилання на збірку</value>
+  </data>
+	<data name="Attachedtoclient" xml:space="preserve">
+    <value>Прикріплений до клієнта</value>
+  </data>
+	<data name="CheckForUpdates" xml:space="preserve">
+    <value>Перевірити наявність оновлень...</value>
+  </data>
+	<data name="Clientexited" xml:space="preserve">
+    <value>Клієнт виходили.</value>
+  </data>
+	<data name="Clientstarted" xml:space="preserve">
+    <value>Клієнт почав</value>
+  </data>
+	<data name="Closing" xml:space="preserve">
+    <value>Закриття</value>
+  </data>
+	<data name="Compilererror" xml:space="preserve">
+    <value>Помилка компілятора</value>
+  </data>
+	<data name="Edit" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+	<data name="Error" xml:space="preserve">
+    <value>Помилка</value>
+  </data>
+	<data name="ErrorattachingtoRazorclient" xml:space="preserve">
+    <value>Помилка під час приєднання до Razor клієнта.</value>
+  </data>
+	<data name="Errorinitializing" xml:space="preserve">
+    <value>Помилка ініціалізації UO Machine, будь ласка, спробуйте ще раз.</value>
+  </data>
+	<data name="Errorinjectingdll" xml:space="preserve">
+    <value>Помилка ін'єкційні dll в цільовий процес</value>
+  </data>
+	<data name="Errorpatchingclientencryption" xml:space="preserve">
+    <value>Помилка виправлення шифрування клієнт!</value>
+  </data>
+	<data name="Errorpatchingstaminacheck" xml:space="preserve">
+    <value>Має використовуватися витривалість пошук помилок!</value>
+  </data>
+	<data name="Errorresolvinghostname" xml:space="preserve">
+    <value>Помилка вирішення хоста</value>
+  </data>
+	<data name="Errorsettinggamewindowsize" xml:space="preserve">
+    <value>Помилка настройку гру вікна розмір!</value>
+  </data>
+	<data name="Errorstartingclient" xml:space="preserve">
+    <value>Помилка відправною клієнта</value>
+  </data>
+	<data name="Errorwithalwayslightpatch" xml:space="preserve">
+    <value>Помилка з завжди світло патч!</value>
+  </data>
+	<data name="ErrorwithGACinstallation" xml:space="preserve">
+    <value>Помилка інсталяції GAC, будь ласка, перегляньте журнал для деталей.</value>
+  </data>
+	<data name="Exceptioncaught" xml:space="preserve">
+    <value>Винятком зловили, будь ласка, перевірте журнал.</value>
+  </data>
+	<data name="Exit" xml:space="preserve">
+    <value>Вихід</value>
+  </data>
+	<data name="File" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+	<data name="Formatdocument" xml:space="preserve">
+    <value>Формат документа</value>
+  </data>
+	<data name="Help" xml:space="preserve">
+    <value>Допомога</value>
+  </data>
+	<data name="Invalidvaluepresentinoptions" xml:space="preserve">
+    <value>Неприпустиме значення представити в options.xml, будь ласка виправити.</value>
+  </data>
+	<data name="Launchingclient" xml:space="preserve">
+    <value>Запуск клієнта</value>
+  </data>
+	<data name="Memoryallocationfailed" xml:space="preserve">
+    <value>Помилка при виділенні пам'яті.</value>
+  </data>
+	<data name="MultiUOpatchfailed" xml:space="preserve">
+    <value>Не вдалося MultiUO патч!</value>
+  </data>
+	<data name="New" xml:space="preserve">
+    <value>Нові</value>
+  </data>
+	<data name="Open" xml:space="preserve">
+    <value>Відкриті</value>
+  </data>
+	<data name="Options" xml:space="preserve">
+    <value>Параметри</value>
+  </data>
+	<data name="Patchingclient" xml:space="preserve">
+    <value>Внесення виправлень у клієнта</value>
+  </data>
+	<data name="Processcreationfailed" xml:space="preserve">
+    <value>Процес створення сталася помилка.</value>
+  </data>
+	<data name="Razorsuccessfullylaunched" xml:space="preserve">
+    <value>Razor відбувся успішний старт</value>
+  </data>
+	<data name="Ready" xml:space="preserve">
+    <value>Готові</value>
+  </data>
+	<data name="ResumeThreadfailed" xml:space="preserve">
+    <value>ResumeThread не вдалося.</value>
+  </data>
+	<data name="Save" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+	<data name="SaveAs" xml:space="preserve">
+    <value>Зберегти як</value>
+  </data>
+	<data name="Scriptrunning" xml:space="preserve">
+    <value>Скрипт працює</value>
+  </data>
+	<data name="Scriptstopped" xml:space="preserve">
+    <value>Зупинено сценарій</value>
+  </data>
+	<data name="Scriptstopping" xml:space="preserve">
+    <value>Припинення скрипту</value>
+  </data>
+	<data name="Selectassembliestoreference" xml:space="preserve">
+    <value>Виберіть збирає посилання</value>
+  </data>
+	<data name="Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+	<data name="StatusReady" xml:space="preserve">
+    <value>Статус: готові</value>
+  </data>
+	<data name="Stoppingscript" xml:space="preserve">
+    <value>Припинення скрипту</value>
+  </data>
+	<data name="Unknownerror" xml:space="preserve">
+    <value>Невідома помилка</value>
+  </data>
+	<data name="UOSteamlaunchfailed" xml:space="preserve">
+    <value>UOSteam запуску не вдалося.</value>
+  </data>
+	<data name="Youmustentervalidoptions" xml:space="preserve">
+    <value>Введіть припустимі варіанти, щоб почати UO Machine.</value>
+  </data>
+	<data name="CannotfindRazor" xml:space="preserve">
+    <value>Не вдалося знайти Razor.exe/Crypt.dll</value>
+  </data>
+	<data name="Erroropeningfile" xml:space="preserve">
+    <value>Помилка відкриття файлу, переконайтеся, що він не використовується.</value>
+  </data>
+	<data name="Errorsavingfile" xml:space="preserve">
+    <value>Помилка під час збереження файлу, виберіть інше розташування.</value>
+  </data>
+	<data name="Invalidvalueforport" xml:space="preserve">
+    <value>Неприпустиме значення для порту, необхідно виправити.</value>
+  </data>
+	<data name="Main" xml:space="preserve">
+    <value>Головна</value>
+  </data>
+	<data name="Alwayslightpatch" xml:space="preserve">
+    <value>Завжди світло патч</value>
+  </data>
+	<data name="Browse" xml:space="preserve">
+    <value>Огляд</value>
+  </data>
+	<data name="Cancel" xml:space="preserve">
+    <value>"Скасувати"</value>
+  </data>
+	<data name="Client" xml:space="preserve">
+    <value>Клієнт</value>
+  </data>
+	<data name="Converttabstospaces" xml:space="preserve">
+    <value>Перетворення вкладок на пробіли</value>
+  </data>
+	<data name="CutCopywholeline" xml:space="preserve">
+    <value>Вирізати / копіювати весь рядок</value>
+  </data>
+	<data name="Document" xml:space="preserve">
+    <value>Документ</value>
+  </data>
+	<data name="Forcegamesize" xml:space="preserve">
+    <value>Розмір сил гри</value>
+  </data>
+	<data name="Fullcaching" xml:space="preserve">
+    <value>Повний кешування (близько 70 MB)</value>
+  </data>
+	<data name="Indentationsize" xml:space="preserve">
+    <value>Розмір відступу:</value>
+  </data>
+	<data name="None0extra" xml:space="preserve">
+    <value>Жоден (0 додаткових)</value>
+  </data>
+	<data name="OK" xml:space="preserve">
+    <value>Гаразд</value>
+  </data>
+	<data name="Patchclientencryption" xml:space="preserve">
+    <value>Патч клієнт шифрування</value>
+  </data>
+	<data name="Patchencryption" xml:space="preserve">
+    <value>Патч шифрування</value>
+  </data>
+	<data name="Patchstamcheck" xml:space="preserve">
+    <value>Патч Felucca витривалість виїзду (&lt; 7.0.0.0)</value>
+  </data>
+	<data name="Performance" xml:space="preserve">
+    <value>Продуктивність</value>
+  </data>
+	<data name="Port" xml:space="preserve">
+    <value>Порт:</value>
+  </data>
+	<data name="Razor" xml:space="preserve">
+    <value>Razor</value>
+  </data>
+	<data name="Razorinstallationfolder" xml:space="preserve">
+    <value>Razor інсталяційну папку:</value>
+  </data>
+	<data name="Server" xml:space="preserve">
+    <value>Сервер:</value>
+  </data>
+	<data name="ServerusesOSIencryption" xml:space="preserve">
+    <value>Сервер використовує шифрування OSI</value>
+  </data>
+	<data name="Showboxforcontrolcharacters" xml:space="preserve">
+    <value>Показати поле для недрукованих знаків</value>
+  </data>
+	<data name="Showspaces" xml:space="preserve">
+    <value>Відображати пробіли</value>
+  </data>
+	<data name="Showtabs" xml:space="preserve">
+    <value>Показати вкладки</value>
+  </data>
+	<data name="Startnewclient" xml:space="preserve">
+    <value>Почати новий клієнт</value>
+  </data>
+	<data name="StartnewRazorinstance" xml:space="preserve">
+    <value>Запустити новий екземпляр Razor</value>
+  </data>
+	<data name="StartnewUOSteaminstance" xml:space="preserve">
+    <value>Запустити новий екземпляр UOSteam</value>
+  </data>
+	<data name="Startscript" xml:space="preserve">
+    <value>Запустити сценарій</value>
+  </data>
+	<data name="Staticindicesonly" xml:space="preserve">
+    <value>Статичне значення індексу лише (близько 20 МБ)</value>
+  </data>
+	<data name="Staticscaching" xml:space="preserve">
+    <value>Статика кешування (пам'яті, необхідної)</value>
+  </data>
+	<data name="Stopscript" xml:space="preserve">
+    <value>Припинення скрипту</value>
+  </data>
+	<data name="UOclientpath" xml:space="preserve">
+    <value>UO клієнт шлях:</value>
+  </data>
+	<data name="UOinstallationfolder" xml:space="preserve">
+    <value>UO Тека встановлення:</value>
+  </data>
+	<data name="UOSteam" xml:space="preserve">
+    <value>UOSteam</value>
+  </data>
+	<data name="UOSteamexecutablepath" xml:space="preserve">
+    <value>UOSteam шлях виконуваного файлу:</value>
+  </data>
+	<data name="UOSteaminstallationfolder" xml:space="preserve">
+    <value>UOSteam інсталяційну папку:</value>
+  </data>
+</root>

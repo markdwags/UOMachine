@@ -26,6 +26,7 @@ using System.Net;
 using UOMachine.IPC;
 using UOMachine.Resources;
 using EasyHook;
+using System.Threading.Tasks;
 
 namespace UOMachine.Misc
 {
@@ -43,7 +44,8 @@ namespace UOMachine.Misc
             Win32.SafeProcessHandle hProcess;
             Win32.SafeThreadHandle hThread;
             uint pid, tid;
-            int uopid = 0;
+            int clientPid = 0;
+
             UOM.SetStatusLabel( Strings.Launchingclient );
             if (Win32.CreateProcess( startInfo, true, out hProcess, out hThread, out pid, out tid ))
             {
@@ -132,23 +134,20 @@ namespace UOMachine.Misc
                         return false;
                     }
 
-                    // This is dodgy, to be changed to something else.
-                    byte[] uopidbytes = new byte[4];
+                    byte[] clientPidBytes = new byte[4];
                     do
                     {
-                        Memory.Read( hProcess.DangerousGetHandle(), (IntPtr)codeAddress, uopidbytes, true );
-                        uopid = uopidbytes[3] << 24 | uopidbytes[2] << 16 | uopidbytes[1] << 8 | uopidbytes[0];
-                    } while (uopid == 0);
+                        Memory.Read( hProcess.DangerousGetHandle(), (IntPtr)codeAddress, clientPidBytes, false );
+                        clientPid = clientPidBytes[3] << 24 | clientPidBytes[2] << 16 | clientPidBytes[1] << 8 | clientPidBytes[0];
+                    } while (clientPid == 0);
                 }
 
                 hProcess.Close();
                 hThread.Close();
-                return ClientLauncher.Attach( (uint)uopid, options, true, out index );
+                return ClientLauncher.Attach( (uint)clientPid, options, true, out index );
             }
             UOM.SetStatusLabel( Strings.Processcreationfailed );
             return false;
-
-
         }
 
         private static IntPtr GetBaseAddress( Win32.SafeProcessHandle hProcess, Win32.SafeThreadHandle hThread )

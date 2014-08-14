@@ -118,39 +118,39 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data name="Checkingforupdates" xml:space="preserve">
-    <value>Проверка обновлений...</value>
+    <value>正在检查更新...</value>
   </data>
 	<data name="Complete" xml:space="preserve">
-    <value>Полный.</value>
+    <value>完成。</value>
   </data>
 	<data name="Downloading" xml:space="preserve">
-    <value>Загрузка</value>
+    <value>下载</value>
   </data>
 	<data name="Downloadingversioninfo" xml:space="preserve">
-    <value>Загрузка версии информация...</value>
+    <value>正在下载版本信息...</value>
   </data>
 	<data name="Filecouldnotbedownloaded" xml:space="preserve">
-    <value>Не удалось загрузить файл.</value>
+    <value>无法下载文件。</value>
   </data>
 	<data name="Nonewupdates" xml:space="preserve">
-    <value>Нет новых обновлений.</value>
+    <value>没有新的更新可用。</value>
   </data>
 	<data name="Unablefindfolder" xml:space="preserve">
-    <value>Не удается найти папку UOMachine, выберите папку, содержащую UOMachine.</value>
+    <value>无法找到 UOMachine 文件夹，请选择包含 UOMachine 的文件夹。</value>
   </data>
 	<data name="UOMachineRunning" xml:space="preserve">
-    <value>UOMachine работает</value>
+    <value>UOMachine 运行</value>
   </data>
 	<data name="UOMachineRunningPleaseClose" xml:space="preserve">
-    <value>Доступно обновление, закройте UOMachine для обновления.</value>
+    <value>有可用的更新，请关闭 UOMachine 更新。</value>
   </data>
 	<data name="Waiting" xml:space="preserve">
-    <value>Ожидание...</value>
+    <value>正在等待...</value>
   </data>
 	<data name="Close" xml:space="preserve">
-    <value>Закрыть</value>
+    <value>关闭</value>
   </data>
 	<data name="UOMachineUpdater" xml:space="preserve">
-    <value>UOMachine обновления</value>
+    <value>UOMachine 更新</value>
   </data>
 </root>

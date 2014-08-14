@@ -118,39 +118,39 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data name="Checkingforupdates" xml:space="preserve">
-    <value>Проверка обновлений...</value>
+    <value>Перевірити наявність оновлень...</value>
   </data>
 	<data name="Complete" xml:space="preserve">
-    <value>Полный.</value>
+    <value>Завершити.</value>
   </data>
 	<data name="Downloading" xml:space="preserve">
-    <value>Загрузка</value>
+    <value>Завантаження</value>
   </data>
 	<data name="Downloadingversioninfo" xml:space="preserve">
-    <value>Загрузка версии информация...</value>
+    <value>Завантаження версії info...</value>
   </data>
 	<data name="Filecouldnotbedownloaded" xml:space="preserve">
-    <value>Не удалось загрузить файл.</value>
+    <value>Не вдалося завантажити файл.</value>
   </data>
 	<data name="Nonewupdates" xml:space="preserve">
-    <value>Нет новых обновлений.</value>
+    <value>Немає нових оновлень доступні.</value>
   </data>
 	<data name="Unablefindfolder" xml:space="preserve">
-    <value>Не удается найти папку UOMachine, выберите папку, содержащую UOMachine.</value>
+    <value>Не вдалося знайти UOMachine папку, виберіть папку, що містить UOMachine.</value>
   </data>
 	<data name="UOMachineRunning" xml:space="preserve">
-    <value>UOMachine работает</value>
+    <value>UOMachine запуск</value>
   </data>
 	<data name="UOMachineRunningPleaseClose" xml:space="preserve">
-    <value>Доступно обновление, закройте UOMachine для обновления.</value>
+    <value>Доступне оновлення, будь ласка, закрийте UOMachine для оновлення.</value>
   </data>
 	<data name="Waiting" xml:space="preserve">
-    <value>Ожидание...</value>
+    <value>Очікування...</value>
   </data>
 	<data name="Close" xml:space="preserve">
-    <value>Закрыть</value>
+    <value>Закрити</value>
   </data>
 	<data name="UOMachineUpdater" xml:space="preserve">
-    <value>UOMachine обновления</value>
+    <value>UOMachine updater</value>
   </data>
 </root>

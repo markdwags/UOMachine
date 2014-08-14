@@ -118,39 +118,39 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data name="Checkingforupdates" xml:space="preserve">
-    <value>Проверка обновлений...</value>
+    <value>업데이트 확인 중...</value>
   </data>
 	<data name="Complete" xml:space="preserve">
-    <value>Полный.</value>
+    <value>완료.</value>
   </data>
 	<data name="Downloading" xml:space="preserve">
-    <value>Загрузка</value>
+    <value>다운로드</value>
   </data>
 	<data name="Downloadingversioninfo" xml:space="preserve">
-    <value>Загрузка версии информация...</value>
+    <value>버전 정보 다운로드...</value>
   </data>
 	<data name="Filecouldnotbedownloaded" xml:space="preserve">
-    <value>Не удалось загрузить файл.</value>
+    <value>파일을 다운로드할 수 없습니다.</value>
   </data>
 	<data name="Nonewupdates" xml:space="preserve">
-    <value>Нет новых обновлений.</value>
+    <value>새로운 업데이트가 가능 합니다.</value>
   </data>
 	<data name="Unablefindfolder" xml:space="preserve">
-    <value>Не удается найти папку UOMachine, выберите папку, содержащую UOMachine.</value>
+    <value>UOMachine를 포함 하는 폴더를 선택 하십시오, UOMachine 폴더를 찾을 수 없습니다.</value>
   </data>
 	<data name="UOMachineRunning" xml:space="preserve">
-    <value>UOMachine работает</value>
+    <value>UOMachine 실행</value>
   </data>
 	<data name="UOMachineRunningPleaseClose" xml:space="preserve">
-    <value>Доступно обновление, закройте UOMachine для обновления.</value>
+    <value>업데이트가 있는, 제발 업데이트 UOMachine를 닫습니다.</value>
   </data>
 	<data name="Waiting" xml:space="preserve">
-    <value>Ожидание...</value>
+    <value>대기...</value>
   </data>
 	<data name="Close" xml:space="preserve">
-    <value>Закрыть</value>
+    <value>닫기</value>
   </data>
 	<data name="UOMachineUpdater" xml:space="preserve">
-    <value>UOMachine обновления</value>
+    <value>UOMachine 업데이트</value>
   </data>
 </root>

@@ -270,5 +270,10 @@ namespace UOMachine
                 textBoxUOSExe.Text = ofd.FileName;
             }
         }
+
+        private void textBoxRazor_TextChanged( object sender, TextChangedEventArgs e )
+        {
+
+        }
     }
 }
