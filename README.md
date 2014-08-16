@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
-# UO Machine 0.4.0.0 (May 2014)
+# UO Machine 0.4.0.5 (August 2014)
 
 For installation instructions, please see https://github.com/Reetus/UOMachine/wiki/Installing
 
