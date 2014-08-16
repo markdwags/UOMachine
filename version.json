@@ -7,7 +7,7 @@
         },
         {
             "file": "ClientHook.dll",
-            "md5sum": "e2d156edbfb04c0dc3f4f4c720a88a74"
+            "md5sum": "49bc1f78cb3d40b16ca7895f36d09f2e"
         },
         {
             "file": "EasyHook.dll",
@@ -59,7 +59,7 @@
         },
         {
             "file": "RazorLoader.exe",
-            "md5sum": "200e4613d34b1b1318fd23a4aea9829f"
+            "md5sum": "c8af0a60979e89d8f3b3d825e1c0971e"
         },
         {
             "file": "RazorLoader.exe.config",
@@ -67,7 +67,7 @@
         },
         {
             "file": "UOMachine.exe",
-            "md5sum": "299b5a66ff0a90b0e0cc56f1a8224bae"
+            "md5sum": "476b04f60fcb067eedc1b3be13238d79"
         },
         {
             "file": "UOMachine.exe.config",
@@ -79,7 +79,7 @@
         },
         {
             "file": "Updater.exe",
-            "md5sum": "037bc22f253cf94ff2f30c56983c1950"
+            "md5sum": "2c6407c7e9337f6c1c3e587a9ccd0710"
         },
         {
             "file": "VS templates\\Templates ReadMe.txt",
@@ -95,19 +95,19 @@
         },
         {
             "file": "de\\UOMachine.resources.dll",
-            "md5sum": "a33bfeba56e52ad1fec7aa6d7476c077"
+            "md5sum": "4b2c13c34a52ef8f6486562b55ebedde"
         },
         {
             "file": "de\\Updater.resources.dll",
-            "md5sum": "edcb2b6314a260fa210942cdeac16c54"
+            "md5sum": "4b88d6a93dee32792d19af389c5c1830"
         },
         {
             "file": "es\\UOMachine.resources.dll",
-            "md5sum": "2821b02e050931b90c424a8d19b6b5b2"
+            "md5sum": "8d7362c425a3d23217d534fe764b8f84"
         },
         {
             "file": "es\\Updater.resources.dll",
-            "md5sum": "95e3970521c703efd4fccfbafab2b7f4"
+            "md5sum": "754d4f6c9d7c17985a52e9947e8e703d"
         },
         {
             "file": "fr\\Updater.resources.dll",
@@ -115,67 +115,67 @@
         },
         {
             "file": "ja\\UOMachine.resources.dll",
-            "md5sum": "d00942be840237155302666bb701fc18"
+            "md5sum": "c332867066910679413eacdebd6be56b"
         },
         {
             "file": "ja\\Updater.resources.dll",
-            "md5sum": "e8fb8ac77f9cba75f52e6c546d85ec77"
+            "md5sum": "8db9f00b4f7bf477b5e4f1afa7b18881"
         },
         {
             "file": "ko\\UOMachine.resources.dll",
-            "md5sum": "00a180530b69d15c81b055d65de022cc"
+            "md5sum": "eeae7c42b656ac5a4d1ed7413266176a"
         },
         {
             "file": "ko\\Updater.resources.dll",
-            "md5sum": "339dafa6a3f4525b87bb5c9e65e088c5"
+            "md5sum": "6fdaaa456f9a870091201ba70a85a5df"
         },
         {
             "file": "pl\\UOMachine.resources.dll",
-            "md5sum": "b9253b0e3ad74253f3c9207e05024dfd"
+            "md5sum": "0de35efdebd88322e022979752ec07fb"
         },
         {
             "file": "pl\\Updater.resources.dll",
-            "md5sum": "31c326bf638f95e0c0c59f20c9e20f3a"
+            "md5sum": "d5c48e5b3731636ad186e55d05b6cf19"
         },
         {
             "file": "pt\\UOMachine.resources.dll",
-            "md5sum": "25099d945e4f964d8a682ba6fb225e41"
+            "md5sum": "4e8b78a06486a085c9a5854966866144"
         },
         {
             "file": "pt\\Updater.resources.dll",
-            "md5sum": "e5e3ca50eb48fdac1bed62a3b0eee5aa"
+            "md5sum": "d147121a0a68c9e03dca4122e1c0cd2a"
         },
         {
             "file": "ru\\UOMachine.resources.dll",
-            "md5sum": "ef197b3663a9148ab722cfea3f2f5f52"
+            "md5sum": "eef1221b17cc05c6da4f8ad3680de9ac"
         },
         {
             "file": "ru\\Updater.resources.dll",
-            "md5sum": "5b91c62548cb1790b946914dda573ca2"
+            "md5sum": "a5467c3d02acb1aaee08dc6341b0efaf"
         },
         {
             "file": "uk\\UOMachine.resources.dll",
-            "md5sum": "f71e1ebc5e37df79a7a33b97509c88d0"
+            "md5sum": "3c6ccdfd75325370a0eb10ef3fca2dfc"
         },
         {
             "file": "uk\\Updater.resources.dll",
-            "md5sum": "e81a085d555027d08bc582a73eb51746"
+            "md5sum": "68e5877e1fb5c3611f9e2a08e88a3a88"
         },
         {
             "file": "zh\\UOMachine.resources.dll",
-            "md5sum": "8e1704d461a0f77b9aa45a3022075cd5"
+            "md5sum": "6ecdb0d9e13f2f83ccbc1e64f54e2d19"
         },
         {
             "file": "zh\\Updater.resources.dll",
-            "md5sum": "51e070c21363c7d239002e44745c9037"
+            "md5sum": "573f7635a1eea0b7dae6d0ffc0b1116b"
         },
         {
             "file": "zh-TW\\UOMachine.resources.dll",
-            "md5sum": "f839ecb29846d089921d581f2bb25834"
+            "md5sum": "9b2d95e09e678849c2114560ea17d9c9"
         },
         {
             "file": "zh-TW\\Updater.resources.dll",
-            "md5sum": "1306e963c34b2d00aea7bbc4f0128842"
+            "md5sum": "9731cd4ada97c9904bdbed9464001efd"
         },
         {
             "file": "zlib32.dll",
