@@ -14,10 +14,9 @@ All Mondain's Legacy/Stygian Abyss 2D clients.
 
 How to write scripts:
 
-It's recommended to use the included Visual Studio 2008 templates
+It's recommended to use the included Visual Studio or SharpDevelop templates
 to take advantage of code completion and refactoring features of
-the Visual Studio IDE.  Don't forget to add a reference to 
-UOMachine.exe in your project.
+the IDE.  Don't forget to add a reference to UOMachine.exe in your project.
 
 A GUI template is also included so that you can use the Visual Studio
 form designer to easily create a GUI script.
