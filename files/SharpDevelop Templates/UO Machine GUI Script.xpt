@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<Template originator   = "John Scott">
+	
+	<!-- Template Header -->
+	<TemplateConfiguration>
+		<Name>UO Machine GUI Script</Name>
+		<Category>C#</Category>
+		<Subcategory>${res:Templates.File.Categories.WindowsApplications}</Subcategory>
+		<Icon>C#.Project.Form</Icon>
+		<Description>${res:Templates.Project.WindowsApplication.Description}</Description>
+		<SupportedTargetFrameworks>v4.5</SupportedTargetFrameworks>
+	</TemplateConfiguration>
+	
+	<!-- Actions -->
+	<Actions>
+		<Open filename = "Script.cs"/>
+	</Actions>
+	
+	<Project language = "C#">
+		<ProjectItems>
+			<Reference Include="System" />
+			<Reference Include="System.Drawing" />
+			<Reference Include="System.Windows.Forms" />
+			<Reference Include="System.Threading" />
+			<Reference Include="UOMachine.exe" />
+		</ProjectItems>
+		
+		<PropertyGroup>
+			<OutputType>Library</OutputType>
+			<AppDesignerFolder>Properties</AppDesignerFolder>
+		</PropertyGroup>
+		
+		<Files>
+			<File name="Script.cs" language="C#"><![CDATA[${StandardHeader.C#}
+using System;
+using System.Drawing;
+using System.Threading;
+using System.Windows.Forms;
+using UOMachine;
+using UOMachine.Macros;
+using UOMachine.Utility;
+using UOMachine.Data;
+using UOMachine.Events;
+
+namespace UOMScript
+{
+    public class Script : Form
+    {
+        private System.ComponentModel.IContainer components = null;
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+                components.Dispose();
+            base.Dispose(disposing);
+        }
+
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Text = "UOM GUI Script";
+        }
+
+        public Script()
+        {
+            InitializeComponent();
+        }
+    }
+
+    public class Program : IScriptInterface
+    {
+        [STAThread]
+        public void Start()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Script());
+        }
+
+        public void Stop()
+        {
+            Application.Exit();
+        }
+    }
+}
+]]></File>
+		</Files>
+	</Project>
+</Template>

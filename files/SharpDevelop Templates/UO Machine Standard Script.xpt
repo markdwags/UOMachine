@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<Template originator = "John Scott">
+	
+	<!-- Template Header -->
+	<TemplateConfiguration>
+		<Name>UO Machine Standard Script</Name>
+		<Category>C#</Category>
+		<Subcategory>${res:Templates.File.Categories.WindowsApplications}</Subcategory>
+		<Icon>C#.Project.DOSProject</Icon>
+		<Description>${res:Templates.Project.ConsoleProject.Description}</Description>
+		<SupportedTargetFrameworks>v4.5</SupportedTargetFrameworks>
+	</TemplateConfiguration>
+	
+	<!-- Actions -->
+	<Actions>
+		<Open filename = "Script.cs"/>
+	</Actions>
+	
+	<!-- Template Content -->
+	<Project language = "C#">
+		<ProjectItems>
+			<Reference Include="System" />
+			<Reference Include="System.Threading" />
+			<Reference Include="UOMachine.exe" />
+		</ProjectItems>
+		
+		<PropertyGroup>
+			<OutputType>Library</OutputType>
+			<AppDesignerFolder>Properties</AppDesignerFolder>
+		</PropertyGroup>
+		<Files>
+			<File name="Script.cs"><![CDATA[${StandardHeader.C#}
+using System;
+using System.Threading;
+using UOMachine;
+using UOMachine.Macros;
+using UOMachine.Data;
+using UOMachine.Utility;
+using UOMachine.Events;
+
+namespace UOMScript
+{
+    public class Script : IScriptInterface
+    {
+        private bool myScriptRunning = true;
+
+        public void Start()
+        {
+            while (myScriptRunning)
+            {
+                //TODO: Implement functionality
+                Thread.Sleep(1);
+            }
+        }
+
+        public void Stop()
+        {
+            myScriptRunning = false;
+        }
+
+    }
+}
+]]></File>
+		</Files>
+	</Project>
+</Template>
