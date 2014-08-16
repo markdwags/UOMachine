@@ -103,6 +103,8 @@ namespace UOMachine.Utility
         public static void LogMessage(Exception exception)
         {
             string message = exception.Message + "\r\n" + exception.Source + "\r\n" + exception.StackTrace;
+            if (exception.InnerException != null)
+                message += "\r\nInner Exception:\r\n" + exception.InnerException.Message + "\r\n" + exception.InnerException.Source + "\r\n" + exception.InnerException.StackTrace;
             string logMessage = GetDateString() + "Exception:\r\n" + message + "\r\n\r\n";
             lock (myFileWriter) { myFileWriter.Write(logMessage); }
         }

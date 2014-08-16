@@ -251,8 +251,8 @@ namespace UOMachine
             {
                 uint caveAddress = (uint)clientInfo.AllocCodeAddress;
                 uint recvCaveAddress = caveAddress + 526;
-                uint clientSendCaveAddress = recvCaveAddress + 28;
-                uint sendCaveAddress = clientSendCaveAddress + 80;
+                uint clientSendCaveAddress = recvCaveAddress + 50;
+                uint sendCaveAddress = clientSendCaveAddress + 180;
                 uint serverSendCaveAddress = sendCaveAddress + 26;
                 uint pathFindCaveAddress = serverSendCaveAddress + 74;
                 uint gumpFunctionCaveAddress = pathFindCaveAddress + 64;

@@ -10,7 +10,15 @@
         </RadialGradientBrush>
     </Window.Background>
     <Grid Background="Transparent">
-        <TabControl x:Name="tabControl1" Margin="0,0,0,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Height="244" FontSize="12" FontWeight="Normal">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="581*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TabControl x:Name="tabControl1" Margin="5,10,5,5" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" FontSize="12" FontWeight="Normal" Grid.Row="0" Grid.ColumnSpan="2">
             <TabItem Header="{x:Static p:Strings.Main}" x:Name="tabItemMain" FontWeight="Normal" FontStyle="Normal" TabIndex="1">
                 <Grid Width="Auto">
                     <Grid.RowDefinitions>
@@ -31,7 +39,7 @@
                     <Label x:Name="label3" FontSize="13" VerticalAlignment="Top" Content="{x:Static p:Strings.UOclientpath}" Grid.Row="2" Grid.Column="0"/>
                     <TextBox x:Name="textBoxClient" VerticalAlignment="Top" FontSize="12" TabIndex="3" Grid.Row="3" Grid.Column="0" Margin="0,0,5,0"/>
                     <Button HorizontalAlignment="Right" x:Name="buttonClient" Click="buttonClient_Click" VerticalAlignment="Top" Content="{x:Static p:Strings.Browse}" FontSize="13" TabIndex="8" Grid.Row="3" Grid.Column="1"/>
-                    <Label FontSize="13" x:Name="label5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="388" Content="{x:Static p:Strings.Server}" Grid.Row="4" Grid.Column="0"/>                    
+                    <Label FontSize="13" x:Name="label5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="388" Content="{x:Static p:Strings.Server}" Grid.Row="4" Grid.Column="0"/>
                     <TextBox x:Name="textBoxServer" VerticalAlignment="Bottom" FontSize="12" TabIndex="5" Grid.Row="5" Grid.Column="0" Margin="0,0,120,0"/>
                     <TextBox HorizontalAlignment="Right" x:Name="textBoxPort" VerticalAlignment="Bottom" Width="110" FontSize="12" TabIndex="6" Grid.Row="5" Grid.Column="0" Margin="0,0,5,0"/>
                     <Label FontSize="13" HorizontalAlignment="Right" x:Name="label6" VerticalAlignment="Bottom" Width="111" Content="{x:Static p:Strings.Port}" Grid.Row="4" Grid.Column="0" Margin="0,0,5,0"/>
@@ -58,7 +66,7 @@
                     <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" x:Name="gameWidth" Text="1024" Grid.Row="3"  Grid.Column="1"/>
                     <Label Content="x" Grid.Row="3" Grid.Column="2"/>
                     <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" x:Name="gameHeight" Text="768" Grid.Row="3"  Grid.Column="3"/>
-                    
+
                 </Grid>
             </TabItem>
             <TabItem Header="{x:Static p:Strings.Razor}" x:Name="tabItemRazor">
@@ -140,7 +148,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,86,5" x:Name="buttonOk" VerticalAlignment="Bottom" Width="75" IsDefault="False" Click="buttonOk_Click" Content="{x:Static p:Strings.OK}" FontSize="12" TabIndex="10" />
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,5,5" x:Name="buttonCancel" VerticalAlignment="Bottom" Width="75" IsCancel="True" Click="buttonCancel_Click" Content="{x:Static p:Strings.Cancel}" FontSize="12" TabIndex="11" />
+        <Button Height="23" Margin="0,0,80,5" x:Name="buttonOk" VerticalAlignment="Bottom" Width="75" IsDefault="False" Click="buttonOk_Click" Content="{x:Static p:Strings.OK}" FontSize="12" TabIndex="10" Grid.Row="1" HorizontalAlignment="Right"/>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,5,5" x:Name="buttonCancel" VerticalAlignment="Bottom" Width="75" IsCancel="True" Click="buttonCancel_Click" Content="{x:Static p:Strings.Cancel}" FontSize="12" TabIndex="11" Grid.Row="1" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

@@ -32,31 +32,31 @@ namespace UOMachine
                         0xBC, 0x00, 0x00, 0x00, 0xE9, 0xFF, 0xFF, 0xFF, 
                         0xFF };
                     byte[] hook0 = new byte[] { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
-                    byte[] hookTemp0 = CreateCALL(ci.SendHookAddress, ci.SendCaveAddress, CallType.JMP);
-                    byte[] functionCall0 = CreateCALL(ci.SendCaveAddress.ToInt32() + 5, ci.SendFunctionPointer.ToInt32(), CallType.CALL);
-                    byte[] jmpBack0 = CreateCALL(ci.SendCaveAddress.ToInt32() + 20, ci.SendHookAddress.ToInt32() + 7, CallType.JMP);
+                    byte[] hookTemp0 = CreateCALL( ci.SendHookAddress, ci.SendCaveAddress, CallType.JMP );
+                    byte[] functionCall0 = CreateCALL( ci.SendCaveAddress.ToInt32() + 5, ci.SendFunctionPointer.ToInt32(), CallType.CALL );
+                    byte[] jmpBack0 = CreateCALL( ci.SendCaveAddress.ToInt32() + 20, ci.SendHookAddress.ToInt32() + 7, CallType.JMP );
 
-                    Buffer.BlockCopy(hookTemp0, 0, hook0, 0, 5);
-                    Buffer.BlockCopy(functionCall0, 0, newCode0, 5, 5);
-                    Buffer.BlockCopy(jmpBack0, 0, newCode0, 20, 5);
+                    Buffer.BlockCopy( hookTemp0, 0, hook0, 0, 5 );
+                    Buffer.BlockCopy( functionCall0, 0, newCode0, 5, 5 );
+                    Buffer.BlockCopy( jmpBack0, 0, newCode0, 20, 5 );
 
-                    Memory.Write(ci.Handle, ci.SendCaveAddress, newCode0, true);
-                    Memory.Write(ci.Handle, ci.SendHookAddress, hook0, true);
+                    Memory.Write( ci.Handle, ci.SendCaveAddress, newCode0, true );
+                    Memory.Write( ci.Handle, ci.SendHookAddress, hook0, true );
                     break;
                 case 1:
                     byte[] newCode1 = new byte[] { 
                         0x50, 0x51, 0x52, 0x53, 0x56, 0xE8, 0xFF, 0xFF,
                         0xFF, 0xFF, 0x5A, 0x59, 0x58, 0x53, 0x50, 0x8D, 
                         0x4F, 0x6C, 0xE9, 0xFF, 0xFF, 0xFF, 0xFF };
-                    byte[] hook1 = CreateCALL(ci.SendHookAddress, ci.SendCaveAddress, CallType.JMP);
-                    byte[] functionCall1 = CreateCALL(ci.SendCaveAddress.ToInt32() + 5, ci.SendFunctionPointer.ToInt32(), CallType.CALL);
-                    byte[] jmpBack1 = CreateCALL(ci.SendCaveAddress.ToInt32() + 18, ci.SendHookAddress.ToInt32() + 5, CallType.JMP);
+                    byte[] hook1 = CreateCALL( ci.SendHookAddress, ci.SendCaveAddress, CallType.JMP );
+                    byte[] functionCall1 = CreateCALL( ci.SendCaveAddress.ToInt32() + 5, ci.SendFunctionPointer.ToInt32(), CallType.CALL );
+                    byte[] jmpBack1 = CreateCALL( ci.SendCaveAddress.ToInt32() + 18, ci.SendHookAddress.ToInt32() + 5, CallType.JMP );
 
-                    Buffer.BlockCopy(functionCall1, 0, newCode1, 5, 5);
-                    Buffer.BlockCopy(jmpBack1, 0, newCode1, 18, 5);
+                    Buffer.BlockCopy( functionCall1, 0, newCode1, 5, 5 );
+                    Buffer.BlockCopy( jmpBack1, 0, newCode1, 18, 5 );
 
-                    Memory.Write(ci.Handle, ci.SendCaveAddress, newCode1, true);
-                    Memory.Write(ci.Handle, ci.SendHookAddress, hook1, true);
+                    Memory.Write( ci.Handle, ci.SendCaveAddress, newCode1, true );
+                    Memory.Write( ci.Handle, ci.SendHookAddress, hook1, true );
                     break;
             }
         }

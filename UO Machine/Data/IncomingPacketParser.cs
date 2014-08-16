@@ -1276,7 +1276,10 @@ namespace UOMachine.Data
                 default:
                     break;
             }
+
+#if DEBUG
             Log.LogDataMessage(client, packet, "--- Incoming packet:\r\n");
+#endif
         }
     }
 }

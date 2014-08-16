@@ -27,6 +27,7 @@ using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Search;
 using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.CodeCompletion;
+using System.Threading.Tasks;
 
 namespace UOMachine
 {
@@ -106,7 +107,7 @@ namespace UOMachine
                 return;
             }
             PrepareTextEditor();
-            razorButton.IsEnabled = true;
+            //razorButton.IsEnabled = true;
             addButton.IsEnabled = true;
         }
 
@@ -133,6 +134,22 @@ namespace UOMachine
                     catch { }
                     Thread.Sleep( 50 );
                 }
+            }
+
+            razorButton.IsEnabled = false;
+            razorButton.Opacity = myDisabledOpacity;
+            steamButton.IsEnabled = false;
+            steamButton.Opacity = myDisabledOpacity;
+            if (optionsData.IsRazorValid())
+            {
+                razorButton.IsEnabled = true;
+                razorButton.Opacity = 1;
+            }
+
+            if (optionsData.IsSteamValid())
+            {
+                steamButton.IsEnabled = true;
+                steamButton.Opacity = 1;
             }
         }
 
@@ -182,6 +199,7 @@ namespace UOMachine
             if (optionsData.CacheLevel != myCurrentOptions.CacheLevel)
                 Map.Initialize( optionsData.UOFolder, optionsData.CacheLevel );
             myCurrentOptions = optionsData;
+            CheckOptions( optionsData );
             scriptTextBox.Options = optionsData.TextEditorOptions;
         }
 
@@ -539,15 +557,18 @@ namespace UOMachine
         private void steamButton_Click( object sender, RoutedEventArgs e )
         {
             int index;
-            razorButton.IsEnabled = false;
+            steamButton.IsEnabled = false;
             addButton.IsEnabled = false;
             addButton.Opacity = myDisabledOpacity;
-            razorButton.Opacity = myDisabledOpacity;
-            UOMachine.Misc.SteamLauncher.Launch( myCurrentOptions, out index );
-            razorButton.IsEnabled = true;
+            steamButton.Opacity = myDisabledOpacity;
+            Task.Factory.StartNew( () =>
+            {
+                UOMachine.Misc.SteamLauncher.Launch( myCurrentOptions, out index );
+            } );            
             addButton.IsEnabled = true;
             addButton.Opacity = 1;
-            razorButton.Opacity = 1;
+            steamButton.IsEnabled = true;
+            steamButton.Opacity = 1;
         }
 
         private void checkUpdate_Click( object sender, RoutedEventArgs e )

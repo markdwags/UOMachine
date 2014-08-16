@@ -26,7 +26,7 @@ using System.Windows.Forms;
 
 namespace UOMachine
 {
-    [Serializable, XmlRootAttribute(ElementName = "Options")]
+    [Serializable, XmlRootAttribute( ElementName = "Options" )]
     public sealed class OptionsData
     {
         public string UOFolder { get; set; }
@@ -56,7 +56,7 @@ namespace UOMachine
         {
             OptionsData od = new OptionsData();
             od.UOFolder = RegistryHelper.GetUOPath();
-            od.UOClientPath = Path.Combine(od.UOFolder, "client.exe");
+            od.UOClientPath = Path.Combine( od.UOFolder, "client.exe" );
             od.Server = "localhost";
             od.PatchAlwaysLight = true;
             od.Port = 2593;
@@ -67,20 +67,20 @@ namespace UOMachine
             od.PatchStaminaCheck = true;
             od.PatchClientEncryptionUOM = false;
             od.PatchGameSize = false;
-            Serialize("options.xml", od);
+            Serialize( "options.xml", od );
             return od;
         }
 
-        private static void ShowErrorMessage(string operation, Exception x)
+        private static void ShowErrorMessage( string operation, Exception x )
         {
             string message;
             if (x.InnerException != null)
                 message = x.InnerException.Message;
             else message = x.Message;
-            MessageBox.Show(string.Format("Error occured while {0}:\r\n{1}", operation, message));
+            MessageBox.Show( string.Format( "Error occured while {0}:\r\n{1}", operation, message ) );
         }
 
-        public static void Serialize(string fileName, OptionsData optionsData)
+        public static void Serialize( string fileName, OptionsData optionsData )
         {
             XmlWriter xw = null;
             try
@@ -90,9 +90,9 @@ namespace UOMachine
                 xws.CloseOutput = true;
                 xws.Indent = true;
                 xws.NewLineOnAttributes = true;
-                xw = XmlWriter.Create(fileName, xws);
-                XmlSerializer xs = new XmlSerializer(typeof(OptionsData));
-                xs.Serialize(xw, optionsData);
+                xw = XmlWriter.Create( fileName, xws );
+                XmlSerializer xs = new XmlSerializer( typeof( OptionsData ) );
+                xs.Serialize( xw, optionsData );
                 xw.Flush();
                 xw.Close();
             }
@@ -108,19 +108,19 @@ namespace UOMachine
                     }
                     catch { }
                 }
-                ShowErrorMessage("saving options to file", ex);
+                ShowErrorMessage( "saving options to file", ex );
             }
         }
 
-        public static OptionsData Deserialize(string fileName)
+        public static OptionsData Deserialize( string fileName )
         {
-            if (!File.Exists(fileName)) return CreateDefault();
+            if (!File.Exists( fileName )) return CreateDefault();
             FileStream fs = null;
             try
             {
-                fs = new FileStream(fileName, FileMode.Open);
-                XmlSerializer xs = new XmlSerializer(typeof(OptionsData));
-                OptionsData optionsData = (OptionsData)xs.Deserialize(fs);
+                fs = new FileStream( fileName, FileMode.Open );
+                XmlSerializer xs = new XmlSerializer( typeof( OptionsData ) );
+                OptionsData optionsData = (OptionsData)xs.Deserialize( fs );
                 fs.Close();
                 return optionsData;
             }
@@ -134,7 +134,7 @@ namespace UOMachine
                     }
                     catch { }
                 }
-                ShowErrorMessage("loading options from file", ex);
+                ShowErrorMessage( "loading options from file", ex );
                 return CreateDefault();
             }
         }
@@ -142,9 +142,26 @@ namespace UOMachine
         public bool IsValid()
         {
             return ((this.CacheLevel >= 0 && this.CacheLevel <= 3) &&
-                Directory.Exists(this.UOFolder) &&
-                File.Exists(this.UOClientPath));
+                Directory.Exists( this.UOFolder ) &&
+                File.Exists( this.UOClientPath ));
         }
 
+        public bool IsRazorValid()
+        {
+            if (!Directory.Exists( RazorFolder ) || !File.Exists( Path.Combine( RazorFolder, "Razor.exe" ) ))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool IsSteamValid()
+        {
+            if (!Directory.Exists( UOSFolder ) || !File.Exists( UOSExePath ))
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

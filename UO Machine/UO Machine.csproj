@@ -124,6 +124,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Macros\MacroEx\AddRecvFilter.cs" />
     <Compile Include="Macros\MacroEx\OverheadMessage.cs" />
     <Compile Include="Macros\MacroEx\QuestArrow.cs" />
     <Compile Include="Macros\MacroEx\RemoveObject.cs" />

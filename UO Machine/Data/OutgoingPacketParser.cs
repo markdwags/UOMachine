@@ -588,7 +588,9 @@ namespace UOMachine.Data
                 default:
                     break;
             }
+#if DEBUG
             Log.LogDataMessage(client, packet, "+++ Outgoing packet:\r\n");
+#endif
         }
     }
 }
