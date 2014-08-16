@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 # UO Machine 0.4.0.5 (August 2014)
 
-For installation instructions, please see https://github.com/Reetus/UOMachine/wiki/Installing
+For installation instructions, please see [Installing](https://github.com/Reetus/UOMachine/wiki/Installing)
 
 Originally developed by Matthew "xenoglyph" Geyer.
 
@@ -22,4 +22,3 @@ the IDE.  Don't forget to add a reference to UOMachine.exe in your project.
 
 A GUI template is also included so that you can use the Visual Studio
 form designer to easily create a GUI script.
-
