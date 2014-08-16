@@ -52,12 +52,13 @@ namespace VersionInfo
             return result.ToString();
         }
     }
-    public class Json
+    public class VersionInfo
     {
         public string version;
+        public string updated;
         public List<FileEntry> files;
 
-        public Json()
+        public VersionInfo()
         {
             files = new List<FileEntry>();
         }
@@ -70,27 +71,28 @@ namespace VersionInfo
     class Program
     {
         public static string FilesPath = @"C:\Users\John\Documents\GitHub\gh-pages\files\";
-        public static Json json;
+        public static VersionInfo versionInfo;
 
         static void Main(string[] args)
         {
-            json = new Json();
+            versionInfo = new VersionInfo();
 
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(System.IO.Path.Combine(FilesPath, "UOMachine.exe"));
 
-            json.version = fvi.FileVersion;
+            versionInfo.version = fvi.FileVersion;
+            versionInfo.updated = DateTime.UtcNow.ToString("s", System.Globalization.CultureInfo.InvariantCulture);
 
             try
             {
                 foreach (string d in Directory.GetFiles(FilesPath))
                 {
                     Console.WriteLine();
-                    json.Add(new FileEntry(GetRelativePath(d, FilesPath)));
+                    versionInfo.Add(new FileEntry(GetRelativePath(d, FilesPath)));
                 }
 
                 foreach (string d in Directory.GetDirectories(FilesPath))
                 {
-                    AddDir(d, FilesPath, json);
+                    AddDir(d, FilesPath, versionInfo);
                 }
             }
             catch (Exception e)
@@ -99,19 +101,19 @@ namespace VersionInfo
             }
 
             JavaScriptSerializer ser = new JavaScriptSerializer();
-            File.WriteAllText(Path.Combine(FilesPath + @"\..\", "version.json"), ser.Serialize(json));
+            File.WriteAllText(Path.Combine(FilesPath + @"\..\", "version.json"), ser.Serialize(versionInfo));
         }
 
-        static void AddDir(string dir, string relative, Json json)
+        public static void AddDir(string dir, string relative, VersionInfo versionInfo)
         {
             foreach (string d in Directory.GetDirectories(dir))
             {
-                AddDir(d, relative, json);
+                AddDir(d, relative, versionInfo);
             }
 
             foreach (string d in Directory.GetFiles(dir))
             {
-                json.Add(new FileEntry(GetRelativePath(d, FilesPath)));
+                versionInfo.Add(new FileEntry(GetRelativePath(d, FilesPath)));
             }
         }
 
@@ -126,76 +128,5 @@ namespace VersionInfo
             Uri folderUri = new Uri(folder);
             return Uri.UnescapeDataString(folderUri.MakeRelativeUri(pathUri).ToString().Replace('/', Path.DirectorySeparatorChar));
         }
-
-        //class JSON_PrettyPrinter
-        //{
-        //    public static string Process(string inputText)
-        //    {
-        //        bool escaped = false;
-        //        bool inquotes = false;
-        //        int column = 0;
-        //        int indentation = 0;
-        //        Stack<int> indentations = new Stack<int>();
-        //        int TABBING = 8;
-        //        StringBuilder sb = new StringBuilder();
-        //        foreach (char x in inputText)
-        //        {
-        //            sb.Append(x);
-        //            column++;
-        //            if (escaped)
-        //            {
-        //                escaped = false;
-        //            }
-        //            else
-        //            {
-        //                if (x == '\\')
-        //                {
-        //                    escaped = true;
-        //                }
-        //                else if (x == '\"')
-        //                {
-        //                    inquotes = !inquotes;
-        //                }
-        //                else if (!inquotes)
-        //                {
-        //                    if (x == ',')
-        //                    {
-        //                        // if we see a comma, go to next line, and indent to the same depth
-        //                        sb.Append("\r\n");
-        //                        column = 0;
-        //                        for (int i = 0; i < indentation; i++)
-        //                        {
-        //                            sb.Append(" ");
-        //                            column++;
-        //                        }
-        //                    }
-        //                    else if (x == '[' || x == '{')
-        //                    {
-        //                        // if we open a bracket or brace, indent further (push on stack)
-        //                        indentations.Push(indentation);
-        //                        indentation = column;
-        //                    }
-        //                    else if (x == ']' || x == '}')
-        //                    {
-        //                        // if we close a bracket or brace, undo one level of indent (pop)
-        //                        indentation = indentations.Pop();
-        //                    }
-        //                    else if (x == ':')
-        //                    {
-        //                        // if we see a colon, add spaces until we get to the next
-        //                        // tab stop, but without using tab characters!
-        //                        while ((column % TABBING) != 0)
-        //                        {
-        //                            sb.Append(' ');
-        //                            column++;
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
-        //        return sb.ToString();
-        //    }
-
-        //}
     }
 }
