@@ -7,6 +7,7 @@ using System.Web.Script.Serialization;
 using System.IO;
 using System.Security.Cryptography;
 using System.Diagnostics;
+using ExtensionMethods;
 
 namespace VersionInfo
 {
@@ -31,7 +32,7 @@ namespace VersionInfo
             string res;
 
             byte[] buffer = File.ReadAllBytes(Path.Combine(Program.FilesPath, file));
-            res = ToHex(fileMD5.ComputeHash(buffer), false);
+            res = fileMD5.ToHex(buffer, false);
 
             m_Filename = file;
             m_MD5Sum = res;
@@ -41,17 +42,8 @@ namespace VersionInfo
         {
             return String.Format("{0} ({1})", m_Filename, m_MD5Sum);
         }
-
-        public static string ToHex(byte[] bytes, bool upperCase)
-        {
-            StringBuilder result = new StringBuilder(bytes.Length * 2);
-
-            for (int i = 0; i < bytes.Length; i++)
-                result.Append(bytes[i].ToString(upperCase ? "X2" : "x2"));
-
-            return result.ToString();
-        }
     }
+
     public class VersionInfo
     {
         public string version;
@@ -61,6 +53,7 @@ namespace VersionInfo
         public VersionInfo()
         {
             files = new List<FileEntry>();
+            updated = DateTime.UtcNow.ToString("s", System.Globalization.CultureInfo.InvariantCulture);
         }
 
         public void Add(FileEntry file) 
@@ -68,6 +61,7 @@ namespace VersionInfo
            files.Add(file);
         }
     }
+
     class Program
     {
         public static string FilesPath = @"C:\Users\John\Documents\GitHub\gh-pages\files\";
@@ -80,7 +74,6 @@ namespace VersionInfo
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(System.IO.Path.Combine(FilesPath, "UOMachine.exe"));
 
             versionInfo.version = fvi.FileVersion;
-            versionInfo.updated = DateTime.UtcNow.ToString("s", System.Globalization.CultureInfo.InvariantCulture);
 
             try
             {
@@ -94,14 +87,14 @@ namespace VersionInfo
                 {
                     AddDir(d, FilesPath, versionInfo);
                 }
+
+                JavaScriptSerializer ser = new JavaScriptSerializer();
+                File.WriteAllText(Path.Combine(FilesPath + @"\..\", "version.json"), ser.Serialize(versionInfo));
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-
-            JavaScriptSerializer ser = new JavaScriptSerializer();
-            File.WriteAllText(Path.Combine(FilesPath + @"\..\", "version.json"), ser.Serialize(versionInfo));
         }
 
         public static void AddDir(string dir, string relative, VersionInfo versionInfo)
@@ -127,6 +120,23 @@ namespace VersionInfo
             }
             Uri folderUri = new Uri(folder);
             return Uri.UnescapeDataString(folderUri.MakeRelativeUri(pathUri).ToString().Replace('/', Path.DirectorySeparatorChar));
+        }
+    }
+}
+
+namespace ExtensionMethods
+{
+    public static class MD5Extension
+    {
+        public static string ToHex(this MD5 md5, byte[] buffer, bool upperCase)
+        {
+            byte[] bytes = md5.ComputeHash(buffer);
+            StringBuilder result = new StringBuilder(bytes.Length * 2);
+
+            for (int i = 0; i < bytes.Length; i++)
+                result.Append(bytes[i].ToString(upperCase ? "X2" : "x2"));
+
+            return result.ToString();
         }
     }
 }
