@@ -44,10 +44,6 @@ namespace UOMachine
         {
             get { return myCurrentOptions; }
         }
-        private const double myButtonScaleFactor = .9, myDisabledOpacity = .5;
-        private static DropShadowEffect myDropShadow;
-        private static double myStartButtonWidth, myStopButtonWidth, myAddButtonWidth, myRazorButtonWidth, mySteamButtonWidth;
-        private static Thickness myStartButtonMargin, myStopButtonMargin, myAddButtonMargin, myRazorButtonMargin, mySteamButtonMargin;
         private const string titleString = "UO Machine Alpha 4";
         private const string titleSpace = "                  ";
         private string fileTitleString = "";
@@ -72,24 +68,10 @@ namespace UOMachine
 
         private void Initialize()
         {
-            myDropShadow = new DropShadowEffect();
-            myDropShadow.ShadowDepth = 0;
-            myDropShadow.BlurRadius = 8;
-            myDropShadow.Color = Colors.Black;
-            myStartButtonWidth = startButton.Width;
-            myStopButtonWidth = stopButton.Width;
-            myAddButtonWidth = addButton.Width;
-            myRazorButtonWidth = razorButton.Width;
-            myStartButtonMargin = startButton.Margin;
-            myStopButtonMargin = stopButton.Margin;
-            myAddButtonMargin = addButton.Margin;
-            myRazorButtonMargin = razorButton.Margin;
-            mySteamButtonWidth = steamButton.Width;
-            mySteamButtonMargin = steamButton.Margin;
-            stopButton.IsEnabled = false;
-            razorButton.IsEnabled = false;
-            addButton.IsEnabled = false;
-            stopButton.Opacity = myDisabledOpacity;
+            UpdateButtonStatus( stopButton, false );
+            UpdateButtonStatus( razorButton, false );
+            UpdateButtonStatus( addButton, false );
+
             Closing += new CancelEventHandler( MainWindow_Closing );
             TreeViewUpdater.Initialize( clientTreeView );
             OptionsWindow.OptionsChangedEvent += new OptionsWindow.dOptionsChanged( OptionsWindow_OptionsChangedEvent );
@@ -107,8 +89,7 @@ namespace UOMachine
                 return;
             }
             PrepareTextEditor();
-            //razorButton.IsEnabled = true;
-            addButton.IsEnabled = true;
+            UpdateButtonStatus( addButton, true );
         }
 
         private void OptionsWindow_OptionsCancelledEvent()
@@ -136,20 +117,17 @@ namespace UOMachine
                 }
             }
 
-            razorButton.IsEnabled = false;
-            razorButton.Opacity = myDisabledOpacity;
-            steamButton.IsEnabled = false;
-            steamButton.Opacity = myDisabledOpacity;
+            UpdateButtonStatus( razorButton, false );
+            UpdateButtonStatus( steamButton, false );
+
             if (optionsData.IsRazorValid())
             {
-                razorButton.IsEnabled = true;
-                razorButton.Opacity = 1;
+                UpdateButtonStatus( razorButton, true );
             }
 
             if (optionsData.IsSteamValid())
             {
-                steamButton.IsEnabled = true;
-                steamButton.Opacity = 1;
+                UpdateButtonStatus( steamButton, true );
             }
         }
 
@@ -221,8 +199,7 @@ namespace UOMachine
         private void myUpdateButtonStatus( Button button, bool IsEnabled )
         {
             button.IsEnabled = IsEnabled;
-            if (IsEnabled) { button.Opacity = 1; }
-            else { button.Opacity = myDisabledOpacity; }
+            button.Opacity = IsEnabled == true ? 1 : 0.5;
         }
 
         private void UpdateButtonStatus( Button button, bool IsEnabled )
@@ -231,37 +208,13 @@ namespace UOMachine
             else button.Dispatcher.BeginInvoke( new dUpdateButtonStatus( myUpdateButtonStatus ), new object[] { button, IsEnabled } );
         }
 
-        private static void ButtonUp( Button button, double width, Thickness margin )
-        {
-            button.Width = width;
-            button.Height = width;
-            button.Margin = margin;
-        }
-
-        private static void ButtonDown( Button button )
-        {
-            //originally implemented in XAML but I prefer this
-            double w = button.Width;
-            double h = button.Height;
-            double positionOffset = button.Width - (button.Width * myButtonScaleFactor);
-            Thickness t = button.Margin;
-            button.Width *= myButtonScaleFactor;
-            button.Height *= myButtonScaleFactor;
-            t.Left += positionOffset;
-            t.Top += positionOffset;
-            button.Margin = t;
-            //Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new ThreadStart(delegate { }));
-        }
-
         private void startButton_Click( object sender, RoutedEventArgs e )
         {
             if (ScriptCompiler.Compile( Assembly.GetExecutingAssembly().Location, scriptTextBox.Text ))
             {
                 UOM.SetStatusLabel( Strings.Scriptrunning );
-                startButton.IsEnabled = false;
-                startButton.Opacity = myDisabledOpacity;
-                stopButton.IsEnabled = true;
-                stopButton.Opacity = 1;
+                UpdateButtonStatus(startButton, false);
+                UpdateButtonStatus(stopButton, true);
             }
             else UOM.SetStatusLabel( Strings.Compilererror );
         }
@@ -294,109 +247,19 @@ namespace UOMachine
             Events.IncomingPackets.ClearEvents();
             Events.OutgoingPackets.ClearEvents();
             Events.LowLevel.ClearEvents();
-            startButton.IsEnabled = true;
-            startButton.Opacity = 1;
-            stopButton.IsEnabled = false;
-            stopButton.Opacity = myDisabledOpacity;
+            UpdateButtonStatus( startButton, true );
+            UpdateButtonStatus( stopButton, false );
             UOM.SetStatusLabel( Strings.Ready );
         }
 
         private void razorButton_Click( object sender, RoutedEventArgs e )
         {
             int index;
-            razorButton.IsEnabled = false;
-            addButton.IsEnabled = false;
-            addButton.Opacity = myDisabledOpacity;
-            razorButton.Opacity = myDisabledOpacity;
+            UpdateButtonStatus( razorButton, false );
+            UpdateButtonStatus( addButton, false );
             RazorLauncher.Launch( myCurrentOptions, out index );
-            razorButton.IsEnabled = true;
-            addButton.IsEnabled = true;
-            addButton.Opacity = 1;
-            razorButton.Opacity = 1;
-        }
-
-        private void startButton_MouseEnter( object sender, MouseEventArgs e )
-        {
-            startButton.Effect = myDropShadow;
-        }
-
-        private void startButton_MouseLeave( object sender, MouseEventArgs e )
-        {
-            startButton.Effect = null;
-        }
-
-        private void stopButton_MouseEnter( object sender, MouseEventArgs e )
-        {
-            stopButton.Effect = myDropShadow;
-        }
-
-        private void stopButton_MouseLeave( object sender, MouseEventArgs e )
-        {
-            stopButton.Effect = null;
-        }
-
-        private void addButton_MouseEnter( object sender, MouseEventArgs e )
-        {
-            addButton.Effect = myDropShadow;
-        }
-
-        private void addButton_MouseLeave( object sender, MouseEventArgs e )
-        {
-            addButton.Effect = null;
-        }
-
-        private void razorButton_MouseEnter( object sender, MouseEventArgs e )
-        {
-            razorButton.Effect = myDropShadow;
-        }
-
-        private void razorButton_MouseLeave( object sender, MouseEventArgs e )
-        {
-            razorButton.Effect = null;
-        }
-
-        private void startButton_PreviewMouseDown( object sender, MouseButtonEventArgs e )
-        {
-            ButtonDown( startButton );
-        }
-
-        private void startButton_PreviewMouseUp( object sender, MouseButtonEventArgs e )
-        {
-            ButtonUp( startButton, myStartButtonWidth, myStartButtonMargin );
-            if (e.ChangedButton != MouseButton.Left) startButton_Click( sender, e );
-        }
-
-        private void stopButton_PreviewMouseDown( object sender, MouseButtonEventArgs e )
-        {
-            ButtonDown( stopButton );
-        }
-
-        private void stopButton_PreviewMouseUp( object sender, MouseButtonEventArgs e )
-        {
-            ButtonUp( stopButton, myStopButtonWidth, myStopButtonMargin );
-            if (e.ChangedButton != MouseButton.Left) stopButton_Click( sender, e );
-        }
-
-        private void addButton_PreviewMouseDown( object sender, MouseButtonEventArgs e )
-        {
-            ButtonDown( addButton );
-        }
-
-        private void addButton_PreviewMouseUp( object sender, MouseButtonEventArgs e )
-        {
-            ButtonUp( addButton, myAddButtonWidth, myAddButtonMargin );
-            if (e.ChangedButton != MouseButton.Left) addButton_Click( sender, e );
-        }
-
-        private void razorButton_PreviewMouseDown( object sender, MouseButtonEventArgs e )
-        {
-            ButtonDown( razorButton );
-        }
-
-        private void razorButton_PreviewMouseUp( object sender, MouseButtonEventArgs e )
-        {
-            ButtonUp( razorButton, myRazorButtonWidth, myRazorButtonMargin );
-            if (e.ChangedButton != MouseButton.Left) razorButton_Click( sender, e );
+            UpdateButtonStatus( razorButton, true );
+            UpdateButtonStatus( addButton, true );
         }
 
         private void FileNew_Click( object sender, RoutedEventArgs e )
@@ -532,43 +395,17 @@ namespace UOMachine
             scriptTextBox.Text = "/* <AREF = \"" + fileName + "\"> */\r\n" + scriptTextBox.Text;
         }
 
-        private void steamButton_MouseEnter( object sender, MouseEventArgs e )
-        {
-            steamButton.Effect = myDropShadow;
-        }
-
-        private void steamButton_MouseLeave( object sender, MouseEventArgs e )
-        {
-            steamButton.Effect = null;
-        }
-
-        private void steamButton_PreviewMouseDown( object sender, MouseButtonEventArgs e )
-        {
-            ButtonDown( steamButton );
-        }
-
-        private void steamButton_PreviewMouseUp( object sender, MouseButtonEventArgs e )
-        {
-            ButtonUp( steamButton, mySteamButtonWidth, mySteamButtonMargin );
-            if (e.ChangedButton != MouseButton.Left) steamButton_Click( sender, e );
-
-        }
-
         private void steamButton_Click( object sender, RoutedEventArgs e )
         {
             int index;
-            steamButton.IsEnabled = false;
-            addButton.IsEnabled = false;
-            addButton.Opacity = myDisabledOpacity;
-            steamButton.Opacity = myDisabledOpacity;
+            UpdateButtonStatus( steamButton, false );
+            UpdateButtonStatus( addButton, false );
             Task.Factory.StartNew( () =>
             {
                 UOMachine.Misc.SteamLauncher.Launch( myCurrentOptions, out index );
-            } );            
-            addButton.IsEnabled = true;
-            addButton.Opacity = 1;
-            steamButton.IsEnabled = true;
-            steamButton.Opacity = 1;
+            } );
+            UpdateButtonStatus( steamButton, true );
+            UpdateButtonStatus( addButton, true );
         }
 
         private void checkUpdate_Click( object sender, RoutedEventArgs e )

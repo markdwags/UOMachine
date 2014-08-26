@@ -132,6 +132,7 @@
     <Compile Include="Macros\MacroEx\WorldItem.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UI\MenuButton.cs" />
     <Compile Include="AssemblyHelper\AssemblyParser.cs" />
     <Compile Include="AssemblyHelper\AssemblyHelper.cs" />
     <Compile Include="App.cs" />
