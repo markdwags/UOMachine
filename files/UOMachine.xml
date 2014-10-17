@@ -4,6 +4,20 @@
         <name>UOMachine</name>
     </assembly>
     <members>
+        <member name="M:UOMachine.Macros.MacroEx.MobileQuery(System.Int32,System.Int32)">
+            <summary>
+            Send mobile query packet to server
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="serial">Serial of mobile to query.</param>
+        </member>
+        <member name="M:UOMachine.Macros.MacroEx.MobileQuery(System.Int32,UOMachine.Mobile)">
+            <summary>
+            Send mobile query packet to server
+            </summary>
+            <param name="client">Target client.</param>
+            <param name="mobile">Mobile to query.</param>
+        </member>
         <member name="M:UOMachine.Macros.MacroEx.OverheadMessage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
             <summary>
             Displays text over specified item serial.
