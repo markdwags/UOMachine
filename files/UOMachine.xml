@@ -379,6 +379,11 @@
             Fired on receipt of sound packet.
             </summary>
         </member>
+        <member name="E:UOMachine.Events.IncomingPackets.MobileAttributesEvent">
+            <summary>
+            Fired on mobile attributes (0x2D) packet.
+            </summary>
+        </member>
         <member name="E:UOMachine.Events.IncomingPackets.ItemEquippedEvent">
             <summary>
             Fired when player character equips an item.
