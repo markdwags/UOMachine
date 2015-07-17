@@ -193,7 +193,11 @@ namespace UOMachine.Events
             private static void ServerInstance_OutgoingPacketEvent(int clientID, byte[] data)
             {
                 int clientIndex = GetClient(clientID);
-                OutgoingPacketParser.ProcessPacket(clientIndex, data);
+                PacketHandler handler = OutgoingPacketHandlers.GetHandler(data[0]);
+                if (handler != null)
+                {
+                    handler.OnReceive(clientIndex, new PacketReader(data, data.Length, handler.Length != 0));
+                }
                 LowLevel.OnOutgoingPacket(clientIndex, data);
             }
 
@@ -205,7 +209,12 @@ namespace UOMachine.Events
             private static void ServerInstance_IncomingPacketEvent(int clientID, byte[] data)
             {
                 int clientIndex = GetClient(clientID);
-                IncomingPacketParser.ProcessPacket(clientIndex, data);
+                PacketHandler handler = IncomingPacketHandlers.GetHandler(data[0]);
+                if (handler != null)
+                {
+                    handler.OnReceive(clientIndex, new PacketReader(data, data.Length, handler.Length != 0));
+                }
+                
                 LowLevel.OnIncomingPacket(clientIndex, data);
             }
 

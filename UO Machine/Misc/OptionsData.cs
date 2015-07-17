@@ -56,6 +56,8 @@ namespace UOMachine
         {
             OptionsData od = new OptionsData();
             od.UOFolder = RegistryHelper.GetUOPath();
+            if (od.UOFolder == null)
+                od.UOFolder = @"C:\";
             od.UOClientPath = Path.Combine( od.UOFolder, "client.exe" );
             od.Server = "localhost";
             od.PatchAlwaysLight = true;

@@ -110,6 +110,8 @@ namespace UOMachine
             Map.Initialize( MainWindow.CurrentOptions.UOFolder, MainWindow.CurrentOptions.CacheLevel );
             Cliloc.Initialize( MainWindow.CurrentOptions.UOFolder );
             NamespaceToAssembly.Initialize();
+            IncomingPacketHandlers.Initialize();
+            OutgoingPacketHandlers.Initialize();
             return true;
         }
 

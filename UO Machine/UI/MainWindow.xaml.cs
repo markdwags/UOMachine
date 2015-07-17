@@ -27,6 +27,7 @@ using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Search;
 using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.CodeCompletion;
+using ICSharpCode.AvalonEdit.Folding;
 using System.Threading.Tasks;
 
 namespace UOMachine
@@ -54,6 +55,9 @@ namespace UOMachine
 
         private object myOptionWaitObject = new object();
         private bool myIsWaitingForOptions = false;
+
+        private FoldingManager foldingManager;
+
         private bool waitingForOptions
         {
             set { myIsWaitingForOptions = value; }
@@ -158,6 +162,8 @@ namespace UOMachine
             FileNew_Click( null, null );
             scriptTextBox.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition( "C#" );
             scriptTextBox.Options = myCurrentOptions.TextEditorOptions;
+            foldingManager = FoldingManager.Install(scriptTextBox.TextArea);
+            new BraceFoldingStrategy().UpdateFoldings(foldingManager, scriptTextBox.Document);
         }
 
         private void OptionsWindow_OptionsChangedEvent( OptionsData optionsData )
@@ -294,6 +300,7 @@ namespace UOMachine
                     //scriptTextBox.Text = File.ReadAllText(OFD.FileName);
                     scriptTextBox.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition( "C#" );
                     scriptTextBox.OpenFile( OFD.FileName );
+                    new BraceFoldingStrategy().UpdateFoldings(foldingManager, scriptTextBox.Document);
                 }
                 catch (IOException)
                 {

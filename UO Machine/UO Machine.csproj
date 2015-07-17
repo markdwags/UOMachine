@@ -89,7 +89,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\ICSharpCode.AvalonEdit.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.CodeCompletion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9513f4b9ac5c6ac0, processorArchitecture=MSIL">
+    <Reference Include="ICSharpCode.CodeCompletion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\ICSharpCode.CodeCompletion.dll</HintPath>
     </Reference>
@@ -124,6 +124,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BraceFoldingStrategy.cs" />
+    <Compile Include="Data\OutgoingPacketHandlers.cs" />
+    <Compile Include="Data\PacketHandler.cs" />
+    <Compile Include="Data\IncomingPacketHandlers.cs" />
+    <Compile Include="Data\PacketReader.cs" />
     <Compile Include="Macros\MacroEx\AddRecvFilter.cs" />
     <Compile Include="Macros\MacroEx\OverheadMessage.cs" />
     <Compile Include="Macros\MacroEx\QuestArrow.cs" />
@@ -315,8 +320,6 @@
     <Compile Include="Objects\Structs.cs" />
     <Compile Include="Objects\WorldItem.cs" />
     <Compile Include="Misc\OptionsData.cs" />
-    <Compile Include="Data\IncomingPacketParser.cs" />
-    <Compile Include="Data\OutgoingPacketParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

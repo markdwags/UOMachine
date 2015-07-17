@@ -32,11 +32,15 @@ namespace UOMachine.Macros
         {
             if (outgoing)
             {
-                UOMachine.Data.OutgoingPacketParser.ProcessPacket(client, packet);
+                UOMachine.Data.PacketHandler handler = UOMachine.Data.OutgoingPacketHandlers.GetHandler(packet[0]);
+                if (handler != null)
+                    handler.OnReceive(client, new UOMachine.Data.PacketReader(packet, packet.Length, handler.Length != 0));
             }
             else
             {
-                UOMachine.Data.IncomingPacketParser.ProcessPacket(client, packet);
+                UOMachine.Data.PacketHandler handler = UOMachine.Data.IncomingPacketHandlers.GetHandler(packet[0]);
+                if (handler != null)
+                    handler.OnReceive(client, new UOMachine.Data.PacketReader(packet, packet.Length, handler.Length != 0));
             }
         }
     }
