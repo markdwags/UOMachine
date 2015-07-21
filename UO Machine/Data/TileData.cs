@@ -29,41 +29,92 @@ namespace UOMachine.Data
 
         private static void LoadLandTiles(byte[] data, InternalLandTile[] landTiles)
         {
-            int offset = 4;
-            int index = 0;
-            for (int x = 0; x < landTiles.Length; x++)
+            MemoryStream ms = new MemoryStream(data, false);
+            BinaryReader bin = new BinaryReader(ms);
+
+            for (int i = 0; i < 0x4000; ++i)
             {
-                if (index == 32)
-                {
-                    offset += 4;
-                    index = 0;
+                if (i == 1 || (i > 0 && (i & 0x1f) == 0)) {
+                    bin.ReadInt32(); // block header
                 }
-                landTiles[x].Flags = (TileFlags)BitConverter.ToUInt32(data, (x * 26) + offset);
-                landTiles[x].ID = BitConverter.ToUInt16(data, (x * 26) + 4 + offset);
-                landTiles[x].Name = ASCIIEncoding.ASCII.GetString(data, (x * 26) + 6 + offset, 20).TrimEnd('\0');
-                index++;
+
+                landTiles[i].Flags = (TileFlags)bin.ReadInt32();
+                bin.ReadInt32(); // TODO: Convert flags to int64
+                landTiles[i].ID = bin.ReadInt16();
+                landTiles[i].Name = ASCIIEncoding.ASCII.GetString(bin.ReadBytes(20)).TrimEnd('\0');
             }
+
+            bin.Close();
+            ms.Close();
+
+            //int offset = 4;
+            //int index = 0;
+            //for (int x = 0; x < landTiles.Length; x++)
+            //{
+            //    if (index == 32)
+            //    {
+            //        offset += 4;
+            //        index = 0;
+            //    }
+            //    landTiles[x].Flags = (TileFlags)BitConverter.ToUInt32(data, (x * 26) + offset);
+            //    offset += 4;
+            //    landTiles[x].ID = BitConverter.ToUInt16(data, (x * 26) + 4 + offset);
+            //    landTiles[x].Name = ASCIIEncoding.ASCII.GetString(data, (x * 26) + 6 + offset, 20).TrimEnd('\0');
+            //    index++;
+            //}
         }
 
         private static void LoadStaticTiles(byte[] data, InternalStaticTile[] staticTiles)
         {
-            int offset = 428032 + 4; //beginning of static section + 4
-            int index = 0;
-            for (int x = 0; x < staticTiles.Length; x++)
+            int offset = 493568;
+
+            MemoryStream ms = new MemoryStream(data, false);
+            BinaryReader bin = new BinaryReader(ms);
+
+            ms.Seek(offset, SeekOrigin.Begin);
+
+            for (int i = 0; i < 0x10000; ++i)
             {
-                if (index == 32)
+                if ((i & 0x1F) == 0)
                 {
-                    offset += 4;
-                    index = 0;
+                    bin.ReadInt32(); // header
                 }
-                staticTiles[x].ID = (ushort)x;
-                staticTiles[x].Flags = (TileFlags)BitConverter.ToUInt32(data, (x * 37) + offset);
-                staticTiles[x].Weight = data[(x * 37) + 4 + offset];
-                staticTiles[x].Quantity = data[(x * 37) + 9 + offset];
-                //staticTiles[x].AnimID = BitConverter.ToUInt16(data, (x * 37) + 10 + offset);
-                staticTiles[x].Name = ASCIIEncoding.ASCII.GetString(data, (x * 37) + 17 + offset, 20).TrimEnd('\0');
-                index++;
+
+                staticTiles[i].ID = (ushort)i;
+                staticTiles[i].Flags = (TileFlags)bin.ReadInt32();
+                bin.ReadInt32(); // TODO: convert Flags to int64
+                staticTiles[i].Weight = bin.ReadByte();
+                int quality = bin.ReadByte();
+                bin.ReadInt16();
+                bin.ReadByte();
+                staticTiles[i].Quantity = bin.ReadByte();
+                bin.ReadInt32();
+                bin.ReadByte();
+                int value = bin.ReadByte();
+                int height = bin.ReadByte();
+                staticTiles[i].Name = ASCIIEncoding.ASCII.GetString(bin.ReadBytes(20)).TrimEnd('\0');
             }
+
+            bin.Close();
+            ms.Close();
+
+            //int offset = 428032 + 4; //beginning of static section + 4
+            //int index = 0;
+            //for (int x = 0; x < staticTiles.Length; x++)
+            //{
+            //    if (index == 32)
+            //    {
+            //        offset += 4;
+            //        index = 0;
+            //    }
+            //    staticTiles[x].ID = (ushort)x;
+            //    staticTiles[x].Flags = (TileFlags)BitConverter.ToUInt32(data, (x * 37) + offset);
+            //    staticTiles[x].Weight = data[(x * 37) + 4 + offset];
+            //    staticTiles[x].Quantity = data[(x * 37) + 9 + offset];
+            //    //staticTiles[x].AnimID = BitConverter.ToUInt16(data, (x * 37) + 10 + offset);
+            //    staticTiles[x].Name = ASCIIEncoding.ASCII.GetString(data, (x * 37) + 17 + offset, 20).TrimEnd('\0');
+            //    index++;
+            //}
         }
 
         /// <summary>

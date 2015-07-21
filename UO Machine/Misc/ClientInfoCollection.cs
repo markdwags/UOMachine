@@ -303,6 +303,15 @@ namespace UOMachine
             return false;
         }
 
+        public static bool FindItems(int index, int x, int y, out Item[] items)
+        {
+            ClientInfo ci;
+            if (GetClient(index, out ci))
+                return ci.Items.FindItems(x, y, ci.Player.Facet, out items);
+            items = null;
+            return false;
+        }
+
         public static void AddItem(int index, Item item)
         {
             ClientInfo ci;

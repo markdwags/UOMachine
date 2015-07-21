@@ -59,6 +59,13 @@ namespace UOMachine.Data
         private static FileStream myMap4Reader = null;
         private static FileStream myMap5Reader = null;
 
+        private static UOPIndex myMap0Index = null;
+        private static UOPIndex myMap1Index = null;
+        private static UOPIndex myMap2Index = null;
+        private static UOPIndex myMap3Index = null;
+        private static UOPIndex myMap4Index = null;
+        private static UOPIndex myMap5Index = null;
+
         private static FileStream myStaticIndex0Reader = null;
         private static FileStream myStaticIndex1Reader = null;
         private static FileStream myStaticIndex2Reader = null;
@@ -133,6 +140,13 @@ namespace UOMachine.Data
             string map3Path = Path.Combine(dataFolder, "map3.mul");
             string map4Path = Path.Combine(dataFolder, "map4.mul");
             string map5Path = Path.Combine(dataFolder, "map5.mul");
+
+            string map0UOPPath = Path.Combine(dataFolder, "map0LegacyMUL.uop");
+            string map1UOPPath = Path.Combine(dataFolder, "map1LegacyMUL.uop");
+            string map2UOPPath = Path.Combine(dataFolder, "map2LegacyMUL.uop");
+            string map3UOPPath = Path.Combine(dataFolder, "map3LegacyMUL.uop");
+            string map4UOPPath = Path.Combine(dataFolder, "map4LegacyMUL.uop");
+            string map5UOPPath = Path.Combine(dataFolder, "map5LegacyMUL.uop");
 
             if (myCacheStaticIndices)
             {
@@ -231,18 +245,65 @@ namespace UOMachine.Data
                 }
             }
 
-            if (File.Exists(map0Path))
+            if (File.Exists(map0UOPPath))
+            {
+                myMap0Reader = File.OpenRead(map0UOPPath);
+                myMap0Index = new UOPIndex(myMap0Reader);
+            }
+            else if (File.Exists(map0Path))
+            {
                 myMap0Reader = File.OpenRead(map0Path);
-            if (File.Exists(map1Path))
+            }
+
+            if (File.Exists(map1UOPPath))
+            {
+                myMap1Reader = File.Open(map1UOPPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                myMap1Index = new UOPIndex(myMap1Reader);
+            }
+            else if (File.Exists(map1Path))
+            {
                 myMap1Reader = File.OpenRead(map1Path);
-            if (File.Exists(map2Path))
+            }
+
+            if (File.Exists(map2UOPPath))
+            {
+                myMap2Reader = File.OpenRead(map2UOPPath);
+                myMap2Index = new UOPIndex(myMap2Reader);
+            }
+            else if (File.Exists(map2Path))
+            {
                 myMap2Reader = File.OpenRead(map2Path);
-            if (File.Exists(map3Path))
+            }
+
+            if (File.Exists(map3UOPPath))
+            {
+                myMap3Reader = File.OpenRead(map3UOPPath);
+                myMap3Index = new UOPIndex(myMap3Reader);
+            }
+            else if (File.Exists(map3Path))
+            {
                 myMap3Reader = File.OpenRead(map3Path);
-            if (File.Exists(map4Path))
+            }
+
+            if (File.Exists(map4UOPPath))
+            {
+                myMap4Reader = File.OpenRead(map4UOPPath);
+                myMap4Index = new UOPIndex(myMap4Reader);
+            }
+            else if (File.Exists(map4Path))
+            {
                 myMap4Reader = File.OpenRead(map4Path);
-            if (File.Exists(map5Path))
+            }
+
+            if (File.Exists(map5UOPPath))
+            {
+                myMap5Reader = File.OpenRead(map5UOPPath);
+                myMap5Index = new UOPIndex(myMap5Reader);
+            }
+            else if (File.Exists(map5Path))
+            {
                 myMap5Reader = File.OpenRead(map5Path);
+            }
 
             if (myMap0Reader != null && myMap0Reader.Length == myNewMap0Len)
                 myUsingNewMaps = true;
@@ -506,7 +567,12 @@ namespace UOMachine.Data
                     blockIndex = x / 8 * 512 + y / 8;
                     lock (myMap0Reader)
                     {
-                        myMap0Reader.Seek(blockIndex * 196 + 4 + (cellY * 24 + cellX * 3), SeekOrigin.Begin);
+                        int offset = blockIndex * 196 + 4 + (cellY * 24 + cellX * 3);
+
+                        if (myMap0Index != null)
+                            offset = myMap0Index.Lookup(offset);
+
+                        myMap0Reader.Seek(offset, SeekOrigin.Begin);
                         m.landTile = new LandTile(TileData.GetLandTile(myMap0Reader.ReadByte() | myMap0Reader.ReadByte() << 8));
                         m.landTile.X = x;
                         m.landTile.Y = y;
@@ -527,7 +593,12 @@ namespace UOMachine.Data
                     mapInfo = new MapInfo();
                     lock (myMap1Reader)
                     {
-                        myMap1Reader.Seek(blockIndex * 196 + 4 + (cellY * 24 + cellX * 3), SeekOrigin.Begin);
+                        int offset = blockIndex * 196 + 4 + (cellY * 24 + cellX * 3);
+
+                        if (myMap1Index != null)
+                            offset = myMap1Index.Lookup(offset);
+
+                        myMap1Reader.Seek(offset, SeekOrigin.Begin);
                         mapInfo.landTile = new LandTile(TileData.GetLandTile(myMap1Reader.ReadByte() | myMap1Reader.ReadByte() << 8));
                         mapInfo.landTile.X = x;
                         mapInfo.landTile.Y = y;
@@ -544,7 +615,12 @@ namespace UOMachine.Data
                     blockIndex = x / 8 * 200 + y / 8;
                     lock (myMap2Reader)
                     {
-                        myMap2Reader.Seek(blockIndex * 196 + 4 + (cellY * 24 + cellX * 3), SeekOrigin.Begin);
+                        int offset = blockIndex * 196 + 4 + (cellY * 24 + cellX * 3);
+
+                        if (myMap2Index != null)
+                            offset = myMap2Index.Lookup(offset);
+
+                        myMap2Reader.Seek(offset, SeekOrigin.Begin);
                         m.landTile = new LandTile(TileData.GetLandTile(myMap2Reader.ReadByte() | myMap2Reader.ReadByte() << 8));
                         m.landTile.X = x;
                         m.landTile.Y = y;
@@ -562,7 +638,12 @@ namespace UOMachine.Data
                     blockIndex = x / 8 * 256 + y / 8;
                     lock (myMap3Reader)
                     {
-                        myMap3Reader.Seek(blockIndex * 196 + 4 + (cellY * 24 + cellX * 3), SeekOrigin.Begin);
+                        int offset = blockIndex * 196 + 4 + (cellY * 24 + cellX * 3);
+
+                        if (myMap3Index != null)
+                            offset = myMap3Index.Lookup(offset);
+
+                        myMap3Reader.Seek(offset, SeekOrigin.Begin);
                         m.landTile = new LandTile(TileData.GetLandTile(myMap3Reader.ReadByte() | myMap3Reader.ReadByte() << 8));
                         m.landTile.X = x;
                         m.landTile.Y = y;
@@ -580,7 +661,13 @@ namespace UOMachine.Data
                     blockIndex = x / 8 * 181 + y / 8;
                     lock (myMap4Reader)
                     {
-                        myMap4Reader.Seek(blockIndex * 196 + 4 + (cellY * 24 + cellX * 3), SeekOrigin.Begin);
+                        int offset = blockIndex * 196 + 4 + (cellY * 24 + cellX * 3);
+
+                        if (myMap4Index != null)
+                            offset = myMap4Index.Lookup(offset);
+
+                        myMap4Reader.Seek(offset, SeekOrigin.Begin);
+
                         m.landTile = new LandTile(TileData.GetLandTile(myMap4Reader.ReadByte() | myMap4Reader.ReadByte() << 8));
                         m.landTile.X = x;
                         m.landTile.Y = y;
@@ -598,7 +685,13 @@ namespace UOMachine.Data
                     blockIndex = x / 8 * 512 + y / 8;
                     lock (myMap5Reader)
                     {
-                        myMap5Reader.Seek(blockIndex * 196 + 4 + (cellY * 24 + cellX * 3), SeekOrigin.Begin);
+                        int offset = blockIndex * 196 + 4 + (cellY * 24 + cellX * 3);
+
+                        if (myMap5Index != null)
+                            offset = myMap5Index.Lookup(offset);
+
+                        myMap5Reader.Seek(offset, SeekOrigin.Begin);
+
                         m.landTile = new LandTile(TileData.GetLandTile(myMap5Reader.ReadByte() | myMap5Reader.ReadByte() << 8));
                         m.landTile.X = x;
                         m.landTile.Y = y;

@@ -209,6 +209,26 @@ namespace UOMachine
             return false;
         }
 
+        public bool FindItems(int x, int y, int facet, out Item[] items)
+        {
+            List<Item> itemList = new List<Item>(32);
+
+            lock (mySyncRoot)
+            {
+                foreach (Item i in myItemList.Values)
+                {
+                    if (i.X == x && i.Y == y && !itemList.Contains(i)) itemList.Add(i);
+                }
+            }
+            if (itemList.Count > 0)
+            {
+                items = itemList.ToArray();
+                return true;
+            }
+            items = null;
+            return false;
+        }
+
         internal void Add(Item item)
         {
             bool changed = false;

@@ -45,5 +45,18 @@ namespace UOMachine.Macros
         {
             return ClientInfoCollection.FindItems(client, ids, out items);
         }
+
+        /// <summary>
+        /// Get all items at X,Y position on Map
+        /// </summary>
+        /// <param name="client">Client Index.</param>
+        /// <param name="x">X Coordinate</param>
+        /// <param name="y">Y Coordinate</param>
+        /// <param name="items">Item array (out).</param>
+        /// <returns></returns>
+        public static bool FindItems(int client, int x, int y, out Item[] items)
+        {
+            return ClientInfoCollection.FindItems(client, x, y, out items);
+        }
     }
 }
