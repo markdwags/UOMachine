@@ -226,6 +226,7 @@ namespace UOMachine.IPC
         /// </summary>
         /// <param name="command">
         /// IPC.Command to send.</param>
+        /// <param name="data">Data to send.</param>
         public void SendCommand(Command command, byte data)
         {
             lock (myNamedPipeClientStream)
@@ -247,6 +248,7 @@ namespace UOMachine.IPC
         /// <param name="command">
         /// IPC.Command to send.
         /// </param>
+        /// <param name="data">Data to send.</param>
         public void SendCommand(Command command, byte[] data)
         {
             lock (myNamedPipeClientStream)
@@ -270,6 +272,7 @@ namespace UOMachine.IPC
         /// <param name="command">
         /// IPC.Command to send.
         /// </param>
+        /// <param name="messageString">Command argument.</param>
         public void SendCommand(Command command, string messageString)
         {
             lock (myNamedPipeClientStream)
@@ -294,6 +297,7 @@ namespace UOMachine.IPC
         /// <param name="command">
         /// IPC.Command to send.
         /// </param>
+        /// <param name="data">Data to send.</param>
         public void SendCommand(Command command, int data)
         {
             lock (myNamedPipeClientStream)
@@ -318,6 +322,8 @@ namespace UOMachine.IPC
         /// <param name="command">
         /// IPC.Command to send.
         /// </param>
+        /// <param name="data">Data to send.</param>
+        /// <param name="data2">Data to send.</param>
         public void SendCommand(Command command, int data, byte data2)
         {
             lock (myNamedPipeClientStream)
@@ -343,6 +349,8 @@ namespace UOMachine.IPC
         /// <param name="command">
         /// IPC.Command to send.
         /// </param>
+        /// <param name="data1">Data to send.</param>
+        /// <param name="data2">Data to send.</param>
         public void SendCommand(Command command, int data1, int data2)
         {
             lock (myNamedPipeClientStream)
@@ -371,9 +379,11 @@ namespace UOMachine.IPC
         /// <param name="command">
         /// IPC.Command to send.
         /// </param>
-        /// <param name="data">
+        /// <param name="data1">
         /// Command argument.
         /// </param>
+        /// <param name="data2">Command argument.</param>
+        /// <param name="data3">Command argument.</param>
         public void SendCommand(Command command, int data1, int data2, byte data3)
         {
             lock (myNamedPipeClientStream)

@@ -26,6 +26,7 @@ namespace UOMachine.Macros
         /// Get all packet based generic gumps from target client.
         /// </summary>
         /// <param name="client">Target client.</param>
+        /// <param name="gumps">Gump array.</param>
         /// <returns>True on success.</returns>
         public static bool GetGumps(int client, out Gump[] gumps)
         {

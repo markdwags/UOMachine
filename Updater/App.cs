@@ -20,7 +20,7 @@ namespace Updater
                 app.InitializeComponent();
                 app.Run();
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show( "Exception caught" );
             }

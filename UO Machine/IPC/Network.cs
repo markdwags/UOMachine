@@ -116,6 +116,7 @@ namespace UOMachine.IPC
         /// <summary>
         /// Send single-byte IPC message to IPC client.
         /// </summary>
+        /// <param name="index">Client index.</param>
         /// <param name="command">IPC.Command to send.</param>
         internal static void SendCommand(int index, Command command)
         {
@@ -127,6 +128,7 @@ namespace UOMachine.IPC
         /// <summary>
         /// Send 2 byte IPC message to IPC client.
         /// </summary>
+        /// <param name="index">Client index.</param>
         /// <param name="command">IPC.Command to send.</param>
         /// <param name="data">Command argument.</param>
         internal static void SendCommand(int index, Command command, byte data)
@@ -149,6 +151,7 @@ namespace UOMachine.IPC
         /// <summary>
         /// Send variable length IPC message to IPC client.
         /// </summary>
+        /// <param name="index">Client index.</param>
         /// <param name="command">IPC.Command to send.</param>
         /// <param name="data">Command argument.</param>
         internal static void SendCommand(int index, Command command, byte[] data)
@@ -161,6 +164,7 @@ namespace UOMachine.IPC
         /// <summary>
         /// Send variable length IPC message to IPC client.
         /// </summary>
+        /// <param name="index">Client index.</param>
         /// <param name="command">IPC.Command to send.</param>
         /// <param name="arg1">Command argument.</param>
         /// <param name="arg2">Command argument.</param>
@@ -175,6 +179,7 @@ namespace UOMachine.IPC
         /// <summary>
         /// Send variable length IPC message to IPC client.
         /// </summary>
+        /// <param name="index">Client index.</param>
         /// <param name="command">IPC.Command to send.</param>
         /// <param name="message"> Command argument.</param>
         internal static void SendCommand(int index, Command command, string message)

@@ -106,9 +106,9 @@ namespace UOMachine.Events
                         {
                             try
                             {
-                            m.SetLayer((int)layer, serial);
-                        }
-                            catch (Exception e) { }
+                                m.SetLayer((int)layer, serial);
+                            }
+                            catch (Exception) { }
                         }
                     }
                     Item i;

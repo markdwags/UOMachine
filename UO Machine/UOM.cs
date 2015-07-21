@@ -71,7 +71,7 @@ namespace UOMachine
                 {
                     File.Copy( Path.Combine( StartupPath, "Updater_New.exe" ), Path.Combine( StartupPath, "Updater.exe" ), true );
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                 }
             }
@@ -86,7 +86,7 @@ namespace UOMachine
                     File.Delete( origFile );
                     File.Move( renameFile, origFile );
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                 }
             }

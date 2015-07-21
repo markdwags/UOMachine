@@ -179,7 +179,9 @@ namespace UOMachine
         /// <summary>
         /// Get mobile from specified client.
         /// </summary>
+        /// <param name="index">Client index.</param>
         /// <param name="serial">Serial of mobile to get.</param>
+        /// <param name="mobile">Mobile (out).</param>
         /// <returns>False if not found.</returns>
         public static bool GetMobile(int index, int serial, out Mobile mobile)
         {
@@ -194,6 +196,7 @@ namespace UOMachine
         /// Get PlayerMobile from specified client.
         /// </summary>
         /// <param name="index">Target client.</param>
+        /// <param name="playerMobile">PlayerMobile (out).</param>
         public static bool GetPlayer(int index, out PlayerMobile playerMobile)
         {
             ClientInfo ci;
@@ -248,7 +251,9 @@ namespace UOMachine
         /// <summary>
         /// Get item from specified client.
         /// </summary>
+        /// <param name="index">Client index.</param>
         /// <param name="serial">Serial of item to get.</param>
+        /// <param name="item">Item (out).</param>
         /// <returns>False if not found.</returns>
         public static bool GetItem(int index, int serial, out Item item)
         {
@@ -351,14 +356,14 @@ namespace UOMachine
             {
                 try
                 {
-                Mobile m;
-                if (ci.Mobiles.GetMobile(serial, out m))
-                {
-                    m.MaxMana = maxMana;
-                    m.Mana = mana;
+                    Mobile m;
+                    if (ci.Mobiles.GetMobile(serial, out m))
+                    {
+                        m.MaxMana = maxMana;
+                        m.Mana = mana;
+                    }
                 }
-            }
-                catch (Exception e)
+                catch (Exception)
                 {
                 }
             }

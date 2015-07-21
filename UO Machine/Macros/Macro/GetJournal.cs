@@ -27,6 +27,7 @@ namespace UOMachine.Macros
         /// Get journal for specified client.
         /// </summary>
         /// <param name="client">Target client.</param>
+        /// <param name="journal">Journal CircularBuffer (out).</param>
         /// <returns>True on success.</returns>
         public static bool GetJournal(int client, out CircularBuffer<JournalEntry> journal)
         {

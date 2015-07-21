@@ -27,6 +27,7 @@ namespace UOMachine.Macros
         /// </summary>
         /// <param name="client">Target client.</param>
         /// <param name="gumpID">ID of gump to get.</param>
+        /// <param name="gump">Gump (out).</param>
         /// <returns>True on success.</returns>
         public static bool GetGump(int client, int gumpID, out Gump gump)
         {

@@ -28,7 +28,6 @@ namespace ClientHook
         private static int myPID, myThreadID, myDateStamp;
         private static dSendRecv myRecvDelegate, mySendDelegate;
         private static bool[] myRecvFilter, mySendFilter;
-        private static bool myNewStylePackets;
         private static ClientInstance myClientInstance;
         private static IntPtr myServerSendBuffer, myClientSendBuffer;
         private static byte[] myServerBufferAddress, myClientBufferAddress;
@@ -86,8 +85,6 @@ namespace ClientHook
             myPID = RemoteHooking.GetCurrentProcessId();
             myThreadID = RemoteHooking.GetCurrentThreadId();
             myDateStamp = GetDateStamp();
-            if (myDateStamp >= 1183740939) myNewStylePackets = true;
-            else myNewStylePackets = false;
             myServerSendBuffer = Marshal.AllocHGlobal( 65536 );
             myClientSendBuffer = Marshal.AllocHGlobal( 65536 );
             myServerBufferAddress = BitConverter.GetBytes( myServerSendBuffer.ToInt32() );
@@ -208,7 +205,7 @@ namespace ClientHook
                                     break;
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                         }
                     }

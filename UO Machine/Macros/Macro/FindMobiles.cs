@@ -27,6 +27,7 @@ namespace UOMachine.Macros
         /// </summary>
         /// <param name="client">Target client.</param>
         /// <param name="id">ID of mobiles to find.</param>
+        /// <param name="mobiles">Mobile array (out).</param>
         /// <returns>True on success.</returns>
         public static bool FindMobiles(int client, int id, out Mobile[] mobiles)
         {
@@ -38,6 +39,7 @@ namespace UOMachine.Macros
         /// </summary>
         /// <param name="client">Target client.</param>
         /// <param name="ids">IDs of mobiles to find.</param>
+        /// <param name="mobiles">Mobile array (out).</param>
         /// <returns>True on success.</returns>
         public static bool FindMobiles(int client, int[] ids, out Mobile[] mobiles)
         {

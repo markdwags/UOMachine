@@ -200,12 +200,16 @@ namespace UOMachine
             AddReferences(sourcecode, cp);
             cp.GenerateExecutable = false;
 #if DEBUG
-            cp.CompilerOptions = "/debug+";//"/optimize+";
+            cp.CompilerOptions = "/debug+";
+            cp.GenerateInMemory = false;
+            cp.TempFiles = new TempFileCollection(Environment.GetEnvironmentVariable("TEMP"), true);
+            cp.IncludeDebugInformation = true;
+            cp.TempFiles.KeepFiles = true;
 #else
             cp.CompilerOptions = "/optimize+";
-#endif
             cp.GenerateInMemory = true;
             cp.IncludeDebugInformation = false;
+#endif
             CompilerResults CR = cdp.CompileAssemblyFromSource(cp, sourcecode);
             if (CR.Errors.HasErrors)
             {

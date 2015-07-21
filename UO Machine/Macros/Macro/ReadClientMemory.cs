@@ -25,6 +25,7 @@ namespace UOMachine.Macros
         /// <summary>
         /// Read memory from specified client.  Amount to read is determined by buffer size.
         /// </summary>
+        /// <param name="client">Client index.</param>
         /// <param name="address">Address of memory to read.</param>
         /// <param name="buffer">Destination for memory read from process.</param>
         public static bool ReadClientMemory(int client, IntPtr address, byte[] buffer)

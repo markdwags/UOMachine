@@ -124,7 +124,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BraceFoldingStrategy.cs" />
+    <Compile Include="Data\UOPIndex.cs" />
+    <Compile Include="UI\BraceFoldingStrategy.cs" />
     <Compile Include="Data\OutgoingPacketHandlers.cs" />
     <Compile Include="Data\PacketHandler.cs" />
     <Compile Include="Data\IncomingPacketHandlers.cs" />

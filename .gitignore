@@ -12,3 +12,7 @@ UO Machine.v11.suo
 Updater/obj/*
 Updater/bin/*
 Debug
+patch.diff.txt
+ipch/
+UO Machine/Misc/SteamLauncher - Copy.cs
+UO Machine.sdf

@@ -27,6 +27,7 @@ namespace UOMachine.Macros
         /// </summary>
         /// <param name="client">Target client.</param>
         /// <param name="id">ID of mobile to find.</param>
+        /// <param name="mobile">Mobile (out).</param>
         /// <returns>True on success.</returns>
         public static bool FindMobile(int client, int id, out Mobile mobile)
         {

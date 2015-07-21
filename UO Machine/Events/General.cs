@@ -69,9 +69,9 @@ namespace UOMachine.Events
                 dGenericGump handler = myGenericGumpEvent;
                 try
                 {
-                if (handler != null) handler(client, gump);
-            }
-                catch (Exception e) { }
+                    if (handler != null) handler(client, gump);
+                }
+                catch (Exception) { }
             }
         }
     }

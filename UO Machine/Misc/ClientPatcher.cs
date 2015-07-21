@@ -372,7 +372,9 @@ namespace UOMachine
         /// <summary>
         /// Set game play window size
         /// </summary>
-        /// <param name="hProcess"></param>
+        /// <param name="hProcess">Process Handle</param>
+        /// <param name="width">Game Width.</param>
+        /// <param name="height">Game Height.</param>
         public static bool SetGameSize(IntPtr hProcess, int width, int height)
         {
             /*

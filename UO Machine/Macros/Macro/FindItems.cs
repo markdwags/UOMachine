@@ -27,6 +27,7 @@ namespace UOMachine.Macros
         /// </summary>
         /// <param name="client">Target client.</param>
         /// <param name="id">ID of items to find.</param>
+        /// <param name="items">Array of Item (out).</param>
         /// <returns>True on success.</returns>
         public static bool FindItems(int client, int id, out Item[] items)
         {
@@ -38,6 +39,7 @@ namespace UOMachine.Macros
         /// </summary>
         /// <param name="client">Target client.</param>
         /// <param name="ids">IDs of items to find.</param>
+        /// <param name="items">Array of Item (out).</param>
         /// <returns>True on success.</returns>
         public static bool FindItems(int client, int[] ids, out Item[] items)
         {

@@ -26,6 +26,7 @@ namespace UOMachine.Macros
         /// <summary>
         /// Add keyboard macro to specified client.
         /// </summary>
+        /// <param name="client">Client index.</param>
         /// <param name="keys">Keys associated with the macro.</param>
         /// <param name="callback">A delegate to be called whenever the specified key combination is pressed.</param>
         /// <returns>True on success.</returns>

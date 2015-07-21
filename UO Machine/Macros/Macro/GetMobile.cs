@@ -27,6 +27,7 @@ namespace UOMachine.Macros
         /// </summary>
         /// <param name="client">Target client.</param>
         /// <param name="serial">Serial of mobile to retrieve.</param>
+        /// <param name="mobile">Mobile (out).</param>
         /// <returns>True on success.</returns>
         public static bool GetMobile(int client, int serial, out Mobile mobile)
         {

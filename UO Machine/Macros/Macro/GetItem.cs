@@ -27,6 +27,7 @@ namespace UOMachine.Macros
         /// </summary>
         /// <param name="client">Target client.</param>
         /// <param name="serial">Serial of item to retrieve.</param>
+        /// <param name="item">Item (out).</param>
         /// <returns>True on success.</returns>
         public static bool GetItem(int client, int serial, out Item item)
         {

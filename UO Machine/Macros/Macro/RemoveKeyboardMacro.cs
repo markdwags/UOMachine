@@ -26,6 +26,7 @@ namespace UOMachine.Macros
         /// <summary>
         /// Remove keyboard macro from specified client.
         /// </summary>
+        /// <param name="client">Client index.</param>
         /// <param name="keys">Keys associated with the macro.</param>
         /// <returns>True on success.</returns>
         public static bool RemoveKeyboardMacro(int client, Keys[] keys)

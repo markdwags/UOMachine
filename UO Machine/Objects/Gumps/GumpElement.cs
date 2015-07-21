@@ -205,6 +205,7 @@ namespace UOMachine
         /// Get nearest GumpElement, but only if it's ElementType is contained in the include list.
         /// </summary>
         /// <param name="includeTypes">Array of ElementTypes which specifies valid GumpElements to search.</param>
+        /// <param name="element">GumpElement (out).</param>
         /// <returns>True on success.</returns>
         public bool GetNearestElement(ElementType[] includeTypes, out GumpElement element)
         {

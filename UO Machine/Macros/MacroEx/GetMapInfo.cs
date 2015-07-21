@@ -27,6 +27,9 @@ namespace UOMachine.Macros
         /// Get land tile and static tiles from specified map.
         /// </summary>
         /// <param name="facet">Target map.</param>
+        /// <param name="x">X coordinate.</param>
+        /// <param name="y">Y coordinate.</param>
+        /// <param name="mapInfo">MapInfo (out).</param>
         /// <returns>True on success.</returns>
         public static bool GetMapInfo(Facet facet, int x, int y, out MapInfo mapInfo)
         {

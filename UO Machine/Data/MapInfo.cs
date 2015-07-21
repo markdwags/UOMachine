@@ -50,6 +50,7 @@ namespace UOMachine.Data
         /// Find StaticTile which matches any of the given IDs.
         /// </summary>
         /// <param name="ID">List of IDs to search for.</param>
+        /// <param name="staticTile">StaticTile (out).</param>
         /// <returns>True on success.</returns>
         public bool FindTile(int[] ID, out StaticTile staticTile)
         {

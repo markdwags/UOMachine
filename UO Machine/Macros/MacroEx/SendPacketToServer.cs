@@ -27,6 +27,7 @@ namespace UOMachine.Macros
         /// Send raw packet from specified client.
         /// </summary>
         /// <param name="client">Target client.</param>
+        /// <param name="packet">Raw packet to send.</param>
         public static void SendPacketToServer(int client, byte[] packet)
         {
             ClientInfo ci;

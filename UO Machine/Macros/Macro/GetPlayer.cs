@@ -26,6 +26,7 @@ namespace UOMachine.Macros
         /// Get PlayerMobile from specified client.
         /// </summary>
         /// <param name="client">Target client.</param>
+        /// <param name="player">PlayerMobile (out).</param>
         /// <returns>True on success.</returns>
         public static bool GetPlayer(int client, out PlayerMobile player)
         {

@@ -128,9 +128,9 @@ namespace UOMachine.Events
                 dIncomingPacket handler = myIncomingPacketEvent;
                 try
                 {
-                if (handler != null) handler(client, data);
-            }
-                catch (Exception e) { }
+                    if (handler != null) handler(client, data);
+                }
+                catch (Exception) { }
             }
         }
 

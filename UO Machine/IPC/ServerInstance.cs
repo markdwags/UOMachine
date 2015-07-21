@@ -483,6 +483,7 @@ namespace UOMachine.IPC
         /// </param>
         /// <param name="arg1"> Command argument.</param>
         /// <param name="arg2"> Command argument.</param>
+        /// <param name="arg3"> Command argument.</param>
         /// <param name="data"> Command argument.</param>
         public void SendCommand(Command command, int arg1, int arg2, byte arg3, byte[] data)
         {

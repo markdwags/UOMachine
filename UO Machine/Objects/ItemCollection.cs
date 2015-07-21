@@ -70,7 +70,8 @@ namespace UOMachine
         /// <summary>
         /// Get item with specified serial.
         /// </summary>
-        /// <param name="serial"></param>
+        /// <param name="serial">Serial of item to retrieve.</param>
+        /// <param name="item">Item (out).</param>
         /// <returns>Null if no match is found.</returns>
         public bool GetItem(int serial, out Item item)
         {
@@ -78,25 +79,25 @@ namespace UOMachine
             {
                 try
                 {
-                foreach (Item i in this.myItemList.Values)
-                {
-                    if (i.Serial == serial)
+                    foreach (Item i in this.myItemList.Values)
                     {
-                        item = i;
-                        return true;
-                    }
-                    if (i.IsContainer)
-                    {
-                        Item i2;
-                        if (i.Container.GetItem(serial, out i2))
+                        if (i.Serial == serial)
                         {
-                            item = i2;
+                            item = i;
                             return true;
+                        }
+                        if (i.IsContainer)
+                        {
+                            Item i2;
+                            if (i.Container.GetItem(serial, out i2))
+                            {
+                                item = i2;
+                                return true;
+                            }
                         }
                     }
                 }
-            }
-                catch (Exception e) { }
+                catch (Exception) { }
             }
             item = null;
             return false;
@@ -119,6 +120,7 @@ namespace UOMachine
         /// Search container for first item with matching id (graphic).
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="item">Item (out).</param>
         /// <returns>True on success.</returns>
         public bool FindItem(int id, out Item item)
         {
@@ -221,7 +223,7 @@ namespace UOMachine
                 }
                 else this.myItemList[item.Serial] = item;
             }
-                catch (Exception e) { }
+                catch (Exception) { }
             }
             if (changed) OnCollectionChanged();
         }
@@ -292,7 +294,7 @@ namespace UOMachine
                         }
                     }
                 }
-                catch (Exception ex) { }
+                catch (Exception) { }
             }
             return false;
         }

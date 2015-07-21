@@ -27,6 +27,7 @@ namespace UOMachine.Macros
         /// Send packet directly to client's packet receive function.
         /// </summary>
         /// <param name="client">Target client.</param>
+        /// <param name="packet">Raw packets to send.</param>
         public static void SendPacketToClient(int client, byte[] packet)
         {
             ClientInfo ci;

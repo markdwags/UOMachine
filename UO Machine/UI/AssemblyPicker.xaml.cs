@@ -40,7 +40,6 @@ namespace UOMachine
         public ObservableCollection<AssemblyData> assemblyDataCollection { get { return myAssemblyDataCollection; } }
         public delegate void dAssemblySelected(string fileName);
         public event dAssemblySelected AssemblySelectedEvent;
-        private RoutedEventHandler rLoaded;
 
         private bool myCancelEnabled = true;
         public bool CancelEnabled

@@ -27,6 +27,7 @@ namespace UOMachine.Macros
         /// </summary>
         /// <param name="client">Target client.</param>
         /// <param name="id">ID of item to find.</param>
+        /// <param name="item">Item (out).</param>
         /// <returns>True on success.</returns>
         public static bool FindItem(int client, int id, out Item item)
         {

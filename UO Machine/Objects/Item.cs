@@ -81,5 +81,10 @@ namespace UOMachine
                 return false;
             }
         }
+
+        public UOMachine.Data.TileFlags TileFlags
+        {
+            get { return UOMachine.Data.TileData.GetStaticTile(myID).Flags; }
+        }
     }
 }
