@@ -46,75 +46,16 @@ namespace RazorLoader
             return found;
         }
 
-        private static bool Patch1(byte* hModule, int len)
-        {
-
-            byte[] sig = new byte[] { 0x81, 0xEC, 0x00, 0x01, 0x00, 0x00, 0x53, 0x56, 0x8B, 0xB4, 0x24 };
-            int offset;
-
-            if (FindSignatureOffset(sig, hModule, len, out offset))
-            {
-                int oldAddress = hModule[0x23] << 24 | hModule[0x22] << 16 | hModule[0x21] << 8 | hModule[0x20];
-                oldAddress += 1;
-                hModule[offset + 0x1E] = 0xE9;
-                hModule[offset + 0x1E + 1] = (byte)(oldAddress & 0xFF);
-                hModule[offset + 0x1E + 2] = (byte)((oldAddress >> 8) & 0xFF);
-                hModule[offset + 0x1E + 3] = (byte)((oldAddress >> 16) & 0xFF);
-                hModule[offset + 0x1E + 4] = (byte)((oldAddress >> 24) & 0xFF);
-                hModule[offset + 0x1E + 5] = 0x90;
-                return true;
-            }
-            return false;
-        }
-
-        private static bool Patch2(byte* hModule, int len)
-        {
-            byte[] sig = new byte[] { 0x83, 0xC2, 0x09, 0x6A, 0x28, 0x52 };
-            int offset;
-
-            if (FindSignatureOffset(sig, hModule, len, out offset))
-            {
-                hModule[offset + 0x18] = 0x83;
-                hModule[offset + 0x19] = 0xF0;
-                hModule[offset + 0x1A] = 0x01;
-                return true;
-            }
-            return false;
-        }
-
-        private static bool Patch3(byte* hModule, int len)
-        {
-            byte[] sig1 = new byte[] { 0x83, 0xEC, 0x28, 0x53, 0x57, 0x33, 0xDB };
-            byte[] sig2 = new byte[] { 0x83, 0xEC, 0x28, 0x53, 0x57, 0x68 };
-            int offset;
-
-            if (FindSignatureOffset(sig1, hModule, len, out offset))
-            {
-                hModule[offset + 0x10] = 0xEB;
-                return true;
-            }
-
-            if (FindSignatureOffset(sig2, hModule, len, out offset))
-            {
-                hModule[offset + 0x1C] = 0xEB; // change JZ to JMP
-                return true;
-            }
-            return false;
-        }
-
         public static bool Patch(IntPtr hModule)
         {
             byte* address = (byte*)hModule;
-//            if (!Patch1(address, 0x10000)) return false;
-//            if (!Patch2(address, 0x10000)) return false;
-//            if (!Patch3(address, 0x10000)) return false;
 
             // Reximis 2012-02-11, Razor 1.0.13
 /*
 .text:100046D6                 cmp     byte_1002002F, bl
 .text:100046DC                 jz      short loc_100046E7 <--------- CHANGE TO JMP
 .text:100046DE                 pop     ebp
-.text:100046DF                 lea     eax, [ebx+5]
+.text:100046DF                 lea     eax, [ebx+5] 
 .text:100046E2                 pop     ebx
 .text:100046E3                 add     esp, 28h
 .text:100046E6                 retn
@@ -131,12 +72,27 @@ namespace RazorLoader
                 byte[] sig2 = new byte[] { 0x57, 0x33, 0xFF, 0x80, 0x3D };
                 offset = 0;
 
-                if (FindSignatureOffset(sig2, address, 0x100000, out offset))
+                if (FindSignatureOffset(sig2, address, 0x10000, out offset))
                 {
                     address[offset + 0x0A] = 0xEB;
                 }
-            }
 
+                // Tested on 1.0.14.7, 2015-07-21
+                //.text:10002F2D                 push    offset aInitializeLibr ; "Initialize library..."
+                //.text:10002F32                 call    sub_100016C0
+                //.text:10002F37                 add     esp, 4
+                //.text:10002F3A                 movzx   eax, byte_1002902F
+                //.text:10002F41                 test    eax, eax
+                //.text:10002F43                 jz      short loc_10002F4F // Replace JZ with JMP to get to good code
+                //.text:10002F45                 mov     eax, 5 // 5 = LIB_DISABLED
+                //.text:10002F4A                 jmp     loc_1000321A // Pops stack and RETN's
+                byte[] sig3 = new byte[] { 0x83, 0xC4, 0x04, 0x0F, 0xB6, 0x05, 0x2F, 0x90 };
+                if (FindSignatureOffset(sig3, address, 0x10000, out offset))
+                {
+                    if (address[offset + 0x0C] == 0x74) address[offset + 0x0C] = 0xEB;
+                }
+
+            }
            
             return true;
         }
