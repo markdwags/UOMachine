@@ -1,4 +1,4 @@
-UO Machine 0.4.0.2 (August 2014)
+UO Machine 0.4.0.8 (July 2015)
 
 Originally developed by Matthew "xenoglyph" Geyer.
 
