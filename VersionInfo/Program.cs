@@ -64,7 +64,7 @@ namespace VersionInfo
 
     class Program
     {
-        public static string FilesPath = @"C:\Users\John\Documents\GitHub\gh-pages\files\";
+        public static string FilesPath = @"C:\Users\Johnny\Documents\gh-pages\files";
         public static VersionInfo versionInfo;
 
         static void Main(string[] args)
@@ -75,11 +75,18 @@ namespace VersionInfo
 
             versionInfo.version = fvi.FileVersion;
 
+            Filter.Init();
+
             try
             {
                 foreach (string d in Directory.GetFiles(FilesPath))
                 {
                     Console.WriteLine();
+
+                    string relative = GetRelativePath(d, FilesPath);
+                    if (Filter.Matches(Path.Combine("files", relative)))
+                        continue;
+
                     versionInfo.Add(new FileEntry(GetRelativePath(d, FilesPath)));
                 }
 

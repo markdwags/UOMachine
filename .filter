@@ -1,0 +1,4 @@
+.*\.pdb
+files\\Loader\.lib
+files\\ICSharpCode.NRefactory.CSharp.xml
+files\\UOMachine.xml
