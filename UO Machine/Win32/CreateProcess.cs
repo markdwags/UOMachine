@@ -17,12 +17,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.ComponentModel;
-using System.Security;
-using System.Windows.Forms;
-using Microsoft.Win32.SafeHandles;
-using System.Runtime.ConstrainedExecution;
-using System.Security.Permissions;
 using System.Text;
 using System.Collections;
 using System.Collections.Specialized;
@@ -45,7 +39,7 @@ namespace UOMachine
         }
     }
 
-    internal static partial class Win32
+    internal static partial class NativeMethods
     {
         private static bool IsNt
         {

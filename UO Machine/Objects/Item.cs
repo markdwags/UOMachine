@@ -16,7 +16,6 @@
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
 using UOMachine.Utility;
-using System;
 using System.Threading;
 
 namespace UOMachine

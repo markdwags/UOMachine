@@ -18,13 +18,6 @@
 /* Thanks to Daniel 'Necr0Potenc3' Cavalcanti for the encryption removal method */
 
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.ComponentModel;
-using System.Threading;
-using System.Windows;
-using UOMachine.IPC;
-using EasyHook;
 
 namespace UOMachine
 {

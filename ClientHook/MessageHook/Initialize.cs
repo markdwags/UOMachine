@@ -17,11 +17,7 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System.Threading;
 using UOMachine.IPC;
-using System.Reflection;
-using System.ComponentModel;
 using System.Diagnostics;
 
 namespace ClientHook
@@ -30,22 +26,21 @@ namespace ClientHook
     {
         private static ClientInstance myClientInstance;
         private static IntPtr myMsgHookHandle, myWindowMsgHookHandle, myWindowHandle;
-        private static HookProc myMsgHook, myWindowMsgHook;
-
+        private static NativeMethods.HookProc myMsgHook, myWindowMsgHook;
 
         public static void Initialize(ClientInstance clientInstance)
         {
             myWindowHandle = Process.GetCurrentProcess().MainWindowHandle;
             myClientInstance = clientInstance;
-            myMsgHook = new HookProc(MsgHook);
-            myWindowMsgHook = new HookProc(WindowMsgHook);
+            myMsgHook = new NativeMethods.HookProc(MsgHook);
+            myWindowMsgHook = new NativeMethods.HookProc(WindowMsgHook);
             Process p = Process.GetProcessById(EasyHook.RemoteHooking.GetCurrentProcessId());
             uint x;
-            uint threadID = GetWindowThreadProcessId(p.MainWindowHandle, out x);
+            uint threadID = NativeMethods.GetWindowThreadProcessId(p.MainWindowHandle, out x);
 
             /* Use user32.dll as SetWindowHookEx hMod as per http://stackoverflow.com/questions/17897646/gma-useractivitymonitor-setwindowshookex-error-126 */
-            IntPtr user32 = LoadLibrary("user32.dll");
-            myMsgHookHandle = SetWindowsHookEx(WH_GETMESSAGE,
+            IntPtr user32 = NativeMethods.LoadLibrary("user32.dll");
+            myMsgHookHandle = NativeMethods.SetWindowsHookEx(NativeMethods.WH_GETMESSAGE,
                 Marshal.GetFunctionPointerForDelegate(myMsgHook),
                 /*Marshal.GetHINSTANCE(Assembly.GetExecutingAssembly().GetModules()[0])*/user32,
                     threadID);
@@ -55,7 +50,7 @@ namespace ClientHook
                 clientInstance.SendCommand(Command.Message, "Error installing WH_GETMESSAGE hook, GetLastError = " + Marshal.GetLastWin32Error().ToString());
             }
 #endif
-            myWindowMsgHookHandle = SetWindowsHookEx(WH_CALLWNDPROC,
+            myWindowMsgHookHandle = NativeMethods.SetWindowsHookEx(NativeMethods.WH_CALLWNDPROC,
                 Marshal.GetFunctionPointerForDelegate(myWindowMsgHook),
                 /*Marshal.GetHINSTANCE(Assembly.GetExecutingAssembly().GetModules()[0])*/user32,
                     threadID);
@@ -65,8 +60,8 @@ namespace ClientHook
                 clientInstance.SendCommand(Command.Message, "Error installing WH_CALLWNDPROC hook, GetLastError = " + Marshal.GetLastWin32Error().ToString());
             }
 #endif
-            WINDOWPLACEMENT wp = new WINDOWPLACEMENT();
-            if (GetWindowPlacement(myWindowHandle, ref wp))
+            NativeMethods.WINDOWPLACEMENT wp = new NativeMethods.WINDOWPLACEMENT();
+            if (NativeMethods.GetWindowPlacement(myWindowHandle, ref wp))
             {
                 MessageHook.myWindowX = wp.rcNormalPosition.X;
                 MessageHook.myWindowY = wp.rcNormalPosition.Y;

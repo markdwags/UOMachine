@@ -17,7 +17,6 @@
 
 using System;
 using UOMachine.IPC;
-using UOMachine.Utility;
 using System.Windows.Forms;
 
 namespace UOMachine.Events

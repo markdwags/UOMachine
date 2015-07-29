@@ -25,7 +25,7 @@ using UOMachine.Utility;
 
 namespace UOMachine.IPC
 {
-    public sealed class ServerInstance
+    public sealed class ServerInstance : IDisposable
     {
         public static event dPing PingEvent;
         public static event dPingResponse PingResponseEvent;
@@ -46,9 +46,11 @@ namespace UOMachine.IPC
         public static event dMouseUp MouseUpEvent;
 
         private NamedPipeServerStream myNamedPipeServerStream;
+        private object myNamedPipeServerStreamLock;
         private const int buffSize = 131072;
         private byte[] myBuffer;
         private MemoryStream myMemoryStream;
+        private object myMemoryStreamLock;
         private Thread myThread;
         private long myReadPos;
         private int myInstance;
@@ -63,6 +65,7 @@ namespace UOMachine.IPC
         public ServerInstance(string serverName, bool writeThrough, int instance, int maxServerCount)
         {
             myMemoryStream = new MemoryStream(buffSize);
+            myMemoryStreamLock = new object();
             myReadPos = 0;
             myThreadRunning = true;
             myInstance = instance;
@@ -75,6 +78,7 @@ namespace UOMachine.IPC
                 maxServerCount,
                 PipeTransmissionMode.Byte,
                 writeThrough ? PipeOptions.Asynchronous | PipeOptions.WriteThrough : PipeOptions.Asynchronous);
+            myNamedPipeServerStreamLock = new object();
             myNamedPipeServerStream.BeginWaitForConnection(new AsyncCallback(OnConnect), null);
         }
 
@@ -84,7 +88,7 @@ namespace UOMachine.IPC
         public void Dispose()
         {
             myThreadRunning = false;
-            lock (myMemoryStream) { Monitor.Pulse(myMemoryStream); }
+            lock (myMemoryStreamLock) { Monitor.Pulse(myMemoryStreamLock); }
 
             if (myThread.IsAlive)
             {
@@ -100,6 +104,9 @@ namespace UOMachine.IPC
                 }
                 myNamedPipeServerStream.Dispose();
             }
+
+            if (myMemoryStream != null)
+                myMemoryStream.Dispose();
         }
 
         /// <summary>
@@ -111,7 +118,7 @@ namespace UOMachine.IPC
 
             while (ThreadRunning)
             {
-                lock (myMemoryStream)
+                lock (myMemoryStreamLock)
                 {
                     try
                     {
@@ -120,7 +127,7 @@ namespace UOMachine.IPC
                             ProcessMessage(message, myInstance);
                         }
                     }
-                    finally { Monitor.Wait(myMemoryStream); }
+                    finally { Monitor.Wait(myMemoryStreamLock); }
                 }
             }
         }
@@ -358,10 +365,10 @@ namespace UOMachine.IPC
                 int received = myNamedPipeServerStream.EndRead(asyncResult);
                 if (received > 0)
                 {
-                    lock (myMemoryStream)
+                    lock (myMemoryStreamLock)
                     {
                         myMemoryStream.Write(myBuffer, 0, received);
-                        Monitor.Pulse(myMemoryStream);
+                        Monitor.Pulse(myMemoryStreamLock);
                     }
                 }
                 if (myNamedPipeServerStream.IsConnected)
@@ -395,7 +402,7 @@ namespace UOMachine.IPC
         {
             try
             {
-                lock (myNamedPipeServerStream)
+                lock (myNamedPipeServerStreamLock)
                 {
                     if (myNamedPipeServerStream.IsConnected)
                     {
@@ -425,7 +432,7 @@ namespace UOMachine.IPC
         {
             try
             {
-                lock (myNamedPipeServerStream)
+                lock (myNamedPipeServerStreamLock)
                 {
                     if (myNamedPipeServerStream.IsConnected)
                     {
@@ -454,7 +461,7 @@ namespace UOMachine.IPC
         {
             try
             {
-                lock (myNamedPipeServerStream)
+                lock (myNamedPipeServerStreamLock)
                 {
                     if (myNamedPipeServerStream.IsConnected)
                     {
@@ -489,7 +496,7 @@ namespace UOMachine.IPC
         {
             try
             {
-                lock (myNamedPipeServerStream)
+                lock (myNamedPipeServerStreamLock)
                 {
                     if (myNamedPipeServerStream.IsConnected)
                     {
@@ -521,7 +528,7 @@ namespace UOMachine.IPC
         {
             try
             {
-                lock (myNamedPipeServerStream)
+                lock (myNamedPipeServerStreamLock)
                 {
                     if (myNamedPipeServerStream.IsConnected)
                     {
@@ -559,7 +566,7 @@ namespace UOMachine.IPC
         {
             try
             {
-                lock (myNamedPipeServerStream)
+                lock (myNamedPipeServerStreamLock)
                 {
                     if (myNamedPipeServerStream.IsConnected)
                     {
@@ -583,7 +590,7 @@ namespace UOMachine.IPC
         {
             try
             {
-                lock (myNamedPipeServerStream)
+                lock (myNamedPipeServerStreamLock)
                 {
                     if (myNamedPipeServerStream.IsConnected)
                         myNamedPipeServerStream.WriteByte((byte)command);

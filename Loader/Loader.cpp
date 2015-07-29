@@ -26,13 +26,14 @@ LOADER_ERROR __declspec(dllexport) __cdecl Load(char *client, char *clientPath, 
 	// Set enviroment variable for QT to find qwindows.dll or will fail to launch.
 	CHAR qtPlatformPath[128];
 	memset(qtPlatformPath, 0, 128);
-	strcat(qtPlatformPath, dllPath);
-	strcat(qtPlatformPath, "\\Platforms\\");
+	strcat_s(qtPlatformPath, dllPath);
+	strcat_s(qtPlatformPath, "\\Platforms\\");
+	qtPlatformPath[strlen(qtPlatformPath)] = 0;
 	SetEnvironmentVariableA("QT_QPA_PLATFORM_PLUGIN_PATH", qtPlatformPath);
 
 	// Add UOS directory to PATH
 	memset(qtPlatformPath, 0, 128);
-	strcat(qtPlatformPath, dllPath);
+	strcat_s(qtPlatformPath, dllPath);
 	SetEnvironmentVariableA("PATH", qtPlatformPath);
 
 	memset(codeBuffer, 0, 256);
@@ -74,11 +75,13 @@ LOADER_ERROR __declspec(dllexport) __cdecl Load(char *client, char *clientPath, 
 	DWORD codeStart = codePosition + 5;
 
 	HMODULE hModule = LoadLibraryA("kernel32.dll");
+	if (hModule == NULL)
+		return NO_WRITE;
 	LPVOID loadLibrary = GetProcAddress(hModule, "LoadLibraryA");
 	LPVOID getProcAddress = GetProcAddress(hModule, "GetProcAddress");
 
 	/* Inject code into client, LoadLibrary's UOS.dll and then calls Install function then JMP's to original EIP */
-	char code[] = {
+	unsigned char code[] = {
 		0x9C						 /* 00:00 PUSHFD */,
 		0x60						 /* 01:01 PUSHAD */,
 		0x68, 0x00, 0x00, 0x00, 0x00 /* 2:6 PUSH dllName */,

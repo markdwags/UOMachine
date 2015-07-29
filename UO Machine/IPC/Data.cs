@@ -16,7 +16,6 @@
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
 
-using System;
 using System.IO;
 
 namespace UOMachine.IPC

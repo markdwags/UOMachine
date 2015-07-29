@@ -15,9 +15,7 @@
  * You should have  a copy of the GNU General Public License
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
-using System;
 using UOMachine.Tree;
-using UOMachine.Events;
 using UOMachine.Utility;
 
 namespace UOMachine.Events

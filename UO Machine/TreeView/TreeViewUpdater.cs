@@ -15,11 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
-using System;
-using System.Collections.Generic;
 using System.Windows.Controls;
-using UOMachine.Utility;
-using System.Threading;
 using System.Text;
 
 namespace UOMachine.Tree

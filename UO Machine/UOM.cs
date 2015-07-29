@@ -16,21 +16,15 @@
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
 using System;
-using System.Windows;
-using System.Windows.Forms;
-using System.Windows.Controls;
 using System.Threading;
-using System.Runtime.InteropServices;
 using UOMachine.IPC;
 using UOMachine.Utility;
-using UOMachine.Tree;
 using UOMachine.Data;
 using UOMachine.Events;
 using UOMachine.Resources;
 using EasyHook;
 using System.Diagnostics;
 using System.IO;
-using System.Collections.Generic;
 
 namespace UOMachine
 {

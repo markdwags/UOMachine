@@ -16,9 +16,7 @@
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
 using System;
-using UOMachine.IPC;
 using UOMachine.Utility;
-using System.Threading;
 
 namespace UOMachine.Events
 {

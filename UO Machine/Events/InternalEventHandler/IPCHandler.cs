@@ -16,13 +16,9 @@
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
 using System;
-using System.Text;
-using System.IO;
-using System.Collections.Generic;
 using System.Threading;
 using UOMachine.IPC;
 using UOMachine.Utility;
-using UOMachine.Events;
 using UOMachine.Data;
 
 namespace UOMachine.Events

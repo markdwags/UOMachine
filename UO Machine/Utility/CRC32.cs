@@ -15,10 +15,6 @@
  * You should have received a copy of the GNU General Public License
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
-using System.Collections;
-using System.Collections.Generic;
-using System;
-using System.IO;
 
 namespace UOMachine.Utility
 {

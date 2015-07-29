@@ -18,7 +18,6 @@
 using System;
 using System.IO;
 using System.Text;
-using System.Collections.Generic;
 using UOMachine.Events;
 
 namespace UOMachine.Utility
@@ -26,6 +25,7 @@ namespace UOMachine.Utility
     public static class Log
     {
         private static StreamWriter myFileWriter;
+        private static object myFileWriterLock;
         private static string myLogFileName;
 
         internal static void Initialize(string logFileName)
@@ -33,6 +33,7 @@ namespace UOMachine.Utility
             myLogFileName = logFileName;
             myFileWriter = File.AppendText(logFileName);
             myFileWriter.AutoFlush = true;
+            myFileWriterLock = new object();
         }
 
         internal static void Dispose()
@@ -85,19 +86,19 @@ namespace UOMachine.Utility
         {
             string dataLen = "Length of data: " + data.Length + " bytes (0x" + data.Length.ToString("X") + ")\r\n";
             string logMessage = GetDateString() + GetClientString(clientIndex) + message + dataLen + GetStringFromBytes(data) + "\r\n\r\n";
-            lock (myFileWriter) { myFileWriter.Write(logMessage); }
+            lock (myFileWriterLock) { myFileWriter.Write(logMessage); }
         }
 
         public static void LogMessage(int clientIndex, string message)
         {
             string logMessage = GetDateString() + GetClientString(clientIndex) + message + "\r\n\r\n";
-            lock (myFileWriter) { myFileWriter.Write(logMessage); }
+            lock (myFileWriterLock) { myFileWriter.Write(logMessage); }
         }
 
         public static void LogMessage(string message)
         {
             string logMessage = GetDateString() + message + "\r\n\r\n";
-            lock (myFileWriter) { myFileWriter.Write(logMessage); }
+            lock (myFileWriterLock) { myFileWriter.Write(logMessage); }
         }
 
         public static void LogMessage(Exception exception)
@@ -106,7 +107,7 @@ namespace UOMachine.Utility
             if (exception.InnerException != null)
                 message += "\r\nInner Exception:\r\n" + exception.InnerException.Message + "\r\n" + exception.InnerException.Source + "\r\n" + exception.InnerException.StackTrace;
             string logMessage = GetDateString() + "Exception:\r\n" + message + "\r\n\r\n";
-            lock (myFileWriter) { myFileWriter.Write(logMessage); }
+            lock (myFileWriterLock) { myFileWriter.Write(logMessage); }
         }
     }
 }

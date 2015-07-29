@@ -16,7 +16,6 @@
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
 using UOMachine.Utility;
-using System;
 using System.Threading;
 
 namespace UOMachine
@@ -24,7 +23,7 @@ namespace UOMachine
     public abstract class WorldItem
     {
         public override int GetHashCode() { return this.Serial; }
-        public WorldItem(int serial) { this.Serial = serial; }
+        public WorldItem(int serial) { mySerial = serial; }
 
         //public readonly int Serial;
         internal int mySerial = 0;

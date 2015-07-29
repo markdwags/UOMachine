@@ -30,12 +30,12 @@ using EasyHook;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 
-namespace UOMachine.Misc
+namespace UOMachine
 {
     internal unsafe static class SteamLauncher
     {
-        [DllImport("Loader.dll")]
-        private static unsafe extern uint Load(string exe, string path, string dll, string dllpath, string func, string param, out uint pid);
+        [DllImport("Loader.dll", CharSet = CharSet.Ansi, BestFitMapping = false)]
+        private static unsafe extern uint Load([MarshalAs(UnmanagedType.LPStr)] string exe, [MarshalAs(UnmanagedType.LPStr)] string path, [MarshalAs(UnmanagedType.LPStr)] string dll, [MarshalAs(UnmanagedType.LPStr)] string dllpath, [MarshalAs(UnmanagedType.LPStr)] string func, [MarshalAs(UnmanagedType.LPStr)] string param, out uint pid);
 
         private static object myLock = new object();
 

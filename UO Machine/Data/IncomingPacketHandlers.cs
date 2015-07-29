@@ -776,8 +776,8 @@ namespace UOMachine.Data
             Buffer.BlockCopy(reader.Data, reader.Index, compresseddd, 0, compressLendd);
             reader.Seek(compressLendd, SeekOrigin.Current);
             int success;
-            //if (IntPtr.Size == 8) success = Win32.uncompress64(decompresseddd, ref decompressLendd, compresseddd, compressLendd);
-            success = Win32.uncompress32(decompresseddd, ref decompressLendd, compresseddd, compressLendd);
+            //if (IntPtr.Size == 8) success = NativeMethods.uncompress64(decompresseddd, ref decompressLendd, compresseddd, compressLendd);
+            success = NativeMethods.uncompress32(decompresseddd, ref decompressLendd, compresseddd, compressLendd);
             if (success != 0)
             {
                 Log.LogDataMessage(client, reader.Data, "*** Error decompressing gump layout:");
@@ -797,8 +797,8 @@ namespace UOMachine.Data
                 decompresseddd = new byte[decompressLendd];
                 Buffer.BlockCopy(reader.Data, reader.Index, compresseddd, 0, compressLendd);
                 reader.Seek(compressLendd, SeekOrigin.Current);
-                //if (IntPtr.Size == 8) success = Win32.uncompress64(decompresseddd, ref decompressLendd, compresseddd, compressLendd);
-                success = Win32.uncompress32(decompresseddd, ref decompressLendd, compresseddd, compressLendd);
+                //if (IntPtr.Size == 8) success = NativeMethods.uncompress64(decompresseddd, ref decompressLendd, compresseddd, compressLendd);
+                success = NativeMethods.uncompress32(decompresseddd, ref decompressLendd, compresseddd, compressLendd);
                 if (success != 0)
                 {
                     Log.LogDataMessage(client, reader.Data, "*** Error decompressing gump strings:");

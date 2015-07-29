@@ -28,7 +28,7 @@ namespace UOMachine.Utility
         public static Direction MapDirection(float x1, float y1, float x2, float y2)
         {
             float slope = (y2 - y1) / (x2 - x1);
-            if (slope == float.NaN) return Direction.Invalid;
+            if (float.IsNaN(slope)) return Direction.Invalid;
 
             if ((slope >= 2f && slope <= float.PositiveInfinity) ||
                 (slope <= -2f && slope >= float.NegativeInfinity))

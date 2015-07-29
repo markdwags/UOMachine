@@ -15,7 +15,6 @@
  * You should have received a copy of the GNU General Public License
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
-using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Threading;
@@ -141,8 +140,8 @@ namespace UOMachine
             ushort keyState;
             for (int x = myDownKeyList.Count - 1; x >= 0; x--)
             {
-                if (myDownKeyList[x] == Keys.Alt) keyState = Win32.GetAsyncKeyState(Keys.Menu);
-                else keyState = Win32.GetAsyncKeyState(myDownKeyList[x]);
+                if (myDownKeyList[x] == Keys.Alt) keyState = NativeMethods.GetAsyncKeyState(Keys.Menu);
+                else keyState = NativeMethods.GetAsyncKeyState(myDownKeyList[x]);
                 if ((keyState & 0x8000) == 0) //key is up
                 {
                     myDownKeyList.RemoveAt(x);

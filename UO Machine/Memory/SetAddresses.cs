@@ -155,8 +155,13 @@ namespace UOMachine
 
         private static bool GetSendAddress(int baseAddress, byte[] buffer, ClientInfo clientInfo)
         {
-            byte[] sig1 = new byte[] { 0x8D, 0x8B, 0x94, 0x00, 0x00, 0x00 };
+            byte[] sig1 = new byte[] { 0x8D, 0x8B, 0x94, 0x00, 0x00, 0x00 }; // 8d8b94000000     lea ecx, [ebx+0x94]
             byte[] sig2 = new byte[] { 0x0F, 0xB7, 0xD8, 0x0F, 0xB6, 0x06, 0x83, 0xC4, 0x04 };
+            /*
+                0000000000000000 0fb7d8           movzx ebx, ax           
+                0000000000000003 0fb606           movzx eax, byte [esi]   
+                0000000000000006 83c404           add esp, 0x4                         
+             */
             int offset;
 
             if (FindSignatureOffset(sig1, buffer, out offset))
@@ -349,10 +354,11 @@ namespace UOMachine
         {
             /* Here we're getting address for server IP as well as preventing client from overwriting our IP
              * we're also getting port address and protecting it as well */
-            
+
             byte[] sig1 = new byte[] { 0x8B, 0x44, 0x24, 0x0C, 0xC1, 0xE1, 0x08, 0x0B, 0xC8, 0x66, 0x89, 0x15 };
             byte[] sig2 = new byte[] { 0xC1, 0xE1, 0x08, 0x0B, 0x4C, 0x24, 0x0C, 0x89, 0x0D };
             byte[] sig3 = new byte[] { 0x56, 0x57, 0x6A, 0x1C, 0xC7 };
+            byte[] sig4 = new byte[] { 0x83, 0XC4, 0X04, 0X50, 0X51, 0X8B, 0XCF, 0XE8 };
             int offset;
 
             if (FindSignatureOffset(sig1, buffer, out offset))
@@ -379,16 +385,29 @@ namespace UOMachine
                     return Memory.Write(clientInfo.Handle, portPatchAddress, portPatch, true);
             }
 
-            if (FindSignatureOffset(sig3, buffer, out offset))
+            //if (FindSignatureOffset(sig3, buffer, out offset))
+            //{
+            //    byte[] patch = { 0x90, 0x90, 0x90, 0x90, 0x90 };
+            //    IntPtr loginPointer = (IntPtr)(BitConverter.ToInt32(buffer, offset + 0x20));
+            //    clientInfo.LoginServerAddress = loginPointer;
+            //    clientInfo.NewStyleLoginPatch = true;
+            //    IntPtr patchAddress = (IntPtr)(baseAddress + offset + 0x1f);
+            //    Memory.Write(clientInfo.Handle, patchAddress, patch, true);
+            //    patchAddress = (IntPtr)(baseAddress + offset + 0x46);
+            //    Memory.Write(clientInfo.Handle, patchAddress, patch, true);
+
+            //    return true;
+            //}
+
+            if (FindSignatureOffset(sig4, buffer, out offset))
             {
-                byte[] patch = { 0x90, 0x90, 0x90, 0x90, 0x90 };
-                IntPtr loginPointer = (IntPtr)(BitConverter.ToInt32(buffer, offset + 0x20));
-                clientInfo.LoginServerAddress = loginPointer;
-                clientInfo.NewStyleLoginPatch = true;
-                IntPtr patchAddress = (IntPtr)(baseAddress + offset + 0x1f);
+                //byte[] patch = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
+                //IntPtr patchAddress = (IntPtr)(baseAddress + offset - 0x13);
+                byte[] patch = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
+                IntPtr patchAddress = (IntPtr)(baseAddress + offset - 0x476B);
                 Memory.Write(clientInfo.Handle, patchAddress, patch, true);
-                patchAddress = (IntPtr)(baseAddress + offset + 0x46);
-                Memory.Write(clientInfo.Handle, patchAddress, patch, true);
+                clientInfo.LoginServerAddress = (IntPtr)(BitConverter.ToInt32(buffer, offset - 0x04));
+                clientInfo.LoginPortAddress = (IntPtr)(BitConverter.ToInt32(buffer, offset - 0x0A));
                 return true;
             }
 

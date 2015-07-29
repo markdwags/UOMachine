@@ -16,7 +16,6 @@
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
 using System;
-using UOMachine.IPC;
 using UOMachine.Utility;
 using UOMachine.Data;
 using System.Threading;
@@ -1118,7 +1117,7 @@ namespace UOMachine.Events
                 catch (Exception ex)
                 {
                     if (ex.InnerException != null) throw ex.InnerException;
-                    throw ex;
+                    throw;
                 }
                 handler(client, serial, ID, x, y, layout, text);
             }

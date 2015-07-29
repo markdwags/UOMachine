@@ -15,10 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
-using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using UOMachine;
 
 namespace UOMachine.Macros
 {
@@ -38,10 +36,10 @@ namespace UOMachine.Macros
             ClientInfo ci;
             if (ClientInfoCollection.GetClient(client, out ci))
             {
-                Win32.INPUT[] inputs = new Win32.INPUT[2];
-                Win32.MOUSEINPUT mi = new Win32.MOUSEINPUT();
-                inputs[0].type = Win32.INPUT_MOUSE;
-                inputs[1].type = Win32.INPUT_MOUSE;
+                NativeMethods.INPUT[] inputs = new NativeMethods.INPUT[2];
+                NativeMethods.MOUSEINPUT mi = new NativeMethods.MOUSEINPUT();
+                inputs[0].type = NativeMethods.INPUT_MOUSE;
+                inputs[1].type = NativeMethods.INPUT_MOUSE;
                 mi.dx = 0;
                 mi.dy = 0;
                 switch (button)
@@ -49,35 +47,35 @@ namespace UOMachine.Macros
                     case MouseButtons.None:
                         return false;
                     case MouseButtons.Left:
-                        mi.dwFlags = Win32.MOUSEEVENTF_LEFTDOWN;
+                        mi.dwFlags = NativeMethods.MOUSEEVENTF_LEFTDOWN;
                         inputs[0].mkhi.mi = mi;
-                        mi.dwFlags = Win32.MOUSEEVENTF_LEFTUP;
+                        mi.dwFlags = NativeMethods.MOUSEEVENTF_LEFTUP;
                         inputs[1].mkhi.mi = mi;
                         break;
                     case MouseButtons.Right:
-                        mi.dwFlags = Win32.MOUSEEVENTF_RIGHTDOWN;
+                        mi.dwFlags = NativeMethods.MOUSEEVENTF_RIGHTDOWN;
                         inputs[0].mkhi.mi = mi;
-                        mi.dwFlags = Win32.MOUSEEVENTF_RIGHTUP;
+                        mi.dwFlags = NativeMethods.MOUSEEVENTF_RIGHTUP;
                         inputs[1].mkhi.mi = mi;
                         break;
                     case MouseButtons.Middle:
-                        mi.dwFlags = Win32.MOUSEEVENTF_MIDDLEDOWN;
+                        mi.dwFlags = NativeMethods.MOUSEEVENTF_MIDDLEDOWN;
                         inputs[0].mkhi.mi = mi;
-                        mi.dwFlags = Win32.MOUSEEVENTF_MIDDLEUP;
+                        mi.dwFlags = NativeMethods.MOUSEEVENTF_MIDDLEUP;
                         inputs[1].mkhi.mi = mi;
                         break;
                     case MouseButtons.XButton1:
-                        mi.mouseData = Win32.XBUTTON1;
-                        mi.dwFlags = Win32.MOUSEEVENTF_XDOWN;
+                        mi.mouseData = NativeMethods.XBUTTON1;
+                        mi.dwFlags = NativeMethods.MOUSEEVENTF_XDOWN;
                         inputs[0].mkhi.mi = mi;
-                        mi.dwFlags = Win32.MOUSEEVENTF_XUP;
+                        mi.dwFlags = NativeMethods.MOUSEEVENTF_XUP;
                         inputs[1].mkhi.mi = mi;
                         break;
                     case MouseButtons.XButton2:
-                        mi.mouseData = Win32.XBUTTON2;
-                        mi.dwFlags = Win32.MOUSEEVENTF_XDOWN;
+                        mi.mouseData = NativeMethods.XBUTTON2;
+                        mi.dwFlags = NativeMethods.MOUSEEVENTF_XDOWN;
                         inputs[0].mkhi.mi = mi;
-                        mi.dwFlags = Win32.MOUSEEVENTF_XUP;
+                        mi.dwFlags = NativeMethods.MOUSEEVENTF_XUP;
                         inputs[1].mkhi.mi = mi;
                         break;
                 }
@@ -88,8 +86,8 @@ namespace UOMachine.Macros
                     return false;
                 }
 
-                Win32.WINDOWPLACEMENT wp = new Win32.WINDOWPLACEMENT();
-                if (Win32.GetWindowPlacement(ci.WindowHandle, ref wp))
+                NativeMethods.WINDOWPLACEMENT wp = new NativeMethods.WINDOWPLACEMENT();
+                if (NativeMethods.GetWindowPlacement(ci.WindowHandle, ref wp))
                 {
                     /*int screenX = wp.rcNormalPosition.X + x;
                     int screenY = wp.rcNormalPosition.Y + y;
@@ -102,14 +100,14 @@ namespace UOMachine.Macros
 
                     // using this method because absolute position is always off by a pixel or 2
 
-                    if (!Win32.SetCursorPos(x + wp.rcNormalPosition.X, y + wp.rcNormalPosition.Y)) return false;
+                    if (!NativeMethods.SetCursorPos(x + wp.rcNormalPosition.X, y + wp.rcNormalPosition.Y)) return false;
                 }
                 else return false;
 
-                uint success = Win32.SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(inputs[0]));
+                uint success = NativeMethods.SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(inputs[0]));
                 if (doubleClick && success == inputs.Length)
                 {
-                    success = Win32.SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(inputs[0]));
+                    success = NativeMethods.SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(inputs[0]));
                 }
                 ci.DetachFromWindow();
                 return success == inputs.Length;

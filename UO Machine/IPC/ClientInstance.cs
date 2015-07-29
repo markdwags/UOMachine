@@ -24,7 +24,7 @@ using UOMachine.Utility;
 
 namespace UOMachine.IPC
 {
-    public sealed class ClientInstance
+    public sealed class ClientInstance : IDisposable
     {
         public event dPing PingEvent;
         public event dPingResponse PingResponseEvent;
@@ -42,8 +42,10 @@ namespace UOMachine.IPC
 
         private const int myBuffSize = 131072;
         private MemoryStream myMemoryStream;
+        private object myMemoryStreamLock;
         private Thread myThread;
         private NamedPipeClientStream myNamedPipeClientStream;
+        private object myNamedPipeClientStreamLock;
         private byte[] myBuffer;
         private long myReadPos;
 
@@ -67,6 +69,7 @@ namespace UOMachine.IPC
         {
             myBuffer = new byte[myBuffSize];
             myMemoryStream = new MemoryStream(myBuffSize);
+            myMemoryStreamLock = new object();
             myThreadRunning = true;
             myThread = new Thread(new ThreadStart(ProcessClientStream));
             myThread.Start();
@@ -75,6 +78,7 @@ namespace UOMachine.IPC
                 serverName,
                 PipeDirection.InOut,
                 writeThrough ? PipeOptions.Asynchronous | PipeOptions.WriteThrough : PipeOptions.Asynchronous);
+            myNamedPipeClientStreamLock = new object();
             try { myNamedPipeClientStream.Connect(); }
             catch { return; }
             myNamedPipeClientStream.BeginRead(myBuffer, 0, myBuffer.Length, new AsyncCallback(OnClientReceive), null);
@@ -89,7 +93,7 @@ namespace UOMachine.IPC
 
             while (ThreadRunning)
             {
-                lock (myMemoryStream)
+                lock (myMemoryStreamLock)
                 {
                     try
                     {
@@ -98,7 +102,7 @@ namespace UOMachine.IPC
                             ProcessMessage(message);
                         }
                     }
-                    finally { Monitor.Wait(myMemoryStream); }
+                    finally { Monitor.Wait(myMemoryStreamLock); }
                 }
             }
         }
@@ -192,10 +196,10 @@ namespace UOMachine.IPC
                 int received = myNamedPipeClientStream.EndRead(asyncResult);
                 if (received > 0)
                 {
-                    lock (myMemoryStream)
+                    lock (myMemoryStreamLock)
                     {
                         myMemoryStream.Write(myBuffer, 0, received);
-                        Monitor.Pulse(myMemoryStream);
+                        Monitor.Pulse(myMemoryStreamLock);
                     }
                 }
                 myNamedPipeClientStream.BeginRead(myBuffer, 0, myBuffer.Length, new AsyncCallback(OnClientReceive), null);
@@ -211,7 +215,7 @@ namespace UOMachine.IPC
         /// </param>
         public void SendCommand(Command command)
         {
-            lock (myNamedPipeClientStream)
+            lock (myNamedPipeClientStreamLock)
             {
                 if (myNamedPipeClientStream.IsConnected)
                 {
@@ -229,7 +233,7 @@ namespace UOMachine.IPC
         /// <param name="data">Data to send.</param>
         public void SendCommand(Command command, byte data)
         {
-            lock (myNamedPipeClientStream)
+            lock (myNamedPipeClientStreamLock)
             {
                 if (myNamedPipeClientStream.IsConnected)
                 {
@@ -251,7 +255,7 @@ namespace UOMachine.IPC
         /// <param name="data">Data to send.</param>
         public void SendCommand(Command command, byte[] data)
         {
-            lock (myNamedPipeClientStream)
+            lock (myNamedPipeClientStreamLock)
             {
                 if (myNamedPipeClientStream.IsConnected)
                 {
@@ -275,7 +279,7 @@ namespace UOMachine.IPC
         /// <param name="messageString">Command argument.</param>
         public void SendCommand(Command command, string messageString)
         {
-            lock (myNamedPipeClientStream)
+            lock (myNamedPipeClientStreamLock)
             {
                 if (myNamedPipeClientStream.IsConnected)
                 {
@@ -300,7 +304,7 @@ namespace UOMachine.IPC
         /// <param name="data">Data to send.</param>
         public void SendCommand(Command command, int data)
         {
-            lock (myNamedPipeClientStream)
+            lock (myNamedPipeClientStreamLock)
             {
                 if (myNamedPipeClientStream.IsConnected)
                 {
@@ -326,7 +330,7 @@ namespace UOMachine.IPC
         /// <param name="data2">Data to send.</param>
         public void SendCommand(Command command, int data, byte data2)
         {
-            lock (myNamedPipeClientStream)
+            lock (myNamedPipeClientStreamLock)
             {
                 if (myNamedPipeClientStream.IsConnected)
                 {
@@ -353,7 +357,7 @@ namespace UOMachine.IPC
         /// <param name="data2">Data to send.</param>
         public void SendCommand(Command command, int data1, int data2)
         {
-            lock (myNamedPipeClientStream)
+            lock (myNamedPipeClientStreamLock)
             {
                 if (myNamedPipeClientStream.IsConnected)
                 {
@@ -386,7 +390,7 @@ namespace UOMachine.IPC
         /// <param name="data3">Command argument.</param>
         public void SendCommand(Command command, int data1, int data2, byte data3)
         {
-            lock (myNamedPipeClientStream)
+            lock (myNamedPipeClientStreamLock)
             {
                 if (myNamedPipeClientStream.IsConnected)
                 {
@@ -406,6 +410,43 @@ namespace UOMachine.IPC
                 }
             }
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects).
+                    myMemoryStream.Dispose();
+                    myNamedPipeClientStream.Dispose();
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                disposedValue = true;
+            }
+        }
+
+        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        // ~ClientInstance() {
+        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        //   Dispose(false);
+        // }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            // GC.SuppressFinalize(this);
+        }
+        #endregion
 
     }
 }

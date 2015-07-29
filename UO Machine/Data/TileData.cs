@@ -15,126 +15,150 @@
  * You should have received a copy of the GNU General Public License
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
-using System;
 using System.Text;
 using System.IO;
-using System.Threading;
 
 namespace UOMachine.Data
 {
-    internal static class TileData
+    public static class TileData
     {
         private static InternalLandTile[] myLandTiles;
         private static InternalStaticTile[] myStaticTiles;
+        private static bool oldFormat = false;
 
         private static void LoadLandTiles(byte[] data, InternalLandTile[] landTiles)
         {
             MemoryStream ms = new MemoryStream(data, false);
             BinaryReader bin = new BinaryReader(ms);
 
-            for (int i = 0; i < 0x4000; ++i)
-            {
-                if (i == 1 || (i > 0 && (i & 0x1f) == 0)) {
-                    bin.ReadInt32(); // block header
-                }
+            // TODO: Is this robust enough?
+            ms.Seek(36, SeekOrigin.Begin);
+            string name = ASCIIEncoding.ASCII.GetString(bin.ReadBytes(20)).TrimEnd('\0');
+            if (name == "VOID!!!!!!")
+                oldFormat = true;
+            ms.Seek(0, SeekOrigin.Begin);
 
-                landTiles[i].Flags = (TileFlags)bin.ReadInt32();
-                bin.ReadInt32(); // TODO: Convert flags to int64
-                landTiles[i].ID = bin.ReadInt16();
-                landTiles[i].Name = ASCIIEncoding.ASCII.GetString(bin.ReadBytes(20)).TrimEnd('\0');
+            if (oldFormat)
+            {
+                for (int i = 0; i < 0x4000; ++i)
+                {
+                    if (i == 0 || (i > 0 && (i & 0x1f) == 0))
+                    {
+                        bin.ReadInt32(); // block header
+                    }
+
+                    landTiles[i].Flags = (TileFlags)bin.ReadInt32();
+                    landTiles[i].ID = bin.ReadInt16();
+                    landTiles[i].Name = ASCIIEncoding.ASCII.GetString(bin.ReadBytes(20)).TrimEnd('\0');
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 0x4000; ++i)
+                {
+                    if (i == 1 || (i > 0 && (i & 0x1f) == 0))
+                    {
+                        bin.ReadInt32(); // block header
+                    }
+
+                    landTiles[i].Flags = (TileFlags)bin.ReadInt64();
+                    landTiles[i].ID = bin.ReadInt16();
+                    landTiles[i].Name = ASCIIEncoding.ASCII.GetString(bin.ReadBytes(20)).TrimEnd('\0');
+                }
             }
 
-            bin.Close();
             ms.Close();
-
-            //int offset = 4;
-            //int index = 0;
-            //for (int x = 0; x < landTiles.Length; x++)
-            //{
-            //    if (index == 32)
-            //    {
-            //        offset += 4;
-            //        index = 0;
-            //    }
-            //    landTiles[x].Flags = (TileFlags)BitConverter.ToUInt32(data, (x * 26) + offset);
-            //    offset += 4;
-            //    landTiles[x].ID = BitConverter.ToUInt16(data, (x * 26) + 4 + offset);
-            //    landTiles[x].Name = ASCIIEncoding.ASCII.GetString(data, (x * 26) + 6 + offset, 20).TrimEnd('\0');
-            //    index++;
-            //}
         }
 
         private static void LoadStaticTiles(byte[] data, InternalStaticTile[] staticTiles)
         {
-            int offset = 493568;
-
             MemoryStream ms = new MemoryStream(data, false);
             BinaryReader bin = new BinaryReader(ms);
 
-            ms.Seek(offset, SeekOrigin.Begin);
-
-            for (int i = 0; i < 0x10000; ++i)
+            if (oldFormat)
             {
-                if ((i & 0x1F) == 0)
-                {
-                    bin.ReadInt32(); // header
-                }
+                int offset = 428032;
 
-                staticTiles[i].ID = (ushort)i;
-                staticTiles[i].Flags = (TileFlags)bin.ReadInt32();
-                bin.ReadInt32(); // TODO: convert Flags to int64
-                staticTiles[i].Weight = bin.ReadByte();
-                int quality = bin.ReadByte();
-                bin.ReadInt16();
-                bin.ReadByte();
-                staticTiles[i].Quantity = bin.ReadByte();
-                bin.ReadInt32();
-                bin.ReadByte();
-                int value = bin.ReadByte();
-                int height = bin.ReadByte();
-                staticTiles[i].Name = ASCIIEncoding.ASCII.GetString(bin.ReadBytes(20)).TrimEnd('\0');
+                ms.Seek(offset, SeekOrigin.Begin);
+
+                for (int i = 0; i < 0x8000; ++i)
+                {
+                    if ((i & 0x1F) == 0)
+                    {
+                        bin.ReadInt32(); // header
+                    }
+
+                    staticTiles[i].ID = (ushort)i;
+                    staticTiles[i].Flags = (TileFlags)bin.ReadInt32();
+                    staticTiles[i].Weight = bin.ReadByte();
+                    int quality = bin.ReadByte();
+                    bin.ReadInt16();
+                    bin.ReadByte();
+                    staticTiles[i].Quantity = bin.ReadByte();
+                    bin.ReadInt16();
+                    bin.ReadByte();
+                    bin.ReadByte();
+                    bin.ReadInt16();
+                    int height = bin.ReadByte();
+                    staticTiles[i].Name = ASCIIEncoding.ASCII.GetString(bin.ReadBytes(20)).TrimEnd('\0');
+                }
+            }
+            else
+            {
+                int offset = 493568;
+
+                ms.Seek(offset, SeekOrigin.Begin);
+
+                for (int i = 0; i < 0x10000; ++i)
+                {
+                    if ((i & 0x1F) == 0)
+                    {
+                        bin.ReadInt32(); // header
+                    }
+
+                    staticTiles[i].ID = (ushort)i;
+                    staticTiles[i].Flags = (TileFlags)bin.ReadInt64();
+                    staticTiles[i].Weight = bin.ReadByte();
+                    int quality = bin.ReadByte();
+                    bin.ReadInt16();
+                    bin.ReadByte();
+                    staticTiles[i].Quantity = bin.ReadByte();
+                    bin.ReadInt32();
+                    bin.ReadByte();
+                    int value = bin.ReadByte();
+                    int height = bin.ReadByte();
+                    staticTiles[i].Name = ASCIIEncoding.ASCII.GetString(bin.ReadBytes(20)).TrimEnd('\0');
+                }
             }
 
-            bin.Close();
             ms.Close();
-
-            //int offset = 428032 + 4; //beginning of static section + 4
-            //int index = 0;
-            //for (int x = 0; x < staticTiles.Length; x++)
-            //{
-            //    if (index == 32)
-            //    {
-            //        offset += 4;
-            //        index = 0;
-            //    }
-            //    staticTiles[x].ID = (ushort)x;
-            //    staticTiles[x].Flags = (TileFlags)BitConverter.ToUInt32(data, (x * 37) + offset);
-            //    staticTiles[x].Weight = data[(x * 37) + 4 + offset];
-            //    staticTiles[x].Quantity = data[(x * 37) + 9 + offset];
-            //    //staticTiles[x].AnimID = BitConverter.ToUInt16(data, (x * 37) + 10 + offset);
-            //    staticTiles[x].Name = ASCIIEncoding.ASCII.GetString(data, (x * 37) + 17 + offset, 20).TrimEnd('\0');
-            //    index++;
-            //}
         }
 
         /// <summary>
         /// Load tiledata.mul from specified UO installation into memory.
         /// </summary>
-        public static void Initialize(string dataFolder)
+        internal static void Initialize(string dataFolder)
         {
             string fileName = Path.Combine(dataFolder, "tiledata.mul");
             if (!File.Exists(fileName)) throw new FileNotFoundException(string.Format("File {0} doesn't exist!", fileName));
             byte[] fileBytes = File.ReadAllBytes(fileName);
             myLandTiles = new InternalLandTile[16384];
             myStaticTiles = new InternalStaticTile[(fileBytes.Length - 428032) / 1188 * 32];
+            oldFormat = false;
             LoadLandTiles(fileBytes, myLandTiles);
             LoadStaticTiles(fileBytes, myStaticTiles);
+        }
+
+        internal static void Dispose()
+        {
+            myLandTiles = null;
+            myStaticTiles = null;
         }
 
         /// <summary>
         /// Get specified land tile.
         /// </summary>
-        public static InternalLandTile GetLandTile(int index)
+        internal static InternalLandTile GetLandTile(int index)
         {
             return myLandTiles[index];
         }
@@ -142,7 +166,7 @@ namespace UOMachine.Data
         /// <summary>
         /// Get specified static tile.
         /// </summary>
-        public static InternalStaticTile GetStaticTile(int index)
+        internal static InternalStaticTile GetStaticTile(int index)
         {
             return myStaticTiles[index];
         }

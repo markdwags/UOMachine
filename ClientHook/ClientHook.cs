@@ -241,12 +241,16 @@ namespace ClientHook
                     //    {
                     //    }
                     //}
-                    Marshal.Copy( data, 0, myServerSendBuffer, data.Length );
-                    cave[0] = myServerBufferAddress[0];
-                    cave[1] = myServerBufferAddress[1];
-                    cave[2] = myServerBufferAddress[2];
-                    cave[3] = myServerBufferAddress[3];
-                    cave[4] = 0x01;
+                    lock (mySendServerLock)
+                    {
+                        Marshal.Copy(data, 0, myServerSendBuffer, data.Length);
+                        cave[0] = myServerBufferAddress[0];
+                        cave[1] = myServerBufferAddress[1];
+                        cave[2] = myServerBufferAddress[2];
+                        cave[3] = myServerBufferAddress[3];
+                        cave[4] = 0x01;
+                        while (cave[4] != 0x00) ;
+                    }
                     break;
             }
         }

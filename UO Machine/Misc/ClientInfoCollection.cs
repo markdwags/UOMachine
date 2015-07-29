@@ -18,7 +18,6 @@
 using System;
 using System.Threading;
 using System.Collections.Generic;
-using System.Windows.Controls;
 using UOMachine.Tree;
 using UOMachine.Utility;
 using UOMachine.Data;
@@ -36,7 +35,7 @@ namespace UOMachine
         public static int Count
         {
             get { return Thread.VolatileRead(ref myCount); }
-            private set { Interlocked.Exchange(ref myCount, value); }
+            set { Interlocked.Exchange(ref myCount, value); }
         }
 
         internal static void Dispose()

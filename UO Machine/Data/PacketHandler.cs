@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UOMachine.Data
+﻿namespace UOMachine.Data
 {
     internal delegate void OnPacketReceive(int client, PacketReader reader);
 

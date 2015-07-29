@@ -16,13 +16,9 @@
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Threading;
-using System.Runtime.InteropServices;
 using UOMachine.IPC;
 using UOMachine.Macros;
 using UOMachine.Tree;
@@ -30,7 +26,7 @@ using UOMachine.Utility;
 
 namespace UOMachine
 {
-    
+
     public sealed class ClientInfo
     {
         private object myWaitForTargetLock;
@@ -259,13 +255,13 @@ namespace UOMachine
 
             // testing
             IntPtr codeMemory;
-            codeMemory = Memory.Allocate(p.Handle, IntPtr.Zero, 4096, true); //Win32.VirtualAllocEx(p.Handle, IntPtr.Zero, 4096, Win32.AllocationType.Commit, Win32.MemoryProtection.ExecuteReadWrite);
+            codeMemory = Memory.Allocate(p.Handle, IntPtr.Zero, 4096, true); //NativeMethods.VirtualAllocEx(p.Handle, IntPtr.Zero, 4096, NativeMethods.AllocationType.Commit, NativeMethods.MemoryProtection.ExecuteReadWrite);
             if (codeMemory != IntPtr.Zero)
                 this.AllocCodeAddress = codeMemory;
             // end testing
             Memory.SetAddresses(this, p.MainModule.FileName);
             uint pid;
-            this.ThreadID = Win32.GetWindowThreadProcessId(this.WindowHandle, out pid);
+            this.ThreadID = NativeMethods.GetWindowThreadProcessId(this.WindowHandle, out pid);
             this.HotKeyList = new HotKeyList(32);
             this.Items = new ItemCollection(0, 512);
             this.Mobiles = new MobileCollection(this.Items);
@@ -302,8 +298,8 @@ namespace UOMachine
         /// <returns></returns>
         public bool DetachFromWindow()
         {
-            uint thread = Win32.GetCurrentThreadId();
-            return Win32.AttachThreadInput(thread, this.ThreadID, false);
+            uint thread = NativeMethods.GetCurrentThreadId();
+            return NativeMethods.AttachThreadInput(thread, this.ThreadID, false);
         }
 
         /// <summary>
@@ -311,19 +307,19 @@ namespace UOMachine
         /// </summary>
         public bool PrepareWindowForInput()
         {
-            Win32.WINDOWPLACEMENT wp = new Win32.WINDOWPLACEMENT();
-            uint thread = Win32.GetCurrentThreadId();
-            if (Win32.AttachThreadInput(thread, this.ThreadID, true))
+            NativeMethods.WINDOWPLACEMENT wp = new NativeMethods.WINDOWPLACEMENT();
+            uint thread = NativeMethods.GetCurrentThreadId();
+            if (NativeMethods.AttachThreadInput(thread, this.ThreadID, true))
             {
-                if (Win32.GetWindowPlacement(this.WindowHandle, ref wp))
+                if (NativeMethods.GetWindowPlacement(this.WindowHandle, ref wp))
                 {
-                    if (wp.showCmd == Win32.SW_SHOWMINIMIZED)
+                    if (wp.showCmd == NativeMethods.SW_SHOWMINIMIZED)
                     {
-                        wp.showCmd = Win32.SW_SHOWDEFAULT;
-                        if (!Win32.SetWindowPlacement(this.WindowHandle, ref wp))
+                        wp.showCmd = NativeMethods.SW_SHOWDEFAULT;
+                        if (!NativeMethods.SetWindowPlacement(this.WindowHandle, ref wp))
                             return false;
                     }
-                    return Win32.SetForegroundWindow(this.WindowHandle);
+                    return NativeMethods.SetForegroundWindow(this.WindowHandle);
                 }
             }
             return false;

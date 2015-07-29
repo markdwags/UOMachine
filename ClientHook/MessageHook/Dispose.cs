@@ -23,8 +23,8 @@ namespace ClientHook
     {
         public static void Dispose()
         {
-            UnhookWindowsHookEx(myMsgHookHandle);
-            UnhookWindowsHookEx(myWindowMsgHookHandle);
+            NativeMethods.UnhookWindowsHookEx(myMsgHookHandle);
+            NativeMethods.UnhookWindowsHookEx(myWindowMsgHookHandle);
             myClientInstance = null;
             myMsgHook = null;
             myWindowMsgHook = null;

@@ -15,10 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
-using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using UOMachine;
 
 namespace UOMachine.Macros
 {
@@ -36,8 +34,8 @@ namespace UOMachine.Macros
             ClientInfo ci;
             if (ClientInfoCollection.GetClient(client, out ci))
             {
-                Win32.INPUT[] inputs = new Win32.INPUT[keys.Length * 2];
-                Win32.KEYBDINPUT kbi = new Win32.KEYBDINPUT();
+                NativeMethods.INPUT[] inputs = new NativeMethods.INPUT[keys.Length * 2];
+                NativeMethods.KEYBDINPUT kbi = new NativeMethods.KEYBDINPUT();
 
                 if (!ci.PrepareWindowForInput())
                 {
@@ -50,12 +48,12 @@ namespace UOMachine.Macros
                     kbi.dwFlags = 0;
                     kbi.wVk = (ushort)keys[x];
                     inputs[x * 2].mkhi.ki = kbi;
-                    inputs[x * 2].type = Win32.INPUT_KEYBOARD;
-                    kbi.dwFlags = Win32.KEYEVENTF_KEYUP;
+                    inputs[x * 2].type = NativeMethods.INPUT_KEYBOARD;
+                    kbi.dwFlags = NativeMethods.KEYEVENTF_KEYUP;
                     inputs[x * 2 + 1].mkhi.ki = kbi;
-                    inputs[x * 2 + 1].type = Win32.INPUT_KEYBOARD;
+                    inputs[x * 2 + 1].type = NativeMethods.INPUT_KEYBOARD;
                 }
-                uint success = Win32.SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(inputs[0]));
+                uint success = NativeMethods.SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(inputs[0]));
                 ci.DetachFromWindow();
                 return success == inputs.Length;
             }

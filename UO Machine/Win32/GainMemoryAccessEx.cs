@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 
 namespace UOMachine
 {
-    internal static partial class Win32
+    internal static partial class NativeMethods
     {
         private static ulong RoundUpToPageBoundary(ulong address, uint pageSize)
         {
@@ -42,12 +42,12 @@ namespace UOMachine
             while (currentAddress < endAddress)
             {
                 mbi = new MEMORY_BASIC_INFORMATION();
-                ret = VirtualQueryEx(hProcess, (IntPtr)currentAddress, out mbi, (IntPtr)Marshal.SizeOf(mbi));
+                ret = (uint)VirtualQueryEx(hProcess, (IntPtr)currentAddress, out mbi, (IntPtr)Marshal.SizeOf(mbi));
                 if (ret != 0)
                 {
                     if (mbi.state == MEM_COMMIT)
                     {
-                        Win32.VirtualProtectEx(hProcess, mbi.baseAddress, mbi.regionSize, PAGE_EXECUTE_READWRITE, out oldProtect);
+                        NativeMethods.VirtualProtectEx(hProcess, mbi.baseAddress, mbi.regionSize, PAGE_EXECUTE_READWRITE, out oldProtect);
                     }
                     if ((ulong)mbi.regionSize > 0) currentAddress += (ulong)mbi.regionSize;
                     else currentAddress += si.pageSize;

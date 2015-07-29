@@ -16,7 +16,6 @@
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
 using System;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace ClientHook
@@ -28,21 +27,21 @@ namespace ClientHook
         private const double myMessageDelay = 100;
         private static int myWindowX = 0, myWindowY = 0;
 
-        private static void NormalizePoint(ref POINT pt)
+        private static void NormalizePoint(ref NativeMethods.POINT pt)
         {
             pt.x -= myWindowX;
             pt.y -= myWindowY;
         }
 
-        public static int WindowMsgHook(int nCode, int wParam, IntPtr lParam)
+        public static IntPtr WindowMsgHook(int nCode, IntPtr wParam, IntPtr lParam)
         {
             if (nCode >= 0)
             {
                 //CWPSTRUCT cwps = (CWPSTRUCT)Marshal.PtrToStructure(lParam, typeof(CWPSTRUCT));
-                CWPSTRUCT cwps = *(CWPSTRUCT*)lParam;
+                NativeMethods.CWPSTRUCT cwps = *(NativeMethods.CWPSTRUCT*)lParam;
                 switch (cwps.message)
                 {
-                    case WM_MOVE:
+                    case NativeMethods.WM_MOVE:
                         int lp = cwps.lparam.ToInt32();
                         myWindowX = lp & 0xFFFF;
                         myWindowY = (int)(lp & 0xFFFF0000) >> 16;
@@ -50,32 +49,32 @@ namespace ClientHook
                 }
 
             }
-            return CallNextHookEx(myMsgHookHandle, nCode, wParam, lParam);
+            return NativeMethods.CallNextHookEx(myMsgHookHandle, nCode, wParam, lParam);
         }
 
-        public static int MsgHook(int nCode, int wParam, IntPtr lParam)
+        public static IntPtr MsgHook(int nCode, IntPtr wParam, IntPtr lParam)
         {
             if (nCode >= 0)//&& wParam == PM_NOREMOVE)
             {
                 //MSG msg = (MSG)Marshal.PtrToStructure(lParam, typeof(MSG));
-                MSG msg = *(MSG*)lParam;
+                NativeMethods.MSG msg = *(NativeMethods.MSG*)lParam;
                 switch (msg.message)
                 {
-                    case WM_KEYDOWN:
+                    case NativeMethods.WM_KEYDOWN:
                         OnKeyDown((Keys)msg.wParam);
                         break;
-                    case WM_KEYUP:
+                    case NativeMethods.WM_KEYUP:
                         OnKeyUp((Keys)msg.wParam);
                         break;
-                    case WM_SYSKEYDOWN:
+                    case NativeMethods.WM_SYSKEYDOWN:
                         if (msg.wParam.ToInt32() == 0x12) OnKeyDown(Keys.Alt);
                         else OnKeyDown((Keys)msg.wParam);
                         break;
-                    case WM_SYSKEYUP:
+                    case NativeMethods.WM_SYSKEYUP:
                         if (msg.wParam.ToInt32() == 0x12) OnKeyUp(Keys.Alt);
                         else OnKeyUp((Keys)msg.wParam);
                         break;
-                    case WM_MOUSEMOVE:
+                    case NativeMethods.WM_MOUSEMOVE:
                         DateTime now = DateTime.Now;
                         TimeSpan elapsed = now - myLastMessage;
                         if (elapsed.TotalMilliseconds < myMessageDelay) break;
@@ -83,64 +82,64 @@ namespace ClientHook
                         myLastMessage = now;
                         OnMouseMove(msg.pt.x, msg.pt.y);
                         break;
-                    case WM_LBUTTONDOWN:
+                    case NativeMethods.WM_LBUTTONDOWN:
                         myLastButton = msg.message;
                         NormalizePoint(ref msg.pt);
                         OnMouseDown(msg.pt.x, msg.pt.y, UOMachine.IPC.MouseButton.Left);
                         break;
-                    case WM_LBUTTONUP:
+                    case NativeMethods.WM_LBUTTONUP:
                         NormalizePoint(ref msg.pt);
                         OnMouseUp(msg.pt.x, msg.pt.y, UOMachine.IPC.MouseButton.Left);
-                        if (myLastButton == WM_LBUTTONDOWN) OnMouseClick(msg.pt.x, msg.pt.y, UOMachine.IPC.MouseButton.Left);
+                        if (myLastButton == NativeMethods.WM_LBUTTONDOWN) OnMouseClick(msg.pt.x, msg.pt.y, UOMachine.IPC.MouseButton.Left);
                         myLastButton = 0;
                         break;
-                    case WM_LBUTTONDBLCLK:
+                    case NativeMethods.WM_LBUTTONDBLCLK:
                         myLastButton = 0;
                         NormalizePoint(ref msg.pt);
                         OnMouseDoubleClick(msg.pt.x, msg.pt.y, UOMachine.IPC.MouseButton.Left);
                         break;
-                    case WM_RBUTTONDOWN:
+                    case NativeMethods.WM_RBUTTONDOWN:
                         myLastButton = msg.message;
                         NormalizePoint(ref msg.pt);
                         OnMouseDown(msg.pt.x, msg.pt.y, UOMachine.IPC.MouseButton.Right);
                         break;
-                    case WM_RBUTTONUP:
+                    case NativeMethods.WM_RBUTTONUP:
                         NormalizePoint(ref msg.pt);
                         OnMouseUp(msg.pt.x, msg.pt.y, UOMachine.IPC.MouseButton.Right);
-                        if (myLastButton == WM_RBUTTONDOWN) OnMouseClick(msg.pt.x, msg.pt.y, UOMachine.IPC.MouseButton.Right);
+                        if (myLastButton == NativeMethods.WM_RBUTTONDOWN) OnMouseClick(msg.pt.x, msg.pt.y, UOMachine.IPC.MouseButton.Right);
                         myLastButton = 0;
                         break;
-                    case WM_RBUTTONDBLCLK:
+                    case NativeMethods.WM_RBUTTONDBLCLK:
                         myLastButton = 0;
                         NormalizePoint(ref msg.pt);
                         OnMouseDoubleClick(msg.pt.x, msg.pt.y, UOMachine.IPC.MouseButton.Right);
                         break;
-                    case WM_MBUTTONDOWN:
+                    case NativeMethods.WM_MBUTTONDOWN:
                         myLastButton = msg.message;
                         NormalizePoint(ref msg.pt);
                         OnMouseDown(msg.pt.x, msg.pt.y, UOMachine.IPC.MouseButton.Middle);
                         break;
-                    case WM_MBUTTONUP:
+                    case NativeMethods.WM_MBUTTONUP:
                         NormalizePoint(ref msg.pt);
                         OnMouseUp(msg.pt.x, msg.pt.y, UOMachine.IPC.MouseButton.Middle);
-                        if (myLastButton == WM_MBUTTONDOWN) OnMouseClick(msg.pt.x, msg.pt.y, UOMachine.IPC.MouseButton.Middle);
+                        if (myLastButton == NativeMethods.WM_MBUTTONDOWN) OnMouseClick(msg.pt.x, msg.pt.y, UOMachine.IPC.MouseButton.Middle);
                         myLastButton = 0;
                         break;
-                    case WM_MBUTTONDBLCLK:
+                    case NativeMethods.WM_MBUTTONDBLCLK:
                         myLastButton = 0;
                         NormalizePoint(ref msg.pt);
                         OnMouseDoubleClick(msg.pt.x, msg.pt.y, UOMachine.IPC.MouseButton.Middle);
                         break;
-                    case WM_MOUSEWHEEL:
+                    case NativeMethods.WM_MOUSEWHEEL:
                         short delta = (short)((msg.wParam.ToInt32() >> 16) & 0xFFFF);
-                        delta /= WHEEL_DELTA;
+                        delta /= NativeMethods.WHEEL_DELTA;
                         myLastButton = 0;
                         NormalizePoint(ref msg.pt);
                         OnMouseWheel(msg.pt.x, msg.pt.y, (byte)delta);
                         break;
                 }
             }
-            return CallNextHookEx(myMsgHookHandle, nCode, wParam, lParam);
+            return NativeMethods.CallNextHookEx(myMsgHookHandle, nCode, wParam, lParam);
         }
 
     }

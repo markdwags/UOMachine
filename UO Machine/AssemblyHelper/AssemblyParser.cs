@@ -17,7 +17,6 @@
 
 /* This is loosely based on AssemblyParser by Mike Woodring */
 
-using System;
 using System.IO;
 
 namespace UOMachine

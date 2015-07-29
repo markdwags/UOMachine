@@ -409,7 +409,7 @@ namespace UOMachine
             UpdateButtonStatus( addButton, false );
             Task.Factory.StartNew( () =>
             {
-                UOMachine.Misc.SteamLauncher.Launch( myCurrentOptions, out index );
+                SteamLauncher.Launch( myCurrentOptions, out index );
             } );
             UpdateButtonStatus( steamButton, true );
             UpdateButtonStatus( addButton, true );
@@ -421,11 +421,11 @@ namespace UOMachine
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.WorkingDirectory = System.IO.Path.GetDirectoryName( System.Reflection.Assembly.GetExecutingAssembly().Location );
             startInfo.FileName = System.IO.Path.Combine( System.IO.Path.GetDirectoryName( System.Reflection.Assembly.GetExecutingAssembly().Location ), "Updater.exe" );
-            Win32.SafeProcessHandle hProcess;
-            Win32.SafeThreadHandle hThread;
+            NativeMethods.SafeProcessHandle hProcess;
+            NativeMethods.SafeThreadHandle hThread;
             uint pid, tid;
             UOM.SetStatusLabel( "Launching Updater" );
-            Win32.CreateProcess( startInfo, false, out hProcess, out hThread, out pid, out tid );
+            NativeMethods.CreateProcess( startInfo, false, out hProcess, out hThread, out pid, out tid );
         }
     }
 }

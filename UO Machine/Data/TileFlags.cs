@@ -20,7 +20,7 @@ using System;
 namespace UOMachine.Data
 {
     [Flags]
-    public enum TileFlags : uint
+    public enum TileFlags : long
     {
         Background =  0x00000001,
         Weapon =      0x00000002,

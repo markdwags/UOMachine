@@ -19,6 +19,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("UnitTests, PublicKey=0024000004800000940000000602000000240000525341310004000001000100d163ee2e2301742448cc3a32e6b8ba1ee2fab49894d9c32aaaa12ba80080f2bcd9d7377f503d12f6b1155e1a6c22ff3ecc22b78132c27f24aa7d6960785213049408dccb302e401a514d44b7468acdbf1d4aed16e0c18870eb291e65972971ce05528a395bb0c89f2a1703a997b12683ee221c7db57bcd7b95df5cc398240df6")]
 
 namespace UOMachine.Data
 {
@@ -102,8 +105,17 @@ namespace UOMachine.Data
         private static bool myCacheStaticIndices = false;
         private static bool myCacheStatics = false;
 
+        private static object fileStreamLock;
+        private static object myMap0Lock = new object();
+        private static object myMap1Lock = new object();
+        private static object myMap2Lock = new object();
+        private static object myMap3Lock = new object();
+        private static object myMap4Lock = new object();
+        private static object myMap5Lock = new object();
+
         internal static void Initialize(string dataFolder, int cacheLevel)
         {
+            fileStreamLock = new object();
             switch (cacheLevel)
             {
                 case 0:
@@ -147,7 +159,7 @@ namespace UOMachine.Data
             string map3UOPPath = Path.Combine(dataFolder, "map3LegacyMUL.uop");
             string map4UOPPath = Path.Combine(dataFolder, "map4LegacyMUL.uop");
             string map5UOPPath = Path.Combine(dataFolder, "map5LegacyMUL.uop");
-
+            
             if (myCacheStaticIndices)
             {
                 LoadStaticIndex(staidx0Path, ref myStaticsIndex0);
@@ -370,7 +382,8 @@ namespace UOMachine.Data
         {
             StaticIndexRecord indexRecord = new StaticIndexRecord();
             byte[] startBytes = new byte[4], lengthBytes = new byte[4];
-            lock (fileStream)
+
+            lock (fileStreamLock)
             {
                 fileStream.Seek(blockIndex * 12, SeekOrigin.Begin);
                 fileStream.Read(startBytes, 0, 4);
@@ -387,7 +400,7 @@ namespace UOMachine.Data
 
             StaticRecord[] staticRecords = new StaticRecord[indexRecord.length / 7];
             byte[] fileBytes = new byte[indexRecord.length];
-            lock (fileStream)
+            lock (fileStreamLock)
             {
                 fileStream.Seek(indexRecord.start, SeekOrigin.Begin);
                 fileStream.Read(fileBytes, 0, indexRecord.length);
@@ -565,7 +578,7 @@ namespace UOMachine.Data
                         return false;
                     }
                     blockIndex = x / 8 * 512 + y / 8;
-                    lock (myMap0Reader)
+                    lock (myMap0Lock)
                     {
                         int offset = blockIndex * 196 + 4 + (cellY * 24 + cellX * 3);
 
@@ -591,7 +604,7 @@ namespace UOMachine.Data
 
                     blockIndex = x / 8 * 512 + y / 8;
                     mapInfo = new MapInfo();
-                    lock (myMap1Reader)
+                    lock (myMap1Lock)
                     {
                         int offset = blockIndex * 196 + 4 + (cellY * 24 + cellX * 3);
 
@@ -613,7 +626,7 @@ namespace UOMachine.Data
                         return false;
                     }
                     blockIndex = x / 8 * 200 + y / 8;
-                    lock (myMap2Reader)
+                    lock (myMap2Lock)
                     {
                         int offset = blockIndex * 196 + 4 + (cellY * 24 + cellX * 3);
 
@@ -636,7 +649,7 @@ namespace UOMachine.Data
                         return false;
                     }
                     blockIndex = x / 8 * 256 + y / 8;
-                    lock (myMap3Reader)
+                    lock (myMap3Lock)
                     {
                         int offset = blockIndex * 196 + 4 + (cellY * 24 + cellX * 3);
 
@@ -659,7 +672,7 @@ namespace UOMachine.Data
                         return false;
                     }
                     blockIndex = x / 8 * 181 + y / 8;
-                    lock (myMap4Reader)
+                    lock (myMap4Lock)
                     {
                         int offset = blockIndex * 196 + 4 + (cellY * 24 + cellX * 3);
 
@@ -683,7 +696,7 @@ namespace UOMachine.Data
                         return false;
                     }
                     blockIndex = x / 8 * 512 + y / 8;
-                    lock (myMap5Reader)
+                    lock (myMap5Lock)
                     {
                         int offset = blockIndex * 196 + 4 + (cellY * 24 + cellX * 3);
 

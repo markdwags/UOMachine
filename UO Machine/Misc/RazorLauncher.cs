@@ -15,17 +15,10 @@
  * You should have received a copy of the GNU General Public License
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.ComponentModel;
-using System.Threading;
-using System.Reflection;
 //using System.Windows.Forms;
 using System.Windows;
 using System.IO;
-using System.Net;
-using UOMachine.IPC;
 using UOMachine.Resources;
 
 namespace UOMachine
@@ -37,12 +30,12 @@ namespace UOMachine
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.WorkingDirectory = MainWindow.CurrentOptions.UOFolder;
             startInfo.FileName = MainWindow.CurrentOptions.UOClientPath;
-            Win32.SafeProcessHandle hProcess;
-            Win32.SafeThreadHandle hThread;
+            NativeMethods.SafeProcessHandle hProcess;
+            NativeMethods.SafeThreadHandle hThread;
             uint pid, tid;
             UOM.SetStatusLabel( Strings.Launchingclient );
             index = -1;
-            if (Win32.CreateProcess( startInfo, true, out hProcess, out hThread, out pid, out tid ))
+            if (NativeMethods.CreateProcess( startInfo, true, out hProcess, out hThread, out pid, out tid ))
             {
                 UOM.SetStatusLabel( Strings.Patchingclient );
 
@@ -54,7 +47,7 @@ namespace UOMachine
                     return false;
                 }
 
-                if (Win32.ResumeThread( hThread.DangerousGetHandle() ) == -1)
+                if (NativeMethods.ResumeThread( hThread.DangerousGetHandle() ) == -1)
                 {
                     UOM.SetStatusLabel( Strings.ResumeThreadfailed );
                     hProcess.Dispose();

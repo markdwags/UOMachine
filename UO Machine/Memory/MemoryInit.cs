@@ -16,11 +16,6 @@
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
 using System;
-using System.Collections.Generic;
-using System.Collections;
-using System.Text;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace UOMachine
@@ -46,7 +41,7 @@ namespace UOMachine
         public static void MemoryInit(ClientInfo ci)
         {
             ulong len = (ulong)ci.EntryPoint - (ulong)ci.BaseAddress;
-            Win32.GainMemoryAccessEx(ci.Handle, ci.BaseAddress, len);
+            NativeMethods.GainMemoryAccessEx(ci.Handle, ci.BaseAddress, len);
             if (!SetInfoAddresses(ci))
             {
                 ci.IsValid = false;

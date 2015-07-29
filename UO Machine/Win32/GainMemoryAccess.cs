@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 
 namespace UOMachine
 {
-    internal static partial class Win32
+    internal static partial class NativeMethods
     {
         public static void GainMemoryAccess(IntPtr address, ulong len)
         {
@@ -35,7 +35,7 @@ namespace UOMachine
             while (currentAddress < endAddress)
             {
                 mbi = new MEMORY_BASIC_INFORMATION();
-                ret = VirtualQuery((IntPtr)currentAddress, out mbi, (IntPtr)Marshal.SizeOf(mbi));
+                ret = (uint)VirtualQuery((IntPtr)currentAddress, out mbi, (IntPtr)Marshal.SizeOf(mbi));
                 if (ret != 0)
                 {
                     if (mbi.state == MEM_COMMIT)

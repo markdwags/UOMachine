@@ -47,7 +47,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <DocumentationFile>..\output\UOMachine.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <PlatformTarget>x86</PlatformTarget>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -125,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\UOPIndex.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="UI\BraceFoldingStrategy.cs" />
     <Compile Include="Data\OutgoingPacketHandlers.cs" />
     <Compile Include="Data\PacketHandler.cs" />
@@ -433,7 +435,7 @@
     <Compile Include="Win32\CreateProcess.cs" />
     <Compile Include="Win32\GainMemoryAccess.cs" />
     <Compile Include="Win32\GainMemoryAccessEx.cs" />
-    <Compile Include="Win32\Win32.cs" />
+    <Compile Include="Win32\NativeMethods.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

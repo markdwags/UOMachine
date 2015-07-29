@@ -26,7 +26,7 @@ namespace UOMachine
         public static bool Read(IntPtr processHandle, IntPtr address, byte[] buffer, bool throwException)
         {
             int bytesRead = 0;
-            bool success = Win32.ReadProcessMemory(processHandle, address, buffer, (UIntPtr)buffer.Length, out bytesRead);
+            bool success = NativeMethods.ReadProcessMemory(processHandle, address, buffer, (UIntPtr)buffer.Length, out bytesRead);
             if (!success && throwException) throw new Win32Exception(Marshal.GetLastWin32Error());
             return success;
         }
@@ -34,7 +34,7 @@ namespace UOMachine
         public static bool Write(IntPtr processHandle, IntPtr address, byte[] buffer, bool throwException)
         {
             int bytesWritten = 0;
-            bool success = Win32.WriteProcessMemory(processHandle, address, buffer, (UIntPtr)buffer.Length, out bytesWritten);
+            bool success = NativeMethods.WriteProcessMemory(processHandle, address, buffer, (UIntPtr)buffer.Length, out bytesWritten);
             if (!success && throwException) throw new Win32Exception(Marshal.GetLastWin32Error());
             return success;
         }
@@ -43,7 +43,7 @@ namespace UOMachine
         {
             IntPtr allocAddress = IntPtr.Zero;
 
-            if ((allocAddress = Win32.VirtualAllocEx(processHandle, address, size, Win32.AllocationType.Commit, Win32.MemoryProtection.ExecuteReadWrite)) == IntPtr.Zero)
+            if ((allocAddress = NativeMethods.VirtualAllocEx(processHandle, address, (UIntPtr)size, NativeMethods.AllocationType.Commit, NativeMethods.MemoryProtection.ExecuteReadWrite)) == IntPtr.Zero)
             {
                 if (throwException) throw new Win32Exception(Marshal.GetLastWin32Error());
             }

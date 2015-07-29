@@ -16,10 +16,7 @@
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Text;
-using System.Net;
 using System.Reflection;
 using System.IO;
 
@@ -105,6 +102,7 @@ namespace RazorLoader
             return x;
         }
 
+        [STAThread]
         static void Main(string[] args)
         {
             string fileVersion = "8.8.8";

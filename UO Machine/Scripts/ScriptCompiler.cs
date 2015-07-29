@@ -19,8 +19,6 @@ using System;
 using System.CodeDom.Compiler;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using System.Diagnostics;
-using System.IO;
 using System.Threading;
 using System.Text;
 using System.Windows;

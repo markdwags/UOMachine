@@ -17,14 +17,11 @@
 
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
 using System.IO;
-using System.Net;
-using UOMachine.IPC;
 using UOMachine.Resources;
 using EasyHook;
 
@@ -109,11 +106,11 @@ namespace UOMachine
             startInfo.WorkingDirectory = MainWindow.CurrentOptions.UOFolder;
             startInfo.FileName = MainWindow.CurrentOptions.UOClientPath;
             index = -1;
-            Win32.SafeProcessHandle hProcess;
-            Win32.SafeThreadHandle hThread;
+            NativeMethods.SafeProcessHandle hProcess;
+            NativeMethods.SafeThreadHandle hThread;
             uint pid, tid;
             UOM.SetStatusLabel( Strings.Launchingclient );
-            if (Win32.CreateProcess( startInfo, true, out hProcess, out hThread, out pid, out tid ))
+            if (NativeMethods.CreateProcess( startInfo, true, out hProcess, out hThread, out pid, out tid ))
             {
                 UOM.SetStatusLabel( Strings.Patchingclient );
                 if (!ClientPatcher.MultiPatch( hProcess.DangerousGetHandle() ))
@@ -124,7 +121,7 @@ namespace UOMachine
                     return false;
                 }
 
-                if (Win32.ResumeThread( hThread.DangerousGetHandle() ) == -1)
+                if (NativeMethods.ResumeThread( hThread.DangerousGetHandle() ) == -1)
                 {
                     UOM.SetStatusLabel( Strings.ResumeThreadfailed );
                     hProcess.Dispose();
