@@ -1,5 +1,7 @@
 --------------------------------------------------------------------------------
-# UO Machine 0.4.0.5 (August 2014)
+# UO Machine 0.4.0.8 (July 2015)
+
+[![Build status](https://ci.appveyor.com/api/projects/status/2san7l7p6he6kmme?svg=true)](https://ci.appveyor.com/project/Reetus/uomachine)
 
 For installation instructions, please see [Installing](https://github.com/Reetus/UOMachine/wiki/Installing)
 
@@ -12,7 +14,7 @@ written in C# and execute as native code.
 
 Supported clients:
 
-All Mondain's Legacy/Stygian Abyss 2D clients.
+All Mondain's Legacy/Stygian Abyss 2D 7.* clients.
 
 How to write scripts:
 
