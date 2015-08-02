@@ -81,6 +81,9 @@ namespace UOMachine
         [DllImport("kernel32", CharSet = CharSet.Unicode)]
         public static extern IntPtr LoadLibrary(string lpFileName);
 
+        [DllImport( "kernel32", CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true )]
+        public static extern IntPtr GetProcAddress( IntPtr hModule, string procName );
+
         [DllImport("kernel32.dll", SetLastError = true)]
         public static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress,
              byte[] lpBuffer, UIntPtr nSize, out int lpNumberOfBytesRead);
@@ -194,6 +197,9 @@ namespace UOMachine
 
         [DllImport("kernel32.dll")]
         public static extern bool GetThreadContext(IntPtr hThread, ref CONTEXT lpContext);
+
+        [DllImport( "kernel32.dll" )]
+        public static extern bool SetThreadContext( IntPtr hThread, [In] ref CONTEXT lpContext );
 
         public enum CONTEXT_FLAGS : uint
         {
