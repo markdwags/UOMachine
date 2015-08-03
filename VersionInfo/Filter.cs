@@ -18,7 +18,7 @@ namespace VersionInfo
 
             string line = "";
 
-            StreamReader file = new StreamReader(@"C:\Users\Johnny\Documents\gh-pages\.filter");
+            StreamReader file = new StreamReader(@"C:\Users\Johnny Mantas\Documents\gh-pages\VersionInfo\.filter");
 
             while ((line = file.ReadLine()) != null)
             {

@@ -64,7 +64,7 @@ namespace VersionInfo
 
     class Program
     {
-        public static string FilesPath = @"C:\Users\Johnny\Documents\gh-pages\files";
+        public static string FilesPath = @"C:\Users\Johnny Mantas\Documents\gh-pages\files";
         public static VersionInfo versionInfo;
 
         static void Main(string[] args)
