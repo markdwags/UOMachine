@@ -47,7 +47,7 @@ namespace UOMachine
         }
 
         internal int GetLayer(int layer)        
-	{
+	    {
             return Thread.VolatileRead(ref myLayerArray[layer]);
         }
 

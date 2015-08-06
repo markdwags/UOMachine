@@ -553,6 +553,7 @@ namespace UOMachine.Data
                         item.myHue = reader.ReadInt16();
                     }
                 }
+                container78.Add( item );
             }
             IncomingPackets.OnEquippedMobAdded(client, mob78, container78);
         }
