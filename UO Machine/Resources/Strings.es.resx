@@ -387,4 +387,7 @@
   <data name="UOSteaminstallationfolder" xml:space="preserve">
     <value>Carpeta de instalación UOSteam:</value>
   </data>
+  <data name="APIDoc" xml:space="preserve">
+    <value>Documentación de la API</value>
+  </data>
 </root>

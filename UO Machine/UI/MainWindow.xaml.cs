@@ -162,8 +162,8 @@ namespace UOMachine
             FileNew_Click( null, null );
             scriptTextBox.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition( "C#" );
             scriptTextBox.Options = myCurrentOptions.TextEditorOptions;
-            foldingManager = FoldingManager.Install(scriptTextBox.TextArea);
-            new BraceFoldingStrategy().UpdateFoldings(foldingManager, scriptTextBox.Document);
+            foldingManager = FoldingManager.Install( scriptTextBox.TextArea );
+            new BraceFoldingStrategy().UpdateFoldings( foldingManager, scriptTextBox.Document );
         }
 
         private void OptionsWindow_OptionsChangedEvent( OptionsData optionsData )
@@ -219,8 +219,8 @@ namespace UOMachine
             if (ScriptCompiler.Compile( Assembly.GetExecutingAssembly().Location, scriptTextBox.Text ))
             {
                 UOM.SetStatusLabel( Strings.Scriptrunning );
-                UpdateButtonStatus(startButton, false);
-                UpdateButtonStatus(stopButton, true);
+                UpdateButtonStatus( startButton, false );
+                UpdateButtonStatus( stopButton, true );
             }
             else UOM.SetStatusLabel( Strings.Compilererror );
         }
@@ -273,8 +273,8 @@ namespace UOMachine
             scriptTextBox.Text = Properties.Resources.DefaultScript;
             fileName = Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ) + "\\Untitled.cs";
             fileTitleString = "Untitled.cs";
-            MenuItem parent = (MenuItem)menu1.Items[0];
-            MenuItem child = (MenuItem)parent.Items[2];
+            MenuItem parent = (MenuItem) menu1.Items[0];
+            MenuItem child = (MenuItem) parent.Items[2];
             child.IsEnabled = false;
             UpdateWindowText();
             scriptTextBox.Document.FileName = fileName;
@@ -292,7 +292,7 @@ namespace UOMachine
 
         private void OFD_FileOk( object sender, CancelEventArgs e )
         {
-            OpenFileDialog OFD = (OpenFileDialog)sender;
+            OpenFileDialog OFD = (OpenFileDialog) sender;
             if (OFD.FileName != "")
             {
                 try
@@ -300,15 +300,15 @@ namespace UOMachine
                     //scriptTextBox.Text = File.ReadAllText(OFD.FileName);
                     scriptTextBox.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition( "C#" );
                     scriptTextBox.OpenFile( OFD.FileName );
-                    new BraceFoldingStrategy().UpdateFoldings(foldingManager, scriptTextBox.Document);
+                    new BraceFoldingStrategy().UpdateFoldings( foldingManager, scriptTextBox.Document );
                 }
                 catch (IOException)
                 {
                     MessageBox.Show( Strings.Erroropeningfile );
                     return;
                 }
-                MenuItem parent = (MenuItem)menu1.Items[0];
-                MenuItem child = (MenuItem)parent.Items[2];
+                MenuItem parent = (MenuItem) menu1.Items[0];
+                MenuItem child = (MenuItem) parent.Items[2];
                 child.IsEnabled = true;
                 fileName = OFD.FileName;
                 fileTitleString = OFD.SafeFileName;
@@ -342,7 +342,7 @@ namespace UOMachine
 
         private void SFD_FileOk( object sender, CancelEventArgs e )
         {
-            SaveFileDialog SFD = (SaveFileDialog)sender;
+            SaveFileDialog SFD = (SaveFileDialog) sender;
             if (SFD.FileName != "")
             {
                 try { File.WriteAllText( SFD.FileName, scriptTextBox.Text, Encoding.UTF8 ); }
@@ -351,8 +351,8 @@ namespace UOMachine
                     MessageBox.Show( Strings.Errorsavingfile );
                     return;
                 }
-                MenuItem parent = (MenuItem)menu1.Items[0];
-                MenuItem child = (MenuItem)parent.Items[2];
+                MenuItem parent = (MenuItem) menu1.Items[0];
+                MenuItem child = (MenuItem) parent.Items[2];
                 child.IsEnabled = true;
                 fileName = SFD.FileName;
                 fileTitleString = SFD.SafeFileName;
@@ -426,6 +426,15 @@ namespace UOMachine
             uint pid, tid;
             UOM.SetStatusLabel( "Launching Updater" );
             NativeMethods.CreateProcess( startInfo, false, out hProcess, out hThread, out pid, out tid );
+        }
+
+        private void apiDoc_Click( object sender, RoutedEventArgs e )
+        {
+            string path = System.IO.Path.Combine( System.IO.Path.GetDirectoryName( System.Reflection.Assembly.GetExecutingAssembly().Location), @"UOMachine.chm" );
+            if (System.IO.File.Exists( path ))
+            {
+                System.Diagnostics.Process.Start( path );
+            }
         }
     }
 }

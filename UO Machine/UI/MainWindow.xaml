@@ -38,6 +38,7 @@
                 <MenuItem Header="{x:Static p:Strings.Options}" FontSize="12" Click="EditOptions_Click"/>
             </MenuItem>
             <MenuItem Header="{x:Static p:Strings.Help}" FontSize="12">
+                <MenuItem x:Name="apiDoc" Header="{x:Static p:Strings.APIDoc}" FontSize="12" Click="apiDoc_Click"/>
                 <MenuItem x:Name="checkUpdate" Header="{x:Static p:Strings.CheckForUpdates}" FontSize="12" Click="checkUpdate_Click"/>
                 <MenuItem Header="{x:Static p:Strings.About}" FontSize="12" Click="HelpAbout_Click" />
             </MenuItem>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,332 +59,335 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="About" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
     <value>О...</value>
   </data>
-	<data name="Addassemblyreference" xml:space="preserve">
+  <data name="Addassemblyreference" xml:space="preserve">
     <value>Добавить ссылку на сборку</value>
   </data>
-	<data name="Attachedtoclient" xml:space="preserve">
+  <data name="Attachedtoclient" xml:space="preserve">
     <value>Прилагается к клиенту</value>
   </data>
-	<data name="CheckForUpdates" xml:space="preserve">
+  <data name="CheckForUpdates" xml:space="preserve">
     <value>Проверить наличие обновлений...</value>
   </data>
-	<data name="Clientexited" xml:space="preserve">
+  <data name="Clientexited" xml:space="preserve">
     <value>Выход из клиента.</value>
   </data>
-	<data name="Clientstarted" xml:space="preserve">
+  <data name="Clientstarted" xml:space="preserve">
     <value>Запущен клиент</value>
   </data>
-	<data name="Closing" xml:space="preserve">
+  <data name="Closing" xml:space="preserve">
     <value>Закрытие</value>
   </data>
-	<data name="Compilererror" xml:space="preserve">
+  <data name="Compilererror" xml:space="preserve">
     <value>Ошибка компилятора</value>
   </data>
-	<data name="Edit" xml:space="preserve">
+  <data name="Edit" xml:space="preserve">
     <value>Редактировать</value>
   </data>
-	<data name="Error" xml:space="preserve">
+  <data name="Error" xml:space="preserve">
     <value>Ошибка</value>
   </data>
-	<data name="ErrorattachingtoRazorclient" xml:space="preserve">
+  <data name="ErrorattachingtoRazorclient" xml:space="preserve">
     <value>Ошибка присоединения к Razor клиенту.</value>
   </data>
-	<data name="Errorinitializing" xml:space="preserve">
+  <data name="Errorinitializing" xml:space="preserve">
     <value>Ошибка при инициализации UO Machine, пожалуйста, попробуйте еще раз.</value>
   </data>
-	<data name="Errorinjectingdll" xml:space="preserve">
+  <data name="Errorinjectingdll" xml:space="preserve">
     <value>Ошибка внедрения dll в целевой процесс</value>
   </data>
-	<data name="Errorpatchingclientencryption" xml:space="preserve">
+  <data name="Errorpatchingclientencryption" xml:space="preserve">
     <value>Ошибка исправления шифрования клиента!</value>
   </data>
-	<data name="Errorpatchingstaminacheck" xml:space="preserve">
+  <data name="Errorpatchingstaminacheck" xml:space="preserve">
     <value>Ошибка исправления Проверка выносливости!</value>
   </data>
-	<data name="Errorresolvinghostname" xml:space="preserve">
+  <data name="Errorresolvinghostname" xml:space="preserve">
     <value>Ошибка разрешения имени узла</value>
   </data>
-	<data name="Errorsettinggamewindowsize" xml:space="preserve">
+  <data name="Errorsettinggamewindowsize" xml:space="preserve">
     <value>Размер игрового окна настройки ошибок!</value>
   </data>
-	<data name="Errorstartingclient" xml:space="preserve">
+  <data name="Errorstartingclient" xml:space="preserve">
     <value>Ошибка при начальной клиента</value>
   </data>
-	<data name="Errorwithalwayslightpatch" xml:space="preserve">
+  <data name="Errorwithalwayslightpatch" xml:space="preserve">
     <value>Ошибка с всегда патч!</value>
   </data>
-	<data name="ErrorwithGACinstallation" xml:space="preserve">
+  <data name="ErrorwithGACinstallation" xml:space="preserve">
     <value>Ошибка с установкой GAC, Смотрите подробности в журнале.</value>
   </data>
-	<data name="Exceptioncaught" xml:space="preserve">
+  <data name="Exceptioncaught" xml:space="preserve">
     <value>Исключение поймали, проверьте журнал.</value>
   </data>
-	<data name="Exit" xml:space="preserve">
+  <data name="Exit" xml:space="preserve">
     <value>Выход</value>
   </data>
-	<data name="File" xml:space="preserve">
+  <data name="File" xml:space="preserve">
     <value>Файл</value>
   </data>
-	<data name="Formatdocument" xml:space="preserve">
+  <data name="Formatdocument" xml:space="preserve">
     <value>Формат документа</value>
   </data>
-	<data name="Help" xml:space="preserve">
+  <data name="Help" xml:space="preserve">
     <value>Справка</value>
   </data>
-	<data name="Invalidvaluepresentinoptions" xml:space="preserve">
+  <data name="Invalidvaluepresentinoptions" xml:space="preserve">
     <value>Недопустимые значения присутствуют в options.xml, пожалуйста исправить.</value>
   </data>
-	<data name="Launchingclient" xml:space="preserve">
+  <data name="Launchingclient" xml:space="preserve">
     <value>Запуск клиента</value>
   </data>
-	<data name="Memoryallocationfailed" xml:space="preserve">
+  <data name="Memoryallocationfailed" xml:space="preserve">
     <value>Ошибка выделения памяти.</value>
   </data>
-	<data name="MultiUOpatchfailed" xml:space="preserve">
+  <data name="MultiUOpatchfailed" xml:space="preserve">
     <value>MultiUO патч не удалось!</value>
   </data>
-	<data name="New" xml:space="preserve">
+  <data name="New" xml:space="preserve">
     <value>Новые функции</value>
   </data>
-	<data name="Open" xml:space="preserve">
+  <data name="Open" xml:space="preserve">
     <value>Открытые</value>
   </data>
-	<data name="Options" xml:space="preserve">
+  <data name="Options" xml:space="preserve">
     <value>Параметры</value>
   </data>
-	<data name="Patchingclient" xml:space="preserve">
+  <data name="Patchingclient" xml:space="preserve">
     <value>Обновление клиента</value>
   </data>
-	<data name="Processcreationfailed" xml:space="preserve">
+  <data name="Processcreationfailed" xml:space="preserve">
     <value>Не удалось создать процесс.</value>
   </data>
-	<data name="Razorsuccessfullylaunched" xml:space="preserve">
+  <data name="Razorsuccessfullylaunched" xml:space="preserve">
     <value>Razor успешно стартовал</value>
   </data>
-	<data name="Ready" xml:space="preserve">
+  <data name="Ready" xml:space="preserve">
     <value>Готов</value>
   </data>
-	<data name="ResumeThreadfailed" xml:space="preserve">
+  <data name="ResumeThreadfailed" xml:space="preserve">
     <value>ResumeThread не удалось.</value>
   </data>
-	<data name="Save" xml:space="preserve">
+  <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-	<data name="SaveAs" xml:space="preserve">
+  <data name="SaveAs" xml:space="preserve">
     <value>Сохранить как</value>
   </data>
-	<data name="Scriptrunning" xml:space="preserve">
+  <data name="Scriptrunning" xml:space="preserve">
     <value>Скрипт работает</value>
   </data>
-	<data name="Scriptstopped" xml:space="preserve">
+  <data name="Scriptstopped" xml:space="preserve">
     <value>Скрипт остановлен</value>
   </data>
-	<data name="Scriptstopping" xml:space="preserve">
+  <data name="Scriptstopping" xml:space="preserve">
     <value>Сценарий остановки</value>
   </data>
-	<data name="Selectassembliestoreference" xml:space="preserve">
+  <data name="Selectassembliestoreference" xml:space="preserve">
     <value>Выберите собирает ссылки</value>
   </data>
-	<data name="Status" xml:space="preserve">
+  <data name="Status" xml:space="preserve">
     <value>Статус</value>
   </data>
-	<data name="StatusReady" xml:space="preserve">
+  <data name="StatusReady" xml:space="preserve">
     <value>Статус: готовые</value>
   </data>
-	<data name="Stoppingscript" xml:space="preserve">
+  <data name="Stoppingscript" xml:space="preserve">
     <value>Остановка скрипта</value>
   </data>
-	<data name="Unknownerror" xml:space="preserve">
+  <data name="Unknownerror" xml:space="preserve">
     <value>Неизвестная ошибка</value>
   </data>
-	<data name="UOSteamlaunchfailed" xml:space="preserve">
+  <data name="UOSteamlaunchfailed" xml:space="preserve">
     <value>UOSteam запуск окончился неудачей.</value>
   </data>
-	<data name="Youmustentervalidoptions" xml:space="preserve">
+  <data name="Youmustentervalidoptions" xml:space="preserve">
     <value>Вы должны ввести допустимые параметры для начала UO Machine.</value>
   </data>
-	<data name="CannotfindRazor" xml:space="preserve">
+  <data name="CannotfindRazor" xml:space="preserve">
     <value>Не могу найти Razor.exe/Crypt.dll</value>
   </data>
-	<data name="Erroropeningfile" xml:space="preserve">
+  <data name="Erroropeningfile" xml:space="preserve">
     <value>Ошибка открытия файла, убедитесь, что это не используется.</value>
   </data>
-	<data name="Errorsavingfile" xml:space="preserve">
+  <data name="Errorsavingfile" xml:space="preserve">
     <value>Ошибка при сохранении файла, пожалуйста, выберите другое местоположение.</value>
   </data>
-	<data name="Invalidvalueforport" xml:space="preserve">
+  <data name="Invalidvalueforport" xml:space="preserve">
     <value>Недопустимое значение для порта, пожалуйста, исправить.</value>
   </data>
-	<data name="Main" xml:space="preserve">
+  <data name="Main" xml:space="preserve">
     <value>Главная</value>
   </data>
-	<data name="Alwayslightpatch" xml:space="preserve">
+  <data name="Alwayslightpatch" xml:space="preserve">
     <value>Всегда патч</value>
   </data>
-	<data name="Browse" xml:space="preserve">
+  <data name="Browse" xml:space="preserve">
     <value>Обзор</value>
   </data>
-	<data name="Cancel" xml:space="preserve">
+  <data name="Cancel" xml:space="preserve">
     <value>Отмена</value>
   </data>
-	<data name="Client" xml:space="preserve">
+  <data name="Client" xml:space="preserve">
     <value>Клиент</value>
   </data>
-	<data name="Converttabstospaces" xml:space="preserve">
+  <data name="Converttabstospaces" xml:space="preserve">
     <value>Преобразование табуляций в пробелы</value>
   </data>
-	<data name="CutCopywholeline" xml:space="preserve">
+  <data name="CutCopywholeline" xml:space="preserve">
     <value>Вырезание / копирование всей линии</value>
   </data>
-	<data name="Document" xml:space="preserve">
+  <data name="Document" xml:space="preserve">
     <value>Документ</value>
   </data>
-	<data name="Forcegamesize" xml:space="preserve">
+  <data name="Forcegamesize" xml:space="preserve">
     <value>Размер игры силы</value>
   </data>
-	<data name="Fullcaching" xml:space="preserve">
+  <data name="Fullcaching" xml:space="preserve">
     <value>Полное кэширование (около 70 МБ)</value>
   </data>
-	<data name="Indentationsize" xml:space="preserve">
+  <data name="Indentationsize" xml:space="preserve">
     <value>Размер отступа:</value>
   </data>
-	<data name="None0extra" xml:space="preserve">
+  <data name="None0extra" xml:space="preserve">
     <value>Нет (0 дополнительных)</value>
   </data>
-	<data name="OK" xml:space="preserve">
+  <data name="OK" xml:space="preserve">
     <value>Хорошо</value>
   </data>
-	<data name="Patchclientencryption" xml:space="preserve">
+  <data name="Patchclientencryption" xml:space="preserve">
     <value>Шифрование клиент патч</value>
   </data>
-	<data name="Patchencryption" xml:space="preserve">
+  <data name="Patchencryption" xml:space="preserve">
     <value>Патч шифрование</value>
   </data>
-	<data name="Patchstamcheck" xml:space="preserve">
+  <data name="Patchstamcheck" xml:space="preserve">
     <value>Патч фелуке Проверка выносливости (&lt; 7.0.0.0)</value>
   </data>
-	<data name="Performance" xml:space="preserve">
+  <data name="Performance" xml:space="preserve">
     <value>Производительность</value>
   </data>
-	<data name="Port" xml:space="preserve">
+  <data name="Port" xml:space="preserve">
     <value>Порт:</value>
   </data>
-	<data name="Razor" xml:space="preserve">
+  <data name="Razor" xml:space="preserve">
     <value>Razor</value>
   </data>
-	<data name="Razorinstallationfolder" xml:space="preserve">
+  <data name="Razorinstallationfolder" xml:space="preserve">
     <value>Папка Razor установки:</value>
   </data>
-	<data name="Server" xml:space="preserve">
+  <data name="Server" xml:space="preserve">
     <value>Сервер:</value>
   </data>
-	<data name="ServerusesOSIencryption" xml:space="preserve">
+  <data name="ServerusesOSIencryption" xml:space="preserve">
     <value>Сервер использует шифрование OSI</value>
   </data>
-	<data name="Showboxforcontrolcharacters" xml:space="preserve">
+  <data name="Showboxforcontrolcharacters" xml:space="preserve">
     <value>Показать поле для персонажей управления</value>
   </data>
-	<data name="Showspaces" xml:space="preserve">
+  <data name="Showspaces" xml:space="preserve">
     <value>Показать пробелы</value>
   </data>
-	<data name="Showtabs" xml:space="preserve">
+  <data name="Showtabs" xml:space="preserve">
     <value>Показывать вкладки</value>
   </data>
-	<data name="Startnewclient" xml:space="preserve">
+  <data name="Startnewclient" xml:space="preserve">
     <value>Начать новый клиент</value>
   </data>
-	<data name="StartnewRazorinstance" xml:space="preserve">
+  <data name="StartnewRazorinstance" xml:space="preserve">
     <value>Начать новый Razor экземпляр</value>
   </data>
-	<data name="StartnewUOSteaminstance" xml:space="preserve">
+  <data name="StartnewUOSteaminstance" xml:space="preserve">
     <value>Начать новый UOSteam экземпляр</value>
   </data>
-	<data name="Startscript" xml:space="preserve">
+  <data name="Startscript" xml:space="preserve">
     <value>Запуск скрипта</value>
   </data>
-	<data name="Staticindicesonly" xml:space="preserve">
+  <data name="Staticindicesonly" xml:space="preserve">
     <value>Статические показатели только (около 20 MB)</value>
   </data>
-	<data name="Staticscaching" xml:space="preserve">
+  <data name="Staticscaching" xml:space="preserve">
     <value>Статика, кэшировании (памяти)</value>
   </data>
-	<data name="Stopscript" xml:space="preserve">
+  <data name="Stopscript" xml:space="preserve">
     <value>Остановить сценарий</value>
   </data>
-	<data name="UOclientpath" xml:space="preserve">
+  <data name="UOclientpath" xml:space="preserve">
     <value>UO клиента путь:</value>
   </data>
-	<data name="UOinstallationfolder" xml:space="preserve">
+  <data name="UOinstallationfolder" xml:space="preserve">
     <value>UO папка установки:</value>
   </data>
-	<data name="UOSteam" xml:space="preserve">
+  <data name="UOSteam" xml:space="preserve">
     <value>UOSteam</value>
   </data>
-	<data name="UOSteamexecutablepath" xml:space="preserve">
+  <data name="UOSteamexecutablepath" xml:space="preserve">
     <value>UOSteam путь к исполняемому файлу:</value>
   </data>
-	<data name="UOSteaminstallationfolder" xml:space="preserve">
+  <data name="UOSteaminstallationfolder" xml:space="preserve">
     <value>Папка UOSteam установки:</value>
+  </data>
+  <data name="APIDoc" xml:space="preserve">
+    <value>Документация по API</value>
   </data>
 </root>

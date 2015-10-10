@@ -384,4 +384,7 @@
   <data name="UOSteam" xml:space="preserve">
     <value>UOSteam</value>
   </data>
+  <data name="APIDoc" xml:space="preserve">
+    <value>API文档</value>
+  </data>
 </root>

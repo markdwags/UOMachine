@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,332 +59,335 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="About" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
     <value>关于...</value>
   </data>
-	<data name="Addassemblyreference" xml:space="preserve">
+  <data name="Addassemblyreference" xml:space="preserve">
     <value>添加程序集引用</value>
   </data>
-	<data name="Attachedtoclient" xml:space="preserve">
+  <data name="Attachedtoclient" xml:space="preserve">
     <value>连接到客户端</value>
   </data>
-	<data name="CheckForUpdates" xml:space="preserve">
+  <data name="CheckForUpdates" xml:space="preserve">
     <value>检查有更新......</value>
   </data>
-	<data name="Clientexited" xml:space="preserve">
+  <data name="Clientexited" xml:space="preserve">
     <value>客户端退出。</value>
   </data>
-	<data name="Clientstarted" xml:space="preserve">
+  <data name="Clientstarted" xml:space="preserve">
     <value>客户端启动</value>
   </data>
-	<data name="Closing" xml:space="preserve">
+  <data name="Closing" xml:space="preserve">
     <value>关闭</value>
   </data>
-	<data name="Compilererror" xml:space="preserve">
+  <data name="Compilererror" xml:space="preserve">
     <value>编译器错误</value>
   </data>
-	<data name="Edit" xml:space="preserve">
+  <data name="Edit" xml:space="preserve">
     <value>编辑</value>
   </data>
-	<data name="Error" xml:space="preserve">
+  <data name="Error" xml:space="preserve">
     <value>错误</value>
   </data>
-	<data name="ErrorattachingtoRazorclient" xml:space="preserve">
+  <data name="ErrorattachingtoRazorclient" xml:space="preserve">
     <value>到 Razor 客户端连接时出错。</value>
   </data>
-	<data name="Errorinitializing" xml:space="preserve">
+  <data name="Errorinitializing" xml:space="preserve">
     <value>错误初始化 UO Machine，请再试一次。</value>
   </data>
-	<data name="Errorinjectingdll" xml:space="preserve">
+  <data name="Errorinjectingdll" xml:space="preserve">
     <value>Dll 注入目标进程的错误</value>
   </data>
-	<data name="Errorpatchingclientencryption" xml:space="preserve">
+  <data name="Errorpatchingclientencryption" xml:space="preserve">
     <value>错误修补客户端加密 ！</value>
   </data>
-	<data name="Errorpatchingstaminacheck" xml:space="preserve">
+  <data name="Errorpatchingstaminacheck" xml:space="preserve">
     <value>错误修补耐力检查 ！</value>
   </data>
-	<data name="Errorresolvinghostname" xml:space="preserve">
+  <data name="Errorresolvinghostname" xml:space="preserve">
     <value>错误解析主机名</value>
   </data>
-	<data name="Errorsettinggamewindowsize" xml:space="preserve">
+  <data name="Errorsettinggamewindowsize" xml:space="preserve">
     <value>错误设置游戏窗口大小 ！</value>
   </data>
-	<data name="Errorstartingclient" xml:space="preserve">
+  <data name="Errorstartingclient" xml:space="preserve">
     <value>错误启动客户端</value>
   </data>
-	<data name="Errorwithalwayslightpatch" xml:space="preserve">
+  <data name="Errorwithalwayslightpatch" xml:space="preserve">
     <value>总是光修补程序的错误 ！</value>
   </data>
-	<data name="ErrorwithGACinstallation" xml:space="preserve">
+  <data name="ErrorwithGACinstallation" xml:space="preserve">
     <value>错误与 gac 中安装，请参阅日志的详细信息。</value>
   </data>
-	<data name="Exceptioncaught" xml:space="preserve">
+  <data name="Exceptioncaught" xml:space="preserve">
     <value>例外被抓，请检查日志。</value>
   </data>
-	<data name="Exit" xml:space="preserve">
+  <data name="Exit" xml:space="preserve">
     <value>退出</value>
   </data>
-	<data name="File" xml:space="preserve">
+  <data name="File" xml:space="preserve">
     <value>文件</value>
   </data>
-	<data name="Formatdocument" xml:space="preserve">
+  <data name="Formatdocument" xml:space="preserve">
     <value>设置文档的格式</value>
   </data>
-	<data name="Help" xml:space="preserve">
+  <data name="Help" xml:space="preserve">
     <value>帮助</value>
   </data>
-	<data name="Invalidvaluepresentinoptions" xml:space="preserve">
+  <data name="Invalidvaluepresentinoptions" xml:space="preserve">
     <value>无效值目前在 options.xml，请修复。</value>
   </data>
-	<data name="Launchingclient" xml:space="preserve">
+  <data name="Launchingclient" xml:space="preserve">
     <value>启动客户端</value>
   </data>
-	<data name="Memoryallocationfailed" xml:space="preserve">
+  <data name="Memoryallocationfailed" xml:space="preserve">
     <value>内存分配失败。</value>
   </data>
-	<data name="MultiUOpatchfailed" xml:space="preserve">
+  <data name="MultiUOpatchfailed" xml:space="preserve">
     <value>MultiUO 修补程序失败 ！</value>
   </data>
-	<data name="New" xml:space="preserve">
+  <data name="New" xml:space="preserve">
     <value>新增功能</value>
   </data>
-	<data name="Open" xml:space="preserve">
+  <data name="Open" xml:space="preserve">
     <value>开放</value>
   </data>
-	<data name="Options" xml:space="preserve">
+  <data name="Options" xml:space="preserve">
     <value>选项</value>
   </data>
-	<data name="Patchingclient" xml:space="preserve">
+  <data name="Patchingclient" xml:space="preserve">
     <value>修补客户端</value>
   </data>
-	<data name="Processcreationfailed" xml:space="preserve">
+  <data name="Processcreationfailed" xml:space="preserve">
     <value>进程创建失败。</value>
   </data>
-	<data name="Razorsuccessfullylaunched" xml:space="preserve">
+  <data name="Razorsuccessfullylaunched" xml:space="preserve">
     <value>Razor 成功地发射了</value>
   </data>
-	<data name="Ready" xml:space="preserve">
+  <data name="Ready" xml:space="preserve">
     <value>准备好了</value>
   </data>
-	<data name="ResumeThreadfailed" xml:space="preserve">
+  <data name="ResumeThreadfailed" xml:space="preserve">
     <value>ResumeThread 失败。</value>
   </data>
-	<data name="Save" xml:space="preserve">
+  <data name="Save" xml:space="preserve">
     <value>保存</value>
   </data>
-	<data name="SaveAs" xml:space="preserve">
+  <data name="SaveAs" xml:space="preserve">
     <value>另存为</value>
   </data>
-	<data name="Scriptrunning" xml:space="preserve">
+  <data name="Scriptrunning" xml:space="preserve">
     <value>运行脚本</value>
   </data>
-	<data name="Scriptstopped" xml:space="preserve">
+  <data name="Scriptstopped" xml:space="preserve">
     <value>脚本停止</value>
   </data>
-	<data name="Scriptstopping" xml:space="preserve">
+  <data name="Scriptstopping" xml:space="preserve">
     <value>脚本停止</value>
   </data>
-	<data name="Selectassembliestoreference" xml:space="preserve">
+  <data name="Selectassembliestoreference" xml:space="preserve">
     <value>选择组装到参考</value>
   </data>
-	<data name="Status" xml:space="preserve">
+  <data name="Status" xml:space="preserve">
     <value>状态</value>
   </data>
-	<data name="StatusReady" xml:space="preserve">
+  <data name="StatusReady" xml:space="preserve">
     <value>状态： 准备好了</value>
   </data>
-	<data name="Stoppingscript" xml:space="preserve">
+  <data name="Stoppingscript" xml:space="preserve">
     <value>停止脚本</value>
   </data>
-	<data name="Unknownerror" xml:space="preserve">
+  <data name="Unknownerror" xml:space="preserve">
     <value>未知的错误</value>
   </data>
-	<data name="UOSteamlaunchfailed" xml:space="preserve">
+  <data name="UOSteamlaunchfailed" xml:space="preserve">
     <value>UOSteam 发射失败。</value>
   </data>
-	<data name="Youmustentervalidoptions" xml:space="preserve">
+  <data name="Youmustentervalidoptions" xml:space="preserve">
     <value>您必须输入有效的选项启动 UO Machine。</value>
   </data>
-	<data name="CannotfindRazor" xml:space="preserve">
+  <data name="CannotfindRazor" xml:space="preserve">
     <value>找不到 Razor.exe/Crypt.dll</value>
   </data>
-	<data name="Erroropeningfile" xml:space="preserve">
+  <data name="Erroropeningfile" xml:space="preserve">
     <value>错误打开文件，请确保在不使用。</value>
   </data>
-	<data name="Errorsavingfile" xml:space="preserve">
+  <data name="Errorsavingfile" xml:space="preserve">
     <value>错误保存文件，请选择另一个位置。</value>
   </data>
-	<data name="Invalidvalueforport" xml:space="preserve">
+  <data name="Invalidvalueforport" xml:space="preserve">
     <value>无效的值对于端口，请修复。</value>
   </data>
-	<data name="Main" xml:space="preserve">
+  <data name="Main" xml:space="preserve">
     <value>主要</value>
   </data>
-	<data name="Alwayslightpatch" xml:space="preserve">
+  <data name="Alwayslightpatch" xml:space="preserve">
     <value>总是光补丁</value>
   </data>
-	<data name="Browse" xml:space="preserve">
+  <data name="Browse" xml:space="preserve">
     <value>浏览</value>
   </data>
-	<data name="Cancel" xml:space="preserve">
+  <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
-	<data name="Client" xml:space="preserve">
+  <data name="Client" xml:space="preserve">
     <value>客户端</value>
   </data>
-	<data name="Converttabstospaces" xml:space="preserve">
+  <data name="Converttabstospaces" xml:space="preserve">
     <value>将制表符转换为空格</value>
   </data>
-	<data name="CutCopywholeline" xml:space="preserve">
+  <data name="CutCopywholeline" xml:space="preserve">
     <value>剪切/复制整行</value>
   </data>
-	<data name="Document" xml:space="preserve">
+  <data name="Document" xml:space="preserve">
     <value>文档</value>
   </data>
-	<data name="Forcegamesize" xml:space="preserve">
+  <data name="Forcegamesize" xml:space="preserve">
     <value>强制游戏大小</value>
   </data>
-	<data name="Fullcaching" xml:space="preserve">
+  <data name="Fullcaching" xml:space="preserve">
     <value>全缓存 （约 70 MB）</value>
   </data>
-	<data name="Indentationsize" xml:space="preserve">
+  <data name="Indentationsize" xml:space="preserve">
     <value>缩进尺寸：</value>
   </data>
-	<data name="None0extra" xml:space="preserve">
+  <data name="None0extra" xml:space="preserve">
     <value>无 (0 额外)</value>
   </data>
-	<data name="OK" xml:space="preserve">
+  <data name="OK" xml:space="preserve">
     <value>还行</value>
   </data>
-	<data name="Patchclientencryption" xml:space="preserve">
+  <data name="Patchclientencryption" xml:space="preserve">
     <value>修补程序客户端加密</value>
   </data>
-	<data name="Patchencryption" xml:space="preserve">
+  <data name="Patchencryption" xml:space="preserve">
     <value>修补程序加密</value>
   </data>
-	<data name="Patchstamcheck" xml:space="preserve">
+  <data name="Patchstamcheck" xml:space="preserve">
     <value>修补程序三桅小帆船耐力检查 （&lt; 7.0.0.0)</value>
   </data>
-	<data name="Performance" xml:space="preserve">
+  <data name="Performance" xml:space="preserve">
     <value>性能</value>
   </data>
-	<data name="Port" xml:space="preserve">
+  <data name="Port" xml:space="preserve">
     <value>端口：</value>
   </data>
-	<data name="Razor" xml:space="preserve">
+  <data name="Razor" xml:space="preserve">
     <value>Razor</value>
   </data>
-	<data name="Razorinstallationfolder" xml:space="preserve">
+  <data name="Razorinstallationfolder" xml:space="preserve">
     <value>Razor 安装文件夹：</value>
   </data>
-	<data name="Server" xml:space="preserve">
+  <data name="Server" xml:space="preserve">
     <value>服务器：</value>
   </data>
-	<data name="ServerusesOSIencryption" xml:space="preserve">
+  <data name="ServerusesOSIencryption" xml:space="preserve">
     <value>服务器使用 OSI 加密</value>
   </data>
-	<data name="Showboxforcontrolcharacters" xml:space="preserve">
+  <data name="Showboxforcontrolcharacters" xml:space="preserve">
     <value>控制字符显示框</value>
   </data>
-	<data name="Showspaces" xml:space="preserve">
+  <data name="Showspaces" xml:space="preserve">
     <value>显示空格</value>
   </data>
-	<data name="Showtabs" xml:space="preserve">
+  <data name="Showtabs" xml:space="preserve">
     <value>显示选项卡</value>
   </data>
-	<data name="Startnewclient" xml:space="preserve">
+  <data name="Startnewclient" xml:space="preserve">
     <value>启动新客户端</value>
   </data>
-	<data name="StartnewRazorinstance" xml:space="preserve">
+  <data name="StartnewRazorinstance" xml:space="preserve">
     <value>启动新的 Razor 实例</value>
   </data>
-	<data name="StartnewUOSteaminstance" xml:space="preserve">
+  <data name="StartnewUOSteaminstance" xml:space="preserve">
     <value>启动新的 UOSteam 实例</value>
   </data>
-	<data name="Startscript" xml:space="preserve">
+  <data name="Startscript" xml:space="preserve">
     <value>启动脚本</value>
   </data>
-	<data name="Staticindicesonly" xml:space="preserve">
+  <data name="Staticindicesonly" xml:space="preserve">
     <value>静态指标只 （约 20 MB）</value>
   </data>
-	<data name="Staticscaching" xml:space="preserve">
+  <data name="Staticscaching" xml:space="preserve">
     <value>静力学缓存 （所需的内存）</value>
   </data>
-	<data name="Stopscript" xml:space="preserve">
+  <data name="Stopscript" xml:space="preserve">
     <value>停止脚本</value>
   </data>
-	<data name="UOclientpath" xml:space="preserve">
+  <data name="UOclientpath" xml:space="preserve">
     <value>UO 客户端路径：</value>
   </data>
-	<data name="UOinstallationfolder" xml:space="preserve">
+  <data name="UOinstallationfolder" xml:space="preserve">
     <value>UO 安装文件夹：</value>
   </data>
-	<data name="UOSteam" xml:space="preserve">
+  <data name="UOSteam" xml:space="preserve">
     <value>UOSteam</value>
   </data>
-	<data name="UOSteamexecutablepath" xml:space="preserve">
+  <data name="UOSteamexecutablepath" xml:space="preserve">
     <value>UOSteam 可执行文件的路径：</value>
   </data>
-	<data name="UOSteaminstallationfolder" xml:space="preserve">
+  <data name="UOSteaminstallationfolder" xml:space="preserve">
     <value>UOSteam 安装文件夹：</value>
+  </data>
+  <data name="APIDoc" xml:space="preserve">
+    <value>API文檔</value>
   </data>
 </root>
