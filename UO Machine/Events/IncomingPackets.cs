@@ -49,7 +49,7 @@ namespace UOMachine.Events
         public delegate void dLongStatus(int client, int serial, PlayerStatus playerStatus);
         public delegate void dSkillUpdate(int client, int skillID, float value, float baseValue, LockStatus lockStatus, float skillCap);
         public delegate void dSkillList(int client, SkillInfo[] skills);
-        public delegate void dTarget(int client, int targetType);
+        public delegate void dTarget(int client, int targetType, int targetId );
         public delegate void dStatLockStatus(int client, int serial, int statLockStatus);
         public delegate void dStandardGump(int client, int serial, int ID);
         public delegate void dMobileDeath(int client, int mobileSerial, int corpseSerial);
@@ -891,14 +891,14 @@ namespace UOMachine.Events
             }
         }
 
-        internal static void OnTarget(int client, int targetType)
+        internal static void OnTarget(int client, int targetType, int targetId)
         {
             dTarget handler = InternalTargetEvent;
-            if (handler != null) handler(client, targetType);
+            if (handler != null) handler(client, targetType, targetId);
             lock (myTargetLock)
             {
                 handler = myTargetEvent;
-                try { if (handler != null) handler(client, targetType); }
+                try { if (handler != null) handler(client, targetType, targetId); }
                 catch (Exception ex) { Log.LogMessage(ex); }
             }
         }

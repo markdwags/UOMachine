@@ -194,6 +194,13 @@ namespace UOMachine
             set { myLastTargetPacket = value; }
         }
 
+        private int myTargetID;
+        public int TargetID
+        {
+            get { return ThreadHelper.VolatileRead<int>( ref myTargetID ); }
+            set { myTargetID = value; }
+        }
+
         public int GetSequence(int sequence)
         {
             return Thread.VolatileRead(ref mySequenceList[sequence]);
@@ -204,8 +211,9 @@ namespace UOMachine
             mySequenceList[sequence] = direction;
         }
 
-        public void TargetReceived()
+        public void TargetReceived(int targetId)
         {
+            myTargetID = targetId;
             if (Thread.VolatileRead(ref myWaitingForTarget) == 1)
             {
                 lock (myWaitForTargetLock) { Monitor.Pulse(myWaitForTargetLock); }

@@ -172,10 +172,10 @@ namespace UOMachine.Events
                 }
             }
 
-            private static void IncomingPackets_TargetEvent(int client, int targetType)
+            private static void IncomingPackets_TargetEvent(int client, int targetType, int targetId)
             {
                 ClientInfo ci;
-                if (ClientInfoCollection.GetClient(client, out ci)) ci.TargetReceived();
+                if (ClientInfoCollection.GetClient(client, out ci)) ci.TargetReceived(targetId);
             }
 
             private static void IncomingPackets_SkillUpdateEvent(int client, int skillID, float value, float baseValue, LockStatus lockStatus, float skillCap)

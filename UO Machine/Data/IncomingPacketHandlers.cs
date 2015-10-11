@@ -499,7 +499,8 @@ namespace UOMachine.Data
         private static void OnTarget(int client, PacketReader reader)
         {
             byte type = reader.ReadByte();
-            IncomingPackets.OnTarget(client, type);
+            int tid = reader.ReadInt32();
+            IncomingPackets.OnTarget(client, type, tid);
         }
 
         private static void OnMobileMoving(int client, PacketReader reader)
