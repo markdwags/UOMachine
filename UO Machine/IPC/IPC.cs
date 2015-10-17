@@ -69,6 +69,9 @@ namespace UOMachine.IPC
     public delegate void dInstallRecvHook();
     public delegate void dUninstallSendHook();
     public delegate void dUninstallRecvHook();
+    public delegate void dAddGumpResponseFilter( uint serial, uint gumpid );
+    //public delegate void dRemoveGumpResponseFilter( int serial, int gumpid );
+    //public delegate void dClearGumpResponseFilter();
 
     public enum Command : byte
     {
@@ -101,6 +104,8 @@ namespace UOMachine.IPC
         MouseDown,           //sent by client           size: 10 bytes
         MouseUp,             //sent by client           size: 10 bytes
 
+        AddGumpResponseFilter, //sent by server           size: 13 bytes
+        // See Data.cs, > 23 is hard coded for variable length.
         CallGumpFunction,    //sent by server           size: 13 bytes
 
         Exception,           //sent by client           size: variable
@@ -108,6 +113,9 @@ namespace UOMachine.IPC
         IncomingPacket,      //sent by client           size: variable
         OutgoingPacket,      //sent by client           size: variable
         SendPacket,          //sent by server           size: variable
+
+        //RemoveGumpResponseFilter,
+        //ClearGumpResponseFilter
 
         // variable size command format: byte command, ushort length, byte[] data
     }

@@ -16,6 +16,7 @@
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
 using UOMachine.Utility;
+using UOMachine.Data;
 using System.Threading;
 
 namespace UOMachine
@@ -81,9 +82,9 @@ namespace UOMachine
             }
         }
 
-        public UOMachine.Data.TileFlags TileFlags
+        public TileFlags TileFlags
         {
-            get { return UOMachine.Data.TileData.GetStaticTile(myID).Flags; }
+            get { return TileData.GetStaticTile(myID).Flags; }
         }
     }
 }

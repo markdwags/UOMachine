@@ -26,26 +26,26 @@ namespace UOMachine.Macros
 {
     public static partial class MacroEx
     {
-        public static void AddRecvFilter( int client, byte packetID)
+        public static void AddGumpResponseFilter( int client, uint serial, uint gumpid )
         {
             ClientInfo ci;
             if (ClientInfoCollection.GetClient( client, out ci ))
-                Network.SendCommand( ci.IPCServerIndex, Command.AddRecvFilter, packetID );
+                Network.SendCommand( ci.IPCServerIndex, Command.AddGumpResponseFilter, (int)serial, (int)gumpid, 0 );
         }
 
-        public static void RemoveRecvFilter( int client, byte packetID )
-        {
-            ClientInfo ci;
-            if (ClientInfoCollection.GetClient( client, out ci ))
-                Network.SendCommand( ci.IPCServerIndex, Command.RemoveRecvFilter, packetID );
-        }
+        //public static void RemoveGumpResponseFilter( int client, int serial, int gumpid )
+        //{
+        //    ClientInfo ci;
+        //    if (ClientInfoCollection.GetClient( client, out ci ))
+        //        Network.SendCommand( ci.IPCServerIndex, Command.RemoveGumpResponseFilter, client, serial, gumpid );
+        //}
 
-        public static void ClearRecvFilter( int client, byte packetID )
-        {
-            ClientInfo ci;
-            if (ClientInfoCollection.GetClient( client, out ci ))
-                Network.SendCommand( ci.IPCServerIndex, Command.ClearRecvFilter );
-        }
+        //public static void ClearGumpResponseFilter ( int client )
+        //{
+        //    ClientInfo ci;
+        //    if (ClientInfoCollection.GetClient( client, out ci ))
+        //        Network.SendCommand( ci.IPCServerIndex, Command.ClearGumpResponseFilter );
+        //}
     }
 }
 #endif

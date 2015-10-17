@@ -28,7 +28,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\output\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <UseVSHostingProcess>false</UseVSHostingProcess>
@@ -72,6 +72,10 @@
     <Page Include="UI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Misc\HexDumpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Options.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -124,8 +128,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\PacketWriter.cs" />
+    <Compile Include="Data\Art.cs" />
     <Compile Include="Data\UOPIndex.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Macros\MacroEx\AddGumpResponseFilter.cs" />
+    <Compile Include="Macros\MacroEx\AddSendFilter.cs" />
+    <Compile Include="Macros\Macro\LaunchSteam.cs" />
     <Compile Include="UI\BraceFoldingStrategy.cs" />
     <Compile Include="Data\OutgoingPacketHandlers.cs" />
     <Compile Include="Data\PacketHandler.cs" />
@@ -245,6 +254,7 @@
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.de.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.ja.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -254,6 +264,7 @@
     <EmbeddedResource Include="Resources\Strings.ko.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.ko.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.pl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -273,14 +284,17 @@
     <EmbeddedResource Include="Resources\Strings.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.uk.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.uk.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.zh-TW.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.zh-TW.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.zh.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -294,7 +308,7 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <Compile Include="Macros\Macro\Action.cs" />
-    <Compile Include="Macros\Macro\Assembler.cs" />
+    <Compile Include="ClientHook\Assembler.cs" />
     <Compile Include="Macros\Macro\Event.cs" />
     <Compile Include="Macros\Macro\Gump.cs" />
     <Compile Include="Macros\Macro\Skill.cs" />
@@ -408,6 +422,9 @@
     <Compile Include="UI\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Misc\HexDumpWindow.xaml.cs">
+      <DependentUpon>HexDumpWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Options.xaml.cs">
       <DependentUpon>Options.xaml</DependentUpon>
     </Compile>
@@ -420,6 +437,7 @@
     <Compile Include="Utility\Log.cs" />
     <Compile Include="Utility\RegistryHelper.cs" />
     <Compile Include="Utility\Resolve.cs" />
+    <Compile Include="Utility\StreamExtensions.cs" />
     <Compile Include="Utility\ThreadHelper.cs" />
     <Compile Include="Data\InternalLandTile.cs" />
     <Compile Include="Data\InternalStaticTile.cs" />
@@ -431,6 +449,7 @@
     <Compile Include="Data\Skills.cs" />
     <Compile Include="Data\TileData.cs" />
     <Compile Include="Utility\UOMath.cs" />
+    <Compile Include="Utility\Window.cs" />
     <Compile Include="Win32\CreateProcess.cs" />
     <Compile Include="Win32\GainMemoryAccess.cs" />
     <Compile Include="Win32\GainMemoryAccessEx.cs" />
@@ -456,6 +475,7 @@
   <ItemGroup>
     <Resource Include="Resources\Credits.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

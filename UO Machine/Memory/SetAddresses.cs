@@ -258,9 +258,9 @@ namespace UOMachine
                 uint recvCaveAddress = caveAddress + 526;
                 uint clientSendCaveAddress = recvCaveAddress + 50;
                 uint sendCaveAddress = clientSendCaveAddress + 180;
-                uint serverSendCaveAddress = sendCaveAddress + 26;
-                uint pathFindCaveAddress = serverSendCaveAddress + 74;
-                uint gumpFunctionCaveAddress = pathFindCaveAddress + 64;
+                uint serverSendCaveAddress = sendCaveAddress + 100;//26;
+                uint pathFindCaveAddress = serverSendCaveAddress + 100;
+                uint gumpFunctionCaveAddress = pathFindCaveAddress + 100;
 
                 clientInfo.CaveAddress = (IntPtr)caveAddress;
                 clientInfo.RecvCaveAddress = (IntPtr)recvCaveAddress;
@@ -475,7 +475,7 @@ namespace UOMachine
                 clientInfo.IsValid = true;
                 return true;
             }
-            catch { }
+            catch (Exception){ }
             return false;
         }
     }

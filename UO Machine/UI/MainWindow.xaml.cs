@@ -1,23 +1,15 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Effects;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Threading;
 using System.Windows.Threading;
 using System.Reflection;
 using System.IO;
-using MS.Internal.PtsHost;
 using Microsoft.Win32;
 using UOMachine.Tree;
 using UOMachine.Utility;
@@ -35,7 +27,7 @@ namespace UOMachine
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    internal partial class MainWindow : Window
+    internal partial class MainWindow : System.Windows.Window
     {
         private About aboutWindow;
         private OptionsWindow optionsWindow;
@@ -45,8 +37,7 @@ namespace UOMachine
         {
             get { return myCurrentOptions; }
         }
-        private const string titleString = "UO Machine Alpha 4";
-        private const string titleSpace = "                  ";
+        private const string titleString = "UOMachine";
         private string fileTitleString = "";
         private string fileName = "";
         private delegate void dUpdateButtonStatus( Button button, bool IsEnabled );
@@ -57,6 +48,35 @@ namespace UOMachine
         private bool myIsWaitingForOptions = false;
 
         private FoldingManager foldingManager;
+
+        private RelayCommand mySaveCommand;
+
+        public ICommand SaveCommand
+        {
+            get
+            {
+                if (mySaveCommand == null)
+                {
+                    mySaveCommand = new RelayCommand( param => this.Save(), param => this.CanSave );
+                }
+                return mySaveCommand;
+            }
+        }
+
+        private bool CanSave
+        {
+            get
+            {
+                MenuItem parent = (MenuItem) menu1.Items[0];
+                MenuItem child = (MenuItem) parent.Items[2];
+                return child.IsEnabled;
+            }
+        }
+
+        private void Save()
+        {
+            FileSave_Click( this, null );
+        }
 
         private bool waitingForOptions
         {
@@ -367,7 +387,7 @@ namespace UOMachine
 
         private void UpdateWindowText()
         {
-            Title = titleString + titleSpace + "( " + fileTitleString + " )";
+            Title = titleString + " (" + fileTitleString + ")";
         }
 
         private void HelpAbout_Click( object sender, RoutedEventArgs e )
@@ -430,10 +450,45 @@ namespace UOMachine
 
         private void apiDoc_Click( object sender, RoutedEventArgs e )
         {
-            string path = System.IO.Path.Combine( System.IO.Path.GetDirectoryName( System.Reflection.Assembly.GetExecutingAssembly().Location), @"UOMachine.chm" );
+            string path = System.IO.Path.Combine( System.IO.Path.GetDirectoryName( System.Reflection.Assembly.GetExecutingAssembly().Location ), @"UOMachine.chm" );
             if (System.IO.File.Exists( path ))
             {
                 System.Diagnostics.Process.Start( path );
+            }
+        }
+
+        public class RelayCommand : ICommand
+        {
+            private readonly Action<object> _execute;
+            private readonly Predicate<object> _canExecute;
+
+            public RelayCommand( Action<object> execute ) : this( execute, null )
+            {
+            }
+
+            public RelayCommand( Action<object> execute, Predicate<object> canExecute )
+            {
+                if (execute == null)
+                    throw new ArgumentNullException( "execute" );
+
+                _execute = execute;
+                _canExecute = canExecute;
+            }
+
+            public bool CanExecute( object parameter )
+            {
+                return _canExecute == null ? true : _canExecute( parameter );
+            }
+
+            public event EventHandler CanExecuteChanged
+            {
+                add { CommandManager.RequerySuggested += value; }
+                remove { CommandManager.RequerySuggested -= value; }
+            }
+
+            public void Execute( object parameter )
+            {
+                _execute( parameter );
             }
         }
     }

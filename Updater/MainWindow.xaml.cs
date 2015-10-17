@@ -36,7 +36,7 @@ namespace Updater
         public string InstallDirectory
         {
             get { return m_InstallDirectory; }
-            set { m_InstallDirectory = value;}
+            set { m_InstallDirectory = value; }
         }
 
         public MainWindow()
@@ -69,6 +69,7 @@ namespace Updater
                 if (d == System.Windows.Forms.DialogResult.OK && !string.IsNullOrEmpty( fdg.SelectedPath ))
                 {
                     m_InstallDirectory = fdg.SelectedPath;
+                    this.Focus();
                 }
                 else
                 {
@@ -99,7 +100,7 @@ namespace Updater
                 FileVersionInfo fvi = FileVersionInfo.GetVersionInfo( System.IO.Path.Combine( System.IO.Path.GetDirectoryName( System.Reflection.Assembly.GetExecutingAssembly().Location ), "UOMachine.exe" ) );
                 return fvi.FileVersion;
             }
-            catch (FileNotFoundException e)
+            catch (FileNotFoundException)
             {
                 return null;
             }
@@ -130,7 +131,7 @@ namespace Updater
                     }
                     else
                     {
-                        if (!CheckFile( System.IO.Path.Combine( m_InstallDirectory, f.file ), f.md5sum ))
+                        if (!CheckFile( System.IO.Path.Combine( m_InstallDirectory, f.file ), f.md5sum ) || m_NoCheckVersion)
                         {
                             m_FailQueue.Enqueue( f );
                         }
@@ -143,7 +144,7 @@ namespace Updater
                 }
             }
 
-            if (m_FailQueue.Any() && ((GetUOMachineVersion() != m.version) || m_NoCheckVersion))
+            if (m_FailQueue.Any() && ( ( GetUOMachineVersion() != m.version ) || m_NoCheckVersion ))
                 ProcessFailQueue();
             else
             {
@@ -158,6 +159,15 @@ namespace Updater
             Process[] runningUOM = Process.GetProcessesByName( "UOMachine" );
             if (runningUOM.Length > 0)
                 System.Windows.MessageBox.Show( Strings.UOMachineRunningPleaseClose, Strings.UOMachineRunning );
+
+            runningUOM = Process.GetProcessesByName( "UOMachine" );
+            if (runningUOM.Length > 0)
+            {
+                for (int i = 0; i < runningUOM.Length; i++)
+                {
+                    runningUOM[i].Kill();
+                }
+            }
 
             if (m_FailQueue.Any())
             {
@@ -190,34 +200,34 @@ namespace Updater
 
         public void UpdateTextBox( string text )
         {
-            this.Dispatcher.Invoke( (Action)(() =>
+            this.Dispatcher.Invoke( (Action)( () =>
             {
                 textBox1.Text = text;
-            }) );
+            } ) );
         }
 
         public void UpdateLabel( string text )
         {
-            this.Dispatcher.Invoke( (Action)(() =>
+            this.Dispatcher.Invoke( (Action)( () =>
             {
                 statusLabel.Content = text;
-            }) );
+            } ) );
         }
 
         public void EnableButton( bool enable )
         {
-            this.Dispatcher.Invoke( (Action)(() =>
+            this.Dispatcher.Invoke( (Action)( () =>
             {
-                button1.IsEnabled = enable;
-            }) );
+                closeButton.IsEnabled = enable;
+            } ) );
         }
 
         public void UpdateProgessBar( int progress )
         {
-            this.Dispatcher.Invoke( (Action)(() =>
+            this.Dispatcher.Invoke( (Action)( () =>
             {
                 progressBar1.Value = progress;
-            }) );
+            } ) );
         }
 
         public void QueueFileProgress( int progress )
@@ -248,7 +258,7 @@ namespace Updater
             return result.ToString();
         }
 
-        private void Button_Click_1( object sender, RoutedEventArgs e )
+        private void closeButton_Click( object sender, RoutedEventArgs e )
         {
             System.Windows.Application.Current.Shutdown();
         }

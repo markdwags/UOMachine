@@ -16,6 +16,7 @@
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
 using System;
+using UOMachine.Data;
 
 namespace UOMachine.Macros
 {
@@ -38,25 +39,25 @@ namespace UOMachine.Macros
 
             byte[] packet = new byte[size];
             packet[0] = 0xAE;
-            packet[1] = (byte)(size >> 8);
-            packet[2] = (byte)size;
-            packet[3] = (byte)(serial >> 24);
-            packet[4] = (byte)(serial >> 16);
-            packet[5] = (byte)(serial >> 8);
-            packet[6] = (byte)serial;
-            packet[7] = (byte)(graphic >> 8);
-            packet[8] = (byte)graphic;
-            packet[9] = (byte)messageType;
-            packet[10] = (byte)(hue >> 8);
-            packet[11] = (byte)hue;
-            packet[12] = (byte)(font >> 8);
-            packet[13] = (byte)font;
-            packet[14] = (byte)'E';
-            packet[15] = (byte)'N';
-            packet[16] = (byte)'U';
-            byte[] textBytes = System.Text.UnicodeEncoding.BigEndianUnicode.GetBytes(text + '\0');
-            Buffer.BlockCopy(textBytes, 0, packet, 48, (text.Length*2));
-            MacroEx.SendPacketToClient(client, packet);
+            packet[1] = (byte) ( size >> 8 );
+            packet[2] = (byte) size;
+            packet[3] = (byte) ( serial >> 24 );
+            packet[4] = (byte) ( serial >> 16 );
+            packet[5] = (byte) ( serial >> 8 );
+            packet[6] = (byte) serial;
+            packet[7] = (byte) ( graphic >> 8 );
+            packet[8] = (byte) graphic;
+            packet[9] = (byte) messageType;
+            packet[10] = (byte) ( hue >> 8 );
+            packet[11] = (byte) hue;
+            packet[12] = (byte) ( font >> 8 );
+            packet[13] = (byte) font;
+            packet[14] = (byte) 'E';
+            packet[15] = (byte) 'N';
+            packet[16] = (byte) 'U';
+            byte[] textBytes = System.Text.UnicodeEncoding.BigEndianUnicode.GetBytes( text + '\0' );
+            Buffer.BlockCopy( textBytes, 0, packet, 48, ( text.Length * 2 ) );
+            MacroEx.SendPacketToClient( client, packet );
         }
     }
 }

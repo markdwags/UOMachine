@@ -59,9 +59,29 @@ namespace UOMachine
                     break;
                 case 1:
                     byte[] newCode1 = new byte[] { 
-                        0x50, 0x51, 0x52, 0x53, 0x56, 0xE8, 0xFF, 0xFF,
-                        0xFF, 0xFF, 0x5A, 0x59, 0x58, 0x53, 0x50, 0x8D, 
-                        0x4F, 0x6C, 0xE9, 0xFF, 0xFF, 0xFF, 0xFF };
+                        0x50,
+                        0x51,
+                        0x52,
+                        0x53,
+                        0x56,
+                        0xE8, 0xFF, 0xFF, 0xFF, 0xFF,
+                        0x83, 0xF8, 01, // CMP EAX, 1
+                        0x74, 0x0D, // JZ +D
+                        0x5A,
+                        0x59,
+                        0x58,
+                        0x53,
+                        0x50,
+                        0x8D, 0x4F, 0x6C,
+                        0xE9, 0xFF, 0xFF, 0xFF, 0xFF,
+                        0x58,
+                        0x59,
+                        0x5A,
+                        0x5E,
+                        0x5E,
+                        0x5E,
+                        0xC2, 04, 00 // RETN 4
+                    };
                     /*
                         0000000000000000 50               push eax                
                         0000000000000001 51               push ecx                
@@ -79,10 +99,10 @@ namespace UOMachine
                     */
                     byte[] hook1 = CreateCALL(ci.SendHookAddress, ci.SendCaveAddress, CallType.JMP);
                     byte[] functionCall1 = CreateCALL(ci.SendCaveAddress.ToInt32() + 5, ci.SendFunctionPointer.ToInt32(), CallType.CALL);
-                    byte[] jmpBack1 = CreateCALL(ci.SendCaveAddress.ToInt32() + 18, ci.SendHookAddress.ToInt32() + 5, CallType.JMP);
+                    byte[] jmpBack1 = CreateCALL(ci.SendCaveAddress.ToInt32() + (18+5), ci.SendHookAddress.ToInt32() + 5, CallType.JMP);
 
                     Buffer.BlockCopy(functionCall1, 0, newCode1, 5, 5);
-                    Buffer.BlockCopy(jmpBack1, 0, newCode1, 18, 5);
+                    Buffer.BlockCopy(jmpBack1, 0, newCode1, (18 + 5), 5);
 
                     Memory.Write(ci.Handle, ci.SendCaveAddress, newCode1, true);
                     Memory.Write(ci.Handle, ci.SendHookAddress, hook1, true);

@@ -90,6 +90,14 @@ namespace UnitTests
             Assert.AreEqual("127.0.0.1,2593", address);
         }
 
+        [TestMethod]
+        public void LoginServer70462()
+        {
+            string address = Start( @"D:\Clients\7.0.46.2" );
+            Assert.IsNotNull( address );
+            Assert.AreEqual( "127.0.0.1,2593", address );
+        }
+
         public string Start(string path)
         {
             Process clientProcess = null;
@@ -159,12 +167,12 @@ namespace UnitTests
 
                     return m_Address;
                 }
-            } catch (Exception e)
+            } catch (Exception)
             {
                 UOMachine.IPC.Network.Dispose();
                 Log.Dispose();
                 UOMachine.NativeMethods.TerminateProcess(Process.GetProcessById(clientProcess.Id).Handle, 0);
-                throw e;
+                throw;
             }
             return null;
         }

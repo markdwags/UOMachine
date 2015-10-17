@@ -387,4 +387,7 @@
   <data name="APIDoc" xml:space="preserve">
     <value>API文档</value>
   </data>
+  <data name="Length" xml:space="preserve">
+    <value>长度</value>
+  </data>
 </root>

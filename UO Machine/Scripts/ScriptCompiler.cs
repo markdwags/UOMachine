@@ -198,7 +198,7 @@ namespace UOMachine
             AddReferences(sourcecode, cp);
             cp.GenerateExecutable = false;
 #if DEBUG
-            cp.CompilerOptions = "/debug+";
+            cp.CompilerOptions = "/debug+ /unsafe";
             cp.GenerateInMemory = false;
             cp.TempFiles = new TempFileCollection(Environment.GetEnvironmentVariable("TEMP"), true);
             cp.IncludeDebugInformation = true;

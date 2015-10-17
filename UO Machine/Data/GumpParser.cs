@@ -21,7 +21,7 @@ using System.Collections.Generic;
 
 namespace UOMachine.Data
 {
-    internal static class GumpParser
+    public static class GumpParser
     {
         private static void OnError(string elementName, string layout)
         {
