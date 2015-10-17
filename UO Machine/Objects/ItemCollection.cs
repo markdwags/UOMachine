@@ -209,7 +209,14 @@ namespace UOMachine
             return false;
         }
 
-        public bool FindItems(int x, int y, int facet, out Item[] items)
+        /// <summary>
+        /// Get array of all items at specified coordinates.
+        /// </summary>
+        /// <param name="x">X Coordinate</param>
+        /// <param name="y">Y Coordinate</param>
+        /// <param name="items">Array of found items (out).</param>
+        /// <returns>True if array counts items, otherwise false.</returns>
+        public bool FindItems(int x, int y, out Item[] items)
         {
             List<Item> itemList = new List<Item>(32);
 
@@ -318,8 +325,5 @@ namespace UOMachine
             }
             return false;
         }
-
-
-
     }
 }

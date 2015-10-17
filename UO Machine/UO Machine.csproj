@@ -134,6 +134,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Macros\MacroEx\AddGumpResponseFilter.cs" />
     <Compile Include="Macros\MacroEx\AddSendFilter.cs" />
+    <Compile Include="Macros\MacroEx\WaitForProperties.cs" />
     <Compile Include="Macros\Macro\LaunchSteam.cs" />
     <Compile Include="UI\BraceFoldingStrategy.cs" />
     <Compile Include="Data\OutgoingPacketHandlers.cs" />

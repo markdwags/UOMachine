@@ -93,6 +93,12 @@ namespace UOMachine
             return false;
         }
 
+        /// <summary>
+        /// Get ClientInfo by specified index.
+        /// </summary>
+        /// <param name="index">Client index.</param>
+        /// <param name="clientInfo">ClientInfo (out)</param>
+        /// <returns>True if clientInfo is not null.</returns>
         public static bool GetClient(int index, out ClientInfo clientInfo)
         {
             if (index < 0 || index > 31)
@@ -302,11 +308,19 @@ namespace UOMachine
             return false;
         }
 
+        /// <summary>
+        /// Find all items at specified coordinates.
+        /// </summary>
+        /// <param name="index">Client index.</param>
+        /// <param name="x">X Coordinate.</param>
+        /// <param name="y">Y Coordinate.</param>
+        /// <param name="items">Array of items (out).</param>
+        /// <returns>True if items found, otherwise false.</returns>
         public static bool FindItems(int index, int x, int y, out Item[] items)
         {
             ClientInfo ci;
             if (GetClient(index, out ci))
-                return ci.Items.FindItems(x, y, ci.Player.Facet, out items);
+                return ci.Items.FindItems(x, y, out items);
             items = null;
             return false;
         }

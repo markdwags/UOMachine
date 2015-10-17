@@ -20,7 +20,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 using UOMachine.IPC;
-using UOMachine.Macros;
+using UOMachine.Data;
 using UOMachine.Tree;
 using UOMachine.Utility;
 
@@ -29,11 +29,13 @@ namespace UOMachine
 
     public sealed class ClientInfo
     {
-        private object myWaitForTargetLock;
+        private object myWaitForTargetLock, myWaitForPropertiesLock;
         private Thread myCleanupThread;
         private const int myMaxDistance = 36; //items get deleted past this point
         private int[] mySequenceList;
         private int myWaitingForTarget;
+        private int myWaitingForProperties;
+        private int myWaitingPropertiesSerial;
         //private const int myCleanupDelay = 60000;
 
         public int DateStamp { get; internal set; }
@@ -226,6 +228,31 @@ namespace UOMachine
             lock (myWaitForTargetLock) { Monitor.Wait(myWaitForTargetLock, timeout); }
         }
 
+        public void PropertiesReceived(int serial)
+        {
+            if (Thread.VolatileRead(ref myWaitingForProperties) == 1 && Thread.VolatileRead(ref myWaitingPropertiesSerial) == serial)
+            {
+                lock (myWaitForPropertiesLock) { myWaitingForProperties = 0; Monitor.Pulse( myWaitForPropertiesLock ); }
+            }
+        }
+
+        public bool WaitForProperties(int serial, int timeout)
+        {
+            bool result = false;
+            myWaitingForProperties = 1;
+            myWaitingPropertiesSerial = serial;
+            lock (myWaitForPropertiesLock) {
+                PacketWriter pw = new PacketWriter();
+                pw.Write( (byte) 0xD6 );
+                pw.Write( (byte) 0x07 );
+                pw.Write( (byte) 0x00 );
+                pw.Write( (int) serial );
+                Network.SendCommand( IPCServerIndex, Command.SendPacket, ServerSendCaveAddress.ToInt32(), (byte) PacketType.Server, pw.ToArray() );
+                result = Monitor.Wait( myWaitForPropertiesLock, timeout );
+            }
+            return result;
+        }
+
         private bool SetProcessInfo(Process p)
         {
             try
@@ -277,7 +304,9 @@ namespace UOMachine
             this.GenericGumps = new GenericGumpCollection();
             this.Player = new PlayerMobile(0, -1);
             myWaitForTargetLock = new object();
+            myWaitForPropertiesLock = new object();
             myWaitingForTarget = 0;
+            myWaitingForProperties = 0;
             this.Items.CollectionChangedEvent += new ItemCollection.dCollectionChanged(Items_CollectionChanged);
             this.Mobiles.CollectionChangedEvent += new MobileCollection.dCollectionChanged(Mobiles_CollectionChanged);
             this.GenericGumps.CollectionChangedEvent += new GenericGumpCollection.dCollectionChanged(myCustomGumps_CollectionChangedEvent);

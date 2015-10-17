@@ -151,5 +151,15 @@ namespace UOMachine
             get { return Thread.VolatileRead(ref myNotoriety); }
             internal set { myNotoriety = value; }
         }
+
+        public virtual Item Backpack
+        {
+            get
+            {
+                Item backpack;
+                GetEquippedItem( (int) Layer.Backpack, out backpack);
+                return backpack;
+            }
+        }
     }
 }
