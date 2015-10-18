@@ -18,5 +18,6 @@ UO Machine/Misc/SteamLauncher - Copy.cs
 ipch/
 patch.diff.txt
 UO Machine.opensdf
-UnitTests/
 output.zip
+UnitTests/bin/
+UnitTests/obj/

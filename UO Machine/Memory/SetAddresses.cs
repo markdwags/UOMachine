@@ -121,8 +121,15 @@ namespace UOMachine
 
             if (FindSignatureOffset(sig2, buffer, out offset))
             {
-                clientInfo.CursorAddress = (IntPtr)BitConverter.ToInt32(buffer, offset + 12);
-                return true;
+                offset += 9;
+                for (int i = 0; i < 10; i++)
+                {
+                    if (buffer[offset + i] == 0xA1)
+                    {
+                        clientInfo.CursorAddress = (IntPtr) BitConverter.ToInt32( buffer, ( offset + i ) + 1 );
+                        return true;
+                    }
+                }
             }
 
             return false;

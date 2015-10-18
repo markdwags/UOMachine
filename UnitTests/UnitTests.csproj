@@ -67,6 +67,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ClilocTests.cs" />
+    <Compile Include="CursorAddressTests.cs" />
     <Compile Include="LoginServerTest.cs" />
     <Compile Include="MapTests.cs" />
     <Compile Include="NativeMethods.cs" />
