@@ -16,11 +16,22 @@
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
 
 using UOMachine.IPC;
+using UOMachine.Data;
 
 namespace UOMachine.Macros
 {
     public static partial class MacroEx
     {
+        /// <summary>
+        /// Send raw packet from specified client.
+        /// </summary>
+        /// <param name="client">Target client.</param>
+        /// <param name="packet">PacketWriter to send.</param>
+        public static void SendPacketToServer(int client, PacketWriter packet)
+        {
+            SendPacketToServer(0, packet.ToArray());
+        }
+
         /// <summary>
         /// Send raw packet from specified client.
         /// </summary>

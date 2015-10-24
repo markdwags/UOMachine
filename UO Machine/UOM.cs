@@ -102,6 +102,7 @@ namespace UOMachine
             mySkillNames = Skills.GetSkills( MainWindow.CurrentOptions.UOFolder );
             TileData.Initialize( MainWindow.CurrentOptions.UOFolder );
             Map.Initialize( MainWindow.CurrentOptions.UOFolder, MainWindow.CurrentOptions.CacheLevel );
+            Art.Initialize( MainWindow.CurrentOptions.UOFolder );
             Cliloc.Initialize( MainWindow.CurrentOptions.UOFolder );
             NamespaceToAssembly.Initialize();
             IncomingPacketHandlers.Initialize();
@@ -175,6 +176,5 @@ namespace UOMachine
         {
             return (string[])mySkillNames.Clone();
         }
-
     }
 }

@@ -113,6 +113,27 @@ namespace UnitTests
             Map.Dispose();
         }
 
+        [TestCategory( "Data Format" ), TestCategory( "Data Format\\Map" ), TestMethod]
+        public void MapTest70462()
+        {
+            string path = @"D:\Clients\7.0.46.2";
+
+            TileData.Initialize( path );
+            Map.Initialize( path, 0 );
+
+            MapInfo mi;
+            foreach (LandTileTest lt in m_LandTileTests)
+            {
+                MacroEx.GetMapInfo( lt.Facet, lt.X, lt.Y, out mi );
+                Assert.IsNotNull( mi.landTile, "LandTile is null." );
+                Assert.AreEqual( mi.landTile.ID, lt.LandTileID, "LandTile doesn't match expected." );
+                Assert.AreEqual( mi.landTile.Name, lt.LandTileName, "LandTile Name doesn't match expected." );
+            }
+
+            TileData.Dispose();
+            Map.Dispose();
+        }
+
         [TestCleanup]
         public void Cleanup()
         {

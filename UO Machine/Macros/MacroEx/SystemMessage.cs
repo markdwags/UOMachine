@@ -17,6 +17,7 @@
 
 using System;
 using System.Text;
+using UOMachine.Data;
 
 namespace UOMachine.Macros
 {
@@ -25,22 +26,22 @@ namespace UOMachine.Macros
         /// <summary>
         /// Send system message packet to the specified client.
         /// </summary>
-        public static void SystemMessage(int client, string text)
+        public static void SystemMessage( int client, string text )
         {
-            byte[] baseSystemMessagePacket = new byte[] {   
-            0xAE, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 
-            0xFF, 0x00, 0x03, 0xB2, 0x00, 0x03, 0x45, 0x4E, 
-            0x55, 0x00, 0x53, 0x79, 0x73, 0x74, 0x65, 0x6D, 
-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+            byte[] baseSystemMessagePacket = new byte[] {
+            0xAE, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+            0xFF, 0x00, 0x03, 0xB2, 0x00, 0x03, 0x45, 0x4E,
+            0x55, 0x00, 0x53, 0x79, 0x73, 0x74, 0x65, 0x6D,
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-            byte[] textBytes = UnicodeEncoding.BigEndianUnicode.GetBytes(text + '\0');
+            byte[] textBytes = UnicodeEncoding.BigEndianUnicode.GetBytes( text + '\0' );
             byte[] packet = new byte[baseSystemMessagePacket.Length + textBytes.Length];
-            Buffer.BlockCopy(baseSystemMessagePacket, 0, packet, 0, baseSystemMessagePacket.Length);
-            Buffer.BlockCopy(textBytes, 0, packet, baseSystemMessagePacket.Length, textBytes.Length);
-            packet[1] = (byte)(packet.Length);
-            packet[2] = (byte)(packet.Length >> 8);
-            SendPacketToClient(client, packet);
+            Buffer.BlockCopy( baseSystemMessagePacket, 0, packet, 0, baseSystemMessagePacket.Length );
+            Buffer.BlockCopy( textBytes, 0, packet, baseSystemMessagePacket.Length, textBytes.Length );
+            packet[1] = (byte) ( packet.Length );
+            packet[2] = (byte) ( packet.Length >> 8 );
+            SendPacketToClient( client, packet );
         }
     }
 }

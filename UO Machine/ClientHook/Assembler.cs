@@ -1,4 +1,4 @@
-﻿/* Copyright (C) 2009 Matthew Geyer
+/* Copyright (C) 2009 Matthew Geyer
  * 
  * This file is part of UO Machine.
  * 
@@ -18,7 +18,7 @@
 using System;
 using System.Text;
 
-namespace UOMachine.Macros
+namespace UOMachine
 {
     internal static class Assembler
     {
@@ -354,6 +354,59 @@ namespace UOMachine.Macros
                 0x90, 0x90, 0x90, 0x90, 0x90,
                 0xC3 };
 
+            /*
+0000000000000000 ffff             invalid                 
+0000000000000002 ffff             invalid                 
+0000000000000004 ffff             invalid                 
+0000000000000006 ffff             invalid                 
+0000000000000008 0000             add [eax], al           
+000000000000000a 66a1ffffffff     mov ax, [0xffffffff]    
+0000000000000010 6683f800         cmp ax, 0x0             
+0000000000000014 7506             jnz 0x1c                
+0000000000000016 90               nop                     
+0000000000000017 90               nop                     
+0000000000000018 90               nop                     
+0000000000000019 90               nop                     
+000000000000001a 90               nop                     
+000000000000001b c3               ret                     
+000000000000001c 90               nop                     
+000000000000001d 90               nop                     
+000000000000001e 90               nop                     
+000000000000001f 90               nop                     
+0000000000000020 90               nop                     
+0000000000000021 90               nop                     
+0000000000000022 90               nop                     
+0000000000000023 90               nop                     
+0000000000000024 90               nop                     
+0000000000000025 51               push ecx                
+0000000000000026 52               push edx                
+0000000000000027 53               push ebx                
+0000000000000028 54               push esp                
+0000000000000029 55               push ebp                
+000000000000002a 56               push esi                
+000000000000002b 57               push edi                
+000000000000002c 8b2dffffffff     mov ebp, [0xffffffff]   
+0000000000000032 8b3dffffffff     mov edi, [0xffffffff]   
+0000000000000038 55               push ebp                
+0000000000000039 8b0dffffffff     mov ecx, [0xffffffff]   
+000000000000003f 8bf1             mov esi, ecx            
+0000000000000041 e8ffffffff       call 0x45               
+0000000000000046 6633c0           xor ax, ax              
+0000000000000049 66a3ffffffff     mov [0xffffffff], ax    
+000000000000004f 5f               pop edi                 
+0000000000000050 5e               pop esi                 
+0000000000000051 5d               pop ebp                 
+0000000000000052 5c               pop esp                 
+0000000000000053 5b               pop ebx                 
+0000000000000054 5a               pop edx                 
+0000000000000055 59               pop ecx                 
+0000000000000056 90               nop                     
+0000000000000057 90               nop                     
+0000000000000058 90               nop                     
+0000000000000059 90               nop                     
+000000000000005a 90               nop                     
+000000000000005b c3               ret           
+*/
             int caveAddress = ci.ClientSendCaveAddress.ToInt32();
 
             byte[] bufferDword = BitConverter.GetBytes( caveAddress );

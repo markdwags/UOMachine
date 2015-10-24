@@ -38,7 +38,7 @@ namespace UOMachine.Macros
             if (ClientInfoCollection.GetClient(client, out ci))
             {
                 if (target) MacroEx.SendPacketToClient(client, myTargetPacket);
-                //else Memory.Write(ci.Handle, ci.CursorAddress, dwordZero, true);
+                else Memory.Write(ci.Handle, ci.CursorAddress, dwordZero, true);
             }
         }
     }

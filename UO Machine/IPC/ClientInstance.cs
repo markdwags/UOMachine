@@ -39,6 +39,9 @@ namespace UOMachine.IPC
         public event dInstallRecvHook InstallRecvHookEvent;
         public event dUninstallSendHook UninstallSendHookEvent;
         public event dUninstallRecvHook UninstallRecvHookEvent;
+        public event dAddGumpResponseFilter AddGumpResponseFilterEvent;
+        //public event dRemoveGumpResponseFilter RemoveGumpResponseFilterEvent;
+        //public event dClearGumpResponseFilter ClearGumpResponseFilterEvent;
 
         private const int myBuffSize = 131072;
         private MemoryStream myMemoryStream;
@@ -118,73 +121,81 @@ namespace UOMachine.IPC
                 case Command.Ping:
                     dPing ping = PingEvent;
                     if (ping != null)
-                        ThreadPool.QueueUserWorkItem(delegate { ping(0); });
+                        ThreadPool.QueueUserWorkItem( delegate { ping( 0 ); } );
                     return;
                 case Command.PingResponse:
                     dPingResponse pingResponse = PingResponseEvent;
                     if (pingResponse != null)
-                        ThreadPool.QueueUserWorkItem(delegate { pingResponse(0); });
+                        ThreadPool.QueueUserWorkItem( delegate { pingResponse( 0 ); } );
                     return;
                 case Command.SendPacket:
                     dSendPacket sendPacket = SendPacketEvent;
                     if (sendPacket != null)
                     {
-                        int caveAddress = BitConverter.ToInt32(message, 3);
-                        PacketType packetType = (PacketType)message[7];
+                        int caveAddress = BitConverter.ToInt32( message, 3 );
+                        PacketType packetType = (PacketType) message[7];
                         byte[] packet = new byte[message.Length - 8];
-                        Buffer.BlockCopy(message, 8, packet, 0, packet.Length);
-                        ThreadPool.QueueUserWorkItem(delegate { sendPacket(caveAddress, packetType, packet); });
+                        Buffer.BlockCopy( message, 8, packet, 0, packet.Length );
+                        ThreadPool.QueueUserWorkItem( delegate { sendPacket( caveAddress, packetType, packet ); } );
                     }
                     return;
                 case Command.AddSendFilter:
                     dAddSendFilter addSendFilter = AddSendFilterEvent;
                     if (addSendFilter != null)
-                        ThreadPool.QueueUserWorkItem(delegate { addSendFilter(message[1]); });
+                        ThreadPool.QueueUserWorkItem( delegate { addSendFilter( message[1] ); } );
                     return;
                 case Command.AddRecvFilter:
                     dAddRecvFilter addRecvFilter = AddRecvFilterEvent;
                     if (addRecvFilter != null)
-                        ThreadPool.QueueUserWorkItem(delegate { addRecvFilter(message[1]); });
+                        ThreadPool.QueueUserWorkItem( delegate { addRecvFilter( message[1] ); } );
                     return;
                 case Command.RemoveRecvFilter:
                     dRemoveRecvFilter removeRecvFilter = RemoveRecvFilterEvent;
                     if (removeRecvFilter != null)
-                        ThreadPool.QueueUserWorkItem(delegate { removeRecvFilter(message[1]); });
+                        ThreadPool.QueueUserWorkItem( delegate { removeRecvFilter( message[1] ); } );
                     return;
                 case Command.RemoveSendFilter:
                     dRemoveSendFilter removeSendFilter = RemoveSendFilterEvent;
                     if (removeSendFilter != null)
-                        ThreadPool.QueueUserWorkItem(delegate { removeSendFilter(message[1]); });
+                        ThreadPool.QueueUserWorkItem( delegate { removeSendFilter( message[1] ); } );
                     return;
                 case Command.ClearSendFilter:
                     dClearSendFilter clearSendFilter = ClearSendFilterEvent;
                     if (clearSendFilter != null)
-                        ThreadPool.QueueUserWorkItem(delegate { clearSendFilter(); });
+                        ThreadPool.QueueUserWorkItem( delegate { clearSendFilter(); } );
                     return;
                 case Command.ClearRecvFilter:
                     dClearRecvFilter clearRecvFilter = ClearRecvFilterEvent;
                     if (clearRecvFilter != null)
-                        ThreadPool.QueueUserWorkItem(delegate { clearRecvFilter(); });
+                        ThreadPool.QueueUserWorkItem( delegate { clearRecvFilter(); } );
                     return;
                 case Command.InstallSendHook:
                     dInstallSendHook installSendHook = InstallSendHookEvent;
                     if (installSendHook != null)
-                        ThreadPool.QueueUserWorkItem(delegate { installSendHook(); });
+                        ThreadPool.QueueUserWorkItem( delegate { installSendHook(); } );
                     return;
                 case Command.InstallRecvHook:
                     dInstallRecvHook installRecvHook = InstallRecvHookEvent;
                     if (installRecvHook != null)
-                        ThreadPool.QueueUserWorkItem(delegate { installRecvHook(); });
+                        ThreadPool.QueueUserWorkItem( delegate { installRecvHook(); } );
                     return;
                 case Command.UninstallSendHook:
                     dUninstallSendHook uninstallSendHook = UninstallSendHookEvent;
                     if (uninstallSendHook != null)
-                        ThreadPool.QueueUserWorkItem(delegate { uninstallSendHook(); });
+                        ThreadPool.QueueUserWorkItem( delegate { uninstallSendHook(); } );
                     return;
                 case Command.UninstallRecvHook:
                     dUninstallRecvHook uninstallRecvHook = UninstallRecvHookEvent;
                     if (uninstallRecvHook != null)
-                        ThreadPool.QueueUserWorkItem(delegate { uninstallRecvHook(); });
+                        ThreadPool.QueueUserWorkItem( delegate { uninstallRecvHook(); } );
+                    return;
+                case Command.AddGumpResponseFilter:
+                    dAddGumpResponseFilter addGumpResponseFilter = AddGumpResponseFilterEvent;
+                    if (addGumpResponseFilter != null) {
+                        uint serial = BitConverter.ToUInt32( message, 1 );
+                        uint gumpid = BitConverter.ToUInt32( message, 5 );
+                        ThreadPool.QueueUserWorkItem( delegate { addGumpResponseFilter(serial, gumpid); } );
+                    }
                     return;
             }
         }

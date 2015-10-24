@@ -371,6 +371,8 @@ namespace UOMachine.Events
             private static void IncomingPackets_PropertiesEvent(int client, int serial, string name, Property[] properties, string propertyText)
             {
                 ClientInfoCollection.UpdateProperties(client, serial, name, properties, propertyText);
+                ClientInfo ci;
+                if (ClientInfoCollection.GetClient( client, out ci )) ci.PropertiesReceived( serial );
             }
 
             private static void IncomingPackets_WorldItemAddedEvent(int client, Item item)

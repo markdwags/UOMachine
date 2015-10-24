@@ -390,4 +390,7 @@
   <data name="APIDoc" xml:space="preserve">
     <value>Documentación de la API</value>
   </data>
+  <data name="Length" xml:space="preserve">
+    <value>Longitud</value>
+  </data>
 </root>

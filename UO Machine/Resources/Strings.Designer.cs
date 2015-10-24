@@ -439,6 +439,15 @@ namespace UOMachine.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Length.
+        /// </summary>
+        public static string Length {
+            get {
+                return ResourceManager.GetString("Length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Main.
         /// </summary>
         public static string Main {

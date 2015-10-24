@@ -42,7 +42,7 @@ namespace UOMachine.IPC
             if (memoryStream.Length - readPos <= 0) return 0;
             memoryStream.Position = readPos;
             int command = memoryStream.ReadByte();
-            if (command > 22)
+            if (command > 23)
             {
                 if (memoryStream.Length - readPos < 3)
                     return 0;

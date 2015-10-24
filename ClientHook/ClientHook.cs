@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define FILTER_TEST
+
+using System;
 using System.Collections.Generic;
 using System.Collections;
 using System.Text;
@@ -21,6 +23,28 @@ namespace ClientHook
         public byte[] data;
     }
 
+    public class GumpResponseFilter
+    {
+        private uint m_Serial;
+        private uint m_GumpID;
+
+        public uint Serial
+        {
+            get { return m_Serial; }
+        }
+
+        public uint GumpID
+        {
+            get { return m_GumpID; }
+        }
+
+        public GumpResponseFilter(uint serial, uint gumpid)
+        {
+            m_Serial = serial;
+            m_GumpID = gumpid;
+        }
+    }
+
     public sealed class Main : EasyHook.IEntryPoint
     {
         private static Queue<Packet> mySendClientQueue, mySendServerQueue;
@@ -31,6 +55,7 @@ namespace ClientHook
         private static ClientInstance myClientInstance;
         private static IntPtr myServerSendBuffer, myClientSendBuffer;
         private static byte[] myServerBufferAddress, myClientBufferAddress;
+        private static List<GumpResponseFilter> myGumpResponseFilter;
 
         private const int SOCKET_ERROR = -1;
 
@@ -41,9 +66,37 @@ namespace ClientHook
         {
             byte[] buffer = new byte[len];
             Marshal.Copy( buf, buffer, 0, len );
-            myClientInstance.SendCommand( Command.OutgoingPacket, buffer );
-            if (mySendFilter[buffer[0]])
-                return 1;
+#if FILTER_TEST
+            if (buf.ToInt32() != myServerSendBuffer.ToInt32())
+            {
+                myClientInstance.SendCommand(Command.OutgoingPacket, buffer);
+                if (mySendFilter[buffer[0]])
+                    return 1;
+            }
+
+            if (buffer[0] == 0xB1)
+            {
+                bool found = false;
+                int serial = buffer[3] << 24 | buffer[4] << 16 | buffer[5] << 8 | buffer[6];
+                int gumpid = buffer[7] << 24 | buffer[8] << 16 | buffer[9] << 8 | buffer[10];
+
+                myClientInstance.SendCommand( Command.Message, String.Format( "Gump Response: 0x{0:x} 0x{1:x}", serial, (uint) serial ) );
+
+                foreach (GumpResponseFilter gf in myGumpResponseFilter)
+                {
+                    if ((gf.Serial == (uint)serial) && (gf.GumpID == (uint)gumpid))
+                        found = true;
+
+                    if (found)
+                        break;
+                }
+
+                if (found)
+                    return 1;
+            }
+#else
+            myClientInstance.SendCommand(Command.OutgoingPacket, buffer);
+#endif
             return 0;
         }
 
@@ -90,6 +143,8 @@ namespace ClientHook
             myServerBufferAddress = BitConverter.GetBytes( myServerSendBuffer.ToInt32() );
             myClientBufferAddress = BitConverter.GetBytes( myClientSendBuffer.ToInt32() );
 
+            myGumpResponseFilter = new List<GumpResponseFilter>();
+
             myClientInstance = new ClientInstance( serverName, true );
             myClientInstance.SendCommand( Command.ClientID, myPID );
             myClientInstance.SendPacketEvent += new dSendPacket( myClientInstance_sendPacketEvent );
@@ -100,6 +155,9 @@ namespace ClientHook
             myClientInstance.RemoveSendFilterEvent += new dRemoveSendFilter( myClientInstance_removeSendFilterEvent );
             myClientInstance.ClearRecvFilterEvent += new dClearRecvFilter( myClientInstance_clearRecvFilterEvent );
             myClientInstance.ClearSendFilterEvent += new dClearSendFilter( myClientInstance_clearSendFilterEvent );
+            myClientInstance.AddGumpResponseFilterEvent += new dAddGumpResponseFilter( myClientInstance_addGumpResponseFilterEvent );
+
+            myClientInstance.SendCommand( Command.Message, "ClientHook Main()" );
         }
 
         ~Main()
@@ -167,6 +225,15 @@ namespace ClientHook
         private static void myClientInstance_pingEvent( int clientID )
         {
             myClientInstance.SendCommand( Command.PingResponse );
+        }
+
+        private static void myClientInstance_addGumpResponseFilterEvent( uint serial, uint gumpid )
+        {
+            if (myGumpResponseFilter == null)
+                myGumpResponseFilter = new List<GumpResponseFilter>();
+
+            myGumpResponseFilter.Add( new GumpResponseFilter( serial, gumpid ) );
+            myClientInstance.SendCommand( Command.Message, String.Format("Adding 0x{0:x}, 0x{1:x} to GumpResponseFilter", serial, gumpid ) );
         }
 
         private static unsafe void myClientInstance_sendPacketEvent( int caveAddress, PacketType packetType, byte[] data )

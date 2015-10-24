@@ -44,7 +44,7 @@ namespace Updater
                 {
                     m_Stream = new FileStream( file, FileMode.OpenOrCreate, FileAccess.Write );
                 }
-                catch (IOException e)
+                catch (IOException)
                 {
                     file = String.Concat( file, ".new" );
                     m_Stream = new FileStream( file, FileMode.OpenOrCreate, FileAccess.Write );

@@ -390,4 +390,7 @@
   <data name="APIDoc" xml:space="preserve">
     <value>APIドキュメント</value>
   </data>
+  <data name="Length" xml:space="preserve">
+    <value>長さ</value>
+  </data>
 </root>

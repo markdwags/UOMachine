@@ -1,4 +1,4 @@
-﻿/* Copyright (C) 2014 John Scott
+﻿/* Copyright (C) 2015 John Scott
  * 
  * This file is part of UO Machine.
  * 
@@ -14,38 +14,25 @@
  * 
  * You should have received a copy of the GNU General Public License
  * along with UO Machine.  If not, see <http://www.gnu.org/licenses/>. */
-#define FILTER_TEST
-
-#if FILTER_TEST
-
-using System;
-using UOMachine;
-using UOMachine.IPC;
 
 namespace UOMachine.Macros
 {
     public static partial class MacroEx
     {
-        public static void AddRecvFilter( int client, byte packetID)
+        /// <summary>
+        /// Pause until properties are received for specified serial.
+        /// </summary>
+        /// <param name="client">Client index.</param>
+        /// <param name="serial">Serial to receive properties for.</param>
+        /// <param name="timeout">Timeout in milliseconds</param>
+        /// <returns>True if properties received or false if not.</returns>
+        public static bool WaitForProperties(int client, int serial, int timeout)
         {
             ClientInfo ci;
+            bool result = false;
             if (ClientInfoCollection.GetClient( client, out ci ))
-                Network.SendCommand( ci.IPCServerIndex, Command.AddRecvFilter, packetID );
-        }
-
-        public static void RemoveRecvFilter( int client, byte packetID )
-        {
-            ClientInfo ci;
-            if (ClientInfoCollection.GetClient( client, out ci ))
-                Network.SendCommand( ci.IPCServerIndex, Command.RemoveRecvFilter, packetID );
-        }
-
-        public static void ClearRecvFilter( int client, byte packetID )
-        {
-            ClientInfo ci;
-            if (ClientInfoCollection.GetClient( client, out ci ))
-                Network.SendCommand( ci.IPCServerIndex, Command.ClearRecvFilter );
+                result = ci.WaitForProperties( serial, timeout );
+            return result;
         }
     }
 }
-#endif

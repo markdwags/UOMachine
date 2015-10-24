@@ -63,6 +63,6 @@ namespace UnitTests
         }
 
         [System.Runtime.InteropServices.DllImport("wsock32.dll")]
-        public static extern ushort ntohs(ushort netshort);
+        internal static extern ushort ntohs(ushort netshort);
     }
 }

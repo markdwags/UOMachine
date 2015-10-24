@@ -81,7 +81,7 @@ namespace UOMachine
         [DllImport("kernel32", CharSet = CharSet.Unicode)]
         public static extern IntPtr LoadLibrary(string lpFileName);
 
-        [DllImport( "kernel32", CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true )]
+        [DllImport( "kernel32", CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true, BestFitMapping = false )]
         public static extern IntPtr GetProcAddress( IntPtr hModule, string procName );
 
         [DllImport("kernel32.dll", SetLastError = true)]

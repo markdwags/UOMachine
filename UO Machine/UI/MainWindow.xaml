@@ -1,10 +1,18 @@
 ﻿<Window x:Class="UOMachine.MainWindow" x:ClassModifier="internal"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:AvalonEdit="clr-namespace:ICSharpCode.CodeCompletion;assembly=ICSharpCode.CodeCompletion"
-        xmlns:p="clr-namespace:UOMachine.Resources"
-        xmlns:ui="clr-namespace:UOMachine.UI"
-    Title="UO Machine Alpha 4" Height="674" Width="880" x:Name="Main" xmlns:UOMachine="clr-namespace:UOMachine" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+    xmlns:AvalonEdit="clr-namespace:ICSharpCode.CodeCompletion;assembly=ICSharpCode.CodeCompletion"
+    xmlns:UOMachine="clr-namespace:UOMachine"
+    xmlns:p="clr-namespace:UOMachine.Resources"
+    xmlns:ui="clr-namespace:UOMachine.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
+    mc:Ignorable="d"    
+    Title="UOMachine" Height="674" Width="880" x:Name="Main" DataContext="{Binding RelativeSource={RelativeSource Self}}">
+
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Ctrl" Key="S" Command="{Binding SaveCommand}"/>
+    </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -50,7 +58,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
-            </Grid.ColumnDefinitions>            
+            </Grid.ColumnDefinitions>
             <ui:MenuButton ui:MenuButton.Image="{StaticResource StartButton}" x:Name="startButton" Click="startButton_Click" ToolTip="{x:Static p:Strings.Startscript}" Focusable="False" Grid.Column="0" />
             <ui:MenuButton ui:MenuButton.Image="{StaticResource StopButton}" x:Name="stopButton" Click="stopButton_Click" ToolTip="{x:Static p:Strings.Stopscript}" Focusable="False" Grid.Column="1" IsEnabled="False"/>
             <ui:MenuButton ui:MenuButton.Image="{StaticResource AddButton}" x:Name="addButton" Click="addButton_Click" ToolTip="{x:Static p:Strings.Startnewclient}" Focusable="False" Grid.Column="2"/>
@@ -68,6 +76,6 @@
         <TreeView Margin="0,36,0,24" x:Name="clientTreeView" Grid.Column="2" FocusVisualStyle= "{x:Null}">
         </TreeView>
         <AvalonEdit:CodeTextEditor Margin="0,36,0,24" x:Name="scriptTextBox" Text="" FontFamily="Tahoma" FontSize="11.5"></AvalonEdit:CodeTextEditor>
-        <Label Height="Auto" Name="labelStatus" VerticalAlignment="Bottom" FontSize="12" Margin="12,0,8,0" Content="{x:Static p:Strings.StatusReady}"/>
+        <Label Height="Auto" Name="labelStatus" VerticalAlignment="Bottom" FontSize="12" Margin="0,0,8,0" Content="{x:Static p:Strings.StatusReady}" HorizontalAlignment="Right" Width="660"/>
     </Grid>
 </Window>
